@@ -1,0 +1,89 @@
+/*Fondo del navbar*/
+.imagenFondo{
+    background-image: url("https://bloximages.chicago2.vip.townnews.com/tucson.com/content/tncms/assets/v3/editorial/d/bc/dbcca832-0acf-11e7-8657-bf758f34ff1f/58cb6f78080fc.image.jpg?resize=1200%2C630");
+    background-size: cover;
+    background-position: center;
+    min-height: 750px;
+    height: 500%;
+}
+
+
+
+/*Logo principal*/
+.navbar .img-fluid{
+    height: 120px;
+    width: 130px;
+}
+nav figure{
+    border-bottom: 3px solid transparent;
+    transition: 0.5s;
+}
+
+nav figure:hover{
+    border-bottom: 3px solid rgb(120, 173, 41);
+}
+
+
+/*Links*/
+nav ul li a{
+    font-size: 18px;
+    border-bottom: 3px solid transparent;
+    transition: 0.5s;
+}
+
+
+nav ul li  .efecto:hover{
+    font-size: 18px;
+    border-bottom: 3px solid rgb(120, 173, 41);
+}
+
+nav ul li  .dropdown-item:hover{
+    color: white;
+    background-color:rgb(120, 173, 41) ; 
+}
+
+
+/*Boton login*/
+nav .botonLogin{
+    background-color: rgb(120, 173, 41);
+    color: white;
+    transition: 0.5s;
+}
+nav .botonLogin:hover{
+    background-color: white;
+    color: rgb(120, 173, 41);
+    transition: 0.5s;
+}
+
+nav .botonCerrar{
+    background-color: red;
+    color: white;
+}
+
+nav .botonCerrar:hover{
+    background-color: white;
+    color: red;
+    transition: 0.5s;
+}
+
+.imagenFondo h1{
+    color: white;
+    font-size: 5em;
+}
+
+.imagenFondo h2{
+    color: white;
+    font-size: 2.5rem;
+}
+
+
+/*nav ul .fa{
+    color: white;
+    transition: 1s;
+    border-bottom: 3px solid transparent;
+}
+nav ul .fa:hover{
+    transition: 1s;
+    color: rgb(120, 173, 41);
+    
+}*/
