@@ -6,7 +6,7 @@ $(document).ready(function () {
 
 function loadEquipos(){
 	
-	var url = "../../controller/cEquipos.php";
+	var url = "grupo4.zerbitzaria.net/controller/cEquipos.php";
 	
 	fetch(url, {
 		  method: 'GET', 
@@ -50,7 +50,7 @@ function loadUsersByTeamId(idEquipo){
 	
 	var data = {'idEquipo':idEquipo};
 	console.log(data);
-	var url = "../../controller/cUsersByTeamId.php";
+	var url = "grupo4.zerbitzaria.net/controller/cUsersByTeamId.php";
 	
 
 	fetch(url, {

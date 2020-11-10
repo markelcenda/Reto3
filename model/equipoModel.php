@@ -4,7 +4,7 @@ if($_SERVER["SERVER_NAME"]=="grupo4.zerbitzaria.net"){
 }else{
     include_once("connect_data.php");
 }
-include_once("equipoClass.php");
+include_once("grupo4.zerbitzaria.net/model/equipoClass.php");
 
 class equipoModel extends equipoClass {
     
