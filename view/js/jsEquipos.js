@@ -65,6 +65,7 @@ function loadUsersByTeamId(idEquipo){
 				var equipos=result.equipos;
 				
 				console.log("prueba");
+				console.log("pruebaGalder");
 				
 				
 				/*Limpiar los cards para que no se repitan al hacer change*/
