@@ -1,14 +1,16 @@
 <?php
 if($_SERVER["SERVER_NAME"]=="grupo4.zerbitzaria.net"){
-    include_once("../connect_data_remote.php");
+    include_once("connect_data_remote.php");
 }else{
-    include_once("../connect_data.php");
+    include_once("connect_data.php");
 }
-include_once("../bean/equipoClass.php");
 
-class equipoModel extends equipoClass {
+include_once("entrenadorClass.php");
+include_once("usuarioClass.php");
+
+class entrenadorModel extends usuarioClass {
     
-    private $link;
+    public $link;
     
     public function OpenConnect()
     {
@@ -36,7 +38,7 @@ class equipoModel extends equipoClass {
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
         
-        $sql = "CALL spAllEquipos()"; // SQL sententzia - sentencia SQL
+        $sql = "CALL spAllEntrenadores()"; // SQL sententzia - sentencia SQL
         
         $result = $this->link->query($sql);
         
@@ -45,13 +47,14 @@ class equipoModel extends equipoClass {
         $list=array();
         
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { //each row
-           
-            $equipo=new equipoModel();
             
-            $equipo->id=$row['id'];
-            $equipo->categoria=$row['categoria'];
+            $entrenador=new entrenadorModel();
             
-            array_push($list, $equipo);
+            $entrenador->id=$row['id'];
+            $entrenador->experiencia=$row['experiencia'];
+            
+            
+            array_push($list, $entrenador);
         }
         mysqli_free_result($result);
         $this->CloseConnect();

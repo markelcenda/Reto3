@@ -1,6 +1,6 @@
 <?php
 
-include_once ("../model/dao/equipoModel.php");
+include_once ("../model/equipoModel.php");
 
 $equipo= new equipoModel();
 

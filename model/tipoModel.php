@@ -1,15 +1,15 @@
 <?php
 if($_SERVER["SERVER_NAME"]=="grupo4.zerbitzaria.net"){
-    include_once("../connect_data_remote.php");
+    include_once("connect_data_remote.php");
 }else{
-    include_once("../connect_data.php");
+    include_once("connect_data.php");
 }
 
-include_once("../bean/usuarioClass.php");
+include_once("tipoClass.php");
 
-class usuarioModel extends usuarioClass {
+class tipoModel extends tipoClass {
     
-    private $link;
+    public $link;
     
     public function OpenConnect()
     {
@@ -31,6 +31,29 @@ class usuarioModel extends usuarioClass {
     public function CloseConnect()
     {
         mysqli_close ($this->link);
+    }
+    
+    public function findTipoById(){
+        
+        $this->OpenConnect();
+        
+        $id=$this->id;
+        
+        $sql="call spFindTipo('$id')";
+        $result= $this->link->query($sql);
+        
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+        {
+            
+            //FILL the cycle with info  $THIS
+            $this->id=$row['id'];
+            $this->tipo=$row['tipo'];
+            
+            
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        
     }
     
 }

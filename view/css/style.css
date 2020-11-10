@@ -1,3 +1,8 @@
+body{
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
 /*Fondo del navbar*/
 .imagenFondo{
     background-image: url("https://bloximages.chicago2.vip.townnews.com/tucson.com/content/tncms/assets/v3/editorial/d/bc/dbcca832-0acf-11e7-8657-bf758f34ff1f/58cb6f78080fc.image.jpg?resize=1200%2C630");
@@ -87,3 +92,7 @@ nav ul .fa:hover{
     color: rgb(120, 173, 41);
     
 }*/
+
+.posiciones{
+    font-size: 500px;
+}
