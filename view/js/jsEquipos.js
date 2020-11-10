@@ -64,8 +64,8 @@ function loadUsersByTeamId(idEquipo){
 				var delegados=result.delegados;
 				var equipos=result.equipos;
 				
-				console.log("prueba");
-				console.log("pruebaGalder");
+				/*console.log("prueba");
+				console.log("pruebaGalder");*/
 				
 				
 				/*Limpiar los cards para que no se repitan al hacer change*/
@@ -103,7 +103,7 @@ function loadUsersByTeamId(idEquipo){
 										"</div>";	
 						$("#delanterosTitulo").html(cardPosiciones);
 
-						cardJugadores="<div class='col-lg-3'>" +
+						cardJugadores="<div class='col-lg-3 col-md-6 ml-3 mr-3'>" +
 				                			  	"<div class='card'>" +
 						        					"<img class='card-img-top' src='../img/" + jugadores[i].imagen + "' alt=''>" +
 						        					"<div class='card-body'>" +
@@ -125,7 +125,7 @@ function loadUsersByTeamId(idEquipo){
 										"</div>";
 						$("#zaguerosTitulo").html(cardPosiciones);
 						
-						cardJugadores="<div class='col-lg-3'>" +
+						cardJugadores="<div class='col-lg-3 col-md-6 ml-3 mr-3'>" +
 					            			  	"<div class='card'>" +
 						        					"<img class='card-img-top' src='../img/" + jugadores[i].imagen + "' alt=''>" +
 						        					"<div class='card-body'>" +
@@ -146,7 +146,7 @@ function loadUsersByTeamId(idEquipo){
 									"</div>";	
 						$("#liberosTitulo").html(cardPosiciones);
 						
-						cardJugadores="<div class='col-lg-3'>" +
+						cardJugadores="<div class='col-lg-3 col-md-6 ml-3 mr-3'>" +
 					            			  	"<div class='card'>" +
 						        					"<img class='card-img-top' src='../img/" + jugadores[i].imagen + "' alt=''>" +
 						        					"<div class='card-body'>" +
@@ -173,7 +173,7 @@ function loadUsersByTeamId(idEquipo){
 
 				for(let i=0; i<entrenadores.length; i++){
 
-					cardEntrenadores="<div class='col-lg-3'>" +
+					cardEntrenadores="<div class='col-lg-3 col-md-6 ml-3 mr-3'>" +
 					            			  	"<div class='card'>" +
 						        					"<img class='card-img-top' src='../img/" + entrenadores[i].imagen + "' alt=''>" +
 						        					"<div class='card-body'>" +
@@ -185,7 +185,7 @@ function loadUsersByTeamId(idEquipo){
 												
 					$("#cuerpoTecnico").append(cardEntrenadores);
 
-					cardDelegados="<div class='col-lg-3'>" +
+					cardDelegados="<div class='col-lg-3 col-md-6 ml-3 mr-3'>" +
 					            			  	"<div class='card '>" +
 						        					"<img class='card-img-top' src='../img/" + delegados[i].imagen + "' alt=''>" +
 						        					"<div class='card-body'>" +
