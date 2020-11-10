@@ -1,6 +1,6 @@
 <?php
 
-include_once ("grupo4.zerbitzaria.net/model/equipoModel.php");
+include_once ("model/equipoModel.php");
 
 $equipo= new equipoModel();
 
