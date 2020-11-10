@@ -5,6 +5,6 @@ class connect_data{
     public $host="localhost";
     public $userbbdd="grupo4ze";
     public $passbbdd="grupo4GMX";
-    public $ddbbname="reto3";
+    public $ddbbname="grupo4ze_reto3";
     
 }
