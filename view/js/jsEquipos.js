@@ -6,7 +6,7 @@ $(document).ready(function () {
 
 function loadEquipos(){
 	
-	var url = "grupo4.zerbitzaria.net/controller/cEquipos.php";
+	var url = "../../controller/cEquipos.php";
 	
 	fetch(url, {
 		  method: 'GET', 
