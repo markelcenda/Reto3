@@ -52,7 +52,6 @@ function loadUsersByTeamId(idEquipo){
 	console.log(data);
 	var url = "../../controller/cUsersByTeamId.php";
 	
-
 	fetch(url, {
 		  method: 'POST', // or 'POST'
 		  body: JSON.stringify(data), 
