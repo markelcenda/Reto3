@@ -71,6 +71,7 @@ function loadUsersByTeamId(idEquipo){
 				$("#delanteros").html("");
 				$("#zagueros").html("");
 				$("#liberos").html("");
+				$("#cuerpoTecnico").html("");
 				
 				/*Añadir categoria del equipo al index*/
 				categoriaEquipo="";
@@ -158,6 +159,42 @@ function loadUsersByTeamId(idEquipo){
 						
 					}
 					
+
+				}
+
+				/*CUERPO TECNICO*/
+
+				cuerpoTecnicoTitulo="<h4>Cuerpo Técnico</h4>";
+				$("#cuerpoTecnicoTitulo").html(cuerpoTecnicoTitulo);
+
+				cardEntrenadores="";
+				cardDelegados="";
+
+				for(let i=0; i<entrenadores.length; i++){
+
+					cardEntrenadores="<div class='col-lg-3'>" +
+					            			  	"<div class='card'>" +
+						        					"<img class='card-img-top' src='../img/" + entrenadores[i].imagen + "' alt=''>" +
+						        					"<div class='card-body'>" +
+														"<h4 class='card-title'>" + entrenadores[i].nombre + " " + entrenadores[i].apellidos + "</h4>" +
+														"<p class='text-center'>Entrenador</p>" +
+						        					"</div>" +
+						        				"</div>" +
+												"</div>";
+												
+					$("#cuerpoTecnico").append(cardEntrenadores);
+
+					cardDelegados="<div class='col-lg-3'>" +
+					            			  	"<div class='card '>" +
+						        					"<img class='card-img-top' src='../img/" + delegados[i].imagen + "' alt=''>" +
+						        					"<div class='card-body'>" +
+														"<h4 class='card-title'>" + delegados[i].nombre + " " + delegados[i].apellidos + "</h4>" +
+														"<p class='text-center'>Delegado</p>" +
+						        					"</div>" +
+						        				"</div>" +
+												"</div>";
+												
+					$("#cuerpoTecnico").append(cardDelegados);
 
 				}
 				
