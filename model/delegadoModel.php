@@ -10,7 +10,7 @@ include_once("../bean/usuarioClass.php");
 
 class delegadoModel extends usuarioClass {
     
-    private $link;
+    public $link;
     
     public function OpenConnect()
     {

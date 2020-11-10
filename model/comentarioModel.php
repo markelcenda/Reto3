@@ -9,7 +9,7 @@ include_once("../bean/comentarioClass.php");
 
 class comentarioModel extends comentarioClass {
     
-    private $link;
+    public $link;
     
     public function OpenConnect()
     {
