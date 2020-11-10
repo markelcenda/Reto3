@@ -64,6 +64,8 @@ function loadUsersByTeamId(idEquipo){
 				var delegados=result.delegados;
 				var equipos=result.equipos;
 				
+				console.log("prueba");
+				
 				
 				/*Limpiar los cards para que no se repitan al hacer change*/
 				$("#delanteros").html("");
