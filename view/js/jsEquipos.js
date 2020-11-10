@@ -165,7 +165,12 @@ function loadUsersByTeamId(idEquipo){
 
 				/*CUERPO TECNICO*/
 
-				cuerpoTecnicoTitulo="<h4>Cuerpo Técnico</h4>";
+			
+				cuerpoTecnicoTitulo="<div class='row justify-content-center mt-4'>" +
+					                "<div class='col-lg-12'>" +
+					                "<h4>Cuerpo Técnico</h4>" +
+					                "</div>" +
+									"</div>";	
 				$("#cuerpoTecnicoTitulo").html(cuerpoTecnicoTitulo);
 
 				cardEntrenadores="";
