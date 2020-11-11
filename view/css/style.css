@@ -1,6 +1,7 @@
 body{
     margin: 0px !important;
     padding: 0px !important;
+    overflow-x: hidden;
 }
 
 /*Fondo del navbar*/
