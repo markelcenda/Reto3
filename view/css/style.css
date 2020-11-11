@@ -1,12 +1,13 @@
-body{
+body {
     margin: 0px !important;
     padding: 0px !important;
     overflow-x: hidden;
 }
 
 /*Fondo del navbar*/
-.imagenFondo{
-    background-image: url("https://bloximages.chicago2.vip.townnews.com/tucson.com/content/tncms/assets/v3/editorial/d/bc/dbcca832-0acf-11e7-8657-bf758f34ff1f/58cb6f78080fc.image.jpg?resize=1200%2C630");
+
+.imagenFondo {
+    background-image: url("../img/fotoPrincipal.jpg");
     background-size: cover;
     background-position: center;
     min-height: 750px;
@@ -14,63 +15,70 @@ body{
 }
 
 /*Logo principal*/
-.navbar .img-fluid{
+
+.navbar .img-fluid {
     height: 120px;
     width: 130px;
 }
-nav figure{
+
+nav figure {
     border-bottom: 3px solid transparent;
     transition: 0.5s;
 }
-nav figure:hover{
+
+nav figure:hover {
     border-bottom: 3px solid rgb(120, 173, 41);
 }
-
 
 /*Links*/
-nav ul li a{
+
+nav ul li a {
     font-size: 18px;
     border-bottom: 3px solid transparent;
     transition: 0.5s;
 }
-nav ul li  .efecto:hover{
+
+nav ul li .efecto:hover {
     font-size: 18px;
     border-bottom: 3px solid rgb(120, 173, 41);
 }
-nav ul li  .dropdown-item:hover{
+
+nav ul li .dropdown-item:hover {
     color: white;
-    background-color:rgb(120, 173, 41) ; 
+    background-color: rgb(120, 173, 41);
 }
 
 /*Boton login*/
-nav .botonLogin{
+
+nav .botonLogin {
     background-color: rgb(120, 173, 41);
     color: white;
     transition: 0.5s;
 }
-nav .botonLogin:hover{
+
+nav .botonLogin:hover {
     background-color: white;
     color: rgb(120, 173, 41);
     transition: 0.5s;
 }
 
-nav .botonCerrar{
+nav .botonCerrar {
     background-color: red;
     color: white;
 }
 
-nav .botonCerrar:hover{
+nav .botonCerrar:hover {
     background-color: white;
     color: red;
     transition: 0.5s;
 }
 
-.imagenFondo h1{
+.imagenFondo h1 {
     color: white;
     font-size: 5em;
 }
 
-.imagenFondo h2{
+.imagenFondo h2 {
     color: white;
     font-size: 2.5rem;
 }
@@ -87,42 +95,74 @@ nav ul .fa:hover{
 }*/
 
 /*Seccion sobre nosotros*/
+
 .about {
     margin-top: 40px;
-  }
-  
-  .about .container {
+}
+
+.about .container {
     background-color: #f7f8f9;
     padding: 60px 50px;
-  }
-  
-  @media (max-width: 992px) {
+}
+
+@media (max-width: 992px) {
     .about .container {
-      padding: 30px;
+        padding: 30px;
     }
-  }
-  
-  .about .content h3 {
+}
+
+.about .content h3 {
     font-weight: 400;
     font-size: 32px;
     color: #364146;
     font-family: "Poppins", sans-serif;
-  }
-  
-  .about .content ul {
-    list-style: none;
-  }
-  
-  .about .content ul li {
-    padding-bottom: 10px;
-  }
-  
-  .about .content ul i {
-    font-size: 20px;
-    padding-right: 4px;
-    color: #28a745;
-  }
-  
-  .about .content p:last-child {
-    margin-bottom: 0;
-  }
+}
+
+/*Video con info*/
+
+#videoDiv {
+    width: auto;
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+}
+
+#video {
+    width: 100%;
+    display: block;
+    margin-top: -200px;
+}
+
+#videoInfo {
+    position: absolute;
+    top: -25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 38%;
+    height: 100%;
+}
+
+#videoInfo a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    color: white;
+    background: rgba(0, 151, 19, 0.7); 
+    border-radius: 20px;
+    padding: 2% 3% 0% 3%;
+    
+}
+
+@media screen and (max-width: 1280px) {
+    #video {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 250px) {
+    #videoInfo {
+        width: 80%;
+    }
+}
