@@ -113,7 +113,7 @@ function loadUsersByTeamId(idEquipo){
 						        					"</div>" +
 						        				"</div>" ;*/
 						
-					      cardJugadores="<div class='col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto text-center'>" +
+					      cardJugadores="<div class='col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto'>" +
 					         "<div class='ver_mas text-center'>" +
 					            "<span class='lnr lnr-eye'></span>" +
 					         "</div>" +
