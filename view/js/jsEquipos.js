@@ -64,10 +64,10 @@ function loadUsersByTeamId(idEquipo){
 				var delegados=result.delegados;
 				var equipos=result.equipos;
 				
-				console.log(jugadores);
+				/*console.log(jugadores);
 				console.log(entrenadores);
 				console.log(delegados);
-				console.log(equipos);
+				console.log(equipos);*/
 				
 				
 				/*Limpiar los cards para que no se repitan al hacer change*/
@@ -93,6 +93,8 @@ function loadUsersByTeamId(idEquipo){
 				
 				cardPosiciones="";
 				cardJugadores="";
+
+				idJugador="";
 				
 				for(var i=0; i<jugadores.length; i++){
 
@@ -105,24 +107,16 @@ function loadUsersByTeamId(idEquipo){
 										"</div>";	
 						$("#delanterosTitulo").html(cardPosiciones);
 
-						/*cardJugadores="<div class='col-lg-3 col-md-6 col-8 m-2'>" +
-				                			  	"<div class='card'>" +
-						        					"<img class='card-img-top' src='../img/" + jugadores[i].imagen + "' alt=''>" +
-						        					"<div class='card-body'>" +
-						        						"<h4 class='card-title'>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h4>" +
-						        					"</div>" +
-						        				"</div>" ;*/
-						
-					      cardJugadores="<div class='col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto'>" +
+					      cardJugadores="<div class='col-lg-4 col-md-6 col-8 container_foto'>" +
 					         "<div class='ver_mas text-center'>" +
-					            "<span class='lnr lnr-eye'></span>" +
+					            "<span class='fas fa-eye' id='" + jugadores[i].id + "'></span>" +
 					         "</div>" +
 					         "<article class='text-center'>" +
 					            "<h2>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h2>" +				        
 					         "</article>" +
 					         "<img src='../img/" + jugadores[i].imagen + "' alt=''>" +
-					      "</div>";
-						        				
+						  "</div>";
+ 				
 						$("#delanteros").append(cardJugadores);
 						
 						
@@ -137,14 +131,15 @@ function loadUsersByTeamId(idEquipo){
 										"</div>";
 						$("#zaguerosTitulo").html(cardPosiciones);
 						
-						cardJugadores="<div class='col-lg-3 col-md-6 col-8 m-2'>" +
-					            			  	"<div class='card'>" +
-						        					"<img class='card-img-top' src='../img/" + jugadores[i].imagen + "' alt=''>" +
-						        					"<div class='card-body'>" +
-						        						"<h4 class='card-title'>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h4>" +
-						        					"</div>" +
-						        				"</div>" +
-						        				"</div>";
+						cardJugadores="<div class='col-lg-4 col-md-6 col-8 container_foto'>" +
+					         "<div class='ver_mas text-center'>" +
+					            "<span class='fa fa-eye'></span>" +
+					         "</div>" +
+					         "<article class='text-center'>" +
+					            "<h2>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h2>" +				        
+					         "</article>" +
+					         "<img src='../img/" + jugadores[i].imagen + "' alt=''>" +
+					      "</div>";
 						
 						$("#zagueros").append(cardJugadores);
 						
@@ -158,22 +153,32 @@ function loadUsersByTeamId(idEquipo){
 									"</div>";	
 						$("#liberosTitulo").html(cardPosiciones);
 						
-						cardJugadores="<div class='col-lg-3 col-md-6 col-8 m-2'>" +
-					            			  	"<div class='card'>" +
-						        					"<img class='card-img-top' src='../img/" + jugadores[i].imagen + "' alt=''>" +
-						        					"<div class='card-body'>" +
-						        						"<h4 class='card-title'>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h4>" +
-						        					"</div>" +
-						        				"</div>" +
-						        				"</div>";
+						cardJugadores="<div class='col-lg-4 col-md-6 col-8 container_foto'>" +
+					         "<div class='ver_mas text-center'>" +
+					            "<div class='fa fa-eye'></div>" +
+					         "</div>" +
+					         "<article class='text-center'>" +
+					            "<h2>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h2>" +				        
+					         "</article>" +
+					         "<img src='../img/" + jugadores[i].imagen + "' alt=''>" +
+					      "</div>";
 						
 						$("#liberos").append(cardJugadores);
 						
 						
 					}
-					
 
 				}
+
+				$("#1").click(function(){
+
+					console.log("prueba");
+					
+				 });
+
+				
+
+				
 
 				/*CUERPO TECNICO*/
 
@@ -190,31 +195,35 @@ function loadUsersByTeamId(idEquipo){
 
 				for(let i=0; i<entrenadores.length; i++){
 
-					cardEntrenadores="<div class='col-lg-3 col-md-6 col-8 m-2'>" +
-					            			  	"<div class='card'>" +
-						        					"<img class='card-img-top' src='../img/" + entrenadores[i].imagen + "' alt=''>" +
-						        					"<div class='card-body'>" +
-														"<h4 class='card-title'>" + entrenadores[i].nombre + " " + entrenadores[i].apellidos + "</h4>" +
-														"<p class='text-center'>Entrenador</p>" +
-						        					"</div>" +
-						        				"</div>" +
-												"</div>";
+					cardEntrenadores="<div class='col-lg-4 col-md-6 col-8 container_foto'>" +
+					         "<div class='ver_mas text-center'>" +
+					            "<span class='fa fa-eye'></span>" +
+					         "</div>" +
+					         "<article class='text-center'>" +
+								"<h2>" + entrenadores[i].nombre + " " + entrenadores[i].apellidos + "</h2>" +	
+								"<p>Entrenador</p>" +			        
+					         "</article>" +
+					         "<img src='../img/" + entrenadores[i].imagen + "' alt=''>" +
+					      "</div>";
 												
 					$("#cuerpoTecnico").append(cardEntrenadores);
 
-					cardDelegados="<div class='col-lg-3 col-md-6 col-8 m-2'>" +
-					            			  	"<div class='card '>" +
-						        					"<img class='card-img-top' src='../img/" + delegados[i].imagen + "' alt=''>" +
-						        					"<div class='card-body'>" +
-														"<h4 class='card-title'>" + delegados[i].nombre + " " + delegados[i].apellidos + "</h4>" +
-														"<p class='text-center'>Delegado</p>" +
-						        					"</div>" +
-						        				"</div>" +
-												"</div>";
+					cardDelegados="<div class='col-lg-4 col-md-6 col-8 container_foto'>" +
+					         "<div class='ver_mas text-center'>" +
+					            "<span class='fa fa-eye'></span>" +
+					         "</div>" +
+					         "<article class='text-center'>" +
+								"<h2>" + delegados[i].nombre + " " + delegados[i].apellidos + "</h2>" +	
+								"<p>Delegado</p>" +				        
+					         "</article>" +
+					         "<img src='../img/" + delegados[i].imagen + "' alt=''>" +
+					      "</div>";
 												
 					$("#cuerpoTecnico").append(cardDelegados);
 
 				}
+
+				$('h4').after('<hr/>')
 				
 
 		})
