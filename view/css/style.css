@@ -12,8 +12,6 @@ body{
     height: 500%;
 }
 
-
-
 /*Logo principal*/
 .navbar .img-fluid{
     height: 120px;
@@ -23,7 +21,6 @@ nav figure{
     border-bottom: 3px solid transparent;
     transition: 0.5s;
 }
-
 nav figure:hover{
     border-bottom: 3px solid rgb(120, 173, 41);
 }
@@ -35,18 +32,14 @@ nav ul li a{
     border-bottom: 3px solid transparent;
     transition: 0.5s;
 }
-
-
 nav ul li  .efecto:hover{
     font-size: 18px;
     border-bottom: 3px solid rgb(120, 173, 41);
 }
-
 nav ul li  .dropdown-item:hover{
     color: white;
     background-color:rgb(120, 173, 41) ; 
 }
-
 
 /*Boton login*/
 nav .botonLogin{
@@ -81,7 +74,6 @@ nav .botonCerrar:hover{
     font-size: 2.5rem;
 }
 
-
 /*nav ul .fa{
     color: white;
     transition: 1s;
@@ -92,3 +84,44 @@ nav ul .fa:hover{
     color: rgb(120, 173, 41);
     
 }*/
+
+/*Seccion sobre nosotros*/
+.about {
+    margin-top: 40px;
+  }
+  
+  .about .container {
+    background-color: #f7f8f9;
+    padding: 60px 50px;
+  }
+  
+  @media (max-width: 992px) {
+    .about .container {
+      padding: 30px;
+    }
+  }
+  
+  .about .content h3 {
+    font-weight: 400;
+    font-size: 32px;
+    color: #364146;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .about .content ul {
+    list-style: none;
+  }
+  
+  .about .content ul li {
+    padding-bottom: 10px;
+  }
+  
+  .about .content ul i {
+    font-size: 20px;
+    padding-right: 4px;
+    color: #28a745;
+  }
+  
+  .about .content p:last-child {
+    margin-bottom: 0;
+  }

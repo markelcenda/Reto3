@@ -1,122 +1,126 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <title>Index</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="view/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="view/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="view/css/aos.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-    <div class="imagenFondo"></div>
-        <div class="imagenFondo">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
 
-            <nav class="navbar navbar-dark navbar-expand-md justify-content-between w-100">
+<body>
+    <div class="imagenFondo">
+        <nav class="navbar navbar-dark navbar-expand-md justify-content-between w-100">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse dual-nav w-50 order-1 order-md-0 ">
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-nav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <ul class="navbar-nav text-center align-items-center">
 
-                <div class="navbar-collapse collapse dual-nav w-50 order-1 order-md-0 ">
+                    <li class="nav-item active">
+                        <a class="nav-link pl-0 efecto" href="#">Home <span class="sr-only">Home</span></a>
+                    </li>
 
-                    <ul class="navbar-nav text-center align-items-center">
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle efecto" href="#" id="dropdownId" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Equipos</a>
+                        <div class="dropdown-menu text-center" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="view/pages/equipos.html">Senior Masculino</a>
+                            <a class="dropdown-item" href="#">Senior Femenino</a>
+                            <hr>
+                            <a class="dropdown-item" href="#">Juvenil Masculino</a>
+                            <a class="dropdown-item" href="#">Juvenil Femenino</a>
+                            <hr>
+                            <a class="dropdown-item" href="#">Infantil Masculino</a>
+                            <a class="dropdown-item" href="#">Infantil Femenino</a>
+                        </div>
+                    </li>
 
-                        <li class="nav-item active">
-                            <a class="nav-link pl-0 efecto" href="#">Home <span class="sr-only">Home</span></a>
-                        </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active efecto" href="#">Noticias</a>
+                    </li>
 
-                        <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle efecto" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Equipos</a>
-                            <div class="dropdown-menu text-center" aria-labelledby="dropdownId">
-                                <a class="dropdown-item" href="view/pages/equipos.html">Senior Masculino</a>
-                                <a class="dropdown-item" href="#">Senior Femenino</a>
-                                <hr>
-                                <a class="dropdown-item" href="#">Juvenil Masculino</a>
-                                <a class="dropdown-item" href="#">Juvenil Femenino</a>
-                                <hr>
-                                <a class="dropdown-item" href="#">Infantil Masculino</a>
-                                <a class="dropdown-item" href="#">Infantil Femenino</a>
-                            </div>
-                        </li>
+                    <li class="nav-item active">
+                        <a class="nav-link efecto" href="#">Socios</a>
+                    </li>
 
-                        <li class="nav-item active">
-                            <a class="nav-link active efecto" href="#">Noticias</a>
-                        </li>
+                </ul>
+            </div>
 
-                        <li class="nav-item active">
-                            <a class="nav-link efecto" href="#">Socios</a>
-                        </li>
+            <a href="#" class="navbar-brand  d-block text-center order-0 order-md-1 w-25">
 
-                    </ul>
-                </div>
+                <figure class="figure">
+                    <img src="view/img/logo.png" class="figure-img img-fluid rounded" alt="">
+                    <figcaption class="figure-caption efecto text-white align-items-center">Betis Voleibol</figcaption>
+                </figure>
 
-                <a href="#" class="navbar-brand  d-block text-center order-0 order-md-1 w-25">
+            </a>
 
-                    <figure class="figure">
-                        <img src="view/img/logo.png" class="figure-img img-fluid rounded" alt="">
-                        <figcaption class="figure-caption efecto text-white align-items-center">Betis Voleibol</figcaption>
-                    </figure>
+            <div class="navbar-collapse collapse dual-nav w-50 order-2">
+                <ul class="nav navbar-nav ml-auto text-center align-items-center">
 
-                </a>
+                    <div class="login">
 
-                <div class="navbar-collapse collapse dual-nav w-50 order-2">
-                    <ul class="nav navbar-nav ml-auto text-center align-items-center">
+                        <button type="button" class="btn botonLogin" data-toggle="modal" data-target="#modelId">Iniciar
+                            Sesión</button>
 
-                        <div class="login">
+                        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Iniciar Sesión</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="usuario"></label>
+                                            <span>Usuario:</span>
+                                            <input type="text" name="usuario" id="usuario" class="form-control"
+                                                placeholder="Usuario" aria-describedby="helpId">
 
-                            <button type="button" class="btn botonLogin" data-toggle="modal" data-target="#modelId">Iniciar Sesión</button>
+                                            <span>Contraseña:</span>
+                                            <input type="password" name="password" id="password" class="form-control"
+                                                placeholder="Contraseña" aria-describedby="helpId">
 
-                            <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Iniciar Sesión</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
                                         </div>
-                                        <div class="modal-body">
-                                             
-                                             <div class="form-group">
-                                               <label for="usuario"></label>
-                                               <span>Usuario:</span>
-                                               <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario" aria-describedby="helpId">
-     
-                                               <span>Contraseña:</span>
-                                               <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" aria-describedby="helpId">
-     
-                                             </div>
-                                     
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn botonCerrar" data-dismiss="modal">Cerrar</button>
-                                            <button type="button" class="btn botonLogin">Iniciar Sesión</button>
-                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn botonCerrar"
+                                            data-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn botonLogin">Iniciar Sesión</button>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                        
 
-                        <!-- Zona login 
+                    </div>
+
+
+                    <!-- Zona login 
                             <li class="nav-item active">
                             <a class="nav-link efecto" href="#">Administrar</a>
                         </li>
                        <i class="fa fa-user-circle fa-2x"></i> -->
 
-                    </ul>
-                </div>
+                </ul>
+            </div>
 
 
         </nav>
 
-        
+
         <div class="col mt-5 text-center">
             <h1>Betis Voleibol Club</h1>
         </div>
@@ -124,18 +128,53 @@
         <div class="col mt-5 text-center">
             <h2>"Más que un equipo, una familia"</h2>
         </div>
-            
 
-        
+    </div>
 
+    <section id="about" class="about pt-5" data-aos="zoom-out">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6" data-aos="zoom-in">
+                    <img src="view/img/sobreNosotros.jpg" class="img-fluid">
+                </div>
+                <div class="col-lg-6 d-flex flex-column justify-contents-center" data-aos="fade-left">
+                    <div class="content pt-4 pt-lg-0">
+                        <h3>Sobre nosotros</h3>
+                        <ul>
+                            <li> El Real Betis Voleibol fue fundado el 12 de septiembre de 2007. </li>
+                            <li> El club cuenta con un equipo femenino en la máxima categoría del fútbol español, el
+                                Real Betis
+                                Féminas, tambien dispone de un equipo de baloncesto, el Real Betis Energía Plus, y otro
+                                de Fútbol
+                                Sala.</li>
+                            <li> En cuanto a Peñas, el club verdiblanco es el cuarto equipo de España con mayor número
+                                de ellas, por
+                                encima de las 450, con agrupaciones peñistas no sólo en España.</li>
+                            <li> El club goza de una cantera prolífica que ha dado futbolistas al primer equipo a lo
+                                largo de su
+                                historia. Hasta 17 son los equipos canteranos que conforman en la actualidad la fábrica
+                                verdiblanca.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
     <!-- Optional JavaScript -->
-    <script src="view/js/jsFunctions.js"></script>
     <script src="view/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="view/js/jsFunctions.js"></script>
+    <script src="view/js/aos.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>
