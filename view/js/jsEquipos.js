@@ -349,8 +349,6 @@ function mostrarDatosUsuarios(id){
 			$("#fichaUsuario").append(infoUsuario);
 
 
-			
-			console.log(idEquipo);
 			$(".botonVolver").click(function(){
 				$("#selectEquipos").show();
 				$(".equipos").show();
