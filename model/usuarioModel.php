@@ -339,4 +339,161 @@ class usuarioModel extends usuarioClass {
         
     }
     
+    public function findJugadorById(){
+        
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        
+        $id=$this->id;
+        
+        $sql = "CALL spJugadorById($id)"; // SQL sententzia - sentencia SQL
+        
+        $result = $this->link->query($sql);
+        
+        //$this->link->num_rows; num rows  of result
+        
+        $list=array();
+        
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { //each row
+            
+            $usuario=new usuarioModel();
+            
+            /*Datos del usuario*/
+            $usuario->id=$row['id'];
+            $usuario->nombre=$row['nombre'];
+            $usuario->apellidos=$row['apellidos'];
+            $usuario->usuario=$row['usuario'];
+            $usuario->password=$row['password'];
+            $usuario->idEquipo=$row['idEquipo'];
+            $usuario->tipo=$row['tipo'];
+            $usuario->email=$row['email'];
+            $usuario->direccion=$row['direccion'];
+            $usuario->fechaDeNacimiento=$row['fechaDeNacimiento'];
+            $usuario->admin=$row['admin'];
+            $usuario->imagen=$row['imagen'];
+            
+            
+            $jugador=new jugadorModel();
+            $jugador->id=$row['id'];
+            $jugador->findPlayerById();
+            
+            $usuario->objJugador=$jugador;
+            
+            $equipo=new equipoModel();
+            $equipo->id=$row['idEquipo'];
+            $equipo->findTeamById();
+            
+            $usuario->objEquipo=$equipo;
+            
+            array_push($list, $usuario);
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        return $list;
+        
+    }
+    
+    public function findEntrenadoreById(){
+        
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        
+        $id=$this->id;
+        
+        $sql = "CALL spEntrenadorById($id)"; // SQL sententzia - sentencia SQL
+        
+        $result = $this->link->query($sql);
+        
+        //$this->link->num_rows; num rows  of result
+        
+        $list=array();
+        
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { //each row
+            
+            $usuario=new usuarioModel();
+            
+            /*Datos del usuario*/
+            $usuario->id=$row['id'];
+            $usuario->nombre=$row['nombre'];
+            $usuario->apellidos=$row['apellidos'];
+            $usuario->usuario=$row['usuario'];
+            $usuario->password=$row['password'];
+            $usuario->idEquipo=$row['idEquipo'];
+            $usuario->tipo=$row['tipo'];
+            $usuario->email=$row['email'];
+            $usuario->direccion=$row['direccion'];
+            $usuario->fechaDeNacimiento=$row['fechaDeNacimiento'];
+            $usuario->admin=$row['admin'];
+            $usuario->imagen=$row['imagen'];
+            
+            $entrenador=new entrenadorModel();
+            $entrenador->id=$row['id'];
+            $entrenador->findEntrenadorById();
+            
+            $usuario->objEntrenador=$entrenador;
+            
+            $equipo=new equipoModel();
+            $equipo->id=$row['idEquipo'];
+            $equipo->findTeamById();
+            
+            $usuario->objEquipo=$equipo;
+            
+            array_push($list, $usuario);
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        return $list;
+        
+    }
+    
+    public function findDelegadoById(){
+        
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        
+        $id=$this->id;
+        
+        $sql = "CALL spDelegadoById($id)"; // SQL sententzia - sentencia SQL
+        
+        $result = $this->link->query($sql);
+        
+        //$this->link->num_rows; num rows  of result
+        
+        $list=array();
+        
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { //each row
+            
+            $usuario=new usuarioModel();
+            
+            /*Datos del usuario*/
+            $usuario->id=$row['id'];
+            $usuario->nombre=$row['nombre'];
+            $usuario->apellidos=$row['apellidos'];
+            $usuario->usuario=$row['usuario'];
+            $usuario->password=$row['password'];
+            $usuario->idEquipo=$row['idEquipo'];
+            $usuario->tipo=$row['tipo'];
+            $usuario->email=$row['email'];
+            $usuario->direccion=$row['direccion'];
+            $usuario->fechaDeNacimiento=$row['fechaDeNacimiento'];
+            $usuario->admin=$row['admin'];
+            $usuario->imagen=$row['imagen'];
+            
+            $delegado=new delegadoModel();
+            $delegado->id=$row['id'];
+            $delegado->findDelegadoById();
+            
+            $usuario->objDelegado=$delegado;
+            
+            $equipo=new equipoModel();
+            $equipo->id=$row['idEquipo'];
+            $equipo->findTeamById();
+            
+            $usuario->objEquipo=$equipo;
+            
+            array_push($list, $usuario);
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        return $list;
+        
+    }
+    
 }

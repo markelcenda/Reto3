@@ -13,9 +13,10 @@ function loadEquipos(){
 		  headers:{'Content-Type': 'application/json'}  // input data
 		  })
 	.then(res => res.json()).then(result => {
-		console.log(result.list);
 		
 		var equipos=result.list;
+
+		
 		
 		/*Cargar los equipos en el select*/
 		selectEquipo="<option selected>Selecciona un equipo</option>";
@@ -64,17 +65,16 @@ function loadUsersByTeamId(idEquipo){
 				var delegados=result.delegados;
 				var equipos=result.equipos;
 				
-				/*console.log(jugadores);
-				console.log(entrenadores);
-				console.log(delegados);
-				console.log(equipos);*/
-				
 				
 				/*Limpiar los cards para que no se repitan al hacer change*/
 				$("#delanteros").html("");
 				$("#zagueros").html("");
 				$("#liberos").html("");
 				$("#cuerpoTecnico").html("");
+				$("#fichaUsuario").html("");
+
+
+				
 				
 				/*Añadir categoria del equipo al index*/
 				categoriaEquipo="";
@@ -107,7 +107,7 @@ function loadUsersByTeamId(idEquipo){
 										"</div>";	
 						$("#delanterosTitulo").html(cardPosiciones);
 
-					      cardJugadores="<div class='col-lg-4 col-md-6 col-8 container_foto'>" +
+					      cardJugadores="<div id='" + jugadores[i].id + "' class='col-lg-4 col-md-6 col-8 container_foto' >" +
 					         "<div class='ver_mas text-center'>" +
 					            "<span class='fas fa-eye' id='" + jugadores[i].id + "'></span>" +
 					         "</div>" +
@@ -118,10 +118,10 @@ function loadUsersByTeamId(idEquipo){
 						  "</div>";
  				
 						$("#delanteros").append(cardJugadores);
+
+						var id=$(this).find("span").attr('id');
 						
-						
-						
-						
+
 					}else if(jugadores[i].objJugador.posicion=="Zaguero"){
 						
 						cardPosiciones="<div class='row justify-content-center mt-4'>" +
@@ -133,7 +133,7 @@ function loadUsersByTeamId(idEquipo){
 						
 						cardJugadores="<div class='col-lg-4 col-md-6 col-8 container_foto'>" +
 					         "<div class='ver_mas text-center'>" +
-					            "<span class='fa fa-eye'></span>" +
+					            "<span class='fas fa-eye' id='" + jugadores[i].id + "'></span>" +
 					         "</div>" +
 					         "<article class='text-center'>" +
 					            "<h2>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h2>" +				        
@@ -155,7 +155,7 @@ function loadUsersByTeamId(idEquipo){
 						
 						cardJugadores="<div class='col-lg-4 col-md-6 col-8 container_foto'>" +
 					         "<div class='ver_mas text-center'>" +
-					            "<div class='fa fa-eye'></div>" +
+					            "<span class='fas fa-eye' id='" + jugadores[i].id + "'></span>" +
 					         "</div>" +
 					         "<article class='text-center'>" +
 					            "<h2>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h2>" +				        
@@ -170,19 +170,8 @@ function loadUsersByTeamId(idEquipo){
 
 				}
 
-				$("#1").click(function(){
-
-					console.log("prueba");
-					
-				 });
-
-				
-
-				
-
 				/*CUERPO TECNICO*/
 
-			
 				cuerpoTecnicoTitulo="<div class='row justify-content-center mt-4'>" +
 					                "<div class='col-lg-12'>" +
 					                "<h4>Cuerpo Técnico</h4>" +
@@ -197,7 +186,7 @@ function loadUsersByTeamId(idEquipo){
 
 					cardEntrenadores="<div class='col-lg-4 col-md-6 col-8 container_foto'>" +
 					         "<div class='ver_mas text-center'>" +
-					            "<span class='fa fa-eye'></span>" +
+					            "<span class='fas fa-eye' id='" + entrenadores[i].id + "'></span>" +
 					         "</div>" +
 					         "<article class='text-center'>" +
 								"<h2>" + entrenadores[i].nombre + " " + entrenadores[i].apellidos + "</h2>" +	
@@ -210,7 +199,7 @@ function loadUsersByTeamId(idEquipo){
 
 					cardDelegados="<div class='col-lg-4 col-md-6 col-8 container_foto'>" +
 					         "<div class='ver_mas text-center'>" +
-					            "<span class='fa fa-eye'></span>" +
+					            "<span class='fas fa-eye' id='" + delegados[i].id + "'></span>" +
 					         "</div>" +
 					         "<article class='text-center'>" +
 								"<h2>" + delegados[i].nombre + " " + delegados[i].apellidos + "</h2>" +	
@@ -224,9 +213,152 @@ function loadUsersByTeamId(idEquipo){
 				}
 
 				$('h4').after('<hr/>')
+
+				/*Funcion para ver los datos de jugadores y cuerpo tecnico*/
+				$("span").click(function(){ 
+					id=$(this).attr("id")
+					mostrarDatosUsuarios(id);
+				  }); 
 				
 
 		})
 		.catch(error => console.error('Error status:', error));	
 	
+}
+
+function mostrarDatosUsuarios(id){
+	
+
+	var data = {'id':id};
+	console.log(data);
+	var url = "../../controller/cUserById.php";
+	
+	fetch(url, {
+		  method: 'POST', // or 'POST'
+		  body: JSON.stringify(data), 
+		  headers:{'Content-Type': 'application/json'}
+		})
+		.then(res => res.json()).then(result => {
+
+			/*Dependiendo la id, puede ser entrenador, delegado o jugador*/
+			var jugador=result.jugador;
+			var entrenador=result.entrenador;
+			var delegado=result.delegado;
+
+			/*Limpiar el div de los cards*/
+			infoUsuario="";
+			$("#delanteros").html("");
+			$("#zagueros").html("");
+			$("#liberos").html("");
+			$("#cuerpoTecnico").html("");
+			$("#delanterosTitulo").html("");
+			$("#zaguerosTitulo").html("");
+			$("#liberosTitulo").html("");
+			$("#cuerpoTecnicoTitulo").html("");
+			$(".equipos").hide();
+			$("#selectEquipos").hide();
+			$("#insertCategoriaEquipo").html("");
+			
+
+			/*Si el usuario es jugador*/
+			if(jugador!=null){
+
+				for(let i=0; i<jugador.length; i++){
+
+					infoUsuario="<div class='row justify-content-center align-items-center mt-5 fichaUsuarioFondo'>" +
+										"<div class='col-lg-4 col-md-6 col-sm-10 col-10 m-2'>" +
+											"<img src='../img/" + jugador[i].imagen + "' class='imagenUsuario' alt=''>" +
+										"</div>" +
+										"<div class='col-lg-4 col-md-6 col-sm-10 m-2'>" +
+											"<h2 class='text-center'>" + jugador[i].nombre + " " + jugador[i].apellidos + "</h2>" +
+											"<hr>" +
+											"<h5>Posicion: " + jugador[i].objJugador.posicion + "</h5>" +
+											"<h5>Fecha de nacimiento: " + jugador[i].fechaDeNacimiento + "</h5>" +
+											"<h5>Altura: " + jugador[i].objJugador.altura + "m</h5>" +
+											"<h5>Peso: " + jugador[i].objJugador.peso + "kg</h5>" +
+											"<hr>" +
+											"<h5>Dirección: " + jugador[i].direccion + "</h5>" +
+											"<h5>Email: " + jugador[i].email + "</h5>" +
+										"</div>" +	
+								"</div>";	
+
+								idEquipo=jugador[i].objEquipo.id;
+
+								$("#fichaUsuario").append(infoUsuario);
+				}
+
+			}
+
+			/*Si el usuario es entrenador*/
+			if(entrenador!=null){
+
+				for(let i=0; i<entrenador.length; i++){
+
+					infoUsuario="<div class='row justify-content-center align-items-center mt-5'>" +
+										"<div class='col-lg-4 m-2'>" +
+											"<img src='../img/" + entrenador[i].imagen + "' class='imagenUsuario' alt=''>" +
+										"</div>" +
+										"<div class='col-lg-4 m-2'>" +
+											"<h2 class='text-center'>" + entrenador[i].nombre + " " + entrenador[i].apellidos + "</h2>" +
+											"<hr>" +
+											"<h5>Experiencia: " + entrenador[i].objEntrenador.experiencia + " años</h5>" +
+											"<h5>Fecha de nacimiento: " + entrenador[i].fechaDeNacimiento + "</h5>" +
+											"<hr>" +
+											"<h5>Dirección: " + entrenador[i].direccion + "</h5>" +
+											"<h5>Email: " + entrenador[i].email + "</h5>" +
+										"</div>" +	
+								"</div>";	
+
+								idEquipo=entrenador[i].objEquipo.id;
+
+								$("#fichaUsuario").append(infoUsuario);
+				}
+
+			}
+
+			/*Si el usuario es entrenador*/
+			if(delegado!=null){
+
+				for(let i=0; i<delegado.length; i++){
+
+					infoUsuario="<div class='row justify-content-center align-items-center mt-5'>" +
+										"<div class='col-lg-4 m-2'>" +
+											"<img src='../img/" + delegado[i].imagen + "' class='imagenUsuario' alt=''>" +
+										"</div>" +
+										"<div class='col-lg-4 m-2'>" +
+											"<h2 class='text-center'>" + delegado[i].nombre + " " + delegado[i].apellidos + "</h2>" +
+											"<hr>" +
+											"<h5>Fecha de nacimiento: " + delegado[i].fechaDeNacimiento + "</h5>" +
+											"<hr>" +
+											"<h5>Dirección: " + delegado[i].direccion + "</h5>" +
+											"<h5>Email: " + delegado[i].email + "</h5>" +
+										"</div>" +	
+								"</div>";	
+
+								idEquipo=delegado[i].objEquipo.id;
+
+								$("#fichaUsuario").append(infoUsuario);
+				}
+
+			}
+
+			infoUsuario="<div class='row  justify-content-center m-3'>" +
+								"<button type='button' class='btn botonVolver'>VOLVER</button>"
+						"</div>";		
+
+			$("#fichaUsuario").append(infoUsuario);
+
+
+			
+			console.log(idEquipo);
+			$(".botonVolver").click(function(){
+				$("#selectEquipos").show();
+				$(".equipos").show();
+				loadUsersByTeamId(idEquipo);
+			});
+			
+
+
+		})
+		.catch(error => console.error('Error status:', error));	
 }
