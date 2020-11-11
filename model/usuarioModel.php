@@ -7,11 +7,17 @@ if($_SERVER["SERVER_NAME"]=="grupo4.zerbitzaria.net"){
 
 include_once("usuarioClass.php");
 include_once("equipoModel.php");
+include_once("jugadorModel.php");
+include_once("entrenadorModel.php");
+include_once("delegadoModel.php");
 
 class usuarioModel extends usuarioClass {
     
     public $link;
     public $objEquipo;
+    public $objJugador;
+    public $objEntrenador;
+    public $objDelegado;
 
     
     public function OpenConnect()
@@ -208,10 +214,12 @@ class usuarioModel extends usuarioClass {
             $usuario->admin=$row['admin'];
             $usuario->imagen=$row['imagen'];
             
-            /*Datos del jugador*/
-            $usuario->posicion=$row['posicion'];
-            $usuario->altura=$row['altura'];
-            $usuario->peso=$row['peso'];
+            
+            $jugador=new jugadorModel();
+            $jugador->id=$row['id'];
+            $jugador->findPlayerById();
+            
+            $usuario->objJugador=$jugador;
             
             $equipo=new equipoModel();
             $equipo->id=$row['idEquipo'];
@@ -259,8 +267,11 @@ class usuarioModel extends usuarioClass {
             $usuario->admin=$row['admin'];
             $usuario->imagen=$row['imagen'];
             
-            /*Datos del entrenador*/
-            $usuario->experiencia=$row['experiencia'];
+            $entrenador=new entrenadorModel();
+            $entrenador->id=$row['id'];
+            $entrenador->findEntrenadorById();
+            
+            $usuario->objEntrenador=$entrenador;
             
             $equipo=new equipoModel();
             $equipo->id=$row['idEquipo'];
@@ -308,8 +319,11 @@ class usuarioModel extends usuarioClass {
             $usuario->admin=$row['admin'];
             $usuario->imagen=$row['imagen'];
             
-            /*Datos del delegado*/
-            /*No tiene datos porque solo tiene id*/
+            $delegado=new delegadoModel();
+            $delegado->id=$row['id'];
+            $delegado->findDelegadoById();
+            
+            $usuario->objDelegado=$delegado;
             
             $equipo=new equipoModel();
             $equipo->id=$row['idEquipo'];

@@ -6,9 +6,9 @@ if($_SERVER["SERVER_NAME"]=="grupo4.zerbitzaria.net"){
 }
 
 include_once("jugadorClass.php");
-include_once("usuarioClass.php");
 
-class jugadorModel extends usuarioClass {
+
+class jugadorModel extends jugadorClass {
     
     public $link;
     
@@ -70,7 +70,7 @@ class jugadorModel extends usuarioClass {
         
         $id=$this->id;
         
-        $sql = "CALL spFindJugador('$id')"; // SQL sententzia - sentencia SQL
+        $sql = "CALL spFindJugador($id)"; // SQL sententzia - sentencia SQL
         
         $result = $this->link->query($sql);
         
@@ -80,14 +80,11 @@ class jugadorModel extends usuarioClass {
         
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { //each row
             
-            $jugador=new jugadorModel();
-            
-            $jugador->id=$row['id'];
-            $jugador->posicion=$row['posicion'];
-            $jugador->altura=$row['altura'];
-            $jugador->peso=$row['peso'];
+            $this->id=$row['id'];
+            $this->posicion=$row['posicion'];
+            $this->altura=$row['altura'];
+            $this->peso=$row['peso'];
 
-            array_push($list, $jugador);
         }
         mysqli_free_result($result);
         $this->CloseConnect();

@@ -1,14 +1,13 @@
 <?php
 if($_SERVER["SERVER_NAME"]=="grupo4.zerbitzaria.net"){
-    include_once("../connect_data_remote.php");
+    include_once("connect_data_remote.php");
 }else{
-    include_once("../connect_data.php");
+    include_once("connect_data.php");
 }
 
-include_once("../bean/delegadoClass.php");
-include_once("../bean/usuarioClass.php");
+include_once("delegadoClass.php");
 
-class delegadoModel extends usuarioClass {
+class delegadoModel extends delegadoClass {
     
     public $link;
     
@@ -32,6 +31,32 @@ class delegadoModel extends usuarioClass {
     public function CloseConnect()
     {
         mysqli_close ($this->link);
+    }
+    
+    public function findDelegadoById(){
+        
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        
+        $id=$this->id;
+        
+        $sql = "CALL spFindDelegado($id)"; // SQL sententzia - sentencia SQL
+        
+        $result = $this->link->query($sql);
+        
+        //$this->link->num_rows; num rows  of result
+        
+        $list=array();
+        
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { //each row
+            
+            $this->id=$row['id'];
+            
+            
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        return $list;
+        
     }
     
 }

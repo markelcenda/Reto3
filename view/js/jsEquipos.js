@@ -64,8 +64,10 @@ function loadUsersByTeamId(idEquipo){
 				var delegados=result.delegados;
 				var equipos=result.equipos;
 				
-				/*console.log("prueba");
-				console.log("pruebaGalder");*/
+				console.log(jugadores);
+				console.log(entrenadores);
+				console.log(delegados);
+				console.log(equipos);
 				
 				
 				/*Limpiar los cards para que no se repitan al hacer change*/
@@ -94,7 +96,7 @@ function loadUsersByTeamId(idEquipo){
 				
 				for(var i=0; i<jugadores.length; i++){
 
-					if(jugadores[i].posicion=="Delantero"){
+					if(jugadores[i].objJugador.posicion=="Delantero"){
 						
 						cardPosiciones="<div class='row justify-content-center mt-4'>" +
 		                					"<div class='col-lg-12'>" +
@@ -103,20 +105,30 @@ function loadUsersByTeamId(idEquipo){
 										"</div>";	
 						$("#delanterosTitulo").html(cardPosiciones);
 
-						cardJugadores="<div class='col-lg-3 col-md-6 col-8 m-2'>" +
+						/*cardJugadores="<div class='col-lg-3 col-md-6 col-8 m-2'>" +
 				                			  	"<div class='card'>" +
 						        					"<img class='card-img-top' src='../img/" + jugadores[i].imagen + "' alt=''>" +
 						        					"<div class='card-body'>" +
 						        						"<h4 class='card-title'>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h4>" +
 						        					"</div>" +
-						        				"</div>" ;
+						        				"</div>" ;*/
+						
+					      cardJugadores="<div class='col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto text-center'>" +
+					         "<div class='ver_mas text-center'>" +
+					            "<span class='lnr lnr-eye'></span>" +
+					         "</div>" +
+					         "<article class='text-center'>" +
+					            "<h2>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h2>" +				        
+					         "</article>" +
+					         "<img src='../img/" + jugadores[i].imagen + "' alt=''>" +
+					      "</div>";
 						        				
 						$("#delanteros").append(cardJugadores);
 						
 						
 						
 						
-					}else if(jugadores[i].posicion=="Zaguero"){
+					}else if(jugadores[i].objJugador.posicion=="Zaguero"){
 						
 						cardPosiciones="<div class='row justify-content-center mt-4'>" +
 							                "<div class='col-lg-12'>" +
@@ -137,7 +149,7 @@ function loadUsersByTeamId(idEquipo){
 						$("#zagueros").append(cardJugadores);
 						
 						
-					}else if(jugadores[i].posicion=="Libero"){
+					}else if(jugadores[i].objJugador.posicion=="Libero"){
 						
 						cardPosiciones="<div class='row justify-content-center mt-4'>" +
 					                "<div class='col-lg-12'>" +

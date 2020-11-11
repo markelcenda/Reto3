@@ -6,9 +6,8 @@ if($_SERVER["SERVER_NAME"]=="grupo4.zerbitzaria.net"){
 }
 
 include_once("entrenadorClass.php");
-include_once("usuarioClass.php");
 
-class entrenadorModel extends usuarioClass {
+class entrenadorModel extends entrenadorClass {
     
     public $link;
     
@@ -55,6 +54,32 @@ class entrenadorModel extends usuarioClass {
             
             
             array_push($list, $entrenador);
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        return $list;
+        
+    }
+    
+    public function findEntrenadorById(){
+        
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        
+        $id=$this->id;
+        
+        $sql = "CALL spFindEntrenador($id)"; // SQL sententzia - sentencia SQL
+        
+        $result = $this->link->query($sql);
+        
+        //$this->link->num_rows; num rows  of result
+        
+        $list=array();
+        
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { //each row
+            
+            
+            $this->experiencia=$row['experiencia'];
+                    
         }
         mysqli_free_result($result);
         $this->CloseConnect();
