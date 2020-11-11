@@ -265,7 +265,7 @@ function mostrarDatosUsuarios(id){
 
 				for(let i=0; i<jugador.length; i++){
 
-					infoUsuario="<div class='row justify-content-center align-items-center mt-5 fichaUsuarioFondo'>" +
+					infoUsuario="<div class='row justify-content-center align-items-center mt-5'>" +
 										"<div class='col-lg-4 col-md-6 col-sm-10 col-10 m-2'>" +
 											"<img src='../img/" + jugador[i].imagen + "' class='imagenUsuario' alt=''>" +
 										"</div>" +

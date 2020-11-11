@@ -127,13 +127,6 @@ h4{
     height: 60vh;
 }
 
-.fichaUsuarioFondo{
-
-    background-image: url('https://i.pinimg.com/originals/9c/d8/71/9cd8719e7eef346a0ea83027e1dcf69f.jpg');
-    background-size: cover;
-
-}
-
 /*Boton volver*/
 .botonVolver{
     background-color: rgb(120, 173, 41) !important;
