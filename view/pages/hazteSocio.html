@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Hazte socio</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--Logo del club-->
+    <link rel="icon" href="../img/logo.png" type="image/png">
+
+    <!-- Required CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/hazteSocio.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    
+    <!---Hazte socio comienzo-->
+    <div class="container-fluid">
+        <!---Hazte socio titulo-->
+        <div class="row mt-2 hazteSocio justify-content-center">
+            <div class="col-lg-6 col-md-12 col-sm-11 col-12 text-center">
+                <h1 class="border-bottom p-3">¿Por qué deberias hacerte socio?</h1>
+            </div>
+        </div>
+        <!---Motivos para hacese socio-->
+        <div class="container">
+            <div class="row p-3">
+                <h5 class="p-1">&#10003</h5>
+                <div class="col-lg-11 col-md-11 col-sm-11 col-11 p-1">
+                    <h5> Porque siendo socio serás parte fundamental de un Club que representa a tu Ciudad.</h5>
+                </div>
+            </div>
+            <div class="row p-3">
+                <h5 class="p-1">&#10003</h5>
+                <div class="col-lg-11 col-md-11 col-sm-11 col-11 p-1">
+                    <h5>Porque obtendrás un carnet de socio que te permitirá descuentos especiales en la adquisición de
+                        material deportivo del Club.</h5>
+                </div>
+            </div>
+            <div class="row p-3">
+                <h5 class="p-1">&#10003</h5>
+                <div class="col-lg-11 col-md-11 col-sm-11 col-11 p-1">
+                    <h5>Porque tendras acceso exclusivo a los eventos programados por el propio Club, así como a los
+                        servicios ofrecidos por nuestros colaboradores y patrocinadores.</h5>
+                </div>
+            </div>
+            <div class="row p-3">
+                <h5 class="p-1">&#10003</h5>
+                <div class="col-lg-11 col-md-11 col-sm-11 col-11 p-1">
+                    <h5>Porque accederas a un Club con más de 500 socios y socias que sirve también como lugar de
+                        encuentro y socialización donde poder conocer gente con tus mismos intereses.</h5>
+                </div>
+            </div>
+            <div class="row p-3">
+                <h5 class="p-1">&#10003</h5>
+                <div class="col-lg-11 col-md-11 col-sm-11 col-11 p-1">
+                    <h5>Y porque siendo socio, estás contribuyendo, ahora más que nunca, a que este proyecto deportivo
+                        con el que tanto hemos disfrutado, siga adelante.</h5>
+                </div>
+            </div>
+        </div>
+        <!---Titulo del frmulario-->
+        <div class="row mt-2 hazteSocio justify-content-center">
+            <div class="col-lg-6 text-center">
+                <h1 class="border-bottom p-3">Formulario de alta de socios</h1>
+            </div>
+        </div>
+        <div class="container">
+            <!---Formulario-->
+            <form>
+                <div class="form-group col-lg-12 ">
+                    <div class="row">
+                        <div class="col-lg-6 p-3">
+                            <label for="nombre">Nombre<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="nombre">
+                        </div>
+                        <div class="col-lg-6 p-3">
+                            <label for="apellidos">Apellidos<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="apellidos">
+                        </div>
+                        <div class="col-lg-4 p-3">
+                            <label for="email">Correo electronico<span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        <div class="col-lg-4 p-3">
+                            <label for="direccion">Direccion<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="direccion">
+                        </div>
+                        <div class="col-lg-4 p-3">
+                            <label for="fechaNacimiento">Fecha de nacimiento<span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="fechaNacimiento">
+                        </div>
+                        <div class="col-lg-6 p-3 ">
+                            <label for="nuevoUsuario">Nombre de usuario<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="nuevoUsuario">
+                        </div>
+                        <div class="col-lg-6 p-3">
+                            <label for="contraseña">Contraseña<span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" id="contraseña">
+                        </div>
+                        <div class="col-lg-6 p-3 text-center" id="containerImagen">
+                            <label>Imagen de perfil</label><br>
+                            <input type="file" name="imagen" id="imagen" accept=".png,.jpeg,.jpg,.gif">
+                            <label type="file" for="imagen" class="btn text-white col-lg-5 col-md-4 col-sm-4 col-4" id="btnSubirArchivo">Subir imagen</label>
+                        </div>
+                        <div class="col-lg-6 p-3 text-center">
+                            <img  src="../img/imagenDefault.png" id="fotoPerfil">
+                        </div>
+                        <div class="col-lg-12 p-3 text-center">
+                            <input type="button" value="Enviar" id="btnEnviar" class="btn text-white col-lg-2 col-md-2 col-sm-2 col-2" ></input> 
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!---Hazte socio final-->
+
+    <!--Footer comienzo-->
+    <footer class="page-footer font-small blue-grey lighten-5 text-white">
+        <div class="container">
+            <!--Redes sociales-->
+            <div class="row py-4 d-flex align-items-center justify-content-center">
+                <div class="col-lg-4 col-md-6 col-sm-8 col-8 text-center border-bottom border-white p-3">
+                    <!--Facebook--> <a href="https://facebook.com" class="mr-4"><img class="redesIconos"
+                            src="../img/facebook.png" alt=""></a>
+                    <!--Instagram--><a href="https://instagram.com" class="mr-4"><img class="redesIconos"
+                            src="../img/instagram.png" alt=""></a>
+                    <!--Twitter--> <a href="https://twitter.com" class="mr-4"><img class="redesIconos"
+                            src="../img/twitter.png" alt=""></a>
+                    <!--Google+--> <a href="https://google.com" class="mr-4"><img class="redesIconos"
+                            src="../img/google+.png" alt=""></a>
+                    <!--Youtube--> <a href="https://youtube.com" class="mr-4"><img class="redesIconos"
+                            src="../img/youtube.png" alt=""></a>
+                </div>
+            </div>
+            <!--Parte central del footer-->
+            <div class="container text-center text-md-left">
+                <div class="row">
+                    <!--Links-->
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 text-center text-white">
+                        <p>
+                        <h6 class="text-uppercase font-weight-bold">Links de interes</h6>
+                        </p>
+                        <p><a class="text-white" href="#">Hazte socio</a></p>
+                        <p><a class="text-white" href="#">Ultimas noticias</a></p>
+                        <p><a class="text-white" href="#">Inicia sesion</a></p>
+                        <p><a class="text-white" data-toggle="modal" data-target="#exampleModal" href="#">Legal</a></p>
+                    </div>
+                    <!--Logo del club-->
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 text-center d-block m-auto">
+                        <img src="../img/logo.png" alt="">
+                    </div>
+                    <!--Contacto-->
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 text-center">
+                        <p>
+                        <h6 class="text-uppercase font-weight-bold">Contacto</h6>
+                        </p>
+                        <p>Avda. de Heliopolis, s/n 41012 Sevilla</p>
+                        <p>info@realbetisvoleibol.es</p>
+                        <p>comercial@realbetisvoleibol.es</p>
+                        <p>+ 34 955 463 9551</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Copyright-->
+        <div class="footer-copyright text-center text-white py-3" style="background-color: #1a7041;">© 2020 Copyright:
+            <a class="text-white" href="https://mdbootstrap.com/"> realbetisvoleibol.com</a>
+        </div>
+    </footer>
+    <!--Footer final-->
+
+    <!--Modal-->
+    <div class="modal fade modalCopyright justify-align-center text-center" id="exampleModal" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Derechos de autor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>© REAL BETIS VOLEIBOL. Esta pagina es la unica oficial del Real Betis Voleibol. Todos los
+                        derechos reservados.</p>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-danger boton" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- Optional JavaScript -->
+    <script src="../js/jsHazteSocio.js"></script>    
+</body>
+
+</html>
