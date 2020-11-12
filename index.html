@@ -59,6 +59,8 @@
                 <ul class="nav navbar-nav ml-auto text-center align-items-center">
                     <div class="login">
                         <button type="button" class="btn botonLogin" data-toggle="modal" data-target="#modelId">Iniciar Sesión</button>
+                        <button type="button" class="btn botonLogout">Cerrar Sesión</button>
+                        <!--Modal-->
                         <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
                             aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -81,18 +83,20 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn botonCerrar"
                                             data-dismiss="modal">Cerrar</button>
-                                        <button type="button" class="btn botonLogin">Iniciar Sesión</button>
+                                        <button type="button" class="btn botonLoginStart">Iniciar Sesión</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!--Zona login-->
+                    <div class="sesionUsuario">
+                       
+                        <div class="nav-item active" id="sitioUsuario">
+                            <!--Carga la imagen del usuario que ha iniciado sesion desde el JS-->
+                        </div>
 
-                    <!-- Zona login 
-                            <li class="nav-item active">
-                            <a class="nav-link efecto" href="#">Administrar</a>
-                        </li>
-                       <i class="fa fa-user-circle fa-2x"></i> -->
+                    </div>
 
                 </ul>
             </div>
@@ -209,6 +213,7 @@
 
     <!-- Optional JavaScript -->
     <script src="view/js/jsFunctions.js"></script>
+    <script src="view/js/jsLoginLogout.js"></script>
     <script src="view/js/aos.js"></script>
     <script src="view/js/fontAwesome.js"></script>
 </body>

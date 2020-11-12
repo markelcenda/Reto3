@@ -62,6 +62,36 @@ nav .botonLogin:hover {
     transition: 0.5s;
 }
 
+/*Boton logout*/
+nav .botonLogout{
+    background-color: rgb(120, 173, 41);
+    color: white;
+    transition: 0.5s;
+    display: none;
+}
+nav .botonLogout:hover{
+    background-color: white;
+    color: rgb(120, 173, 41);
+    transition: 0.5s;
+}
+
+/*Oculta la parte del mi espacio si no hay ningun usuario logado*/
+.sesionUsuario{
+    display: none;
+}
+
+/*Boton login del modal*/
+.botonLoginStart{
+    background-color: rgb(120, 173, 41) !important;
+    color: white !important;
+    transition: 0.5s !important;
+}
+.botonLoginStart:hover{
+    background-color: white !important;
+    color: rgb(120, 173, 41) !important;
+    transition: 0.5s !important;
+}
+
 nav .botonCerrar {
     background-color: red;
     color: white;
@@ -82,17 +112,13 @@ nav .botonCerrar:hover {
     color: white;
     font-size: 2.5rem;
 }
-
-/*nav ul .fa{
-    color: white;
-    transition: 1s;
-    border-bottom: 3px solid transparent;
+/*Da estilo al la imagen del usuario*/
+#imgSesion{
+    width: 50px;
+    height: 50px;
+    border: 2px solid #009655;
+    border-radius: 15px;
 }
-nav ul .fa:hover{
-    transition: 1s;
-    color: rgb(120, 173, 41);
-    
-}*/
 
 /*Color principal del footer*/
 footer{
