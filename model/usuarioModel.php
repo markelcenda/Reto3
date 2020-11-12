@@ -495,5 +495,92 @@ class usuarioModel extends usuarioClass {
         return $list;
         
     }
+
+    public function findUser(){
+
+        $this->OpenConnect(); //abre conexion
+        
+        $usuario=$this->usuario;
+        $password=$this->password;
+        
+        $sql="call spFindUser('$usuario','$password')"; //envia el usuario y contraseña al procedimiento
+        $result= $this->link->query($sql);
+
+        $this->usuario=$usuario;
+        $this->password=$password;
+
+        $this->link->query($sql);
+
+        //Filtro que mira cuantas lineas de la base de datos han sido afectadas
+        if ($this->link->affected_rows == 0){
+
+            //En caso de no haberse encontrado ninguna fila afectada la variable adquirira el valor false
+            $userExists=false;
+
+        }else{
+
+            //En caso de si haberse encontrado una fila afectada la variable adquirira el valor true
+            $userExists=true;
+
+            if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){ 
+
+                //Obtienen todos los datos del usuario 
+                $this->id=$row['id'];
+                $this->nombre=$row['nombre'];
+                $this->apellidos=$row['apellidos'];
+                $this->idEquipo=$row['idEquipo'];
+                $this->tipo=$row['tipo'];
+                $this->email=$row['email'];
+                $this->direccion=$row['direccion'];
+                $this->fechaDeNacimiento=$row['fechaDeNacimiento'];
+                $this->admin=$row['admin'];
+                $this->imagen=$row['imagen'];
+
+            }
+        }
+
+        public function insert(){
+        
+            $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+            
+            $nombreInsert=$this->nombre;
+            $apellidosInsert=$this->apellidos;
+            $usuarioInsert=$this->usuario;
+            $passwordInsert=$this->password;
+            $idEquipoInsert=$this->idEquipo;
+            $tipoInsert=$this->tipo;
+            $emailInsert=$this->email;
+            $direccionInsert=$this->direccion;
+            $fechaDeNacimientoInsert=$this->fechaDeNacimiento;
+            $adminInsert=$this->admin;
+            $imagenInsert=$this->imagen;
+            
+            //envia los datos introducidos en el formulario a la base de datos
+            $sql="CALL spInsertUser('$nombreInsert',
+                                    '$apellidosInsert', 
+                                    '$usuarioInsert',
+                                    '$passwordInsert',
+                                    '$idEquipoInsert',
+                                    '$tipoInsert',
+                                    '$emailInsert',
+                                    '$direccionInsert',
+                                    '$fechaDeNacimientoInsert',
+                                    '$adminInsert',
+                                    '$imagenInsert')";
+                                        
+                                        $this->link->query($sql);
+                                        
+                                        //filtro que mira las filas afectadas
+                                        if ($this->link->affected_rows >= 1)
+                                        {
+                                            //Al detectatr una afila afectada manda el siguiente mensaje
+                                            return "¡¡Bienvenido a la familia!!";
+                                        } else {
+                                            //Al no detectar filas afectadas manda el siguiente mensaje
+                                            return "Se ha producido un error";
+                                        }
+                                        
+                                        $this->CloseConnect();//termina la conexion
+        }
     
 }
