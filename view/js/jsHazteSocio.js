@@ -92,7 +92,7 @@ function datosFormulario(){
     
         /*Se establece una variable url con la direccion del controlador requerido, y una variable
          data con los datos del formulario*/
-            var url = "controller/cUsuarioExecuteInsert.php";
+            var url = "../../controller/cUsuarioExecuteInsert.php";
     		var data = {'nombreInsert':nombreInsert,
            			'apellidosInsert':apellidosInsert,
            			'usuarioInsert':usuarioInsert,

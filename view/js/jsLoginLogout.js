@@ -16,7 +16,7 @@ function login(){
     if(usuario != "" && password != ""){
     
     //en caso de no estar vacio se mandaran los datos al controlador cLogin
-    var url = "controller/cLogin.php";
+    var url = "../../controller/cLogin.php";
     var data = {'usuario':usuario, 'password':password};
 
     console.log(data);
