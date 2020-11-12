@@ -539,6 +539,13 @@ class usuarioModel extends usuarioClass {
             }
         }
 
+        //envia false o true en funcion de si el procedimiento a afectado a alguna fila de la base de datos
+        return $userExists;
+        mysqli_free_result($result);
+        $this->CloseConnect();//termina la conexion
+
+    }
+
         public function insert(){
         
             $this->OpenConnect();  // konexio zabaldu  - abrir conexión
