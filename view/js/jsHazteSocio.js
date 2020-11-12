@@ -5,6 +5,11 @@ $(document).ready(function () {
 
 });
 
+function equiposDesdeSocios(id){
+    pagina="equipos.html?" + id;
+    window.location.href=pagina;
+}
+
     /*Por defecto la varible filename contendra el nombre de una imagen y savedFile64 no tendra nada
         a menos que se active la funcion "changeImg"*/
       filename = "imagenDefault.png";

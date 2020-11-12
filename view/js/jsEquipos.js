@@ -13,7 +13,6 @@ function equiposDesdeEquipos(id){
   }
 
 /*Cargar equipo desde index.html*/
-
 function opcionesEquipo(){
 	loadUsersByTeamId(idEquipo);
 }
