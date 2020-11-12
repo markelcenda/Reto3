@@ -84,7 +84,7 @@ function datosFormulario(){
     	passwordInsert=$("#contraseña").val();
         imagenInsert=filename;
     	idEquipoInsert="1";
-    	tipoInsert="0";
+    	tipoInsert="1";
     	emailInsert=$("#email").val();
     	direccionInsert=$("#direccion").val();
     	fechaDeNacimientoInsert=$("#fechaNacimiento").val();
