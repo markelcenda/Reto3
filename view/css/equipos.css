@@ -7,15 +7,12 @@ h3{
     font-size: 40px !important;
 }
 
-h4{
-    font-size: 32px !important;
-}
-
 /*Cards de los jugadores y cuerpo tecnico*/
 .container_foto p {
-    color: #fff;
-    font-weight: 800;
+    color: white;
+    font-weight: 500;
     font-size: 28px;
+    text-align: left;
 }
 
 .container_foto {
@@ -39,16 +36,10 @@ h4{
 }
 
 .container_foto h2 {
-    color: #fff;
-    font-weight: 800;
+    color: white;
+    font-weight: 500;
     font-size: 35px;
-    border-bottom: #fff solid 1px;
-}
-
-.container_foto h4 {
-    font-weight: 300;
-    color: #fff;
-    font-size: 16px;
+    border-bottom: white solid 1px;
 }
 
 .container_foto img {
@@ -68,7 +59,7 @@ h4{
 .ver_mas {
     background-color: #000000;
     position: absolute;
-    width: 92%;
+    width: 94.5%;
     height: 70px;
     bottom: 0;
     z-index: 1;
@@ -101,7 +92,7 @@ h4{
 }
 
 .container_foto:hover img {
-    opacity: 0.5;
+    opacity: 0.2;
 }
 
 .container_foto:hover article {
@@ -137,4 +128,23 @@ h4{
     background-color: white !important;
     color: rgb(120, 173, 41) !important;
     transition: 0.5s !important;
+}
+
+/*Posiciones Jugadores*/
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 32px ;
+}
+.separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #000;
+}
+.separator::before {
+    margin-right: 5px;
+}
+.separator::after {
+    margin-left: 5px;
 }

@@ -9,3 +9,8 @@ $(window).on('load', function () {
       once: true
     });
   }  
+
+  function equiposDesdeIndex(id){
+    pagina="view/pages/equipos.html?" + id;
+    window.location.href=pagina;	
+  }

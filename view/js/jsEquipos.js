@@ -1,11 +1,25 @@
+idEquipo=location.search.substring(1, location.search.length);
+
 $(document).ready(function () {
 	
+	opcionesEquipo();
 	loadEquipos();
 	
 });
 
+function equiposDesdeEquipos(id){
+    pagina="equipos.html?" + id;
+    window.location.href=pagina;	
+  }
+
+/*Cargar equipo desde index.html*/
+
+function opcionesEquipo(){
+	loadUsersByTeamId(idEquipo);
+}
+
+/*Cargar equipos en el select*/
 function loadEquipos(){
-	
 	var url = "../../controller/cEquipos.php";
 	
 	fetch(url, {
@@ -102,18 +116,18 @@ function loadUsersByTeamId(idEquipo){
 						
 						cardPosiciones="<div class='row justify-content-center mt-4'>" +
 		                					"<div class='col-lg-12'>" +
-								                "<h4>Delanteros</h4>" +
+								                "<div class='separator'>Delanteros</div>" +
 								               "</div>" +
 										"</div>";	
 						$("#delanterosTitulo").html(cardPosiciones);
 
 					      cardJugadores="<div id='" + jugadores[i].id + "' class='col-lg-4 col-md-6 col-8 container_foto' >" +
-					         "<div class='ver_mas text-center'>" +
-					            "<span class='fas fa-eye' id='" + jugadores[i].id + "'></span>" +
+					         "<div class='ver_mas'>" +
+					            "<span class='fas fa-eye' id='" + jugadores[i].id + "'>" +
 					         "</div>" +
-					         "<article class='text-center'>" +
+					         "<article>" +
 					            "<h2>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h2>" +				        
-					         "</article>" +
+					         "</article></span>" +
 					         "<img src='../img/" + jugadores[i].imagen + "' alt=''>" +
 						  "</div>";
  				
@@ -126,16 +140,16 @@ function loadUsersByTeamId(idEquipo){
 						
 						cardPosiciones="<div class='row justify-content-center mt-4'>" +
 							                "<div class='col-lg-12'>" +
-							                	"<h4>Zagueros</h4>" +
+							                	"<div class='separator'>Zagueros</div>" +
 							                "</div>" +
 										"</div>";
 						$("#zaguerosTitulo").html(cardPosiciones);
 						
 						cardJugadores="<div class='col-lg-4 col-md-6 col-8 container_foto'>" +
-					         "<div class='ver_mas text-center'>" +
+					         "<div class='ver_mas'>" +
 					            "<span class='fas fa-eye' id='" + jugadores[i].id + "'></span>" +
 					         "</div>" +
-					         "<article class='text-center'>" +
+					         "<article>" +
 					            "<h2>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h2>" +				        
 					         "</article>" +
 					         "<img src='../img/" + jugadores[i].imagen + "' alt=''>" +
@@ -148,16 +162,16 @@ function loadUsersByTeamId(idEquipo){
 						
 						cardPosiciones="<div class='row justify-content-center mt-4'>" +
 					                "<div class='col-lg-12'>" +
-					                "<h4>Liberos</h4>" +
+					                "<div class='separator'>Liberos</div>" +
 					                "</div>" +
 									"</div>";	
 						$("#liberosTitulo").html(cardPosiciones);
 						
 						cardJugadores="<div class='col-lg-4 col-md-6 col-8 container_foto'>" +
-					         "<div class='ver_mas text-center'>" +
+					         "<div class='ver_mas'>" +
 					            "<span class='fas fa-eye' id='" + jugadores[i].id + "'></span>" +
 					         "</div>" +
-					         "<article class='text-center'>" +
+					         "<article>" +
 					            "<h2>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h2>" +				        
 					         "</article>" +
 					         "<img src='../img/" + jugadores[i].imagen + "' alt=''>" +
@@ -174,7 +188,7 @@ function loadUsersByTeamId(idEquipo){
 
 				cuerpoTecnicoTitulo="<div class='row justify-content-center mt-4'>" +
 					                "<div class='col-lg-12'>" +
-					                "<h4>Cuerpo Técnico</h4>" +
+					                "<div class='separator'>Cuerpo Técnico</div>" +
 					                "</div>" +
 									"</div>";	
 				$("#cuerpoTecnicoTitulo").html(cuerpoTecnicoTitulo);
@@ -185,10 +199,10 @@ function loadUsersByTeamId(idEquipo){
 				for(let i=0; i<entrenadores.length; i++){
 
 					cardEntrenadores="<div class='col-lg-4 col-md-6 col-8 container_foto'>" +
-					         "<div class='ver_mas text-center'>" +
+					         "<div class='ver_mas'>" +
 					            "<span class='fas fa-eye' id='" + entrenadores[i].id + "'></span>" +
 					         "</div>" +
-					         "<article class='text-center'>" +
+					         "<article>" +
 								"<h2>" + entrenadores[i].nombre + " " + entrenadores[i].apellidos + "</h2>" +	
 								"<p>Entrenador</p>" +			        
 					         "</article>" +
@@ -198,10 +212,10 @@ function loadUsersByTeamId(idEquipo){
 					$("#cuerpoTecnico").append(cardEntrenadores);
 
 					cardDelegados="<div class='col-lg-4 col-md-6 col-8 container_foto'>" +
-					         "<div class='ver_mas text-center'>" +
+					         "<div class='ver_mas'>" +
 					            "<span class='fas fa-eye' id='" + delegados[i].id + "'></span>" +
 					         "</div>" +
-					         "<article class='text-center'>" +
+					         "<article>" +
 								"<h2>" + delegados[i].nombre + " " + delegados[i].apellidos + "</h2>" +	
 								"<p>Delegado</p>" +				        
 					         "</article>" +
