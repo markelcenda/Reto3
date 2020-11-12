@@ -3,7 +3,6 @@ $(window).on('load', function () {
   });
   
   function aos_init() {
-      console.log("on");
     AOS.init({
       duration: 800,
       once: true
