@@ -7,111 +7,6 @@ h3{
     font-size: 40px !important;
 }
 
-/*Cards de los jugadores y cuerpo tecnico*/
-.container_foto p {
-    color: white;
-    font-weight: 500;
-    font-size: 28px;
-    text-align: left;
-}
-
-.container_foto {
-    padding: 0px;
-    overflow: hidden;
-    width: 250px;
-    margin: 5px;
-    height: 50%;
-}
-
-.container_foto article {
-    padding: 0px;
-    position: absolute;
-    bottom: 0;
-    z-index: 1;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-.container_foto h2 {
-    color: white;
-    font-weight: 500;
-    font-size: 35px;
-    border-bottom: white solid 1px;
-}
-
-.container_foto img {
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    border-radius: 8px;
-
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-}
-
-.ver_mas {
-    background-color: #000000;
-    position: absolute;
-    width: 94.5%;
-    height: 70px;
-    bottom: 0;
-    z-index: 1;
-    opacity: 0;
-    transform: translate(0px, 70px);
-    -webkit-transform: translate(0px, 70px);
-    -moz-transform: translate(0px, 70px);
-    -o-transform: translate(0px, 70px);
-    -ms-transform: translate(0px, 70px);
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    -ms-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-}
-
-.ver_mas span {
-    font-size: 40px;
-    color: #fff;
-    position: relative;
-    margin: 0 auto;
-    width: 100%;
-    top: 13px;
-}
-
-
-/*hovers*/
-.container_foto:hover {
-        cursor: pointer;
-}
-
-.container_foto:hover img {
-    opacity: 0.2;
-}
-
-.container_foto:hover article {
-    transform: translate(2px, -69px);
-    -webkit-transform: translate(2px, -69px);
-    -moz-transform: translate(2px, -69px);
-    -o-transform: translate(2px, -69px);
-    -ms-transform: translate(2px, -69px);
-}
-
-.container_foto:hover .ver_mas {
-    transform: translate(0px, 0px);
-    -webkit-transform: translate(0px, 0px);
-    -moz-transform: translate(0px, 0px);
-    -o-transform: translate(0px, 0px);
-    -ms-transform: translate(0px, 0px);
-    opacity: 1;
-}
-
 /*Usuario*/
 .imagenUsuario{
     width: 100%;
@@ -148,3 +43,76 @@ h3{
 .separator::after {
     margin-left: 5px;
 }
+
+/*Cards usuarios*/
+  .card {
+    width: 280px;
+    height: 360px;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin: 8px;
+    background: white;
+    position: relative;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: end;
+    align-items: flex-end;
+    -webkit-transition: 0.4s ease-out;
+    transition: 0.4s ease-out;
+    box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .card:hover:before {
+    opacity: 1;
+  }
+  .card:hover .info {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  .card:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    opacity: 0;
+  }
+  .card img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 15px;
+  }
+
+  .card .info {
+    position: relative;
+    z-index: 3;
+    color: white;
+    opacity: 0;
+    top: 70%;
+    -webkit-transform: translateY(30px);
+            transform: translateY(30px);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .card .info h1 {
+    border-bottom: white solid 1px;
+    font-size: 26px;
+  }
+  .card .info p {
+    font-size: 18px;
+  }
