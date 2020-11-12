@@ -1,13 +1,3 @@
-/*Color principal del footer*/
-footer{
-    background-color: #009655;
-}
-
-/*Tamaño de los iconos de las redes socaiales*/
-.redesIconos{
-    width: 30px;
-}
-
 /*Color del boton enviar*/
 #btnEnviar{
     background-color: #009655;

@@ -1,0 +1,72 @@
+/*Seccion sobre nosotros*/
+
+.about {
+    margin-top: 40px;
+}
+
+.about .container {
+    background-color: #f7f8f9;
+    padding: 60px 50px;
+}
+
+@media (max-width: 992px) {
+    .about .container {
+        padding: 30px;
+    }
+}
+
+.about .content h3 {
+    font-weight: 400;
+    font-size: 32px;
+    color: #364146;
+    font-family: "Poppins", sans-serif;
+}
+
+/*Video con info*/
+
+#videoDiv {
+    width: auto;
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+}
+
+#video {
+    width: 100%;
+    display: block;
+    margin-top: -200px;
+}
+
+#videoInfo {
+    position: absolute;
+    top: -25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 38%;
+    height: 100%;
+}
+
+#videoInfo a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    color: white;
+    background: rgba(0, 151, 19, 0.7); 
+    border-radius: 20px;
+    padding: 2% 3% 0% 3%;
+    
+}
+
+@media screen and (max-width: 1280px) {
+    #video {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 250px) {
+    #videoInfo {
+        width: 80%;
+    }
+}  
