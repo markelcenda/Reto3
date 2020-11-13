@@ -30,7 +30,7 @@ $response=array();
         $_SESSION['direccion']=$usuarioSesion->direccion;
         $_SESSION['fechaDeNacimiento']=$usuarioSesion->fechaDeNacimiento;
         $_SESSION['admin']=$usuarioSesion->admin;
-        $_SESSION['imagen']=$usuarioSesion->imagen;
+        //$_SESSION['imagen']=$usuarioSesion->imagen;
     
         $response['usuarioSesion']=$usuarioSesion; 
         $response['error']="Has iniciado sesion correctamente";  

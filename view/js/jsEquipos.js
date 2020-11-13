@@ -217,7 +217,6 @@ function loadUsersByTeamId(idEquipo){
 
 				}
 
-				$('h4').after('<hr/>')
 
 				/*Funcion para ver los datos de jugadores y cuerpo tecnico*/
 				$("span").click(function(){ 
@@ -270,7 +269,7 @@ function mostrarDatosUsuarios(id){
 
 				for(let i=0; i<jugador.length; i++){
 
-					infoUsuario="<div class='row justify-content-center align-items-center mt-5'>" +
+					infoUsuario="<div class='row justify-content-center align-items-center bg-light'>" +
 										"<div class='col-lg-4 col-md-6 col-sm-10 col-10 m-2'>" +
 											"<img src='../img/" + jugador[i].imagen + "' class='imagenUsuario' alt=''>" +
 										"</div>" +
@@ -365,3 +364,5 @@ function mostrarDatosUsuarios(id){
 		})
 		.catch(error => console.error('Error status:', error));	
 }
+
+
