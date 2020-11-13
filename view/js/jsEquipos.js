@@ -2,6 +2,7 @@ idEquipo=location.search.substring(1, location.search.length);
 
 $(document).ready(function () {
 	
+	sessionVarsView();
 	opcionesEquipo();
 	loadEquipos();
 	$(".botonLoginStart").click(login);
@@ -453,3 +454,34 @@ function logout(){
 	.catch(error => console.error('Error status:', error));	
 
 }
+
+function sessionVarsView(){
+	
+    var url="../../controller/cSessionVarsView.php";
+
+    		fetch(url, {
+    			  method: 'GET', 
+    			  headers:{'Content-Type': 'application/json'}  // input data
+    			  })
+    		.then(res => res.json()).then(result => {
+    			
+    			var usuario=result.usuario;
+    			//console.log(usuario);
+    			
+    			if (usuario !=null){
+    				
+    				for(let i=0; i<usuario.length; i++){
+    					//Muestra la imagen que le corresponde al usuario que ha iniciado sesion
+    		             img="<img id='imgSesion' src='../img/" + usuario[i].imagen + "'>";
+    		             $(".botonLogin").hide();
+    		             $(".botonLogout").show();
+    		             $(".sesionUsuario").css('display','flex');
+    		             $("#sitioUsuario").html(img);
+    				}
+
+             
+          }
+
+    		})
+    		.catch(error => console.error('Error status:', error));	
+    }

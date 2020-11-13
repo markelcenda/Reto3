@@ -23,15 +23,7 @@ $(window).on('load', function () {
   function sessionVarsView(){
 	
     var url="controller/cSessionVarsView.php";
-      
-      fetch(url, {
-          method: 'GET', // or 'POST'
-          headers:{'Content-Type': 'application/json'}
-        })
-      .then(res => res.json()).then(result => {
-        
-    	  var url = "controller/cSessionVarsView.php";
-    		
+
     		fetch(url, {
     			  method: 'GET', 
     			  headers:{'Content-Type': 'application/json'}  // input data
@@ -57,8 +49,4 @@ $(window).on('load', function () {
 
     		})
     		.catch(error => console.error('Error status:', error));	
-        
-      })
-      .catch(error => console.error('Error status:', error));
-      
     }
