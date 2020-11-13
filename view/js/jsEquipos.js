@@ -89,9 +89,6 @@ function loadUsersByTeamId(idEquipo){
 				$("#cuerpoTecnico").html("");
 				$("#fichaUsuario").html("");
 
-
-				
-				
 				/*Añadir categoria del equipo al index*/
 				categoriaEquipo="";
 				for(let i=0; i<equipos.length; i++){
