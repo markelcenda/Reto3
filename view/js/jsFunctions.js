@@ -5,13 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-function aos_init() {
-  AOS.init({
-    duration: 800,
-    once: true
-  });
-  
- 
+  function aos_init() {
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  }  
+
   function equiposDesdeIndex(id){
     pagina="view/pages/equipos.html?" + id;
     window.location.href=pagina;	
@@ -33,7 +33,7 @@ function aos_init() {
     				
     				for(let i=0; i<usuario.length; i++){
     					//Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-    		             img="<a href='view/pages/usuario.html'><img id='imgSesion' src='view/img/" + usuario[i].imagen + "'></a>";
+    		             img="<a href='view/pages/usuario.html'><img id='imgSesion' src='view/uploads/" + usuario[i].imagen + "'></a>";
     		             $(".botonLogin").hide();
     		             $(".botonLogout").show();
     		             $(".sesionUsuario").css('display','flex');
@@ -46,7 +46,6 @@ function aos_init() {
     		})
     		.catch(error => console.error('Error status:', error));	
     }
-}
 
 function equiposDesdeIndex(id) {
   pagina = "view/pages/equipos.html?" + id;
