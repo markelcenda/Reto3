@@ -1,11 +1,11 @@
-$(document).ready(function(){
-	
+$(document).ready(function () {
+
     $(".botonLoginStart").click(login);
     $(".botonLogout").click(logout);
-	
+    sessionVarsView();
+
 });
 
-//Fucnion de login
 function login(){
 
     //Variables que adquieren el valor de los datos introducidos en el modal
@@ -16,7 +16,7 @@ function login(){
     if(usuario != "" && password != ""){
     
     //en caso de no estar vacio se mandaran los datos al controlador cLogin
-    var url = "controller/cLogin.php";
+    var url = "../../controller/cLogin.php";
     var data = {'usuario':usuario, 'password':password};
 
     console.log(data);
@@ -46,7 +46,7 @@ function login(){
                     $("#modelId").modal("hide");
 
                     //Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-                   img="<a href='view/pages/usuario.html' class='ml-3' ><img id='imgSesion' src='view/uploads/" + result.usuarioSesion.imagen + "'></a>";
+                   img="<a href='#' class='ml-3' ><img id='imgSesion' src='../../view/uploads/" + result.usuarioSesion.imagen + "'></a>";
 
                    $("#sitioUsuario").html(img);
 
@@ -76,7 +76,7 @@ function logout(){
     $(".sesionUsuario").hide();
 
     //Llamada fetch al controlador cLogout
-    var url = "controller/cLogout.php";
+    var url = "../../controller/cLogout.php";
 	fetch(url, {
 		  method: 'GET', 
 		  headers:{'Content-Type': 'application/json'}
@@ -90,3 +90,34 @@ function logout(){
 	.catch(error => console.error('Error status:', error));	
 
 }
+
+function sessionVarsView(){
+	
+    var url="../../controller/cSessionVarsView.php";
+
+    		fetch(url, {
+    			  method: 'GET', 
+    			  headers:{'Content-Type': 'application/json'}  // input data
+    			  })
+    		.then(res => res.json()).then(result => {
+    			
+    			var usuario=result.usuario;
+    			//console.log(usuario);
+    			
+    			if (usuario !=null){
+    				
+    				for(let i=0; i<usuario.length; i++){
+    					//Muestra la imagen que le corresponde al usuario que ha iniciado sesion
+    		             img="<img id='imgSesion' src='../img/" + usuario[i].imagen + "'>";
+    		             $(".botonLogin").hide();
+    		             $(".botonLogout").show();
+    		             $(".sesionUsuario").css('display','flex');
+    		             $("#sitioUsuario").html(img);
+    				}
+
+             
+          }
+
+    		})
+    		.catch(error => console.error('Error status:', error));	
+    }
