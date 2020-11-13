@@ -102,13 +102,13 @@ function sessionVarsView(){
     		.then(res => res.json()).then(result => {
     			
     			var usuario=result.usuario;
-    			//console.log(usuario);
+    			console.log(usuario);
     			
     			if (usuario !=null){
     				
     				for(let i=0; i<usuario.length; i++){
     					//Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-    		             img="<img id='imgSesion' src='../img/" + usuario[i].imagen + "'>";
+                        img="<a href='../view/pages/usuario.html'><img id='imgSesion' src='../uploads/" + usuario[i].imagen + "'></a>";
     		             $(".botonLogin").hide();
     		             $(".botonLogout").show();
     		             $(".sesionUsuario").css('display','flex');
@@ -130,20 +130,27 @@ function sessionVarsView(){
         for(let i=0; i<usuario.length; i++){
 
             if(usuario[i].admin==0){
-                usuarioInfo="<div class='col-lg-6'>" +
+                usuarioInfo="<div class='col m-1'>" +
                                 "<p>" + usuario[i].admin + "</p>" +
                              "</div>" +
-                             "<div class='col-lg-6'>" +
+                             "<div class='col m-1'>" +
                                 "<button type='button' class='btn btn-primary' id='btnUpdateUsuario'>Actualizar Información</button>" +
                                 "<button type='button' class='btn btn-primary'>Borra usuario</button>" +
                             "</div>";
             }else if(usuario[i].admin==1){
-                usuarioInfo="<div class='col-lg-6'>" +
-                                "<p>" + usuario[i].admin + "</p>" +
+                usuarioInfo="<div class='col m-1' id='acciones'>" +
+                                "<div class='row justify-content-center align-items-center'>" +
+                                    "<div class='col-lg-3'>" +
+                                        "<img src='../uploads/" + usuario[i].imagen + "' alt=''>" +
+                                    "</div>" +    
+                                    "<div class='col-lg-2 col-md-10'>" +
+                                        "<h3>" + usuario[i]. nombre + " " + usuario[i].apellidos + "</h3>" +
+                                    "</div>" +
                              "</div>" +
-                             "<div class='col-lg-6'>" +
-                                "<button type='button' class='btn btn-primary' id='btnUpdateUsuario'>Actualizar Administrador</button>" +
-                                "<button type='button' class='btn btn-primary'>Borra Administrador</button>" +
+                             "<div class='col m-1'>" +
+                                "<button type='button' class='btn btn-primary m-1' id='btnUpdateUsuario'>Actualizar información</button>" +
+                                "<button type='button' class='btn btn-primary m-1' id='btnInsertUsuario'>Insertar nuevo usuario</button>" +
+                                "<button type='button' class='btn btn-primary m-1' id='btnDeleteUsuario'>Borrar usuario</button>" +
                             "</div>";
             }
 
@@ -160,6 +167,56 @@ function sessionVarsView(){
 
     function updateUsuario(usuario){
 
-        alert(usuario[0].nombre);
+        var formulario="";
 
+        for(let i=0; i<usuario.length; i++){
+
+            formulario="<form>" +
+
+                        "<div class='form-row justify-content-center'>" +
+                            "<div class='form-group col-md-4'>" +
+                                "<label for='nombre'>Nombre:</label>" +
+                                "<input type='text' class='form-control' id='nombre' value='" + usuario[i].nombre + "' disabled>" +
+                            "</div>" + 
+                            "<div class='form-group col-md-4'>" + 
+                                "<label for='apellido'>Apellidos:</label>" +
+                                "<input type='text' class='form-control' id='apellidos' value='" + usuario[i].apellidos + "' disabled>" +
+                            "</div>" + 
+                        "</div>" +
+
+                        "<div class='form-row justify-content-center'>" +
+                            "<div class='form-group col-md-4'>" +
+                                "<label for='usuario'>Usuario:</label>" +
+                                "<input type='text' class='form-control' id='usuario' value='" + usuario[i].usuario + "' disabled>" +
+                            "</div>" + 
+                            "<div class='form-group col-md-4'>" + 
+                                "<label for='contraseña'>Contraseña:</label>" +
+                                "<input type='text' class='form-control' id='contraseña' value='" + usuario[i].password + "'>" +
+                            "</div>" + 
+                        "</div>" +
+
+                        "<div class='form-row justify-content-center'>" +
+                            "<div class='form-group col-md-4'>" +
+                                "<label for='email'>Email:</label>" +
+                                "<input type='text' class='form-control' id='email' value='" + usuario[i].email + "'>" +
+                            "</div>" + 
+                            "<div class='form-group col-md-4'>" + 
+                                "<label for='direccion'>Dirección:</label>" +
+                                "<input type='text' class='form-control' id='direccion' value='" + usuario[i].direccion + "'>" +
+                            "</div>" + 
+                        "</div>" +
+                        "<button type='button' id='btnExecuteUpdate' class='btn btn-primary'>Actualizar</button>" +
+                        "</form>";
+        }
+
+        $("#acciones").html(formulario);
+        $("#btnExecuteUpdate").click(function(){
+            execUpdate();
+        });
+
+    }
+
+    function execUpdate(){
+        password=$("#contraseña").val();
+        
     }
