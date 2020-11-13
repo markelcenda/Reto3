@@ -377,6 +377,8 @@ class usuarioModel extends usuarioClass {
             $jugador->id=$row['id'];
             $jugador->findPlayerById();
             
+            $this->objJugador=$jugador;
+            
             array_push($list, $this);
         }
         mysqli_free_result($result);

@@ -335,6 +335,7 @@ function mostrarDatosUsuarios(id){
 										"<div class='col-lg-4 m-2'>" +
 											"<h2 class='text-center'>" + delegado[i].nombre + " " + delegado[i].apellidos + "</h2>" +
 											"<hr>" +
+											"<h5>Experiencia: " + delegado[i].objDelegado.experiencia + " años</h5>" +
 											"<h5>Fecha de nacimiento: " + delegado[i].fechaDeNacimiento + "</h5>" +
 											"<hr>" +
 											"<h5>Dirección: " + delegado[i].direccion + "</h5>" +

@@ -50,6 +50,7 @@ class delegadoModel extends delegadoClass {
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { //each row
             
             $this->id=$row['id'];
+            $this->experiencia=$row['experiencia'];
             
             
         }
