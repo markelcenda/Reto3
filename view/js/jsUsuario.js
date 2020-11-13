@@ -112,12 +112,54 @@ function sessionVarsView(){
     		             $(".botonLogin").hide();
     		             $(".botonLogout").show();
     		             $(".sesionUsuario").css('display','flex');
-    		             $("#sitioUsuario").html(img);
+                         $("#sitioUsuario").html(img);
+                         zonaAdministrador(usuario);
     				}
+                }
 
-             
-          }
+               
 
     		})
     		.catch(error => console.error('Error status:', error));	
+    }
+
+    function zonaAdministrador(usuario){
+
+       
+
+        for(let i=0; i<usuario.length; i++){
+
+            if(usuario[i].admin==0){
+                usuarioInfo="<div class='col-lg-6'>" +
+                                "<p>" + usuario[i].admin + "</p>" +
+                             "</div>" +
+                             "<div class='col-lg-6'>" +
+                                "<button type='button' class='btn btn-primary' id='btnUpdateUsuario'>Actualizar Información</button>" +
+                                "<button type='button' class='btn btn-primary'>Borra usuario</button>" +
+                            "</div>";
+            }else if(usuario[i].admin==1){
+                usuarioInfo="<div class='col-lg-6'>" +
+                                "<p>" + usuario[i].admin + "</p>" +
+                             "</div>" +
+                             "<div class='col-lg-6'>" +
+                                "<button type='button' class='btn btn-primary' id='btnUpdateUsuario'>Actualizar Administrador</button>" +
+                                "<button type='button' class='btn btn-primary'>Borra Administrador</button>" +
+                            "</div>";
+            }
+
+        }
+
+
+        $("#zonaUsuario").append(usuarioInfo);
+
+        $("#btnUpdateUsuario").click(function(){
+            updateUsuario(usuario);
+        });
+
+    }
+
+    function updateUsuario(usuario){
+
+        alert(usuario[0].nombre);
+
     }
