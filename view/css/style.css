@@ -125,6 +125,11 @@ footer{
     background-color: #009655;
 }
 
+#logoFooter{
+    width: 200px;
+    height: 200px;
+}
+
 /*Tamaño de los iconos de las redes socaiales*/
 .redesIconos{
     width: 30px;
