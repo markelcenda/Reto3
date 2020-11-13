@@ -1,11 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   sessionVarsView();
   cargarImagenesEquipos();
-
-});
-
-$(window).on('load', function () {
   aos_init();
+
 });
 
 function aos_init() {
@@ -13,15 +10,8 @@ function aos_init() {
     duration: 800,
     once: true
   });
-<<<<<<< HEAD
   
-  function aos_init() {
-    AOS.init({
-      duration: 800,
-      once: true
-    });
-  }  
-
+ 
   function equiposDesdeIndex(id){
     pagina="view/pages/equipos.html?" + id;
     window.location.href=pagina;	
@@ -56,7 +46,6 @@ function aos_init() {
     		})
     		.catch(error => console.error('Error status:', error));	
     }
-=======
 }
 
 function equiposDesdeIndex(id) {
@@ -148,4 +137,3 @@ function cargarImagenesEquipos() {
     })
     .catch(error => console.error('Error status:', error));
 }
->>>>>>> 4b775347cc57038bf5b30ffeffa14332b8331402
