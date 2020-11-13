@@ -31,7 +31,6 @@ $(window).on('load', function () {
     		.then(res => res.json()).then(result => {
     			
     			var usuario=result.usuario;
-    			//console.log(usuario);
     			
     			if (usuario !=null){
     				
