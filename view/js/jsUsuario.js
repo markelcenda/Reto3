@@ -129,12 +129,13 @@ function sessionVarsView(){
         for(let i=0; i<usuario.length; i++){
 
             if(usuario[i].admin==0){
-                usuarioInfo="<div class='col m-1'>" +
-                                "<p>" + usuario[i].admin + "</p>" +
+                usuarioInfo="<div class='col-lg-12 m-1'>" +
+                                "<h1>" + usuario[i].usuario + "</h1>" +
+                                "<p class='font-weight-bold m-2'>Selecciona una de las siguinetes opciones:</p>" +
                              "</div>" +
-                             "<div class='col m-1'>" +
-                                "<button type='button' class='btn btn-primary' id='btnUpdateUsuario'>Actualizar Información</button>" +
-                                "<button type='button' class='btn btn-primary'>Borra usuario</button>" +
+                             "<div class='col-lg-12 m-1'>" +
+                                "<button type='button' class='btn text-white col-lg-2 m-2' id='btnMisDatos'>Mis datos</button>" +
+                                "<button type='button' class='btn text-white col-lg-2 m-2' id='btnUpdateUsuario'>Actualizar Información</button>" +
                             "</div>";
             }else if(usuario[i].admin==1){
                 usuarioInfo="<div class='col m-1' id='acciones'>" +
@@ -160,12 +161,43 @@ function sessionVarsView(){
         $("#btnUpdateUsuario").click(function(){
             updateUsuario(usuario);
         });
+
+        $("#btnMisDatos").click(function(){
+            datosUsuario(usuario);
+        });
     }
 
    function datosUsuario(usuario){
 
-        $newrow = "<p class='m-5'>" + usuario[0].nombre + "</p>"+
-                    "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>";
+        $newrow = "<div class='row m-3 datosDeUsuario text-white'>"+
+                    "<div class='col-lg-12 mt-3'>"+
+                    "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>"+
+                    "</div>"+
+                    "<div class='col-lg-6'>"+
+                    "<p class='font-weight-bold'>Nombre:</p>"+
+                    "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
+                    "</div>"+
+                    "<div class='col-lg-6'>"+
+                    "<p class='font-weight-bold'>Direccion:</p>"+
+                    "<p>"+ usuario[0].direccion + "</p>"+
+                    "</div>"+
+                    "<div class='col-lg-6'>"+
+                    "<p class='font-weight-bold'>Fecha de Nacimiento:</p>"+
+                    "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
+                    "</div>"+
+                    "<div class='col-lg-6'>"+
+                    "<p class='font-weight-bold'>Correo electronico:</p>"+
+                    "<p>"+ usuario[0].email + "</p>"+
+                    "</div>"+
+                    "<div class='col-lg-6'>"+
+                    "<p class='font-weight-bold'>Usuario:</p>"+
+                    "<p>"+ usuario[0].usuario+ "</p>"+
+                    "</div>"+
+                    "<div class='col-lg-6'>"+
+                    "<p class='font-weight-bold'>Contraseña:</p>"+
+                    "<p>"+ usuario[0].password + "</p>"+
+                    "</div>"+
+                "</div>";
 
         $('#zonaUsuario').append($newrow);
 
