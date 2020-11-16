@@ -1,118 +1,132 @@
 /*Tamaño de las letras*/
 .equipos {
-    font-size: 45px !important;
+  font-size: 45px !important;
 }
 
 h3{
-    font-size: 40px !important;
-}
-
-/*Usuario*/
-.imagenUsuario{
-    width: 100%;
-    height: 60vh;
+  font-size: 40px !important;
 }
 
 /*Boton volver*/
 .botonVolver{
-    background-color: rgb(120, 173, 41) !important;
-    color: white !important;
-    transition: 0.5s !important;
+  background-color: rgb(120, 173, 41) !important;
+  color: white !important;
+  transition: 0.5s !important;
 }
 .botonVolver:hover{
-    background-color: white !important;
-    color: rgb(120, 173, 41) !important;
-    transition: 0.5s !important;
+  background-color: white !important;
+  color: rgb(120, 173, 41) !important;
+  transition: 0.5s !important;
 }
 
 /*Posiciones Jugadores*/
 .separator {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    font-size: 32px ;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 32px ;
 }
 .separator::before, .separator::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid #000;
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #000;
 }
 .separator::before {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 .separator::after {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 /*Cards usuarios*/
-  .card {
-    width: 280px;
-    height: 360px;
-    border-radius: 15px;
-    padding: 1.5rem;
-    margin: 8px;
-    background: white;
-    position: relative;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-align: end;
-    align-items: flex-end;
-    -webkit-transition: 0.4s ease-out;
-    transition: 0.4s ease-out;
-    box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.5);
-  }
+.card {
+  width: 280px;
+  height: 360px;
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin: 8px;
+  background: white;
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: end;
+  align-items: flex-end;
+  -webkit-transition: 0.4s ease-out;
+  transition: 0.4s ease-out;
+  box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.5);
+  background-image: url('../img/fondoCards.jpg');
+  background-size: cover;
+}
 
-  .card:hover:before {
-    opacity: 1;
-  }
-  .card:hover .info {
-    opacity: 1;
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
-  }
-  .card:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 2;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    opacity: 0;
-  }
-  .card img {
-    width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 15px;
-  }
+.card:hover:before {
+  opacity: 1;
+}
+.card:hover .info {
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+}
+.card:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  opacity: 0;
+}
+.card img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+}
 
-  .card .info {
-    position: relative;
-    z-index: 3;
-    color: white;
-    opacity: 0;
-    top: 70%;
-    -webkit-transform: translateY(30px);
-            transform: translateY(30px);
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .card .info h1 {
-    border-bottom: white solid 1px;
-    font-size: 26px;
-  }
-  .card .info p {
-    font-size: 18px;
-  }
+.card .info {
+  position: relative;
+  z-index: 3;
+  color: white;
+  opacity: 0;
+  top: 70%;
+  -webkit-transform: translateY(30px);
+          transform: translateY(30px);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  margin-left: auto;
+  margin-right: auto;
+}
+.card .info h1 {
+  border-bottom: white solid 1px;
+  font-size: 26px;
+}
+.card .info p {
+  font-size: 18px;
+}
+
+.fichaUsuario{
+  background-image: url('https://thumb.besoccerapps.com/rbetis/img_web/bg/h2c-bg.jpg');
+  background-size: cover;
+  color: white;
+}
+
+.fichaUsuario .imagenUsuario{
+  height: auto;
+  width: 100%;
+
+}
+
+hr{
+  background-color: white;
+  height: 1px; 
+  border: 0;
+}

@@ -75,14 +75,8 @@ class usuarioModel extends usuarioClass {
             $equipo->id=$row['idEquipo'];
             $equipo->findTeamById();
             
-            $tipo=new tipoModel();
-            $tipo->id=$row['tipo'];
-            $tipo->findTipoById();
-            
             $usuario->objEquipo=$equipo;
-            $usuario->objTipo=$tipo;
-            
-            
+
             array_push($list, $usuario);
         }
         mysqli_free_result($result);
@@ -652,6 +646,23 @@ class usuarioModel extends usuarioClass {
             }
             
             $this->CloseConnect();//termina la conexion
+        }
+        
+        public function delete(){
+            
+            $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+            
+            $id=$this->id;
+            $sql="CALL spDeleteUser($id)";
+            
+            if ($this->link->query($sql))  // true if success
+            //$this->link->affected_rows;  number of deleted rows
+            {
+                return "Usuario eliminado correctamente";
+            } else {
+                return "Error al borrar";
+            }
+            $this->CloseConnect();
         }
     
 }
