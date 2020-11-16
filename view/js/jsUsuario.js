@@ -125,18 +125,27 @@ function sessionVarsView(){
 
     function zonaAdministrador(usuario){
 
-       
-
         for(let i=0; i<usuario.length; i++){
 
             if(usuario[i].admin==0){
-                usuarioInfo="<div class='col-lg-6'>" +
-                                "<p>" + usuario[i].admin + "</p>" +
-                             "</div>" +
-                             "<div class='col-lg-6'>" +
-                                "<button type='button' class='btn btn-primary' id='btnUpdateUsuario'>Actualizar Información</button>" +
-                                "<button type='button' class='btn btn-primary'>Borra usuario</button>" +
+                usuarioInfo=/*"<div class='col-lg-6 border text-center'>" +
+                                "<img class='imagenUsuario' src='../uploads/"+ usuario[i].imagen + "'>"+
+                            "</div>" +
+                            "<div class='col-lg-6 border'>" +
+                                "<p>" + usuario[i].nombre + "</p>" +
+                                "<p>" + usuario[i].apellidos + "</p>" +
+                            "</div>" +
+                             "<div class='col-lg-6'>" +*/
+                             "<div class='col-lg-12 text-center'>"+
+                                /*"<img class='imagenUsuario' src='../uploads/"+ usuario[i].imagen + "'>"+*/
+                                "<h1 class='font-weight-bold m-2'>"+ usuario[i].usuario +"</h1>"+
+                                "<p class='font-weight-bold m-2'>Selecciona una de la siguientes opciones:</p>"+
+                                "<button type='button' class='btn text-white m-2 col-lg-2' id='btnVerDatosUsuario'>Ver mis datos</button>" +
+                                "<button type='button' class='btn text-white m-2 col-lg-2' id='btnUpdateUsuario'>Actualizar Información</button>" +
                             "</div>";
+                            //"</div>"
+                            
+
             }else if(usuario[i].admin==1){
                 usuarioInfo="<div class='col-lg-6'>" +
                                 "<p>" + usuario[i].admin + "</p>" +
@@ -152,9 +161,21 @@ function sessionVarsView(){
 
         $("#zonaUsuario").append(usuarioInfo);
 
+        $("#btnVerDatosUsuario").click(function(){
+            datosUsuario(usuario);
+        });
+
         $("#btnUpdateUsuario").click(function(){
             updateUsuario(usuario);
         });
+    }
+
+   function datosUsuario(usuario){
+
+        $newrow = "<p class='m-5'>" + usuario[0].nombre + "</p>"+
+                    "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>";
+
+        $('#zonaUsuario').append($newrow);
 
     }
 
