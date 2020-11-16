@@ -170,6 +170,10 @@ function sessionVarsView(){
         $("#btnMisDatos").click(function(){
             datosUsuario(usuario);
         });
+
+        $("#btnDeleteUsuario").click(function(){
+            loadUsers();
+        });
     }
 
    function datosUsuario(usuario){
