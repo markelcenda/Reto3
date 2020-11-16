@@ -4,7 +4,7 @@
     border: 5px solid #009655;
 }
 
-#btnMisDatos,#btnUpdateUsuario,#btnDeleteUsuario{
+#btnMisDatos,#btnUpdateUsuario,#btnDeleteUsuario, #btnUpdateJugador, #btnExecuteUpdate{
 
     background-color: #009655;
 
