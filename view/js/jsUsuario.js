@@ -102,13 +102,13 @@ function sessionVarsView(){
     		.then(res => res.json()).then(result => {
     			
     			var usuario=result.usuario;
-    			//console.log(usuario);
+    			console.log(usuario);
     			
     			if (usuario !=null){
     				
     				for(let i=0; i<usuario.length; i++){
     					//Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-    		             img="<img id='imgSesion' src='../img/" + usuario[i].imagen + "'>";
+                        img="<a href='../view/pages/usuario.html'><img id='imgSesion' src='../uploads/" + usuario[i].imagen + "'></a>";
     		             $(".botonLogin").hide();
     		             $(".botonLogout").show();
     		             $(".sesionUsuario").css('display','flex');
@@ -125,34 +125,29 @@ function sessionVarsView(){
 
     function zonaAdministrador(usuario){
 
+       /*Si es usuario sacar acciones diferentes al administrador*/
         for(let i=0; i<usuario.length; i++){
 
             if(usuario[i].admin==0){
-                usuarioInfo=/*"<div class='col-lg-6 border text-center'>" +
-                                "<img class='imagenUsuario' src='../uploads/"+ usuario[i].imagen + "'>"+
-                            "</div>" +
-                            "<div class='col-lg-6 border'>" +
-                                "<p>" + usuario[i].nombre + "</p>" +
-                                "<p>" + usuario[i].apellidos + "</p>" +
-                            "</div>" +
-                             "<div class='col-lg-6'>" +*/
-                             "<div class='col-lg-12 text-center'>"+
-                                /*"<img class='imagenUsuario' src='../uploads/"+ usuario[i].imagen + "'>"+*/
-                                "<h1 class='font-weight-bold m-2'>"+ usuario[i].usuario +"</h1>"+
-                                "<p class='font-weight-bold m-2'>Selecciona una de la siguientes opciones:</p>"+
-                                "<button type='button' class='btn text-white m-2 col-lg-2' id='btnVerDatosUsuario'>Ver mis datos</button>" +
-                                "<button type='button' class='btn text-white m-2 col-lg-2' id='btnUpdateUsuario'>Actualizar Información</button>" +
-                            "</div>";
-                            //"</div>"
-                            
-
-            }else if(usuario[i].admin==1){
-                usuarioInfo="<div class='col-lg-6'>" +
+                usuarioInfo="<div class='col m-1'>" +
                                 "<p>" + usuario[i].admin + "</p>" +
                              "</div>" +
-                             "<div class='col-lg-6'>" +
-                                "<button type='button' class='btn btn-primary' id='btnUpdateUsuario'>Actualizar Administrador</button>" +
-                                "<button type='button' class='btn btn-primary'>Borra Administrador</button>" +
+                             "<div class='col m-1'>" +
+                                "<button type='button' class='btn btn-primary' id='btnUpdateUsuario'>Actualizar Información</button>" +
+                                "<button type='button' class='btn btn-primary'>Borra usuario</button>" +
+                            "</div>";
+            }else if(usuario[i].admin==1){
+                usuarioInfo="<div class='col m-1' id='acciones'>" +
+                                "<div class='row justify-content-center align-items-center'>" +
+                                    "<div class='col'>" +
+                                        "<h2>Selecciona la opción que desea: </h2>" +
+                                    "</div>" +    
+                                    
+                             "</div>" +
+                             "<div class='col m-1'>" +
+                                "<button type='button' class='btn btn-primary m-1' id='btnUpdateUsuario'>Actualizar información</button>" +
+                                "<button type='button' class='btn btn-primary m-1' id='btnInsertUsuario'>Insertar nuevo usuario</button>" +
+                                "<button type='button' class='btn btn-primary m-1' id='btnDeleteUsuario'>Borrar usuario</button>" +
                             "</div>";
             }
 
@@ -161,10 +156,7 @@ function sessionVarsView(){
 
         $("#zonaUsuario").append(usuarioInfo);
 
-        $("#btnVerDatosUsuario").click(function(){
-            datosUsuario(usuario);
-        });
-
+        /*Al hacer click, se nos muestra un formulario con los datos del adminsitrador*/
         $("#btnUpdateUsuario").click(function(){
             updateUsuario(usuario);
         });
@@ -181,6 +173,86 @@ function sessionVarsView(){
 
     function updateUsuario(usuario){
 
-        alert(usuario[0].nombre);
+        var formulario="";
+
+        for(let i=0; i<usuario.length; i++){
+
+            /*Formulario con datos del administrador para modificar*/
+            formulario="<form>" +
+
+                        "<div class='form-row justify-content-center'>" +
+                            "<div class='form-group col-md-4'>" +
+                                "<label for='nombre'>Nombre:</label>" +
+                                "<input type='text' class='form-control' id='nombre' value='" + usuario[i].nombre + "' disabled>" +
+                            "</div>" + 
+                            "<div class='form-group col-md-4'>" + 
+                                "<label for='apellido'>Apellidos:</label>" +
+                                "<input type='text' class='form-control' id='apellidos' value='" + usuario[i].apellidos + "' disabled>" +
+                            "</div>" + 
+                        "</div>" +
+
+                        "<div class='form-row justify-content-center'>" +
+                            "<div class='form-group col-md-4'>" +
+                                "<label for='usuario'>Usuario:</label>" +
+                                "<input type='text' class='form-control' id='username' value='" + usuario[i].usuario + "' disabled>" +
+                            "</div>" + 
+                            "<div class='form-group col-md-4'>" + 
+                                "<label for='contraseña'>Contraseña:</label>" +
+                                "<input type='text' class='form-control' id='contraseña' value='" + usuario[i].password + "'>" +
+                            "</div>" + 
+                        "</div>" +
+
+                        "<div class='form-row justify-content-center'>" +
+                            "<div class='form-group col-md-4'>" +
+                                "<label for='email'>Email:</label>" +
+                                "<input type='text' class='form-control' id='email' value='" + usuario[i].email + "'>" +
+                            "</div>" + 
+                            "<div class='form-group col-md-4'>" + 
+                                "<label for='direccion'>Dirección:</label>" +
+                                "<input type='text' class='form-control' id='direccion' value='" + usuario[i].direccion + "'>" +
+                            "</div>" + 
+                        "</div>" +
+                        "<button type='button' id='btnExecuteUpdate' class='btn btn-primary'>Actualizar</button>" +
+                        "</form>";
+        }
+
+        /*ID del admin*/
+        idUsuario=usuario[0].id;
+
+        $("#acciones").html(formulario);
+        /*Click en el boton actualizar para hacer el update*/
+        $("#btnExecuteUpdate").click(function(){
+            execUpdate(idUsuario);
+        });
+
+    }
+
+    function execUpdate(idUsuario){
+       /*Datos nuevos del admin*/
+        password=$("#contraseña").val();
+        email=$("#email").val();
+        direccion=$("#direccion").val();
+
+        var url = "../../controller/cUpdateUser.php";
+        var data = {'id':idUsuario, 'password':password, 'email':email, 'direccion':direccion};
+        console.log(data);
+        
+        fetch(url, {
+			  method: 'POST', 
+			  body: JSON.stringify(data), // data can be `string` or {object}!
+			  headers:{'Content-Type': 'application/json'}  // input data
+            })
+            
+		.then(res => res.json()).then(result => {
+
+            /*Alert + recargar pagina*/
+          alert("Información actualizada correctamente");
+          window.location.reload();
+          
+          
+		})
+      .catch(error => console.error('Error status:', error));	
+        
+        
 
     }

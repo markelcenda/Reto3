@@ -132,7 +132,7 @@ function loadUsersByTeamId(idEquipo){
  				
 						$("#delanteros").append(cardJugadores);
 
-						var id=$(this).find("span").attr('id');
+						//var id=$(this).find("span").attr('id');
 						
 
 					}else if(jugadores[i].objJugador.posicion=="Zaguero"){

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Hazte socio</title>
+    <title>Betis Voleibol Club</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,15 +10,12 @@
     <!--Logo del club-->
     <link rel="icon" href="../img/logo.png" type="image/png">
 
-    <!-- Required CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/hazteSocio.css">
-    <link rel="stylesheet" href="../css/usuario.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/noticias.css">
 </head>
-<body>
 
-    <!---Navbar-->
+<body>
     <div class="imagenFondo">
         <nav class="navbar navbar-dark navbar-expand-md justify-content-between w-100">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-nav">
@@ -27,40 +24,42 @@
             <div class="navbar-collapse collapse dual-nav w-50 order-1 order-md-0 ">
                 <ul class="navbar-nav text-center align-items-center">
                     <li class="nav-item active">
-                        <a class="nav-link pl-0 efecto" href="../../index.html">Home <span class="sr-only">Home</span></a>
+                        <a class="nav-link pl-0 efecto" href="#">Home <span class="sr-only">Home</span></a>
                     </li>
                     <li class="nav-item dropdown active">
                         <a class="nav-link dropdown-toggle efecto" href="#" id="dropdownId" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">Equipos</a>
                         <div class="dropdown-menu text-center" aria-labelledby="dropdownId">
-                            <a class="dropdown-item" onclick="equiposDesdeSocios('5')">Senior Masculino</a>
-                            <a class="dropdown-item" onclick="equiposDesdeSocios('6')">Senior Femenino</a>
+                            <a class="dropdown-item" onclick="equiposDesdeIndex('5')">Senior Masculino</a>
+                            <a class="dropdown-item" onclick="equiposDesdeIndex('6')">Senior Femenino</a>
                             <hr>
-                            <a class="dropdown-item" onclick="equiposDesdeSocios('3')">Juvenil Masculino</a>
-                            <a class="dropdown-item" onclick="equiposDesdeSocios('4')">Juvenil Femenino</a>
+                            <a class="dropdown-item" onclick="equiposDesdeIndex('3')">Juvenil Masculino</a>
+                            <a class="dropdown-item" onclick="equiposDesdeIndex('4')">Juvenil Femenino</a>
                             <hr>
-                            <a class="dropdown-item" onclick="equiposDesdeSocios('1')">Infantil Masculino</a>
-                            <a class="dropdown-item" onclick="equiposDesdeSocios('2')">Infantil Femenino</a>
+                            <a class="dropdown-item" onclick="equiposDesdeIndex('1')">Infantil Masculino</a>
+                            <a class="dropdown-item" onclick="equiposDesdeIndex('2')">Infantil Femenino</a>
                         </div>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link active efecto" href="#">Noticias</a>
+                        <a class="nav-link active efecto" href="noticias.html">Noticias</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link efecto" href="view/pages/hazteSocio.html">Socios</a>
+                        <a class="nav-link efecto" href="../pages/hazteSocio.html">Socios</a>
                     </li>
                 </ul>
             </div>
-            <a href="#" class="navbar-brand  d-block text-center order-0 order-md-1 w-25">
+            <a href="../../index.html" class="navbar-brand  d-block text-center order-0 order-md-1 w-25">
                 <figure class="figure">
-                    <img src="../img/logo.png" class="figure-img img-fluid rounded" alt="">
+                    <img src="../img/logo.png" class="figure-img img-fluid rounded">
                     <figcaption class="figure-caption efecto text-white align-items-center">Betis Voleibol</figcaption>
                 </figure>
             </a>
             <div class="navbar-collapse collapse dual-nav w-50 order-2">
                 <ul class="nav navbar-nav ml-auto text-center align-items-center">
+
                     <div class="login">
-                        <button type="button" class="btn botonLogin" data-toggle="modal" data-target="#modelId">Iniciar Sesión</button>
+                        <button type="button" class="btn botonLogin" data-toggle="modal" data-target="#modelId">Iniciar
+                            Sesión</button>
                         <button type="button" class="btn botonLogout">Cerrar Sesión</button>
                         <!--Modal-->
                         <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
@@ -77,9 +76,11 @@
                                         <div class="form-group">
                                             <label for="usuario"></label>
                                             <span>Usuario:</span>
-                                            <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario" aria-describedby="helpId">
+                                            <input type="text" name="usuario" id="usuario" class="form-control"
+                                                placeholder="Usuario" aria-describedby="helpId">
                                             <span>Contraseña:</span>
-                                            <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" aria-describedby="helpId">
+                                            <input type="password" name="password" id="password" class="form-control"
+                                                placeholder="Contraseña" aria-describedby="helpId">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -91,16 +92,13 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Zona login -->
+                    <!--Zona login-->
                     <div class="sesionUsuario">
-                       
+
                         <div class="nav-item active" id="sitioUsuario">
                             <!--Carga la imagen del usuario que ha iniciado sesion desde el JS-->
                         </div>
-
                     </div>
-
                 </ul>
             </div>
         </nav>
@@ -111,15 +109,14 @@
             <h2>"Más que un equipo, una familia"</h2>
         </div>
     </div>
-    
-
-     <!-- Administracion -->
-    <div class="row justify-content-center bg-success text-center mt-3 " id="zonaUsuario">
-
-        
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row" id="noticias">
+                <!--Cards de noticias insertadas desde el js-->
+            </div>
+        </div>
     </div>
-    
-
+    </div>
     <!--Footer comienzo-->
     <footer class="page-footer font-small blue-grey lighten-5 text-white">
         <div class="container">
@@ -170,12 +167,12 @@
         </div>
         <!--Copyright-->
         <div class="footer-copyright text-center text-white py-3" style="background-color: #1a7041;">© 2020 Copyright:
-            <a class="text-white" href="https://mdbootstrap.com/"> realbetisvoleibol.com</a>
+            <a class="text-white" href="index.html"> realbetisvoleibol.com</a>
         </div>
     </footer>
     <!--Footer final-->
 
-    <!--Modal-->
+    <!--Modal del footer-->
     <div class="modal fade modalCopyright justify-align-center text-center" id="exampleModal" tabindex="-1"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -197,17 +194,13 @@
         </div>
     </div>
 
-    
-
-
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/jquery.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+
     <!-- Optional JavaScript -->
-    <script src="../js/jsUsuario.js"></script> 
-  
-    <script src="../js/fontAwesome.js"></script> 
+    <script src="../js/jsnoticias.js"></script>
 </body>
 
 </html>
