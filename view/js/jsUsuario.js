@@ -90,6 +90,7 @@ function logout(){
 	
         console.log(result.confirm);
         alert(result.confirm);
+        window.location.href="../../index.html";
 	
 	})
 	.catch(error => console.error('Error status:', error));	
