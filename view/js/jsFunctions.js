@@ -47,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
     		.catch(error => console.error('Error status:', error));	
     }
 
-
 function equiposDesdeIndex(id) {
   pagina = "view/pages/equipos.html?" + id;
   window.location.href = pagina;
