@@ -161,6 +161,11 @@ function sessionVarsView(){
             updateUsuario(usuario);
         });
 
+        /*Al hacer click, se nos muestra un select con los usuarios y borrarlo*/
+        $("#btnDeleteUsuario").click(function(){
+            loadUsers();
+        });
+
     }
 
     function updateUsuario(usuario){
@@ -244,7 +249,77 @@ function sessionVarsView(){
           
 		})
       .catch(error => console.error('Error status:', error));	
+
+    }
+
+    function loadUsers(){
+
+        var url = "../../controller/cUsers.php";
+
+        fetch(url, {
+            method: 'GET', 
+            headers:{'Content-Type': 'application/json'}  // input data
+            })
+      .then(res => res.json()).then(result => {
+          
+          var usuarios=result.list;
+        console.log(usuarios);
+          /*Cargar los usuarios en el select*/
+          selectUsuario="<h2>Selecciona un usuario para eliminar</h2>";
+          selectUsuario+="<select id='selectUsuarios'>";
+          selectUsuario+="<option selected>Selecciona un usuario</option>";
+          
+          for(let i=0; i<usuarios.length; i++){
+              
+            selectUsuario+="<option value='" + usuarios[i].nombre + " " + usuarios[i].apellidos + "' id='" + usuarios[i].id + "'>" + usuarios[i].id + " -- " + usuarios[i].nombre + " " + usuarios[i].apellidos + "</option>";
+            /*nombre=usuarios[i].nombre;
+            apellidos=usuarios[i].apellidos;*/
+              
+          }
+
+          selectUsuario+="</select>";
+          $("#acciones").html(selectUsuario);
+          
+          /*Conseguir la id del usuario y eliminarlo al hacer change*/
+          $("#selectUsuarios").change(function(){
+              
+              var idUsuario = $(this).children(":selected").attr("id");
+              var nombreApellido = $(this).children(":selected").val();
+
+              document.getElementById("selectUsuarios").addEventListener("click", execDelete(idUsuario, nombreApellido));
+ 
+          });
+
+      })
+      .catch(error => console.error('Error status:', error));	
+
+    }
+
+    function execDelete(idUsuario, nombreApellido){
         
-        
+        var confirmar=confirm("¿Estás seguro de borrar a " + nombreApellido + "?");
+
+        if(confirmar==true){
+
+            var url = "../../controller/cDeleteUser.php";
+            var data = {'id':idUsuario};
+            console.log(data);
+          
+            fetch(url, {
+                    method: 'POST', 
+                    body: JSON.stringify(data), // data can be `string` or {object}!
+                    headers:{'Content-Type': 'application/json'}  // input data
+                })
+                
+            .then(res => res.json()).then(result => {
+    
+                /*Alert + recargar pagina*/
+                alert("Usuario eliminado correctamente");
+                window.location.reload();
+
+            })
+            .catch(error => console.error('Error status:', error));	
+
+        }
 
     }
