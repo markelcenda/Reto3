@@ -153,7 +153,7 @@ function sessionVarsView(){
                              "</div>" +
                              "<div class='col m-1'>" +
                                 "<button type='button' class='btn btn-primary m-1' id='btnUpdateUsuario'>Actualizar información</button>" +
-                                "<button type='button' class='btn btn-primary m-1' id='btnInsertUsuario'>Insertar nuevo usuario</button>" +
+                                "<button type='button' class='btn btn-primary m-1' id='btnUpdateJugadores'>Actualizar jugadores</button>" +
                                 "<button type='button' class='btn btn-primary m-1' id='btnDeleteUsuario'>Borrar usuario</button>" +
                             "</div>";
             }
