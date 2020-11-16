@@ -125,8 +125,7 @@ function sessionVarsView(){
 
     function zonaAdministrador(usuario){
 
-       
-
+       /*Si es usuario sacar acciones diferentes al administrador*/
         for(let i=0; i<usuario.length; i++){
 
             if(usuario[i].admin==0){
@@ -140,12 +139,10 @@ function sessionVarsView(){
             }else if(usuario[i].admin==1){
                 usuarioInfo="<div class='col m-1' id='acciones'>" +
                                 "<div class='row justify-content-center align-items-center'>" +
-                                    "<div class='col-lg-3'>" +
-                                        "<img src='../uploads/" + usuario[i].imagen + "' alt=''>" +
+                                    "<div class='col'>" +
+                                        "<h2>Selecciona la opción que desea: </h2>" +
                                     "</div>" +    
-                                    "<div class='col-lg-2 col-md-10'>" +
-                                        "<h3>" + usuario[i]. nombre + " " + usuario[i].apellidos + "</h3>" +
-                                    "</div>" +
+                                    
                              "</div>" +
                              "<div class='col m-1'>" +
                                 "<button type='button' class='btn btn-primary m-1' id='btnUpdateUsuario'>Actualizar información</button>" +
@@ -159,6 +156,7 @@ function sessionVarsView(){
 
         $("#zonaUsuario").append(usuarioInfo);
 
+        /*Al hacer click, se nos muestra un formulario con los datos del adminsitrador*/
         $("#btnUpdateUsuario").click(function(){
             updateUsuario(usuario);
         });
@@ -171,6 +169,7 @@ function sessionVarsView(){
 
         for(let i=0; i<usuario.length; i++){
 
+            /*Formulario con datos del administrador para modificar*/
             formulario="<form>" +
 
                         "<div class='form-row justify-content-center'>" +
@@ -187,7 +186,7 @@ function sessionVarsView(){
                         "<div class='form-row justify-content-center'>" +
                             "<div class='form-group col-md-4'>" +
                                 "<label for='usuario'>Usuario:</label>" +
-                                "<input type='text' class='form-control' id='usuario' value='" + usuario[i].usuario + "' disabled>" +
+                                "<input type='text' class='form-control' id='username' value='" + usuario[i].usuario + "' disabled>" +
                             "</div>" + 
                             "<div class='form-group col-md-4'>" + 
                                 "<label for='contraseña'>Contraseña:</label>" +
@@ -209,14 +208,43 @@ function sessionVarsView(){
                         "</form>";
         }
 
+        /*ID del admin*/
+        idUsuario=usuario[0].id;
+
         $("#acciones").html(formulario);
+        /*Click en el boton actualizar para hacer el update*/
         $("#btnExecuteUpdate").click(function(){
-            execUpdate();
+            execUpdate(idUsuario);
         });
 
     }
 
-    function execUpdate(){
+    function execUpdate(idUsuario){
+       /*Datos nuevos del admin*/
         password=$("#contraseña").val();
+        email=$("#email").val();
+        direccion=$("#direccion").val();
+
+        var url = "../../controller/cUpdateUser.php";
+        var data = {'id':idUsuario, 'password':password, 'email':email, 'direccion':direccion};
+        console.log(data);
         
+        fetch(url, {
+			  method: 'POST', 
+			  body: JSON.stringify(data), // data can be `string` or {object}!
+			  headers:{'Content-Type': 'application/json'}  // input data
+            })
+            
+		.then(res => res.json()).then(result => {
+
+            /*Alert + recargar pagina*/
+          alert("Información actualizada correctamente");
+          window.location.reload();
+          
+          
+		})
+      .catch(error => console.error('Error status:', error));	
+        
+        
+
     }

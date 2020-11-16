@@ -628,5 +628,30 @@ class usuarioModel extends usuarioClass {
             return $list;
             
         }
+        
+        public function update(){
+            
+            $this->OpenConnect();  // konexio zabaldu  - abrir conexiÃ³n
+            
+            $id=$this->id;
+            $password=$this->password;
+            $email=$this->email;
+            $direccion=$this->direccion;
+
+            
+            //envia los datos introducidos en el formulario a la base de datos
+            $sql="CALL spUpdateUser($id, '$password', '$email', '$direccion')";
+            
+            //filtro que mira las filas afectadas
+            if ($this->link->query($sql))  // true if success
+            //$this->link->affected_rows;  number of inserted rows
+            {
+                return "Información actualizada correctamente";
+            } else {
+                return "Error al modificar";
+            }
+            
+            $this->CloseConnect();//termina la conexion
+        }
     
 }
