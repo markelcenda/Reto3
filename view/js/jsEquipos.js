@@ -112,6 +112,7 @@ function loadUsersByTeamId(idEquipo){
 				for(var i=0; i<jugadores.length; i++){
 
 					if(jugadores[i].objJugador.posicion=="Delantero"){
+						console.log(jugadores[i]);
 						
 						cardPosiciones="<div class='row justify-content-center mt-4'>" +
 		                					"<div class='col-lg-12'>" +
@@ -471,7 +472,7 @@ function sessionVarsView(){
     				
     				for(let i=0; i<usuario.length; i++){
     					//Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-						img="<a href='../view/pages/usuario.html'><img id='imgSesion' src='../uploads/" + usuario[i].imagen + "'></a>";
+						img="<a href='../pages/usuario.html'><img id='imgSesion' src='../uploads/" + usuario[i].imagen + "'></a>";
     		             $(".botonLogin").hide();
     		             $(".botonLogout").show();
     		             $(".sesionUsuario").css('display','flex');

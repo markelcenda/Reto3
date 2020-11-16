@@ -87,7 +87,7 @@ function datosFormulario(){
     	passwordInsert=$("#contraseña").val();
         imagenInsert=filename;
     	idEquipoInsert="1";
-    	tipoInsert="1";
+    	tipoInsert="4";
     	emailInsert=$("#email").val();
     	direccionInsert=$("#direccion").val();
     	fechaDeNacimientoInsert=$("#fechaNacimiento").val();
@@ -260,7 +260,7 @@ function sessionVarsView(){
     				
     				for(let i=0; i<usuario.length; i++){
     					//Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-                        img="<a href='../view/pages/usuario.html'><img id='imgSesion' src='../uploads/" + usuario[i].imagen + "'></a>";
+                        img="<a href='../pages/usuario.html'><img id='imgSesion' src='../uploads/" + usuario[i].imagen + "'></a>";
     		             $(".botonLogin").hide();
     		             $(".botonLogout").show();
     		             $(".sesionUsuario").css('display','flex');

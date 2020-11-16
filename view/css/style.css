@@ -118,6 +118,8 @@ nav .botonCerrar:hover {
     height: 50px;
     border: 2px solid #009655;
     border-radius: 15px;
+    background-image: url('../img/fondoCards.jpg');
+    background-size: cover;
 }
 
 /*Color principal del footer*/
