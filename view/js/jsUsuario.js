@@ -633,6 +633,55 @@ function sessionVarsView(){
             })
         .catch(error => console.error('Error status:', error));
 
+        }else if(usuario[0].tipo==2){
+
+            experiencia=$("#experiencia").val();
+
+            var url = "../../controller/cUpdateEntrenador.php";
+            var data = {'id':usuario[0].id, 'experiencia':experiencia};
+            
+            fetch(url, {
+                method: 'POST', 
+                body: JSON.stringify(data), // data can be `string` or {object}!
+                headers:{'Content-Type': 'application/json'}  // input data
+                })
+                
+            .then(res => res.json()).then(result => {
+
+                $("#acciones").html("");
+                $("#formularioInformacion").html("");
+
+                /*Alert + recargar pagina*/
+            alert("Información actualizada correctamente");
+            window.location.reload();
+            
+            })
+        .catch(error => console.error('Error status:', error));
+
+        }else{
+
+            experiencia=$("#experiencia").val();
+
+            var url = "../../controller/cUpdateDelegado.php";
+            var data = {'id':usuario[0].id, 'experiencia':experiencia};
+            
+            fetch(url, {
+                method: 'POST', 
+                body: JSON.stringify(data), // data can be `string` or {object}!
+                headers:{'Content-Type': 'application/json'}  // input data
+                })
+                
+            .then(res => res.json()).then(result => {
+
+                $("#acciones").html("");
+                $("#formularioInformacion").html("");
+
+                /*Alert + recargar pagina*/
+            alert("Información actualizada correctamente");
+            window.location.reload();
+            
+            })
+        .catch(error => console.error('Error status:', error));
 
         }
 
