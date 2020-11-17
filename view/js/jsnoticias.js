@@ -14,28 +14,37 @@ function cargarNoticias() {
             console.log(noticias);
 
             var noticia = "";
-            console.log(noticias.length);
+            console.log(noticias);
 
             for (i = noticias.length; i > 0; i--) {
                 console.log(i);
-                noticia = "<div class='col-md-4 mb-4'>" +
-                    "<div class='card mb-4 box-shadow'>" +
-                    "<img class='card-img-top' src='" + noticias[i-1].imagen + "'>" +
-                    "<div class='card-body'>" +
-                    "<b><p class='card-text'>" + noticias[i-1].titulo + "</p></b><br>" +
-                    "<p class='card-text'>" + noticias[i-1].texto + "</p>" +
-                    "<div class='d-flex justify-content-between align-items-center'>" +
-                    "<small class='text-muted'>" + noticias[i-1].fecha + "</small>" +
-                    "</div>" +
-                    "</div>" +
-                    "</div>" +
-                    "</div>"
+                noticia = "<div class='container py-3'>" +
+                "<div class='card'>" +
+                "<div class='row '>" +
+                "<div class='col-md-7 px-3'>" +
+                "<div class='card-block px-6'>" +
+                "<h4 class='card-title'>" + noticias[i-1].titulo + "</h4>" +
+                "<p class='card-text'>" + noticias[i-1].texto + "</p>" +
+                "<br>" +
+                "<a href='#' class='mt-auto btn btn-primary' id='masInfoNoticias'>Read More</a>" +
+                "</div>" +
+                "</div >" +
+                "<img class='m-4' src='" + noticias[i-1].imagen + "'>" +
+                "</div >" +
+                "</div >"
 
-                    $("#noticias").append(noticia);
+
+
+                $("#noticias").append(noticia);
             }
 
-            
+
 
         })
         .catch(error => console.error('Error status:', error));
 };
+
+function equiposDesdeNoticias(id){
+    pagina="equipos.html?" + id;
+    window.location.href=pagina;
+}

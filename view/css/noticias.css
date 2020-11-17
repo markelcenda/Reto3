@@ -1,12 +1,55 @@
 .card {
     transition: transform .15s ease;
-    height: 100%;
+    font-size: 1em;
+    overflow: hidden;
+    padding: 5;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    margin-top:20px;
 }
 
 .card img{
-    height: 225px;
+    width: 37%;
 }
 
 .card:hover {
     transform: scale(1.02);
+}
+
+.card-block {
+    font-size: 1em;
+    position: relative;
+    margin: 0;
+    padding: 1em;
+    border: none;
+    border-top: 1px solid rgba(34, 36, 38, .1);
+    box-shadow: none;
+     
+}
+
+#masInfoNoticias{
+    margin-left: 40%;
+}
+
+@media screen and (max-width: 1199px) {
+    .card img{
+        width: 100%;
+    }
+
+    .card-block{
+        width: 900px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .card-block{
+        width: 700px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card-block{
+        width: 500px;
+    }
 }
