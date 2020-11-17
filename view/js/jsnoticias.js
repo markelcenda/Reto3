@@ -43,3 +43,8 @@ function cargarNoticias() {
         })
         .catch(error => console.error('Error status:', error));
 };
+
+function equiposDesdeNoticias(id){
+    pagina="equipos.html?" + id;
+    window.location.href=pagina;
+}
