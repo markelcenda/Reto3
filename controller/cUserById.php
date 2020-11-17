@@ -18,6 +18,7 @@ $response['jugador']=$usuario->findJugadorById();
 $response['entrenador']=$usuario->findEntrenadoreById();
 $response['delegado']=$usuario->findDelegadoById();
 $response['equipos']=$equipo->setList();
+$response['usuario']=$usuario->findUserByIdV2();
 
 $response['error']="no error";
 

@@ -438,7 +438,7 @@ function sessionVarsView(){
 
     function updateUser2(){
 
-        var url = "../../controller/cUsers.php";
+        var url = "../../controller/cUserbyId.php";
 
         fetch(url, {
             method: 'GET', 
