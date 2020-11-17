@@ -140,8 +140,8 @@ function sessionVarsView(){
                                 "<h2>Selecciona la opción que desea: </h2>" +
                              "</div>" +
                              "<div class='col-lg-12 m-1'>" +
-                                "<button type='button' class='btn text-white m-2' id='btnMisDatos'>Mis datos</button>" +
-                                "<button type='button' class='btn text-white m-2' id='btnUpdateUsuario'>Actualizar Información</button>" +
+                                "<button type='button' class='btn text-white m-2 col-lg-2' id='btnMisDatos'>Mis datos</button>" +
+                                "<button type='button' class='btn text-white m-2 col-lg-2' id='btnUpdateUsuario'>Actualizar Información</button>" +
                             "</div>";
             }else if(usuario[i].admin==1){
                 usuarioInfo="<div class='col m-1' id='acciones'>" +
@@ -180,35 +180,41 @@ function sessionVarsView(){
 
    function datosUsuario(usuario){
 
-        $newrow = "<div class='row m-3 datosDeUsuario text-white'>"+
-                    "<div class='col-lg-12 mt-3'>"+
-                    "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>"+
-                    "</div>"+
-                    "<div class='col-lg-6'>"+
-                    "<p class='font-weight-bold'>Nombre:</p>"+
-                    "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
-                    "</div>"+
-                    "<div class='col-lg-6'>"+
-                    "<p class='font-weight-bold'>Direccion:</p>"+
-                    "<p>"+ usuario[0].direccion + "</p>"+
-                    "</div>"+
-                    "<div class='col-lg-6'>"+
-                    "<p class='font-weight-bold'>Fecha de Nacimiento:</p>"+
-                    "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
-                    "</div>"+
-                    "<div class='col-lg-6'>"+
-                    "<p class='font-weight-bold'>Correo electronico:</p>"+
-                    "<p>"+ usuario[0].email + "</p>"+
-                    "</div>"+
-                    "<div class='col-lg-6'>"+
-                    "<p class='font-weight-bold'>Usuario:</p>"+
-                    "<p>"+ usuario[0].usuario+ "</p>"+
-                    "</div>"+
-                    "<div class='col-lg-6'>"+
-                    "<p class='font-weight-bold'>Contraseña:</p>"+
-                    "<p>"+ usuario[0].password + "</p>"+
-                    "</div>"+
-                "</div>";
+        $newrow = "<div class='row datosDeUsuario border text-white'>"+
+                        "<div class='row border'>"+
+                            "<div class='col-lg-12'>"+
+                                "<p class='font-weight-bold'>Nombre:</p>"+
+                                "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
+                            "</div>"+
+                            "<div class='col-lg-12 '>"+
+                                "<p class='font-weight-bold'>Direccion:</p>"+
+                                "<p>"+ usuario[0].direccion + "</p>"+
+                            "</div>"+
+                            "<div class='col-lg-12 '>"+
+                                "<p class='font-weight-bold'>Fecha de Nacimiento:</p>"+
+                                "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
+                            "</div>"+
+                        "</div>"+
+                        "<div class='row border'>"+
+                                "<div>"+
+                                "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>"+
+                            "</div>"+
+                        "</div>"+
+                        "<div class='row border'>"+
+                            "<div class='col-lg-12'>"+
+                                "<p class='font-weight-bold'>Correo electronico:</p>"+
+                                "<p>"+ usuario[0].email + "</p>"+
+                            "</div>"+
+                            "<div class='col-lg-12 '>"+
+                                "<p class='font-weight-bold'>Usuario:</p>"+
+                                "<p>"+ usuario[0].usuario+ "</p>"+
+                            "</div>"+
+                            "<div class='col-lg-12'>"+
+                                "<p class='font-weight-bold'>Contraseña:</p>"+
+                                "<p>"+ usuario[0].password + "</p>"+
+                            "</div>"+
+                        "</div>"+
+                    "</div>";
 
         $('#zonaUsuario').append($newrow);
 

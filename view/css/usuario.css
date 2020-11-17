@@ -1,8 +1,8 @@
-.imagenUsuario{
+/*.imagenUsuario{
     width: 150px;
     height: 150px;
-    border: 5px solid #009655;
-}
+   /* border: 5px solid #009655;
+}*/
 
 #btnMisDatos,#btnUpdateUsuario,#btnDeleteUsuario, #btnUpdateJugador, #btnExecuteUpdate{
 
@@ -11,6 +11,8 @@
 }
 
 .datosDeUsuario{
-    background-color: #009655;
+    /*background-color: #009655;*/
+    background-image: url('https://thumb.besoccerapps.com/rbetis/img_web/bg/h2c-bg.jpg');
+    background-size: cover;
 }
 
