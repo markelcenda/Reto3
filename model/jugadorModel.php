@@ -92,4 +92,29 @@ class jugadorModel extends jugadorClass {
         
     }
     
+    public function updateJugador(){
+        
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexiÃ³n
+        
+        $id=$this->id;
+        $posicion=$this->posicion;
+        $altura=$this->altura;
+        $peso=$this->peso;
+        
+        
+        //envia los datos introducidos en el formulario a la base de datos
+        $sql="CALL spUpdateJugador($id, '$posicion', '$altura', '$peso')";
+        
+        //filtro que mira las filas afectadas
+        if ($this->link->query($sql))  // true if success
+        //$this->link->affected_rows;  number of inserted rows
+        {
+            return "Información actualizada correctamente";
+        } else {
+            return "Error al modificar";
+        }
+        
+        $this->CloseConnect();//termina la conexion
+    }
+    
 }
