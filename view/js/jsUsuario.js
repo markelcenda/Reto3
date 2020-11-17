@@ -189,11 +189,9 @@ function sessionVarsView(){
 
    function datosUsuario(usuario){
 
-    
-
         $("#acciones").html("");
 
-        $newrow = "<div class='row datosDeUsuario m-5 text-white'>"+
+        newrow = "<div class='row datosDeUsuario m-5 text-white'>"+
         "<div class='row-lg-3'>"+
             "<div class='col-lg-12'>"+
                 "<p class='font-weight-bold'>Nombre:</p>"+
@@ -229,17 +227,18 @@ function sessionVarsView(){
         "</div>"+
     "</div>";
 
-        $('#acciones').append(newrow);
+        $('#acciones').html(newrow);
 
     }
 
     function updateUsuario(usuario){
 
+      //  if(usuario[0].tipo != "4"){
 
         for(let i=0; i<usuario.length; i++){
 
             $("#acciones").html("");
-            /*Formulario con datos del administrador para modificar*/
+            /*Formulario con datos del usuario para modificar si es jugador, entrenador o delegado*/
             formulario="<form>" +
 
                         "<div class='form-row justify-content-center'>" +
@@ -277,6 +276,59 @@ function sessionVarsView(){
                         "<button type='button' id='btnExecuteUpdate' class='btn text-white'>Actualizar</button>" +
                         "</form>";
         }
+
+   // }else{
+
+        /*for(let i=0; i<usuario.length; i++){
+
+            $("#acciones").html("");
+            /*Formulario con datos del usuario para modificar si es socio*/
+            /*formulario="<form>" +
+
+                        "<div class='form-row justify-content-center'>" +
+                            "<div class='form-group col-md-4'>" +
+                                "<label for='nombre'>Nombre:</label>" +
+                                "<input type='text' class='form-control' id='nombre' value='" + usuario[i].nombre + "' disabled>" +
+                            "</div>" + 
+                            "<div class='form-group col-md-4'>" + 
+                                "<label for='apellido'>Apellidos:</label>" +
+                                "<input type='text' class='form-control' id='apellidos' value='" + usuario[i].apellidos + "' disabled>" +
+                            "</div>" + 
+                        "</div>" +
+
+                        "<div class='form-row justify-content-center'>" +
+                            "<div class='form-group col-md-4'>" +
+                                "<label for='usuario'>Usuario:</label>" +
+                                "<input type='text' class='form-control' id='username' value='" + usuario[i].usuario + "' disabled>" +
+                            "</div>" + 
+                            "<div class='form-group col-md-4'>" + 
+                                "<label for='contraseña'>Contraseña:</label>" +
+                                "<input type='text' class='form-control' id='contraseña' value='" + usuario[i].password + "'>" +
+                            "</div>" + 
+                        "</div>" +
+
+                        "<div class='form-row justify-content-center'>" +
+                            "<div class='form-group col-md-4'>" +
+                                "<label for='email'>Email:</label>" +
+                                "<input type='text' class='form-control' id='email' value='" + usuario[i].email + "'>" +
+                            "</div>" + 
+                            "<div class='form-group col-md-4'>" + 
+                                "<label for='direccion'>Dirección:</label>" +
+                                "<input type='text' class='form-control' id='direccion' value='" + usuario[i].direccion + "'>" +
+                            "</div>" + 
+                        "</div>" +*/
+                        /*"<div class='col-lg-6 p-3 text-center' id='containerImagen'>"+
+                            "<label>Actualizar imagen de perfil</label><br>"+
+                            "<input type='text' name='imagen' id='imagen' accept='.png,.jpeg,.jpg,.gif'>"+
+                            "<label type='text' for='imagen' class='btn text-white col-lg-6 col-md-4 col-sm-4 col-4' id='btnSubirArchivo'>Subir nueva imagen</label>"+
+                        "</div>"+
+                        /*"<div class='col-lg-6 p-3 text-center'>"+
+                            "<img  src='../uploads/"+usuario[i].imagen +"' id='fotoPerfil'>"+
+                        "</div>"+
+                        "<button type='button' id='btnExecuteUpdate' class='btn text-white'>Actualizar</button>" +
+                        "</form>";
+        }
+    }*/
 
         /*ID del admin*/
         idUsuario=usuario[0].id;
