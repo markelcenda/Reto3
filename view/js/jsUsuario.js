@@ -158,7 +158,8 @@ function sessionVarsView(){
                                 "<button type='button' class='btn text-white m-2' id='btnUpdateJugador'>Actualizar jugador</button>" +
                                 "<button type='button' class='btn text-white m-2' id='btnDeleteUsuario'>Borrar usuario</button>" +
                             "</div>" +
-                            "<div class='row justify-content-center' id='acciones'></div>"; //DIV para añadir los datos
+                            "<div class='row justify-content-center' id='acciones'></div>" + //DIV para añadir los datos
+                            "<div class='row justify-content-center' id='formularioInformacion'></div>"; //div para añadir formulario dcon datos para actualizar
 
             }
 
@@ -242,33 +243,33 @@ function sessionVarsView(){
             formulario="<form>" +
 
                         "<div class='form-row justify-content-center'>" +
-                            "<div class='form-group col-md-4'>" +
+                            "<div class='form-group col-lg-6'>" +
                                 "<label for='nombre'>Nombre:</label>" +
                                 "<input type='text' class='form-control' id='nombre' value='" + usuario[i].nombre + "' disabled>" +
                             "</div>" + 
-                            "<div class='form-group col-md-4'>" + 
+                            "<div class='form-group col-lg-6'>" + 
                                 "<label for='apellido'>Apellidos:</label>" +
                                 "<input type='text' class='form-control' id='apellidos' value='" + usuario[i].apellidos + "' disabled>" +
                             "</div>" + 
                         "</div>" +
 
                         "<div class='form-row justify-content-center'>" +
-                            "<div class='form-group col-md-4'>" +
+                            "<div class='form-group col-lg-6'>" +
                                 "<label for='usuario'>Usuario:</label>" +
                                 "<input type='text' class='form-control' id='username' value='" + usuario[i].usuario + "' disabled>" +
                             "</div>" + 
-                            "<div class='form-group col-md-4'>" + 
+                            "<div class='form-group col-lg-6'>" + 
                                 "<label for='contraseña'>Contraseña:</label>" +
                                 "<input type='text' class='form-control' id='contraseña' value='" + usuario[i].password + "'>" +
                             "</div>" + 
                         "</div>" +
 
                         "<div class='form-row justify-content-center'>" +
-                            "<div class='form-group col-md-4'>" +
+                            "<div class='form-group col-lg-6'>" +
                                 "<label for='email'>Email:</label>" +
                                 "<input type='text' class='form-control' id='email' value='" + usuario[i].email + "'>" +
                             "</div>" + 
-                            "<div class='form-group col-md-4'>" + 
+                            "<div class='form-group col-lg-6'>" + 
                                 "<label for='direccion'>Dirección:</label>" +
                                 "<input type='text' class='form-control' id='direccion' value='" + usuario[i].direccion + "'>" +
                             "</div>" + 
@@ -386,7 +387,7 @@ function sessionVarsView(){
 
           $("#acciones").html("");
 
-          selectUsuario="<h2>Selecciona un usuario para eliminar</h2>";
+          selectUsuario="<div class='col-lg-12'><h2>Selecciona un usuario para eliminar</h2>";
           selectUsuario+="<select id='selectUsuarios'>";
           selectUsuario+="<option selected>Selecciona un usuario</option>";
           
@@ -396,7 +397,7 @@ function sessionVarsView(){
               
           }
 
-          selectUsuario+="</select>";
+          selectUsuario+="</select></div>";
           $("#acciones").append(selectUsuario);
           
           /*Conseguir la id del usuario y eliminarlo al hacer change*/
@@ -459,7 +460,7 @@ function sessionVarsView(){
 
           $("#acciones").html("");
 
-          selectUsuario="<h2>Selecciona un usuario para actualizar</h2>";
+          selectUsuario="<div class='col-lg-12'><h2>Selecciona un usuario para actualizar</h2>";
           selectUsuario+="<select id='selectUsuarios'>";
           selectUsuario+="<option selected>Selecciona un usuario</option>";
           
@@ -478,7 +479,7 @@ function sessionVarsView(){
               
           }
 
-          selectUsuario+="</select>";
+          selectUsuario+="</select></div>";
           $("#acciones").append(selectUsuario);
           
           /*Conseguir la id del usuario y sacar un formulario con los datos para actualizar al hacer change*/
@@ -494,20 +495,198 @@ function sessionVarsView(){
 
     }
 
-    function updateUser2(){
+    function updateUser2(idUsuario){
 
-        var url = "../../controller/cUsers.php";
+        var url = "../../controller/cUserbyId.php";
+        var data={"id": idUsuario};
 
         fetch(url, {
-            method: 'GET', 
+            method: 'POST',
+            body: JSON.stringify(data),
             headers:{'Content-Type': 'application/json'}  // input data
             })
       .then(res => res.json()).then(result => {
           
         var usuario=result.usuario;
-        console.log(usuario);
+        
+
+        for(let i=0; i<usuario.length; i++){
+
+            if(usuario[i].tipo==1){//Jugador
+
+                $("#formularioInformacion").html("");
+
+                /*Formulario con datos del administrador para modificar*/
+                formulario="<form>" +
+
+                "<div class='form-row justify-content-center'>" +
+                    "<div class='form-group col-lg-6'>" +
+                        "<label for='nombre'>Nombre:</label>" +
+                        "<input type='text' class='form-control' id='nombre' value='" + usuario[i].nombre + "' disabled>" +
+                    "</div>" + 
+                    "<div class='form-group col-lg-6'>" + 
+                        "<label for='apellido'>Apellidos:</label>" +
+                        "<input type='text' class='form-control' id='apellidos' value='" + usuario[i].apellidos + "' disabled>" +
+                    "</div>" + 
+                "</div>" +
+
+                "<div class='form-row justify-content-center'>" +
+                    "<div class='form-group col-lg-6'>" +
+                        "<label for='usuario'>Usuario:</label>" +
+                        "<input type='text' class='form-control' id='username' value='" + usuario[i].usuario + "' disabled>" +
+                    "</div>" + 
+
+                    "<div class='form-group col-lg-6'>" + 
+
+                        "<div class='row justify-content-center'>" +
+
+                            "<div class='col-lg-4'>" +
+                                "<label for='posicion'>Delantero</label>" +
+                                "<input type='radio' id='delantero' value='Delantero' name='posiciones'>" +
+                            "</div>" +
+
+                            "<div class='col-lg-4'>" +
+                                "<label for='posicion'>Zaguero</label>" +
+                                "<input type='radio' id='zaguero' value='Zaguero' name='posiciones'>" +
+                            "</div>" +    
+
+                            "<div class='col-lg-4'>" +
+                                "<label for='posicion'>Liberos</label>" +
+                                "<input type='radio' id='libero' value='Libero' name='posiciones'>" +
+                            "</div>" +
+
+                        "</div>" +
+
+                    "</div>" + 
+                "</div>" +
+
+                "<div class='form-row justify-content-center'>" +
+                    "<div class='form-group col-lg-6'>" +
+                        "<label for='altura'>Altura:</label>" +
+                        "<input type='number' class='form-control' id='altura' value='" + usuario[i].objJugador.altura + "'>" +
+                    "</div>" + 
+                    "<div class='form-group col-lg-6'>" + 
+                        "<label for='peso'>Peso:</label>" +
+                        "<input type='number' class='form-control' id='peso' value='" + usuario[i].objJugador.peso + "'>" +
+                    "</div>" + 
+                "</div>" +
+                "<button type='button' id='btnExecuteUpdateUser' class='btn text-white'>Actualizar</button>" +
+                "</form>";
+
+            }else if(usuario[i].tipo==2){//Entrenador
+
+                $("#formularioInformacion").html("");
+
+                /*Formulario con datos del administrador para modificar*/
+                formulario="<form>" +
+
+                "<div class='form-row justify-content-center'>" +
+                    "<div class='form-group col-lg-6'>" +
+                        "<label for='nombre'>Nombre:</label>" +
+                        "<input type='text' class='form-control' id='nombre' value='" + usuario[i].nombre + "' disabled>" +
+                    "</div>" + 
+                    "<div class='form-group col-lg-6'>" + 
+                        "<label for='apellido'>Apellidos:</label>" +
+                        "<input type='text' class='form-control' id='apellidos' value='" + usuario[i].apellidos + "' disabled>" +
+                    "</div>" + 
+                "</div>" +
+                "<div class='form-row justify-content-center'>" +
+                    "<div class='form-group col-lg-6'>" +
+                        "<label for='usuario'>Usuario:</label>" +
+                        "<input type='text' class='form-control' id='usuario' value='" + usuario[i].usuario + "' disabled>" +
+                    "</div>" + 
+                    "<div class='form-group col-lg-6'>" + 
+                        "<label for='experiencia'>Experiencia:</label>" +
+                        "<input type='number' class='form-control' id='experiencia' value='" + usuario[i].objEntrenador.experiencia + "'>" +
+                    "</div>" + 
+                "</div>" +
+
+                
+
+                
+                "<button type='button' id='btnExecuteUpdateUser' class='btn text-white'>Actualizar</button>" +
+                "</form>";
+
+            }else{//Delegado
+
+                $("#formularioInformacion").html("");
+
+                 /*Formulario con datos del administrador para modificar*/
+                 formulario="<form>" +
+
+                 "<div class='form-row justify-content-center'>" +
+                     "<div class='form-group col-lg-6'>" +
+                         "<label for='nombre'>Nombre:</label>" +
+                         "<input type='text' class='form-control' id='nombre' value='" + usuario[i].nombre + "' disabled>" +
+                     "</div>" + 
+                     "<div class='form-group col-lg-6'>" + 
+                         "<label for='apellido'>Apellidos:</label>" +
+                         "<input type='text' class='form-control' id='apellidos' value='" + usuario[i].apellidos + "' disabled>" +
+                     "</div>" + 
+                 "</div>" +
+                 "<div class='form-row justify-content-center'>" +
+                     "<div class='form-group col-lg-6'>" +
+                         "<label for='usuario'>Usuario:</label>" +
+                         "<input type='text' class='form-control' id='usuario' value='" + usuario[i].usuario + "' disabled>" +
+                     "</div>" + 
+                     "<div class='form-group col-lg-6'>" + 
+                         "<label for='experiencia'>Experiencia:</label>" +
+                         "<input type='number' class='form-control' id='experiencia' value='" + usuario[i].objDelegado.experiencia + "'>" +
+                     "</div>" + 
+                 "</div>" +
+
+                 "<button type='button' id='btnExecuteUpdateUser' class='btn text-white'>Actualizar</button>" +
+                 "</form>";
+            }
+
+        }
+
+        $("#formularioInformacion").append(formulario);
+
+        $("#btnExecuteUpdateUser").click(function(){
+            
+            executeUpdate2(usuario);
+
+        });
+
   
       })
       .catch(error => console.error('Error status:', error));
+
+    }
+
+    function executeUpdate2(usuario){
+
+        if(usuario[0].tipo==1){
+
+            posicion=$('input[name="posiciones"]:checked').val();
+            altura=$("#altura").val();
+            peso=$("#peso").val();
+
+            var url = "../../controller/cUpdateJugador.php";
+            var data = {'id':usuario[0].id, 'posicion':posicion, 'altura':altura, 'peso':peso};
+            
+            fetch(url, {
+                method: 'POST', 
+                body: JSON.stringify(data), // data can be `string` or {object}!
+                headers:{'Content-Type': 'application/json'}  // input data
+                })
+                
+            .then(res => res.json()).then(result => {
+
+                $("#acciones").html("");
+                $("#formularioInformacion").html("");
+
+                /*Alert + recargar pagina*/
+            alert("Información actualizada correctamente");
+            window.location.reload();
+            
+            
+            })
+        .catch(error => console.error('Error status:', error));
+
+
+        }
+
 
     }
