@@ -180,8 +180,8 @@ function sessionVarsView(){
 
    function datosUsuario(usuario){
 
-        $newrow = "<div class='row datosDeUsuario border text-white'>"+
-                        "<div class='row border'>"+
+        $newrow = "<div class='row datosDeUsuario m-5 text-white'>"+
+                        "<div class='row-lg-3'>"+
                             "<div class='col-lg-12'>"+
                                 "<p class='font-weight-bold'>Nombre:</p>"+
                                 "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
@@ -195,12 +195,12 @@ function sessionVarsView(){
                                 "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
                             "</div>"+
                         "</div>"+
-                        "<div class='row border'>"+
-                                "<div>"+
+                        "<div class='row'>"+
+                            "<div class='m-5'>"+
                                 "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>"+
                             "</div>"+
                         "</div>"+
-                        "<div class='row border'>"+
+                        "<div class='row-lg-3'>"+
                             "<div class='col-lg-12'>"+
                                 "<p class='font-weight-bold'>Correo electronico:</p>"+
                                 "<p>"+ usuario[0].email + "</p>"+
