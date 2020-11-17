@@ -24,8 +24,10 @@
 
 /*Imagenes de equipos*/
 .card{
-    border: 1px solid transparent !important;
+    border: 1px solid transparent !important; 
+    width: 98%;
 }
+
 #imagenes img {
     height: 300px;
     width: 100%;
@@ -99,3 +101,18 @@
         width: 80%;
     }
 }  
+
+/*Cards con las ultimas 3 noticias*/
+
+.album .card {
+    transition: transform .15s ease;
+    height: 100%;
+}
+
+.album .card img{
+    height: 225px;
+}
+
+.album .card:hover {
+    transform: scale(1.02);
+}

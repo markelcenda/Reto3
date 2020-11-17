@@ -140,9 +140,10 @@ function sessionVarsView(){
                                 "<h2>Selecciona la opción que desea: </h2>" +
                              "</div>" +
                              "<div class='col-lg-12 m-1'>" +
-                                "<button type='button' class='btn text-white m-2' id='btnMisDatos'>Mis datos</button>" +
-                                "<button type='button' class='btn text-white m-2' id='btnUpdateUsuario'>Actualizar Información</button>" +
-                            "</div>";
+                                "<button type='button' class='btn text-white m-2 col-lg-2' id='btnMisDatos'>Mis datos</button>" +
+                                "<button type='button' class='btn text-white m-2 col-lg-2' id='btnUpdateUsuario'>Actualizar Información</button>" +
+                            "</div>" +
+                            "<div class='row justify-content-center' id='acciones'></div>"; //DIV para añadir los datos
             }else if(usuario[i].admin==1){
                 usuarioInfo="<div class='col m-1'>" +
                                 "<div class='row justify-content-center align-items-center'>" +
@@ -188,9 +189,11 @@ function sessionVarsView(){
 
    function datosUsuario(usuario){
 
+    
+
         $("#acciones").html("");
 
-        $newrow = "<div class='row m-3 datosDeUsuario text-white'>"+
+        newrow = "<div class='row m-3 datosDeUsuario text-white'>"+
                     "<div class='col-lg-12 mt-3'>"+
                     "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>"+
                     "</div>"+
@@ -220,7 +223,7 @@ function sessionVarsView(){
                     "</div>"+
                 "</div>";
 
-        $('#acciones').append($newrow);
+        $('#acciones').append(newrow);
 
     }
 
@@ -423,13 +426,30 @@ function sessionVarsView(){
           /*Conseguir la id del usuario y sacar un formulario con los datos para actualizar al hacer change*/
           $("#selectUsuarios").change(function(){
               
-              var idUsuario = $(this).children(":selected").attr("id");
-              document.getElementById("selectUsuarios").addEventListener("click", execDelete(idUsuario, nombreApellido));
- 
+            var idUsuario = $(this).children(":selected").attr("id");
+            updateUser2(idUsuario);
           });
           
 
       })
       .catch(error => console.error('Error status:', error));	
+
+    }
+
+    function updateUser2(){
+
+        var url = "../../controller/cUsers.php";
+
+        fetch(url, {
+            method: 'GET', 
+            headers:{'Content-Type': 'application/json'}  // input data
+            })
+      .then(res => res.json()).then(result => {
+          
+        var usuario=result.usuario;
+        console.log(usuario);
+  
+      })
+      .catch(error => console.error('Error status:', error));
 
     }

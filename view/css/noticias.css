@@ -3,6 +3,10 @@
     height: 100%;
 }
 
+.card img{
+    height: 225px;
+}
+
 .card:hover {
     transform: scale(1.02);
 }

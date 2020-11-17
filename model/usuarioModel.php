@@ -733,5 +733,76 @@ class usuarioModel extends usuarioClass {
             return $list;
             
         }
+        
+        public function findUserByIdV2(){
+            
+            $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+            
+            $id=$this->id;
+            
+            $sql = "CALL spFindUsuario('$id')"; // SQL sententzia - sentencia SQL
+            
+            $result = $this->link->query($sql);
+            
+            //$this->link->num_rows; num rows  of result
+            
+            $list=array();
+            
+            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { //each row
+                
+                
+                $this->id=$row['id'];
+                $this->nombre=$row['nombre'];
+                $this->apellidos=$row['apellidos'];
+                $this->usuario=$row['usuario'];
+                $this->password=$row['password'];
+                $this->idEquipo=$row['idEquipo'];
+                $this->tipo=$row['tipo'];
+                $this->email=$row['email'];
+                $this->direccion=$row['direccion'];
+                $this->fechaDeNacimiento=$row['fechaDeNacimiento'];
+                $this->admin=$row['admin'];
+                $this->imagen=$row['imagen'];
+                
+                $equipo=new equipoModel();
+                $equipo->id=$row['idEquipo'];
+                $equipo->findTeamById();
+                
+                $this->objEquipo=$equipo;
+                
+                if($this->tipo==1){
+                    
+                    $jugador=new jugadorModel();
+                    $jugador->id=$row['id'];
+                    $jugador->findPlayerById();
+                    
+                    $this->objJugador=$jugador;
+                    
+                }else if($this->tipo==2){
+                    
+                    $entrenador=new entrenadorModel();
+                    $entrenador->id=$row['id'];
+                    $entrenador->findEntrenadorById();
+                    
+                    $this->objEntrenador=$entrenador;
+                    
+                }else{
+                    
+                    $delegado=new delegadoModel();
+                    $delegado->id=$row['id'];
+                    $delegado->findDelegadoById();
+                    
+                    $this->objDelegado=$delegado;
+                    
+                }
+                
+                array_push($list, $this);
+                
+            }
+            mysqli_free_result($result);
+            $this->CloseConnect();
+            return $list;
+            
+        }
     
 }

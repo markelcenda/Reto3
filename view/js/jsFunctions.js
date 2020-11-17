@@ -1,51 +1,52 @@
 document.addEventListener("DOMContentLoaded", function () {
   sessionVarsView();
   cargarImagenesEquipos();
+  cargarUltimasNoticias();
   aos_init();
 
 });
 
-  function aos_init() {
-    AOS.init({
-      duration: 800,
-      once: true
-    });
-  }  
+function aos_init() {
+  AOS.init({
+    duration: 800,
+    once: true
+  });
+}
 
-  function equiposDesdeIndex(id){
-    pagina="view/pages/equipos.html?" + id;
-    window.location.href=pagina;	
-  }
+function equiposDesdeIndex(id) {
+  pagina = "view/pages/equipos.html?" + id;
+  window.location.href = pagina;
+}
 
-  function sessionVarsView(){
-	
-    var url="controller/cSessionVarsView.php";
+function sessionVarsView() {
 
-    		fetch(url, {
-    			  method: 'GET', 
-    			  headers:{'Content-Type': 'application/json'}  // input data
-    			  })
-    		.then(res => res.json()).then(result => {
-    			
-    			var usuario=result.usuario;
-    			
-    			if (usuario !=null){
-    				
-    				for(let i=0; i<usuario.length; i++){
-    					//Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-    		             img="<a href='view/pages/usuario.html'><img id='imgSesion' src='view/uploads/" + usuario[i].imagen + "'></a>";
-    		             $(".botonLogin").hide();
-    		             $(".botonLogout").show();
-    		             $(".sesionUsuario").css('display','flex');
-    		             $("#sitioUsuario").html(img);
-    				}
+  var url = "controller/cSessionVarsView.php";
 
-             
-          }
+  fetch(url, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }  // input data
+  })
+    .then(res => res.json()).then(result => {
 
-    		})
-    		.catch(error => console.error('Error status:', error));	
-    }
+      var usuario = result.usuario;
+
+      if (usuario != null) {
+
+        for (let i = 0; i < usuario.length; i++) {
+          //Muestra la imagen que le corresponde al usuario que ha iniciado sesion
+          img = "<a href='view/pages/usuario.html'><img id='imgSesion' src='view/uploads/" + usuario[i].imagen + "'></a>";
+          $(".botonLogin").hide();
+          $(".botonLogout").show();
+          $(".sesionUsuario").css('display', 'flex');
+          $("#sitioUsuario").html(img);
+        }
+
+
+      }
+
+    })
+    .catch(error => console.error('Error status:', error));
+}
 
 function equiposDesdeIndex(id) {
   pagina = "view/pages/equipos.html?" + id;
@@ -128,7 +129,7 @@ function cargarImagenesEquipos() {
       });
 
       $(".card").click(function (event) {
-        id = parseInt(event.target.id.slice(-1))+1;
+        id = parseInt(event.target.id.slice(-1)) + 1;
         console.log(id);
         equiposDesdeIndex(id);
       });
@@ -136,3 +137,39 @@ function cargarImagenesEquipos() {
     })
     .catch(error => console.error('Error status:', error));
 }
+
+function cargarUltimasNoticias() {
+  var url = "view/json/noticias.json";
+
+  fetch(url, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }  // input data
+  })
+    .then(res => res.json()).then(result => {
+      var noticias = result;
+      console.log(noticias);
+
+      var noticia = "";
+    
+
+      for (i = noticias.length - 1; i > noticias.length - 4; i--) {
+
+        noticia = "<div class='col-md-4 mb-4'>" +
+        "<div class='card mb-4 box-shadow'>" +
+        "<img class='card-img-top' src='" + noticias[i].imagen + "'>" +
+        "<div class='card-body'>" +
+        "<b><p class='card-text'>" + noticias[i].titulo + "</p></b><br>" +
+        "<p class='card-text'>" + noticias[i].texto + "</p>" +
+        "<div class='d-flex justify-content-between align-items-center'>" +
+        "<small class='text-muted'>" + noticias[i].fecha + "</small>" +
+        "</div>" +
+        "</div>" +
+        "</div>" +
+        "</div>"
+
+        $("#noticias").append(noticia);
+      }
+    })
+    .catch(error => console.error('Error status:', error));
+}
+
