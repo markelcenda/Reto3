@@ -142,9 +142,10 @@ function sessionVarsView(){
                              "<div class='col-lg-12 m-1'>" +
                                 "<button type='button' class='btn text-white m-2 col-lg-2' id='btnMisDatos'>Mis datos</button>" +
                                 "<button type='button' class='btn text-white m-2 col-lg-2' id='btnUpdateUsuario'>Actualizar Información</button>" +
-                            "</div>";
+                            "</div>" +
+                            "<div class='row justify-content-center' id='acciones'></div>"; //DIV para añadir los datos
             }else if(usuario[i].admin==1){
-                usuarioInfo="<div class='col m-1' id='acciones'>" +
+                usuarioInfo="<div class='col m-1'>" +
                                 "<div class='row justify-content-center align-items-center'>" +
                                     "<div class='col'>" +
                                         "<h1>" + usuario[i].usuario + "</h1>" +
@@ -156,7 +157,9 @@ function sessionVarsView(){
                                 "<button type='button' class='btn text-white m-2' id='btnUpdateUsuario'>Actualizar información</button>" +
                                 "<button type='button' class='btn text-white m-2' id='btnUpdateJugador'>Actualizar jugador</button>" +
                                 "<button type='button' class='btn text-white m-2' id='btnDeleteUsuario'>Borrar usuario</button>" +
-                            "</div>";
+                            "</div>" +
+                            "<div class='row justify-content-center' id='acciones'></div>"; //DIV para añadir los datos
+
             }
 
         }
@@ -169,65 +172,75 @@ function sessionVarsView(){
             updateUsuario(usuario);
         });
 
+        /*Al hacer click, se nos muestran los datos del usuario*/
         $("#btnMisDatos").click(function(){
             datosUsuario(usuario);
         });
-
+        /*Al hacer click, se nos muestra un select con todos los usuarios para eliminar*/
         $("#btnDeleteUsuario").click(function(){
             loadUsers();
+        });
+
+        /*Al hacer click, se nos muestra un select con todos los usuarios para actualizar*/
+        $("#btnUpdateJugador").click(function(){
+            loadUsersToUpdate();
         });
     }
 
    function datosUsuario(usuario){
 
-        $newrow = "<div class='row datosDeUsuario m-5 text-white'>"+
-                        "<div class='row-lg-3'>"+
-                            "<div class='col-lg-12'>"+
-                                "<p class='font-weight-bold'>Nombre:</p>"+
-                                "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
-                            "</div>"+
-                            "<div class='col-lg-12 '>"+
-                                "<p class='font-weight-bold'>Direccion:</p>"+
-                                "<p>"+ usuario[0].direccion + "</p>"+
-                            "</div>"+
-                            "<div class='col-lg-12 '>"+
-                                "<p class='font-weight-bold'>Fecha de Nacimiento:</p>"+
-                                "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
-                            "</div>"+
-                        "</div>"+
-                        "<div class='row'>"+
-                            "<div class='m-5'>"+
-                                "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>"+
-                            "</div>"+
-                        "</div>"+
-                        "<div class='row-lg-3'>"+
-                            "<div class='col-lg-12'>"+
-                                "<p class='font-weight-bold'>Correo electronico:</p>"+
-                                "<p>"+ usuario[0].email + "</p>"+
-                            "</div>"+
-                            "<div class='col-lg-12 '>"+
-                                "<p class='font-weight-bold'>Usuario:</p>"+
-                                "<p>"+ usuario[0].usuario+ "</p>"+
-                            "</div>"+
-                            "<div class='col-lg-12'>"+
-                                "<p class='font-weight-bold'>Contraseña:</p>"+
-                                "<p>"+ usuario[0].password + "</p>"+
-                            "</div>"+
-                        "</div>"+
-                    "</div>";
+    
 
-        $('#zonaUsuario').append($newrow);
+        $("#acciones").html("");
+
+        $newrow = "<div class='row datosDeUsuario m-5 text-white'>"+
+        "<div class='row-lg-3'>"+
+            "<div class='col-lg-12'>"+
+                "<p class='font-weight-bold'>Nombre:</p>"+
+                "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
+            "</div>"+
+            "<div class='col-lg-12 '>"+
+                "<p class='font-weight-bold'>Direccion:</p>"+
+                "<p>"+ usuario[0].direccion + "</p>"+
+            "</div>"+
+            "<div class='col-lg-12 '>"+
+                "<p class='font-weight-bold'>Fecha de Nacimiento:</p>"+
+                "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
+            "</div>"+
+        "</div>"+
+        "<div class='row'>"+
+            "<div class='m-5'>"+
+                "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>"+
+            "</div>"+
+        "</div>"+
+        "<div class='row-lg-3'>"+
+            "<div class='col-lg-12'>"+
+                "<p class='font-weight-bold'>Correo electronico:</p>"+
+                "<p>"+ usuario[0].email + "</p>"+
+            "</div>"+
+            "<div class='col-lg-12 '>"+
+                "<p class='font-weight-bold'>Usuario:</p>"+
+                "<p>"+ usuario[0].usuario+ "</p>"+
+            "</div>"+
+            "<div class='col-lg-12'>"+
+                "<p class='font-weight-bold'>Contraseña:</p>"+
+                "<p>"+ usuario[0].password + "</p>"+
+            "</div>"+
+        "</div>"+
+    "</div>";
+
+        $('#acciones').append(newrow);
 
     }
 
     function updateUsuario(usuario){
 
-        var formulario="";
 
         for(let i=0; i<usuario.length; i++){
 
+            $("#acciones").html("");
             /*Formulario con datos del administrador para modificar*/
-            formulario+="<form>" +
+            formulario="<form>" +
 
                         "<div class='form-row justify-content-center'>" +
                             "<div class='form-group col-md-4'>" +
@@ -268,7 +281,7 @@ function sessionVarsView(){
         /*ID del admin*/
         idUsuario=usuario[0].id;
 
-        $("#zonaUsuario").html(formulario);
+        $("#acciones").append(formulario);
         /*Click en el boton actualizar para hacer el update*/
         $("#btnExecuteUpdate").click(function(){
             execUpdate(idUsuario);
@@ -294,6 +307,8 @@ function sessionVarsView(){
             
 		.then(res => res.json()).then(result => {
 
+            $("#acciones").html("");
+
             /*Alert + recargar pagina*/
           alert("Información actualizada correctamente");
           window.location.reload();
@@ -315,8 +330,10 @@ function sessionVarsView(){
       .then(res => res.json()).then(result => {
           
           var usuarios=result.list;
-        console.log(usuarios);
           /*Cargar los usuarios en el select*/
+
+          $("#acciones").html("");
+
           selectUsuario="<h2>Selecciona un usuario para eliminar</h2>";
           selectUsuario+="<select id='selectUsuarios'>";
           selectUsuario+="<option selected>Selecciona un usuario</option>";
@@ -324,13 +341,11 @@ function sessionVarsView(){
           for(let i=0; i<usuarios.length; i++){
               
             selectUsuario+="<option value='" + usuarios[i].nombre + " " + usuarios[i].apellidos + "' id='" + usuarios[i].id + "'>" + usuarios[i].id + " -- " + usuarios[i].nombre + " " + usuarios[i].apellidos + "</option>";
-            /*nombre=usuarios[i].nombre;
-            apellidos=usuarios[i].apellidos;*/
               
           }
 
           selectUsuario+="</select>";
-          $("#acciones").html(selectUsuario);
+          $("#acciones").append(selectUsuario);
           
           /*Conseguir la id del usuario y eliminarlo al hacer change*/
           $("#selectUsuarios").change(function(){
@@ -364,6 +379,8 @@ function sessionVarsView(){
                 })
                 
             .then(res => res.json()).then(result => {
+
+                $("#acciones").html("");
     
                 /*Alert + recargar pagina*/
                 alert("Usuario eliminado correctamente");
@@ -373,5 +390,72 @@ function sessionVarsView(){
             .catch(error => console.error('Error status:', error));	
 
         }
+
+    }
+
+    function loadUsersToUpdate(){
+
+        var url = "../../controller/cUsers.php";
+
+        fetch(url, {
+            method: 'GET', 
+            headers:{'Content-Type': 'application/json'}  // input data
+            })
+      .then(res => res.json()).then(result => {
+          
+          var usuarios=result.usuarios;
+
+          $("#acciones").html("");
+
+          selectUsuario="<h2>Selecciona un usuario para actualizar</h2>";
+          selectUsuario+="<select id='selectUsuarios'>";
+          selectUsuario+="<option selected>Selecciona un usuario</option>";
+          
+          for(let i=0; i<usuarios.length; i++){
+
+            /*Teniendo en cuenta el tipo, añadir su tipo al select*/
+            if(usuarios[i].tipo==1){
+                selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- " + "Jugador</option>";
+            }else if(usuarios[i].tipo==2){
+                selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- " + "Entrenador</option>";
+            }else{
+                selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- " + "Delegado</option>";
+            }
+              
+            
+              
+          }
+
+          selectUsuario+="</select>";
+          $("#acciones").append(selectUsuario);
+          
+          /*Conseguir la id del usuario y sacar un formulario con los datos para actualizar al hacer change*/
+          $("#selectUsuarios").change(function(){
+              
+            var idUsuario = $(this).children(":selected").attr("id");
+            updateUser2(idUsuario);
+          });
+          
+
+      })
+      .catch(error => console.error('Error status:', error));	
+
+    }
+
+    function updateUser2(){
+
+        var url = "../../controller/cUsers.php";
+
+        fetch(url, {
+            method: 'GET', 
+            headers:{'Content-Type': 'application/json'}  // input data
+            })
+      .then(res => res.json()).then(result => {
+          
+        var usuario=result.usuario;
+        console.log(usuario);
+  
+      })
+      .catch(error => console.error('Error status:', error));
 
     }

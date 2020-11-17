@@ -6,7 +6,8 @@ $usuario= new usuarioModel();
 
 $response=array();
 
-$response['list']=$usuario->setList(); // returns the list
+$response['list']=$usuario->setList();
+$response['usuarios']=$usuario->allUsers();
 
 $response['error']="no error";
 
