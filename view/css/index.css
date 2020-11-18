@@ -22,6 +22,11 @@
     font-family: "Poppins", sans-serif;
 }
 
+#historiaClub{
+    background-color: #009655;
+    color: white;
+}
+
 /*Imagenes de equipos*/
 .card{
     border: 1px solid transparent !important; 
