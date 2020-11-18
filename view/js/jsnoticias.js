@@ -28,7 +28,7 @@ function cargarNoticias() {
                 "<h4 class='card-title'>" + noticias[i-1].titulo + "</h4>" +
                 "<p class='card-text'>" + noticias[i-1].texto + "</p>" +
                 "<br>" +
-                "<a href='#' class='mt-auto btn btn-primary' id='masInfoNoticias'>Read More</a>" +
+                "<a href='#' class='mt-auto btn text-white' id='masInfoNoticias'>Read More</a>" +
                 "</div>" +
                 "</div >" +
                 "<img class='m-4' src='" + noticias[i-1].imagen + "'>" +
