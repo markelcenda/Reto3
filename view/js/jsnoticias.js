@@ -22,7 +22,6 @@ function cargarNoticias() {
 
             for (i = noticias.length; i > 0; i--) {
                 noticia = "<div class='container py-3'>" +
-<<<<<<< HEAD
                     "<div class='card' id='c" + (i - 1) + "'>" +
                     "<div class='row'>" +
                     "<div class='col-md-7 px-3'>" +
@@ -35,21 +34,6 @@ function cargarNoticias() {
                     "<img class='m-4' src='" + noticias[i - 1].imagen + "'>" +
                     "</div >" +
                     "</div >"
-=======
-                "<div class='card'>" +
-                "<div class='row '>" +
-                "<div class='col-md-7 px-3'>" +
-                "<div class='card-block px-6'>" +
-                "<h4 class='card-title'>" + noticias[i-1].titulo + "</h4>" +
-                "<p class='card-text'>" + noticias[i-1].texto + "</p>" +
-                "<br>" +
-                "<a href='#' class='mt-auto btn text-white' id='masInfoNoticias'>Read More</a>" +
-                "</div>" +
-                "</div >" +
-                "<img class='m-4' src='" + noticias[i-1].imagen + "'>" +
-                "</div >" +
-                "</div >"
->>>>>>> c6ab7c2aab39f78d71baebe4d61452b2a47ae15a
 
                 $("#noticias").append(noticia);
 
