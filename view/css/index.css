@@ -22,6 +22,11 @@
     font-family: "Poppins", sans-serif;
 }
 
+#historiaClub{
+    background-color: #009655;
+    color: white;
+}
+
 /*Imagenes de equipos*/
 .card{
     border: 1px solid transparent !important; 
@@ -84,7 +89,7 @@
     color: black;
     font-weight: bold;
     color: white;
-    background: rgba(0, 151, 19, 0.7); 
+    background: #009655; 
     border-radius: 20px;
     padding: 2% 3% 0% 3%;
     
