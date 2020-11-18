@@ -213,7 +213,7 @@ function sessionVarsView(){
         $("#formularioInformacion").html("");
 
         newrow = "<div class='row justify-content-center datosDeUsuario m-5 text-white'>"+
-        "<div class='row-lg-3 order-1'>"+
+        "<div class='row-lg-3 order-lg-1 order-md-1 order-sm-1 order-1'>"+
             "<div class='col-lg-12'>"+
                 "<p class='font-weight-bold'>Nombre:</p>"+
                 "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
@@ -227,12 +227,12 @@ function sessionVarsView(){
                 "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
             "</div>"+
         "</div>"+
-        "<div class='row order-3'>"+
+        "<div class='row order-lg-2 order-md-3 order-sm-3 order-3'>"+
             "<div class='m-5'>"+
                 "<img class='imagenUsuario' src='../img/"+ usuario[0].imagen + "'>"+
             "</div>"+
         "</div>"+
-        "<div class='row-lg-3 order-2'>"+
+        "<div class='row-lg-3 order-lg-3 order-md-2 order-sm-2 order-2'>"+
             "<div class='col-lg-12'>"+
                 "<p class='font-weight-bold'>Correo electronico:</p>"+
                 "<p>"+ usuario[0].email + "</p>"+
