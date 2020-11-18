@@ -53,7 +53,7 @@ function login(){
                     $("#modelId").modal("hide");
 
                     //Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-                   img="<a href='#' class='ml-3' ><img id='imgSesion' src='../../view/uploads/" + result.usuarioSesion.imagen + "'></a>";
+                   img="<a href='#' class='ml-3' ><img id='imgSesion' src='../../view/img/" + result.usuarioSesion.imagen + "'></a>";
 
                    $("#sitioUsuario").html(img);
 
@@ -117,7 +117,7 @@ function sessionVarsView(){
     				
     				for(let i=0; i<usuario.length; i++){
     					//Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-                        img="<a href='#'><img id='imgSesion' src='../uploads/" + usuario[i].imagen + "'></a>";
+                        img="<a href='#'><img id='imgSesion' src='../img/" + usuario[i].imagen + "'></a>";
     		             $(".botonLogin").hide();
     		             $(".botonLogout").show();
     		             $(".sesionUsuario").css('display','flex');
@@ -229,7 +229,7 @@ function sessionVarsView(){
         "</div>"+
         "<div class='row order-3'>"+
             "<div class='m-5'>"+
-                "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>"+
+                "<img class='imagenUsuario' src='../img/"+ usuario[0].imagen + "'>"+
             "</div>"+
         "</div>"+
         "<div class='row-lg-3 order-2'>"+
@@ -946,7 +946,7 @@ function sessionVarsView(){
             "</div>"+
             "<div class='row order-4'>"+
                 "<div class='m-5'>"+
-                    "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>"+
+                    "<img class='imagenUsuario' src='../img/"+ usuario[0].imagen + "'>"+
                 "</div>"+
             "</div>"+
             "<div class='row-lg-3 order-2'>"+
@@ -998,7 +998,7 @@ function sessionVarsView(){
             "</div>"+
             "<div class='row order-4'>"+
                 "<div class='m-5'>"+
-                    "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>"+
+                    "<img class='imagenUsuario' src='../img/"+ usuario[0].imagen + "'>"+
                 "</div>"+
             "</div>"+
             "<div class='row-lg-3 order-2'>"+
@@ -1042,7 +1042,7 @@ function sessionVarsView(){
             "</div>"+
             "<div class='row order-4'>"+
                 "<div class='m-5'>"+
-                    "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>"+
+                    "<img class='imagenUsuario' src='../img/"+ usuario[0].imagen + "'>"+
                 "</div>"+
             "</div>"+
             "<div class='row-lg-3 order-2'>"+
@@ -1086,7 +1086,7 @@ function sessionVarsView(){
             "</div>"+
             "<div class='row order-3'>"+
                 "<div class='m-5'>"+
-                    "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>"+
+                    "<img class='imagenUsuario' src='../img/"+ usuario[0].imagen + "'>"+
                 "</div>"+
             "</div>"+
             "<div class='row-lg-3 order-2'>"+

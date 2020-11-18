@@ -48,7 +48,7 @@ $fileBase64 = explode(',', $savedFileBase64)[1]; //parte dcha de la coma
 $file = base64_decode($fileBase64);
 
 /*Se especifica el directorio donde se almacenarán los ficheros(se crea si no existe)*/
-$writable_dir = '../view/uploads/';
+$writable_dir = '../view/img/';
 if(!is_dir($writable_dir)){mkdir($writable_dir);}
 
 //Se escribe el archivo

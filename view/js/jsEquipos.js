@@ -416,7 +416,7 @@ function login(){
                     $("#modelId").modal("hide");
 
                     //Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-                   img="<a href='#' class='ml-3' ><img id='imgSesion' src='../../view/uploads/" + result.usuarioSesion.imagen + "'></a>";
+                   img="<a href='#' class='ml-3' ><img id='imgSesion' src='../../view/img/" + result.usuarioSesion.imagen + "'></a>";
 
                    $("#sitioUsuario").html(img);
 
@@ -480,7 +480,7 @@ function sessionVarsView(){
     				
     				for(let i=0; i<usuario.length; i++){
     					//Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-						img="<a href='../pages/usuario.html'><img id='imgSesion' src='../uploads/" + usuario[i].imagen + "'></a>";
+						img="<a href='../pages/usuario.html'><img id='imgSesion' src='../img/" + usuario[i].imagen + "'></a>";
     		             $(".botonLogin").hide();
     		             $(".botonLogout").show();
     		             $(".sesionUsuario").css('display','flex');

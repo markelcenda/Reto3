@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
     sessionVarsView();
 });
 
+var noticias;
+
 //Cargar cards de las noticias
 function cargarNoticias() {
     var url = "../json/noticias.json";
@@ -12,32 +14,34 @@ function cargarNoticias() {
         headers: { 'Content-Type': 'application/json' }  // input data
     })
         .then(res => res.json()).then(result => {
-            var noticias = result;
+            noticias = result;
             console.log(noticias);
 
             var noticia = "";
             console.log(noticias);
 
             for (i = noticias.length; i > 0; i--) {
-                console.log(i);
                 noticia = "<div class='container py-3'>" +
-                "<div class='card'>" +
-                "<div class='row '>" +
-                "<div class='col-md-7 px-3'>" +
-                "<div class='card-block px-6'>" +
-                "<h4 class='card-title'>" + noticias[i-1].titulo + "</h4>" +
-                "<p class='card-text'>" + noticias[i-1].texto + "</p>" +
-                "<br>" +
-                "<a href='#' class='mt-auto btn text-white' id='masInfoNoticias'>Read More</a>" +
-                "</div>" +
-                "</div >" +
-                "<img class='m-4' src='" + noticias[i-1].imagen + "'>" +
-                "</div >" +
-                "</div >"
-
-
+                    "<div class='card' id='c" + (i - 1) + "'>" +
+                    "<div class='row'>" +
+                    "<div class='col-md-7 px-3'>" +
+                    "<div class='card-block px-6'>" +
+                    "<h4 class='card-title'>" + noticias[i - 1].titulo + "</h4>" +
+                    "<p class='card-text'>" + noticias[i - 1].texto + "</p>" +
+                    "<br>" +
+                    "</div>" +
+                    "</div >" +
+                    "<img class='m-4' src='" + noticias[i - 1].imagen + "'>" +
+                    "</div >" +
+                    "</div >"
 
                 $("#noticias").append(noticia);
+
+                id = "#c" + (i - 1)
+
+                $(id).click(function () {
+                    noticiaCompleta(this.id.slice(1));
+                })
             }
 
 
@@ -47,71 +51,71 @@ function cargarNoticias() {
 };
 
 //Cargar la pagina del equipo seleccionado
-function equiposDesdeNoticias(id){
-    pagina="equipos.html?" + id;
-    window.location.href=pagina;
+function equiposDesdeNoticias(id) {
+    pagina = "equipos.html?" + id;
+    window.location.href = pagina;
 }
 
 //Iniciar sesion
-function login(){
+function login() {
 
     //Variables que adquieren el valor de los datos introducidos en el modal
-	 usuario=$("#usuario").val();
-     password=$("#password").val();
+    usuario = $("#usuario").val();
+    password = $("#password").val();
 
-     //Filtro que mira si los campos usuario y contraseña estan vacio
-    if(usuario != "" && password != ""){
-    
-    //en caso de no estar vacio se mandaran los datos al controlador cLogin
-    var url = "../../controller/cLogin.php";
-    var data = {'usuario':usuario, 'password':password};
+    //Filtro que mira si los campos usuario y contraseña estan vacio
+    if (usuario != "" && password != "") {
 
-    console.log(data);
+        //en caso de no estar vacio se mandaran los datos al controlador cLogin
+        var url = "../../controller/cLogin.php";
+        var data = { 'usuario': usuario, 'password': password };
 
-    		//Llamada fetch
-    		fetch(url, {
-    			  method: 'POST', 
-    			  body: JSON.stringify(data), // data can be `string` or {object}!
-    			  headers:{'Content-Type': 'application/json'}  // input data
-                  })
-                  
-    		.then(res => res.json()).then(result => {
+        console.log(data);
 
-                alert(result.error); 
+        //Llamada fetch
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers: { 'Content-Type': 'application/json' }  // input data
+        })
+
+            .then(res => res.json()).then(result => {
+
+                alert(result.error);
 
                 console.log(result.error);
 
                 //Filtro que mira si se ha podido inicar sesion
-                if(result.confirm == true){
+                if (result.confirm == true) {
 
                     //Al detectar que si, econde el boton de iniciar sesion y muestra el de cerrarla y la imagen de usuario
                     $(".botonLogin").hide();
                     $(".botonLogout").show();
-                    $(".sesionUsuario").css('display','flex');
+                    $(".sesionUsuario").css('display', 'flex');
                     $("#usuario").val("");
                     $("#password").val("");
                     $("#modelId").modal("hide");
 
                     //Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-                   img="<a href='#' class='ml-3' ><img id='imgSesion' src='../../view/uploads/" + result.usuarioSesion.imagen + "'></a>";
+                   img="<a href='#' class='ml-3' ><img id='imgSesion' src='../../view/img/" + result.usuarioSesion.imagen + "'></a>";
 
-                   $("#sitioUsuario").html(img);
+                    $("#sitioUsuario").html(img);
 
                 }
-                
-    		})
-            .catch(error => console.error('Error status:', error));	
 
-        }else{
+            })
+            .catch(error => console.error('Error status:', error));
 
-            //en caso de estar vacios, aparecera un alert advirtiendo al usuario
-            alert("Los campos usuario y contraseña no pueden estar vacios");
+    } else {
 
-        }
+        //en caso de estar vacios, aparecera un alert advirtiendo al usuario
+        alert("Los campos usuario y contraseña no pueden estar vacios");
+
+    }
 }
 
 //Cerrar sesion
-function logout(){
+function logout() {
 
     //Vacia los valores de los campos usuario y contraseña
     $("#usuario").val("");
@@ -124,17 +128,17 @@ function logout(){
 
     //Llamada fetch al controlador cLogout
     var url = "../../controller/cLogout.php";
-	fetch(url, {
-		  method: 'GET', 
-		  headers:{'Content-Type': 'application/json'}
-		  })
-	.then(res => res.json()).then(result => {
-	
-        console.log(result.confirm);
-        alert(result.confirm);
-	
-	})
-	.catch(error => console.error('Error status:', error));	
+    fetch(url, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    })
+        .then(res => res.json()).then(result => {
+
+            console.log(result.confirm);
+            alert(result.confirm);
+
+        })
+        .catch(error => console.error('Error status:', error));
 
 }
 
@@ -157,7 +161,7 @@ function sessionVarsView(){
     				
     				for(let i=0; i<usuario.length; i++){
     					//Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-						img="<a href='../pages/usuario.html'><img id='imgSesion' src='../uploads/" + usuario[i].imagen + "'></a>";
+						img="<a href='../pages/usuario.html'><img id='imgSesion' src='../img/" + usuario[i].imagen + "'></a>";
     		             $(".botonLogin").hide();
     		             $(".botonLogout").show();
     		             $(".sesionUsuario").css('display','flex');
