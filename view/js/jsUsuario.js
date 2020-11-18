@@ -158,6 +158,8 @@ function sessionVarsView(){
                                     
                              "</div>" +
                              "<div class='col m-1'>" +
+                                "<button type='button' class='btn text-white m-2' id='btnDatosAdmin'>Ver mis datos</button>" +
+                                "<button type='button' class='btn text-white m-2' id='btnDatosUsuario'>Ver datos de usuario</button>" +
                                 "<button type='button' class='btn text-white m-2' id='btnUpdateUsuario'>Actualizar información</button>" +
                                 "<button type='button' class='btn text-white m-2' id='btnUpdateJugador'>Actualizar usuario</button>" +
                                 "<button type='button' class='btn text-white m-2' id='btnDeleteUsuario'>Borrar usuario</button>" +
@@ -181,6 +183,7 @@ function sessionVarsView(){
         $("#btnMisDatos").click(function(){
             datosUsuario(usuario);
         });
+
         /*Al hacer click, se nos muestra un select con todos los usuarios para eliminar*/
         $("#btnDeleteUsuario").click(function(){
             loadUsers();
@@ -190,14 +193,27 @@ function sessionVarsView(){
         $("#btnUpdateJugador").click(function(){
             loadUsersToUpdate();
         });
+
+        /*Al hacer click, se nos muestran los datos del administrador*/
+        $("#btnDatosAdmin").click(function(){
+            datosUsuario(usuario);
+        });
+
+        /*Al hacer click, se nos muestran los datos del usuario seleccionado*/
+        $("#btnDatosUsuario").click(function(){
+            loadUsersToShowInfo();
+        });
+
+
     }
 
    function datosUsuario(usuario){
 
         $("#acciones").html("");
+        $("#formularioInformacion").html("");
 
-        newrow = "<div class='row datosDeUsuario m-5 text-white'>"+
-        "<div class='row-lg-3'>"+
+        newrow = "<div class='row justify-content-center datosDeUsuario m-5 text-white'>"+
+        "<div class='row-lg-3 order-1'>"+
             "<div class='col-lg-12'>"+
                 "<p class='font-weight-bold'>Nombre:</p>"+
                 "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
@@ -211,12 +227,12 @@ function sessionVarsView(){
                 "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
             "</div>"+
         "</div>"+
-        "<div class='row'>"+
+        "<div class='row order-3'>"+
             "<div class='m-5'>"+
                 "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>"+
             "</div>"+
         "</div>"+
-        "<div class='row-lg-3'>"+
+        "<div class='row-lg-3 order-2'>"+
             "<div class='col-lg-12'>"+
                 "<p class='font-weight-bold'>Correo electronico:</p>"+
                 "<p>"+ usuario[0].email + "</p>"+
@@ -232,19 +248,19 @@ function sessionVarsView(){
         "</div>"+
     "</div>";
 
-        $('#acciones').html(newrow);
+        $('#acciones').append(newrow);
 
     }
 
     //Actualizar informacion del usuario conectado
     function updateUsuario(usuario){
 
-      //  if(usuario[0].tipo != "4"){
 
         for(let i=0; i<usuario.length; i++){
 
             $("#acciones").html("");
-            /*Formulario con datos del usuario para modificar si es jugador, entrenador o delegado*/
+            $("#formularioInformacion").html("");
+            /*Formulario con datos del administrador para modificar*/
             formulario="<form>" +
 
                         "<div class='form-row justify-content-center'>" +
@@ -283,59 +299,6 @@ function sessionVarsView(){
                         "</form>";
         }
 
-   // }else{
-
-        /*for(let i=0; i<usuario.length; i++){
-
-            $("#acciones").html("");
-            /*Formulario con datos del usuario para modificar si es socio*/
-            /*formulario="<form>" +
-
-                        "<div class='form-row justify-content-center'>" +
-                            "<div class='form-group col-md-4'>" +
-                                "<label for='nombre'>Nombre:</label>" +
-                                "<input type='text' class='form-control' id='nombre' value='" + usuario[i].nombre + "' disabled>" +
-                            "</div>" + 
-                            "<div class='form-group col-md-4'>" + 
-                                "<label for='apellido'>Apellidos:</label>" +
-                                "<input type='text' class='form-control' id='apellidos' value='" + usuario[i].apellidos + "' disabled>" +
-                            "</div>" + 
-                        "</div>" +
-
-                        "<div class='form-row justify-content-center'>" +
-                            "<div class='form-group col-md-4'>" +
-                                "<label for='usuario'>Usuario:</label>" +
-                                "<input type='text' class='form-control' id='username' value='" + usuario[i].usuario + "' disabled>" +
-                            "</div>" + 
-                            "<div class='form-group col-md-4'>" + 
-                                "<label for='contraseña'>Contraseña:</label>" +
-                                "<input type='text' class='form-control' id='contraseña' value='" + usuario[i].password + "'>" +
-                            "</div>" + 
-                        "</div>" +
-
-                        "<div class='form-row justify-content-center'>" +
-                            "<div class='form-group col-md-4'>" +
-                                "<label for='email'>Email:</label>" +
-                                "<input type='text' class='form-control' id='email' value='" + usuario[i].email + "'>" +
-                            "</div>" + 
-                            "<div class='form-group col-md-4'>" + 
-                                "<label for='direccion'>Dirección:</label>" +
-                                "<input type='text' class='form-control' id='direccion' value='" + usuario[i].direccion + "'>" +
-                            "</div>" + 
-                        "</div>" +*/
-                        /*"<div class='col-lg-6 p-3 text-center' id='containerImagen'>"+
-                            "<label>Actualizar imagen de perfil</label><br>"+
-                            "<input type='text' name='imagen' id='imagen' accept='.png,.jpeg,.jpg,.gif'>"+
-                            "<label type='text' for='imagen' class='btn text-white col-lg-6 col-md-4 col-sm-4 col-4' id='btnSubirArchivo'>Subir nueva imagen</label>"+
-                        "</div>"+
-                        /*"<div class='col-lg-6 p-3 text-center'>"+
-                            "<img  src='../uploads/"+usuario[i].imagen +"' id='fotoPerfil'>"+
-                        "</div>"+
-                        "<button type='button' id='btnExecuteUpdate' class='btn text-white'>Actualizar</button>" +
-                        "</form>";
-        }
-    }*/
-
         /*ID del admin*/
         idUsuario=usuario[0].id;
 
@@ -367,6 +330,7 @@ function sessionVarsView(){
 		.then(res => res.json()).then(result => {
 
             $("#acciones").html("");
+            $("#formularioInformacion").html("");
 
             /*Alert + recargar pagina*/
           alert("Información actualizada correctamente");
@@ -393,6 +357,7 @@ function sessionVarsView(){
           /*Cargar los usuarios en el select*/
 
           $("#acciones").html("");
+          $("#formularioInformacion").html("");
 
           selectUsuario="<div class='col-lg-12'><h2>Selecciona un usuario para eliminar</h2>";
           selectUsuario+="<select id='selectUsuarios'>";
@@ -442,6 +407,7 @@ function sessionVarsView(){
             .then(res => res.json()).then(result => {
 
                 $("#acciones").html("");
+                $("#formularioInformacion").html("");
     
                 /*Alert + recargar pagina*/
                 alert("Usuario eliminado correctamente");
@@ -469,6 +435,7 @@ function sessionVarsView(){
           var usuarios=result.usuarios;
 
           $("#acciones").html("");
+          $("#formularioInformacion").html("");
 
           selectUsuario="<div class='col-lg-12'><h2>Selecciona un usuario para actualizar</h2>";
           selectUsuario+="<select id='selectUsuarios'>";
@@ -478,11 +445,13 @@ function sessionVarsView(){
 
             /*Teniendo en cuenta el tipo, añadir su tipo al select*/
             if(usuarios[i].tipo==1){
-                selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- " + "Jugador</option>";
+                selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- Jugador</option>";
             }else if(usuarios[i].tipo==2){
-                selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- " + "Entrenador</option>";
+                selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- Entrenador</option>";
+            }else if(usuarios[i].tipo==3){
+                selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- Delegado</option>";
             }else{
-                selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- " + "Delegado</option>";
+                selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- Socio</option>";
             }
               
             
@@ -744,7 +713,7 @@ function sessionVarsView(){
                 "<button type='button' id='btnExecuteUpdateUser' class='btn text-white'>Actualizar</button>" +
                 "</form>";
 
-            }else{//Delegado
+            }else if(usuario[i].tipo==3){//Delegado
 
                 /*Limpiar el div*/
                 $("#formularioInformacion").html("");
@@ -775,6 +744,13 @@ function sessionVarsView(){
 
                  "<button type='button' id='btnExecuteUpdateUser' class='btn text-white'>Actualizar</button>" +
                  "</form>";
+            }else{
+
+                /*Limpiar el div*/
+                $("#formularioInformacion").html("");
+
+                formulario="<h4>Los administradores no pueden modificar los datos personales de los socios</h4>";
+
             }
 
         }
@@ -878,5 +854,263 @@ function sessionVarsView(){
 
         }
 
+
+    }
+
+    /*Mostrar datos del usuario seleccionado*/
+
+    function loadUsersToShowInfo(){
+
+        var url = "../../controller/cUsers.php";
+
+        fetch(url, {
+            method: 'GET', 
+            headers:{'Content-Type': 'application/json'}  // input data
+            })
+      .then(res => res.json()).then(result => {
+          
+          var usuarios=result.usuarios;
+
+          $("#acciones").html("");
+          $("#formularioInformacion").html("");
+
+          selectUsuario="<div class='col-lg-12'><h2>Selecciona un usuario para ver sus datos</h2>";
+          selectUsuario+="<select id='selectUsuarios'>";
+          selectUsuario+="<option selected>Selecciona un usuario</option>";
+          
+          for(let i=0; i<usuarios.length; i++){
+
+            /*Teniendo en cuenta el tipo, añadir su tipo al select*/
+            if(usuarios[i].tipo==1){
+                selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- Jugador</option>";
+            }else if(usuarios[i].tipo==2){
+                selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- Entrenador</option>";
+            }else if(usuarios[i].tipo==3){
+                selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- Delegado</option>";
+            }else{
+                selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- Socio</option>";
+            }
+
+          }
+
+          selectUsuario+="</select></div>";
+          $("#acciones").append(selectUsuario);
+          
+          /*Conseguir la id del usuario y sacar un formulario con los datos para actualizar al hacer change*/
+          $("#selectUsuarios").change(function(){
+              
+            var idUsuario = $(this).children(":selected").attr("id");
+            showUser(idUsuario);
+
+          });
+          
+
+      })
+      .catch(error => console.error('Error status:', error));
+
+    }
+
+    /*Cargar informacion del usuario*/
+    function showUser(idUsuario){
+
+        var url = "../../controller/cUserbyId.php";
+        var data={"id": idUsuario};
+
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers:{'Content-Type': 'application/json'} 
+            })
+      .then(res => res.json()).then(result => {
+          
+        var usuario=result.usuario;
+
+        $("#formularioInformacion").html("");
+
+        if(usuario[0].tipo==1){//JUGADOR
+
+            newrow = "<div class='row justify-content-center datosDeUsuario m-5 text-white'>"+
+            "<div class='row-lg-3 order-1'>"+
+                "<div class='col-lg-12'>"+
+                    "<p class='font-weight-bold'>Nombre:</p>"+
+                    "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
+                "</div>"+
+                "<div class='col-lg-12 '>"+
+                    "<p class='font-weight-bold'>Direccion:</p>"+
+                    "<p>"+ usuario[0].direccion + "</p>"+
+                "</div>"+
+                "<div class='col-lg-12 '>"+
+                    "<p class='font-weight-bold'>Fecha de Nacimiento:</p>"+
+                    "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
+                "</div>"+
+            "</div>"+
+            "<div class='row order-4'>"+
+                "<div class='m-5'>"+
+                    "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>"+
+                "</div>"+
+            "</div>"+
+            "<div class='row-lg-3 order-2'>"+
+                "<div class='col-lg-12'>"+
+                    "<p class='font-weight-bold'>Correo electronico:</p>"+
+                    "<p>"+ usuario[0].email + "</p>"+
+                "</div>"+
+                "<div class='col-lg-12 '>"+
+                    "<p class='font-weight-bold'>Usuario:</p>"+
+                    "<p>"+ usuario[0].usuario+ "</p>"+
+                "</div>"+
+                "<div class='col-lg-12'>"+
+                    "<p class='font-weight-bold'>Contraseña:</p>"+
+                    "<p>"+ usuario[0].password + "</p>"+
+                "</div>"+
+            "</div>"+
+            "<div class='row-lg-3 order-3'>"+
+                "<div class='col-lg-12'>"+
+                    "<p class='font-weight-bold'>Posición:</p>"+
+                    "<p>"+ usuario[0].objJugador.posicion + "</p>"+
+                "</div>"+
+                "<div class='col-lg-12 '>"+
+                    "<p class='font-weight-bold'>Altura:</p>"+
+                    "<p>"+ usuario[0].objJugador.altura+ "m</p>"+
+                "</div>"+
+                "<div class='col-lg-12'>"+
+                    "<p class='font-weight-bold'>Peso:</p>"+
+                    "<p>"+ usuario[0].objJugador.peso + "kg</p>"+
+                "</div>"+
+            "</div>"+
+        "</div>";
+
+        }else if(usuario[0].tipo==2){//ENTRENADOR
+
+            newrow = "<div class='row justify-content-center datosDeUsuario m-5 text-white'>"+
+            "<div class='row-lg-3 order-1'>"+
+                "<div class='col-lg-12'>"+
+                    "<p class='font-weight-bold'>Nombre:</p>"+
+                    "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
+                "</div>"+
+                "<div class='col-lg-12 '>"+
+                    "<p class='font-weight-bold'>Direccion:</p>"+
+                    "<p>"+ usuario[0].direccion + "</p>"+
+                "</div>"+
+                "<div class='col-lg-12 '>"+
+                    "<p class='font-weight-bold'>Fecha de Nacimiento:</p>"+
+                    "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
+                "</div>"+
+            "</div>"+
+            "<div class='row order-4'>"+
+                "<div class='m-5'>"+
+                    "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>"+
+                "</div>"+
+            "</div>"+
+            "<div class='row-lg-3 order-2'>"+
+                "<div class='col-lg-12'>"+
+                    "<p class='font-weight-bold'>Correo electronico:</p>"+
+                    "<p>"+ usuario[0].email + "</p>"+
+                "</div>"+
+                "<div class='col-lg-12 '>"+
+                    "<p class='font-weight-bold'>Usuario:</p>"+
+                    "<p>"+ usuario[0].usuario+ "</p>"+
+                "</div>"+
+                "<div class='col-lg-12'>"+
+                    "<p class='font-weight-bold'>Contraseña:</p>"+
+                    "<p>"+ usuario[0].password + "</p>"+
+                "</div>"+
+            "</div>"+
+            "<div class='row-lg-3 order-3'>"+
+                "<div class='col-lg-12'>"+
+                    "<p class='font-weight-bold'>Experiencia:</p>"+
+                    "<p>"+ usuario[0].objEntrenador.experiencia + " años</p>"+
+                "</div>"+
+            "</div>"+
+        "</div>";
+
+        }else if(usuario[0].tipo==3){//DELEGADO
+
+            newrow = "<div class='row justify-content-center datosDeUsuario m-5 text-white'>"+
+            "<div class='row-lg-3 order-1'>"+
+                "<div class='col-lg-12'>"+
+                    "<p class='font-weight-bold'>Nombre:</p>"+
+                    "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
+                "</div>"+
+                "<div class='col-lg-12 '>"+
+                    "<p class='font-weight-bold'>Direccion:</p>"+
+                    "<p>"+ usuario[0].direccion + "</p>"+
+                "</div>"+
+                "<div class='col-lg-12 '>"+
+                    "<p class='font-weight-bold'>Fecha de Nacimiento:</p>"+
+                    "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
+                "</div>"+
+            "</div>"+
+            "<div class='row order-4'>"+
+                "<div class='m-5'>"+
+                    "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>"+
+                "</div>"+
+            "</div>"+
+            "<div class='row-lg-3 order-2'>"+
+                "<div class='col-lg-12'>"+
+                    "<p class='font-weight-bold'>Correo electronico:</p>"+
+                    "<p>"+ usuario[0].email + "</p>"+
+                "</div>"+
+                "<div class='col-lg-12 '>"+
+                    "<p class='font-weight-bold'>Usuario:</p>"+
+                    "<p>"+ usuario[0].usuario+ "</p>"+
+                "</div>"+
+                "<div class='col-lg-12'>"+
+                    "<p class='font-weight-bold'>Contraseña:</p>"+
+                    "<p>"+ usuario[0].password + "</p>"+
+                "</div>"+
+            "</div>"+
+            "<div class='row-lg-3 order-3'>"+
+                "<div class='col-lg-12'>"+
+                    "<p class='font-weight-bold'>Experiencia:</p>"+
+                    "<p>"+ usuario[0].objDelegado.experiencia + " años</p>"+
+                "</div>"+
+            "</div>"+
+        "</div>";
+            
+        }else{//SOCIO
+
+            newrow = "<div class='row justify-content-center datosDeUsuario m-5 text-white'>"+
+            "<div class='row-lg-3 order-1'>"+
+                "<div class='col-lg-12'>"+
+                    "<p class='font-weight-bold'>Nombre:</p>"+
+                    "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
+                "</div>"+
+                "<div class='col-lg-12 '>"+
+                    "<p class='font-weight-bold'>Direccion:</p>"+
+                    "<p>"+ usuario[0].direccion + "</p>"+
+                "</div>"+
+                "<div class='col-lg-12 '>"+
+                    "<p class='font-weight-bold'>Fecha de Nacimiento:</p>"+
+                    "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
+                "</div>"+
+            "</div>"+
+            "<div class='row order-3'>"+
+                "<div class='m-5'>"+
+                    "<img class='imagenUsuario' src='../uploads/"+ usuario[0].imagen + "'>"+
+                "</div>"+
+            "</div>"+
+            "<div class='row-lg-3 order-2'>"+
+                "<div class='col-lg-12'>"+
+                    "<p class='font-weight-bold'>Correo electronico:</p>"+
+                    "<p>"+ usuario[0].email + "</p>"+
+                "</div>"+
+                "<div class='col-lg-12 '>"+
+                    "<p class='font-weight-bold'>Usuario:</p>"+
+                    "<p>"+ usuario[0].usuario+ "</p>"+
+                "</div>"+
+                "<div class='col-lg-12'>"+
+                    "<p class='font-weight-bold'>Contraseña:</p>"+
+                    "<p>"+ usuario[0].password + "</p>"+
+                "</div>"+
+            "</div>"+
+        "</div>";
+
+        }
+
+        
+        $("#formularioInformacion").html(newrow);
+  
+      })
+      .catch(error => console.error('Error status:', error));
 
     }
