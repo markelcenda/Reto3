@@ -9,13 +9,13 @@ h3{
 
 /*Boton volver*/
 .botonVolver{
-  background-color: rgb(120, 173, 41) !important;
+  background-color: #009655 !important;
   color: white !important;
   transition: 0.5s !important;
 }
 .botonVolver:hover{
   background-color: white !important;
-  color: rgb(120, 173, 41) !important;
+  color: #009655 !important;
   transition: 0.5s !important;
 }
 

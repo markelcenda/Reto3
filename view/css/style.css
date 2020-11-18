@@ -27,7 +27,7 @@ nav figure {
 }
 
 nav figure:hover {
-    border-bottom: 3px solid rgb(120, 173, 41);
+    border-bottom: 3px solid #009655;
 }
 
 /*Links*/
@@ -40,38 +40,38 @@ nav ul li a {
 
 nav ul li .efecto:hover {
     font-size: 18px;
-    border-bottom: 3px solid rgb(120, 173, 41);
+    border-bottom: 3px solid #009655;
 }
 
 nav ul li .dropdown-item:hover {
     color: white;
-    background-color: rgb(120, 173, 41);
+    background-color: #009655;
 }
 
 /*Boton login*/
 
 nav .botonLogin {
-    background-color: rgb(120, 173, 41);
+   
     color: white;
     transition: 0.5s;
 }
 
 nav .botonLogin:hover {
     background-color: white;
-    color: rgb(120, 173, 41);
+    color: #009655;
     transition: 0.5s;
 }
 
 /*Boton logout*/
 nav .botonLogout{
-    background-color: rgb(120, 173, 41);
+    
     color: white;
     transition: 0.5s;
     display: none;
 }
 nav .botonLogout:hover{
     background-color: white;
-    color: rgb(120, 173, 41);
+    color: #009655;
     transition: 0.5s;
 }
 
@@ -82,24 +82,24 @@ nav .botonLogout:hover{
 
 /*Boton login del modal*/
 .botonLoginStart{
-    background-color: rgb(120, 173, 41) !important;
+    
     color: white !important;
     transition: 0.5s !important;
 }
 .botonLoginStart:hover{
     background-color: white !important;
-    color: rgb(120, 173, 41) !important;
+    
     transition: 0.5s !important;
 }
 
-nav .botonCerrar {
-    background-color: red;
-    color: white;
+ .botonCerrar {
+    background-color: red !important;
+    color: white !important;
 }
 
-nav .botonCerrar:hover {
-    background-color: white;
-    color: red;
+.botonCerrar:hover {
+    background-color: white !important;
+    color: red !important;
     transition: 0.5s;
 }
 
@@ -130,7 +130,7 @@ footer{
     height: 200px;
 }
 
-/*Tamaño de los iconos de las redes socaiales*/
-.redesIconos{
-    width: 30px;
+/*Color de los botones*/
+.btn{
+    background-color: #009655;
 }
