@@ -12,6 +12,8 @@ $equipo=new equipoModel();
 
 $usuario->id=$id;
 
+echo $usuario->id;
+
 $response=array();
 
 $response['jugador']=$usuario->findJugadorById();
