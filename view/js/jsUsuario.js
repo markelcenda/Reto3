@@ -6,11 +6,13 @@ $(document).ready(function () {
 
 });
 
+//cargar la pagina del equipo seleccionado
 function equiposDesdeSocios(id){
     pagina="equipos.html?" + id;
     window.location.href=pagina;	
   }
 
+  //Iniciar sesión
 function login(){
 
     //Variables que adquieren el valor de los datos introducidos en el modal
@@ -68,7 +70,7 @@ function login(){
         }
 }
 
-//Fucnion de logout
+//Cerrar sesion
 function logout(){
 
     //Vacia los valores de los campos usuario y contraseña
@@ -97,6 +99,7 @@ function logout(){
 
 }
 
+//Comprobar si el usuario esta conectado
 function sessionVarsView(){
 	
     var url="../../controller/cSessionVarsView.php";
@@ -129,6 +132,7 @@ function sessionVarsView(){
     		.catch(error => console.error('Error status:', error));	
     }
 
+    //Añadir la foto de perfil
     function zonaAdministrador(usuario){
 
        /*Si es usuario sacar acciones diferentes al administrador*/
@@ -190,8 +194,6 @@ function sessionVarsView(){
 
    function datosUsuario(usuario){
 
-    
-
         $("#acciones").html("");
 
         $newrow = "<div class='row datosDeUsuario m-5 text-white'>"+
@@ -234,6 +236,7 @@ function sessionVarsView(){
 
     }
 
+    //Actualizar informacion del usuario conectado
     function updateUsuario(usuario){
 
 
@@ -290,6 +293,7 @@ function sessionVarsView(){
 
     }
 
+    //Ejecutar update de la informacion del usuario
     function execUpdate(idUsuario){
        /*Datos nuevos del admin*/
         password=$("#contraseña").val();
@@ -320,6 +324,7 @@ function sessionVarsView(){
 
     }
 
+    //Cargar todos los usuarios
     function loadUsers(){
 
         var url = "../../controller/cUsers.php";
@@ -363,6 +368,7 @@ function sessionVarsView(){
 
     }
 
+    //Ejecutar delete
     function execDelete(idUsuario, nombreApellido){
         
         var confirmar=confirm("¿Estás seguro de borrar a " + nombreApellido + "?");
@@ -394,6 +400,8 @@ function sessionVarsView(){
 
     }
 
+
+    //Cargar usuarios para hacer el update
     function loadUsersToUpdate(){
 
         var url = "../../controller/cUsers.php";
@@ -444,6 +452,7 @@ function sessionVarsView(){
 
     }
 
+    //Coseguir informacion del usuario con la id para rellenar formulario
     function updateUser2(idUsuario){
 
         var url = "../../controller/cUserbyId.php";
@@ -729,6 +738,7 @@ function sessionVarsView(){
 
     }
 
+    //Ejecutar update de cualquier usuario si el admin esta conectado
     function executeUpdate2(usuario){
 
         if(usuario[0].tipo==1){//jugador
