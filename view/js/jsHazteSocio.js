@@ -70,17 +70,12 @@ function datosFormulario(){
     //Filtro que determina si los datos pueden ser enviados a la base de datos en funcion de la variable correcto
     if($correcto == false){
 
-        /*En caso de correcto ser igual a false, sacar un alert informando al usuario 
-        que faltan campos por rellenar y no mandara los datos a la base de datos*/
+        
         alert("Faltan campos por rellenar o el correo no es valido");
         return false;
 
     }else{
 
-        //Si correcto es igual a true, los datos seran enviados a la base de datos
-
-
-        //Se guardan en las variables "insert" los valores establecidos en el formulario
         nombreInsert=$("#nombre").val();
     	apellidosInsert=$("#apellidos").val();
     	usuarioInsert=$("#nuevoUsuario").val(); 
@@ -92,40 +87,88 @@ function datosFormulario(){
     	direccionInsert=$("#direccion").val();
     	fechaDeNacimientoInsert=$("#fechaNacimiento").val();
         adminInsert="0";
-    
-        /*Se establece una variable url con la direccion del controlador requerido, y una variable
-         data con los datos del formulario*/
-            var url = "../../controller/cUsuarioExecuteInsert.php";
-    		var data = {'nombreInsert':nombreInsert,
-           			'apellidosInsert':apellidosInsert,
-           			'usuarioInsert':usuarioInsert,
-           			'passwordInsert':passwordInsert,
-           			'idEquipoInsert':idEquipoInsert,
-           			'tipoInsert':tipoInsert,
-           			'emailInsert':emailInsert,
-           			'direccionInsert':direccionInsert,
-           			'fechaDeNacimientoInsert':fechaDeNacimientoInsert,
-                    'adminInsert':adminInsert,
-                    'filename':filename,
-                    'savedFileBase64':savedFileBase64,
-                    'imagenInsert': imagenInsert};
+
+        var url = "../../controller/cUsers.php";
 
     		//Llamada fetch
     		fetch(url, {
-    			  method: 'POST', // or 'POST'
-    			  body: JSON.stringify(data), // data can be `string` or {object}!
-    			  headers:{'Content-Type': 'application/json'}  // input data
+    			  method: 'GET', 
                   })
                   
     		.then(res => res.json()).then(result => {
-                
-           		console.log(result.error);//Avisa de si la insercion a salido bien o mal
-           		alert(result.error); //Avisa de si la insercion a salido bien o mal
-           		window.location.reload(true);  //recarga la pagina	
+
+                var list = result.list;
+
+                permitirInsert = true;
+                //recorre toda la lista de usuarios
+                for (let i=0; i <list.length; i++){
+                    //mira si el nombre de usuario y correo eletronico introducidos coincide con alguno de la base de datos
+                    if(usuarioInsert == list[i].usuario || emailInsert == list[i].email){
+
+                        permitirInsert = false;
+
+                        for (let i=0; i <list.length; i++){
+
+                            if(usuarioInsert == list[i].usuario){
+
+                                $("#nuevoUsuario").css("border","2px solid red");
+
+                            }
+
+                            if(emailInsert == list[i].email){
+
+                                $("#email").css("border","2px solid red");
+
+                            }
+                        }
+
+                        break;
+
+                    }
+
+                }
+                //ejecuta la insercion del nuevo socio
+                if(permitirInsert == true){
+        
+                    var url = "../../controller/cUsuarioExecuteInsert.php";
+                    var data = {'nombreInsert':nombreInsert,
+                               'apellidosInsert':apellidosInsert,
+                               'usuarioInsert':usuarioInsert,
+                               'passwordInsert':passwordInsert,
+                               'idEquipoInsert':idEquipoInsert,
+                               'tipoInsert':tipoInsert,
+                               'emailInsert':emailInsert,
+                               'direccionInsert':direccionInsert,
+                               'fechaDeNacimientoInsert':fechaDeNacimientoInsert,
+                                'adminInsert':adminInsert,
+                                'filename':filename,
+                                'savedFileBase64':savedFileBase64,
+                                'imagenInsert': imagenInsert};
+        
+                    //Llamada fetch
+                    fetch(url, {
+                          method: 'POST', // or 'POST'
+                          body: JSON.stringify(data), // data can be `string` or {object}!
+                          headers:{'Content-Type': 'application/json'}  // input data
+                          })
+                          
+                    .then(res => res.json()).then(result => {
+                        
+                           console.log(result.error);//Avisa de si la insercion a salido bien o mal
+                           alert(result.error); //Avisa de si la insercion a salido bien o mal
+                           window.location.reload(true);  //recarga la pagina	
+                                
+                    })
+                    .catch(error => console.error('Error status:', error));	
+        
+                }else{
+        
+                    alert("Ya existe un usuario con ese nombre de usuario o correo electronico");
+                }
+                       
     					
     		})
             .catch(error => console.error('Error status:', error));	
-
     }
 
 }
