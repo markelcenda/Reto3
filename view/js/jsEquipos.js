@@ -10,6 +10,7 @@ $(document).ready(function () {
 	
 });
 
+//Cargar la pagina del equipo seleccionado
 function equiposDesdeEquipos(id){
     pagina="equipos.html?" + id;
     window.location.href=pagina;	
@@ -62,6 +63,7 @@ function loadEquipos(){
 	
 }
 
+//Conseguir todos los usuarios de un equipo
 function loadUsersByTeamId(idEquipo){
 	
 	
@@ -110,6 +112,8 @@ function loadUsersByTeamId(idEquipo){
 				idJugador="";
 				
 				for(var i=0; i<jugadores.length; i++){
+
+					//JUGADORES
 
 					if(jugadores[i].objJugador.posicion=="Delantero"){
 						console.log(jugadores[i]);
@@ -231,6 +235,8 @@ function loadUsersByTeamId(idEquipo){
 	
 }
 
+
+//Mostrar datos del jugador, entrenador o delegado seleccionado
 function mostrarDatosUsuarios(id){
 	
 
@@ -369,7 +375,7 @@ function mostrarDatosUsuarios(id){
 }
 
 
-
+//Iniciar sesion
 function login(){
 
     //Variables que adquieren el valor de los datos introducidos en el modal
@@ -427,7 +433,7 @@ function login(){
         }
 }
 
-//Fucnion de logout
+//Cerrar sesion
 function logout(){
 
     //Vacia los valores de los campos usuario y contraseña
@@ -455,6 +461,8 @@ function logout(){
 
 }
 
+
+//Comprobar si el usuario está cnectado
 function sessionVarsView(){
 	
     var url="../../controller/cSessionVarsView.php";

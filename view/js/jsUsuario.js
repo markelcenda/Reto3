@@ -6,11 +6,13 @@ $(document).ready(function () {
 
 });
 
+//cargar la pagina del equipo seleccionado
 function equiposDesdeSocios(id){
     pagina="equipos.html?" + id;
     window.location.href=pagina;	
   }
 
+  //Iniciar sesión
 function login(){
 
     //Variables que adquieren el valor de los datos introducidos en el modal
@@ -68,7 +70,7 @@ function login(){
         }
 }
 
-//Fucnion de logout
+//Cerrar sesion
 function logout(){
 
     //Vacia los valores de los campos usuario y contraseña
@@ -97,6 +99,7 @@ function logout(){
 
 }
 
+//Comprobar si el usuario esta conectado
 function sessionVarsView(){
 	
     var url="../../controller/cSessionVarsView.php";
@@ -129,6 +132,7 @@ function sessionVarsView(){
     		.catch(error => console.error('Error status:', error));	
     }
 
+    //Añadir la foto de perfil
     function zonaAdministrador(usuario){
 
        /*Si es usuario sacar acciones diferentes al administrador*/
@@ -155,7 +159,7 @@ function sessionVarsView(){
                              "</div>" +
                              "<div class='col m-1'>" +
                                 "<button type='button' class='btn text-white m-2' id='btnUpdateUsuario'>Actualizar información</button>" +
-                                "<button type='button' class='btn text-white m-2' id='btnUpdateJugador'>Actualizar jugador</button>" +
+                                "<button type='button' class='btn text-white m-2' id='btnUpdateJugador'>Actualizar usuario</button>" +
                                 "<button type='button' class='btn text-white m-2' id='btnDeleteUsuario'>Borrar usuario</button>" +
                             "</div>" +
                             "<div class='row justify-content-center' id='acciones'></div>" + //DIV para añadir los datos
@@ -232,6 +236,7 @@ function sessionVarsView(){
 
     }
 
+    //Actualizar informacion del usuario conectado
     function updateUsuario(usuario){
 
       //  if(usuario[0].tipo != "4"){
@@ -342,6 +347,7 @@ function sessionVarsView(){
 
     }
 
+    //Ejecutar update de la informacion del usuario
     function execUpdate(idUsuario){
        /*Datos nuevos del admin*/
         password=$("#contraseña").val();
@@ -372,6 +378,7 @@ function sessionVarsView(){
 
     }
 
+    //Cargar todos los usuarios
     function loadUsers(){
 
         var url = "../../controller/cUsers.php";
@@ -415,6 +422,7 @@ function sessionVarsView(){
 
     }
 
+    //Ejecutar delete
     function execDelete(idUsuario, nombreApellido){
         
         var confirmar=confirm("¿Estás seguro de borrar a " + nombreApellido + "?");
@@ -446,6 +454,8 @@ function sessionVarsView(){
 
     }
 
+
+    //Cargar usuarios para hacer el update
     function loadUsersToUpdate(){
 
         var url = "../../controller/cUsers.php";
@@ -487,6 +497,7 @@ function sessionVarsView(){
               
             var idUsuario = $(this).children(":selected").attr("id");
             updateUser2(idUsuario);
+
           });
           
 
@@ -495,6 +506,7 @@ function sessionVarsView(){
 
     }
 
+    //Coseguir informacion del usuario con la id para rellenar formulario
     function updateUser2(idUsuario){
 
         var url = "../../controller/cUserbyId.php";
@@ -503,7 +515,7 @@ function sessionVarsView(){
         fetch(url, {
             method: 'POST',
             body: JSON.stringify(data),
-            headers:{'Content-Type': 'application/json'}  // input data
+            headers:{'Content-Type': 'application/json'} 
             })
       .then(res => res.json()).then(result => {
           
@@ -514,70 +526,195 @@ function sessionVarsView(){
 
             if(usuario[i].tipo==1){//Jugador
 
+                /*Limpiar el div*/
                 $("#formularioInformacion").html("");
 
-                /*Formulario con datos del administrador para modificar*/
-                formulario="<form>" +
+                /*Formulario con datos del jugador para modificar*/
 
-                "<div class='form-row justify-content-center'>" +
-                    "<div class='form-group col-lg-6'>" +
-                        "<label for='nombre'>Nombre:</label>" +
-                        "<input type='text' class='form-control' id='nombre' value='" + usuario[i].nombre + "' disabled>" +
-                    "</div>" + 
-                    "<div class='form-group col-lg-6'>" + 
-                        "<label for='apellido'>Apellidos:</label>" +
-                        "<input type='text' class='form-control' id='apellidos' value='" + usuario[i].apellidos + "' disabled>" +
-                    "</div>" + 
-                "</div>" +
+                if(usuario[i].objJugador.posicion=="Delantero"){ //Si el jugador es delantero, marcar el radio con opcion delantero
 
-                "<div class='form-row justify-content-center'>" +
-                    "<div class='form-group col-lg-6'>" +
-                        "<label for='usuario'>Usuario:</label>" +
-                        "<input type='text' class='form-control' id='username' value='" + usuario[i].usuario + "' disabled>" +
-                    "</div>" + 
+                    formulario="<form>" +
 
-                    "<div class='form-group col-lg-6'>" + 
-
-                        "<div class='row justify-content-center'>" +
-
-                            "<div class='col-lg-4'>" +
-                                "<label for='posicion'>Delantero</label>" +
-                                "<input type='radio' id='delantero' value='Delantero' name='posiciones'>" +
-                            "</div>" +
-
-                            "<div class='col-lg-4'>" +
-                                "<label for='posicion'>Zaguero</label>" +
-                                "<input type='radio' id='zaguero' value='Zaguero' name='posiciones'>" +
-                            "</div>" +    
-
-                            "<div class='col-lg-4'>" +
-                                "<label for='posicion'>Liberos</label>" +
-                                "<input type='radio' id='libero' value='Libero' name='posiciones'>" +
-                            "</div>" +
-
+                    "<div class='form-row justify-content-center'>" +
+                        "<div class='form-group col-lg-6'>" +
+                            "<label for='nombre'>Nombre:</label>" +
+                            "<input type='text' class='form-control' id='nombre' value='" + usuario[i].nombre + "' disabled>" +
+                        "</div>" + 
+                        "<div class='form-group col-lg-6'>" + 
+                            "<label for='apellido'>Apellidos:</label>" +
+                            "<input type='text' class='form-control' id='apellidos' value='" + usuario[i].apellidos + "' disabled>" +
+                        "</div>" + 
+                    "</div>" +
+    
+                    "<div class='form-row justify-content-center'>" +
+                        "<div class='form-group col-lg-6'>" +
+                            "<label for='usuario'>Usuario:</label>" +
+                            "<input type='text' class='form-control' id='username' value='" + usuario[i].usuario + "' disabled>" +
                         "</div>" +
+    
+                        "<div class='form-group col-lg-6'>" + 
+    
+                            "<div class='row justify-content-center'>" +
+    
+                                "<div class='col-lg-4'>" +
+                                    "<label for='posicion'>Delantero</label>" +
+                                    "<input type='radio' id='delantero' value='Delantero' name='posiciones' checked>" +
+                                "</div>" +
+    
+                                "<div class='col-lg-4'>" +
+                                    "<label for='posicion'>Zaguero</label>" +
+                                    "<input type='radio' id='zaguero' value='Zaguero' name='posiciones'>" +
+                                "</div>" +    
+    
+                                "<div class='col-lg-4'>" +
+                                    "<label for='posicion'>Liberos</label>" +
+                                    "<input type='radio' id='libero' value='Libero' name='posiciones'>" +
+                                "</div>" +
+    
+                            "</div>" +
+    
+                        "</div>" +
+                    "</div>" +
+                    
+                    "<div class='form-row justify-content-center'>" +
+                        "<div class='form-group col-lg-6'>" +
+                            "<label for='altura'>Altura:</label>" +
+                            "<input type='number' class='form-control' id='altura' value='" + usuario[i].objJugador.altura + "'>" +
+                        "</div>" + 
+                        "<div class='form-group col-lg-6'>" + 
+                            "<label for='peso'>Peso:</label>" +
+                            "<input type='number' class='form-control' id='peso' value='" + usuario[i].objJugador.peso + "'>" +
+                        "</div>" + 
+                    "</div>" +
+                    "<button type='button' id='btnExecuteUpdateUser' class='btn text-white'>Actualizar</button>" +
+                    "</form>";
 
-                    "</div>" + 
-                "</div>" +
+                }else if(usuario[i].objJugador.posicion=="Zaguero"){ //Si el jugador es zaguero, marcar el radio con opcion zaguero
 
-                "<div class='form-row justify-content-center'>" +
-                    "<div class='form-group col-lg-6'>" +
-                        "<label for='altura'>Altura:</label>" +
-                        "<input type='number' class='form-control' id='altura' value='" + usuario[i].objJugador.altura + "'>" +
-                    "</div>" + 
-                    "<div class='form-group col-lg-6'>" + 
-                        "<label for='peso'>Peso:</label>" +
-                        "<input type='number' class='form-control' id='peso' value='" + usuario[i].objJugador.peso + "'>" +
-                    "</div>" + 
-                "</div>" +
-                "<button type='button' id='btnExecuteUpdateUser' class='btn text-white'>Actualizar</button>" +
-                "</form>";
+                    formulario="<form>" +
+
+                    "<div class='form-row justify-content-center'>" +
+                        "<div class='form-group col-lg-6'>" +
+                            "<label for='nombre'>Nombre:</label>" +
+                            "<input type='text' class='form-control' id='nombre' value='" + usuario[i].nombre + "' disabled>" +
+                        "</div>" + 
+                        "<div class='form-group col-lg-6'>" + 
+                            "<label for='apellido'>Apellidos:</label>" +
+                            "<input type='text' class='form-control' id='apellidos' value='" + usuario[i].apellidos + "' disabled>" +
+                        "</div>" + 
+                    "</div>" +
+    
+                    "<div class='form-row justify-content-center'>" +
+                        "<div class='form-group col-lg-6'>" +
+                            "<label for='usuario'>Usuario:</label>" +
+                            "<input type='text' class='form-control' id='username' value='" + usuario[i].usuario + "' disabled>" +
+                        "</div>" +
+    
+                        "<div class='form-group col-lg-6'>" + 
+    
+                            "<div class='row justify-content-center'>" +
+    
+                                "<div class='col-lg-4'>" +
+                                    "<label for='posicion'>Delantero</label>" +
+                                    "<input type='radio' id='delantero' value='Delantero' name='posiciones'>" +
+                                "</div>" +
+    
+                                "<div class='col-lg-4'>" +
+                                    "<label for='posicion'>Zaguero</label>" +
+                                    "<input type='radio' id='zaguero' value='Zaguero' name='posiciones' checked>" +
+                                "</div>" +    
+    
+                                "<div class='col-lg-4'>" +
+                                    "<label for='posicion'>Liberos</label>" +
+                                    "<input type='radio' id='libero' value='Libero' name='posiciones'>" +
+                                "</div>" +
+    
+                            "</div>" +
+    
+                        "</div>" +
+                    "</div>" +
+                    
+                    "<div class='form-row justify-content-center'>" +
+                        "<div class='form-group col-lg-6'>" +
+                            "<label for='altura'>Altura:</label>" +
+                            "<input type='number' class='form-control' id='altura' value='" + usuario[i].objJugador.altura + "'>" +
+                        "</div>" + 
+                        "<div class='form-group col-lg-6'>" + 
+                            "<label for='peso'>Peso:</label>" +
+                            "<input type='number' class='form-control' id='peso' value='" + usuario[i].objJugador.peso + "'>" +
+                        "</div>" + 
+                    "</div>" +
+                    "<button type='button' id='btnExecuteUpdateUser' class='btn text-white'>Actualizar</button>" +
+                    "</form>";
+
+                }else{ //Si el jugador es libero, marcar el radio con opcion libero
+
+                    formulario="<form>" +
+
+                    "<div class='form-row justify-content-center'>" +
+                        "<div class='form-group col-lg-6'>" +
+                            "<label for='nombre'>Nombre:</label>" +
+                            "<input type='text' class='form-control' id='nombre' value='" + usuario[i].nombre + "' disabled>" +
+                        "</div>" + 
+                        "<div class='form-group col-lg-6'>" + 
+                            "<label for='apellido'>Apellidos:</label>" +
+                            "<input type='text' class='form-control' id='apellidos' value='" + usuario[i].apellidos + "' disabled>" +
+                        "</div>" + 
+                    "</div>" +
+    
+                    "<div class='form-row justify-content-center'>" +
+                        "<div class='form-group col-lg-6'>" +
+                            "<label for='usuario'>Usuario:</label>" +
+                            "<input type='text' class='form-control' id='username' value='" + usuario[i].usuario + "' disabled>" +
+                        "</div>" +
+    
+                        "<div class='form-group col-lg-6'>" + 
+    
+                            "<div class='row justify-content-center'>" +
+    
+                                "<div class='col-lg-4'>" +
+                                    "<label for='posicion'>Delantero</label>" +
+                                    "<input type='radio' id='delantero' value='Delantero' name='posiciones'>" +
+                                "</div>" +
+    
+                                "<div class='col-lg-4'>" +
+                                    "<label for='posicion'>Zaguero</label>" +
+                                    "<input type='radio' id='zaguero' value='Zaguero' name='posiciones'>" +
+                                "</div>" +    
+    
+                                "<div class='col-lg-4'>" +
+                                    "<label for='posicion'>Liberos</label>" +
+                                    "<input type='radio' id='libero' value='Libero' name='posiciones' checked>" +
+                                "</div>" +
+    
+                            "</div>" +
+    
+                        "</div>" +
+                    "</div>" +
+                    
+                    "<div class='form-row justify-content-center'>" +
+                        "<div class='form-group col-lg-6'>" +
+                            "<label for='altura'>Altura:</label>" +
+                            "<input type='number' class='form-control' id='altura' value='" + usuario[i].objJugador.altura + "'>" +
+                        "</div>" + 
+                        "<div class='form-group col-lg-6'>" + 
+                            "<label for='peso'>Peso:</label>" +
+                            "<input type='number' class='form-control' id='peso' value='" + usuario[i].objJugador.peso + "'>" +
+                        "</div>" + 
+                    "</div>" +
+                    "<button type='button' id='btnExecuteUpdateUser' class='btn text-white'>Actualizar</button>" +
+                    "</form>";
+                    
+                }
+
+
 
             }else if(usuario[i].tipo==2){//Entrenador
 
+                /*Limpiar el div*/
                 $("#formularioInformacion").html("");
 
-                /*Formulario con datos del administrador para modificar*/
+                /*Formulario con datos del entrenador para modificar*/
                 formulario="<form>" +
 
                 "<div class='form-row justify-content-center'>" +
@@ -609,9 +746,10 @@ function sessionVarsView(){
 
             }else{//Delegado
 
+                /*Limpiar el div*/
                 $("#formularioInformacion").html("");
 
-                 /*Formulario con datos del administrador para modificar*/
+                 /*Formulario con datos del delegado para modificar*/
                  formulario="<form>" +
 
                  "<div class='form-row justify-content-center'>" +
@@ -643,10 +781,9 @@ function sessionVarsView(){
 
         $("#formularioInformacion").append(formulario);
 
+        //Al hacer click ejecutamos el update
         $("#btnExecuteUpdateUser").click(function(){
-            
             executeUpdate2(usuario);
-
         });
 
   
@@ -655,9 +792,10 @@ function sessionVarsView(){
 
     }
 
+    //Ejecutar update de cualquier usuario si el admin esta conectado
     function executeUpdate2(usuario){
 
-        if(usuario[0].tipo==1){
+        if(usuario[0].tipo==1){//jugador
 
             posicion=$('input[name="posiciones"]:checked').val();
             altura=$("#altura").val();
@@ -668,12 +806,13 @@ function sessionVarsView(){
             
             fetch(url, {
                 method: 'POST', 
-                body: JSON.stringify(data), // data can be `string` or {object}!
-                headers:{'Content-Type': 'application/json'}  // input data
+                body: JSON.stringify(data), 
+                headers:{'Content-Type': 'application/json'}
                 })
                 
             .then(res => res.json()).then(result => {
 
+                //Limpiar los div*/
                 $("#acciones").html("");
                 $("#formularioInformacion").html("");
 
@@ -685,6 +824,57 @@ function sessionVarsView(){
             })
         .catch(error => console.error('Error status:', error));
 
+        }else if(usuario[0].tipo==2){//entrenador
+
+            experiencia=$("#experiencia").val();
+
+            var url = "../../controller/cUpdateEntrenador.php";
+            var data = {'id':usuario[0].id, 'experiencia':experiencia};
+            
+            fetch(url, {
+                method: 'POST', 
+                body: JSON.stringify(data),
+                headers:{'Content-Type': 'application/json'} 
+                })
+                
+            .then(res => res.json()).then(result => {
+
+                //Limpiar los div*/
+                $("#acciones").html("");
+                $("#formularioInformacion").html("");
+
+                /*Alert + recargar pagina*/
+            alert("Información actualizada correctamente");
+            window.location.reload();
+            
+            })
+        .catch(error => console.error('Error status:', error));
+
+        }else{//delegado
+
+            experiencia=$("#experiencia").val();
+
+            var url = "../../controller/cUpdateDelegado.php";
+            var data = {'id':usuario[0].id, 'experiencia':experiencia};
+            
+            fetch(url, {
+                method: 'POST', 
+                body: JSON.stringify(data),
+                headers:{'Content-Type': 'application/json'} 
+                })
+                
+            .then(res => res.json()).then(result => {
+
+                //Limpiar los div*/
+                $("#acciones").html("");
+                $("#formularioInformacion").html("");
+
+                /*Alert + recargar pagina*/
+            alert("Información actualizada correctamente");
+            window.location.reload();
+            
+            })
+        .catch(error => console.error('Error status:', error));
 
         }
 

@@ -87,4 +87,26 @@ class entrenadorModel extends entrenadorClass {
         
     }
     
+    public function updateEntrenador(){
+        
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexiÃ³n
+        
+        $id=$this->id;
+        $experiencia=$this->experiencia;
+        
+        //envia los datos introducidos en el formulario a la base de datos
+        $sql="CALL spUpdateEntrenador($id, $experiencia)";
+        
+        //filtro que mira las filas afectadas
+        if ($this->link->query($sql))  // true if success
+        //$this->link->affected_rows;  number of inserted rows
+        {
+            return "Información actualizada correctamente";
+        } else {
+            return "Error al modificar";
+        }
+        
+        $this->CloseConnect();//termina la conexion
+    }
+    
 }

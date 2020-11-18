@@ -13,11 +13,13 @@ function aos_init() {
   });
 }
 
+//Ir a la pagina del equipo seleccionado
 function equiposDesdeIndex(id) {
   pagina = "view/pages/equipos.html?" + id;
   window.location.href = pagina;
 }
 
+//Comprobar si el usuario esta conectado
 function sessionVarsView() {
 
   var url = "controller/cSessionVarsView.php";
@@ -48,41 +50,7 @@ function sessionVarsView() {
     .catch(error => console.error('Error status:', error));
 }
 
-function equiposDesdeIndex(id) {
-  pagina = "view/pages/equipos.html?" + id;
-  window.location.href = pagina;
-}
-
-function sessionVarsView() {
-
-  var url = "controller/cSessionVarsView.php";
-
-  fetch(url, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' }  // input data
-  })
-    .then(res => res.json()).then(result => {
-
-      var usuario = result.usuario;
-
-      if (usuario != null) {
-
-        for (let i = 0; i < usuario.length; i++) {
-          //Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-          img = "<img id='imgSesion' src='view/img/" + usuario[i].imagen + "'>";
-          $(".botonLogin").hide();
-          $(".botonLogout").show();
-          $(".sesionUsuario").css('display', 'flex');
-          $("#sitioUsuario").html(img);
-        }
-
-
-      }
-
-    })
-    .catch(error => console.error('Error status:', error));
-}
-
+//Cards equipos
 function cargarImagenesEquipos() {
   var url = "controller/cEquipos.php";
 
@@ -138,6 +106,7 @@ function cargarImagenesEquipos() {
     .catch(error => console.error('Error status:', error));
 }
 
+//Cargar cards noticias
 function cargarUltimasNoticias() {
   var url = "view/json/noticias.json";
 
