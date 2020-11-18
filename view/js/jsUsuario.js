@@ -295,7 +295,7 @@ function sessionVarsView(){
                                 "<input type='text' class='form-control' id='direccion' value='" + usuario[i].direccion + "'>" +
                             "</div>" + 
                         "</div>" +
-                        "<button type='button' id='btnExecuteUpdate' class='btn text-white'>Actualizar</button>" +
+                        "<button type='button' id='btnExecuteUpdate' class='btn text-white m-2'>Actualizar</button>" +
                         "</form>";
         }
 

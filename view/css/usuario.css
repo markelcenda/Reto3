@@ -1,6 +1,6 @@
 .imagenUsuario{
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
 
 }
 
@@ -12,6 +12,8 @@
     /*background-color: #009655;*/
     background-image: url('https://thumb.besoccerapps.com/rbetis/img_web/bg/h2c-bg.jpg');
     background-size: cover;
+    font-size: 22px;
+    min-width: 80%;
 }
 
 
