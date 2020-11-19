@@ -161,7 +161,7 @@ function sessionVarsView(){
                                 "<button type='button' class='btn text-white m-2' id='btnDatosAdmin'>Ver mis datos</button>" +
                                 "<button type='button' class='btn text-white m-2' id='btnDatosUsuario'>Ver datos de usuario</button>" +
                                 "<button type='button' class='btn text-white m-2' id='btnUpdateUsuario'>Actualizar información</button>" +
-                                "<button type='button' class='btn text-white m-2' id='btnUpdateJugador'>Actualizar usuario</button>" +
+                                "<button type='button' class='btn text-white m-2' id='btnUpdateUsuarioDesdeAdmin'>Actualizar usuario</button>" +
                                 "<button type='button' class='btn text-white m-2' id='btnDeleteUsuario'>Borrar usuario</button>" +
                             "</div>" +
                             "<div class='row justify-content-center' id='acciones'></div>" + //DIV para añadir los datos
@@ -190,7 +190,7 @@ function sessionVarsView(){
         });
 
         /*Al hacer click, se nos muestra un select con todos los usuarios para actualizar*/
-        $("#btnUpdateJugador").click(function(){
+        $("#btnUpdateUsuarioDesdeAdmin").click(function(){
             loadUsersToUpdate();
         });
 
@@ -478,8 +478,8 @@ function sessionVarsView(){
     //Coseguir informacion del usuario con la id para rellenar formulario
     function updateUser2(idUsuario){
 
-        var url = "../../controller/cUserbyId.php";
-        var data={"id": idUsuario};
+        var url = "../../controller/cUserById.php";
+        var data={'id': idUsuario};
 
         fetch(url, {
             method: 'POST',
@@ -913,7 +913,7 @@ function sessionVarsView(){
     /*Cargar informacion del usuario*/
     function showUser(idUsuario){
 
-        var url = "../../controller/cUserbyId.php";
+        var url = "../../controller/cUserById.php";
         var data={"id": idUsuario};
 
         fetch(url, {
