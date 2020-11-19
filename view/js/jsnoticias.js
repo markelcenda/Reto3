@@ -1,9 +1,10 @@
+var noticias;
+
 document.addEventListener("DOMContentLoaded", function () {
     cargarNoticias();
     sessionVarsView();
-});
 
-var noticias;
+});
 
 //Cargar cards de las noticias
 function cargarNoticias() {
@@ -15,10 +16,8 @@ function cargarNoticias() {
     })
         .then(res => res.json()).then(result => {
             noticias = result;
-            console.log(noticias);
 
-            var noticia = "";
-            console.log(noticias);
+            noticia = "";
 
             for (i = noticias.length; i > 0; i--) {
                 noticia = "<div class='container py-3'>" +
@@ -44,6 +43,10 @@ function cargarNoticias() {
                 })
             }
 
+            idNoticia = location.search.substring(1, location.search.length);
+            if (idNoticia != "") {
+                noticiaCompleta(idNoticia);
+            }
 
 
         })
@@ -176,8 +179,6 @@ function sessionVarsView() {
 }
 
 function noticiaCompleta(id) {
-    console.log(id)
-
     $("#tituloNoticias").html("");
 
     noticia = "<h1>" + noticias[id].titulo + "</h1>" +
@@ -189,6 +190,6 @@ function noticiaCompleta(id) {
     $("#noticias").html(noticia);
 
     $('#noticias button').click(() => {
-        window.location.reload();
+        window.location.href = "noticias.html";
     })
 }

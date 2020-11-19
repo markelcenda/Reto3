@@ -124,7 +124,7 @@ function cargarUltimasNoticias() {
       for (i = noticias.length - 1; i > noticias.length - 4; i--) {
 
         noticia = "<div class='col-md-4 mb-4'>" +
-        "<div class='card mb-4 box-shadow'>" +
+        "<div class='card mb-4 box-shadow' id='" + noticias[i].id + "'>" +
         "<img class='card-img-top' src='" + noticias[i].imagen + "'>" +
         "<div class='card-body'>" +
         "<b><p class='card-text'>" + noticias[i].titulo + "</p></b><br>" +
@@ -138,6 +138,11 @@ function cargarUltimasNoticias() {
 
         $("#noticias").append(noticia);
       }
+
+      $("#noticias .card").click(function(){
+        id = this.id;
+        window.location.href = "view/pages/noticias.html?" + id;
+      })
     })
     .catch(error => console.error('Error status:', error));
 }
