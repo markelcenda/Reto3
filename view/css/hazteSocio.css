@@ -34,11 +34,11 @@
     font-family: "Poppins", sans-serif;
 
 }
-
+/*Oculta el formulario hasta que el usuario pulse el boton*/
 #formulario{
     display: none;
 }
-
+/*Da color al boton que despliega el formulario*/
 #btnDespliegue{
     background-color: #009655;
 }

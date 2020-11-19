@@ -5,20 +5,26 @@ $(document).ready(function () {
     $("#imagen").change(changeImg);
     $(".botonLoginStart").click(login);
     $(".botonLogout").click(logout);
+    
     sessionVarsView();
-
+    aos_init();
     
 
 });
 
-function despliegueFormulario(){
+function aos_init() {
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  }
 
-    //$("#formulario").show();
-   // $(".motivosSocio").hide();
-    $("#formulario").css("display","block");
-    $("#formulario").css("transitio","5s");
-    $("#btnDespliegue").hide();
+function despliegueFormulario(){
     
+    $("#formulario").show("slow");
+    
+    $("#btnDespliegue").hide();
+  
 }
 
 function equiposDesdeSocios(id){
@@ -254,7 +260,7 @@ function login(){
                     $("#modelId").modal("hide");
 
                     //Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-                   img="<a href='#' class='ml-3' ><img id='imgSesion' src='../../view/img/" + result.usuarioSesion.imagen + "'></a>";
+                   img="<a href='usuario.html' class='ml-3' ><img id='imgSesion' src='../../view/img/" + result.usuarioSesion.imagen + "'></a>";
 
                    $("#sitioUsuario").html(img);
 
