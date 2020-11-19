@@ -44,8 +44,8 @@
     top: 40%;
     left: 1%;
     font-size: 35pt;
-    color: black;
-    font-weight: 900;
+    color: white;
+    font-weight: 700;
 }
 
 #imagenes .card-front h3 {
@@ -53,8 +53,8 @@
     top: 40%;
     left: 1%;
     font-size: 35pt;
-    color: black;
-    font-weight: 900;
+    color: white;
+    font-weight: 700;
     display: none;
 }
 

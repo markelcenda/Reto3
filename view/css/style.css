@@ -150,6 +150,7 @@ footer{
     font-size: 18px;
     border-bottom: 3px solid transparent;
     transition: 0.5s;
+    font-weight: 600;
 }
 
 .imagenFondo2 nav ul li .efecto:hover {
@@ -157,6 +158,7 @@ footer{
     border-bottom: 3px solid #ffffff;
 }
 
+/*Titulos de los div*/
 .titulo{
     font-weight: normal;
     font-size: 2rem;
