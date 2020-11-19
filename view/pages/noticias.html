@@ -16,99 +16,105 @@
 </head>
 
 <body>
-    <div class="imagenFondo">
-        <nav class="navbar navbar-dark navbar-expand-md justify-content-between w-100">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-nav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse dual-nav w-50 order-1 order-md-0 ">
-                <ul class="navbar-nav text-center align-items-center">
-                    <li class="nav-item active">
-                        <a class="nav-link pl-0 efecto" href="../../index.html">Home <span class="sr-only">Home</span></a>
-                    </li>
-                    <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle efecto" href="#" id="dropdownId" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Equipos</a>
-                        <div class="dropdown-menu text-center" aria-labelledby="dropdownId">
-                            <a class="dropdown-item" onclick="equiposDesdeNoticias('5')">Senior Masculino</a>
-                            <a class="dropdown-item" onclick="equiposDesdeNoticias('6')">Senior Femenino</a>
-                            <hr>
-                            <a class="dropdown-item" onclick="equiposDesdeNoticias('3')">Juvenil Masculino</a>
-                            <a class="dropdown-item" onclick="equiposDesdeNoticias('4')">Juvenil Femenino</a>
-                            <hr>
-                            <a class="dropdown-item" onclick="equiposDesdeNoticias('1')">Infantil Masculino</a>
-                            <a class="dropdown-item" onclick="equiposDesdeNoticias('2')">Infantil Femenino</a>
-                        </div>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link active efecto" href="noticias.html">Noticias</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link efecto" href="../pages/hazteSocio.html">Socios</a>
-                    </li>
-                </ul>
-            </div>
-            <a href="../../index.html" class="navbar-brand  d-block text-center order-0 order-md-1 w-25">
-                <figure class="figure">
-                    <img src="../img/logo.png" class="figure-img img-fluid rounded">
-                    <figcaption class="figure-caption efecto text-white align-items-center">Betis Voleibol</figcaption>
-                </figure>
-            </a>
-            <div class="navbar-collapse collapse dual-nav w-50 order-2">
-                <ul class="nav navbar-nav ml-auto text-center align-items-center">
 
-                    <div class="login">
-                        <button type="button" class="btn botonLogin" data-toggle="modal" data-target="#modelId">Iniciar
-                            Sesión</button>
-                        <button type="button" class="btn botonLogout">Cerrar Sesión</button>
-                        <!--Modal-->
-                        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Iniciar Sesión</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label for="usuario"></label>
-                                            <span>Usuario:</span>
-                                            <input type="text" name="usuario" id="usuario" class="form-control"
-                                                placeholder="Usuario" aria-describedby="helpId">
-                                            <span>Contraseña:</span>
-                                            <input type="password" name="password" id="password" class="form-control"
-                                                placeholder="Contraseña" aria-describedby="helpId">
+    <div class="imagenFondo2">
+
+        <nav class="navbar navbar-dark navbar-expand-md justify-content-between w-100">
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-nav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse dual-nav w-50 order-1 order-md-0 mt-3">
+
+                    <ul class="navbar-nav text-center align-items-center mt-5">
+
+                        <li class="nav-item active">
+                            <a class="nav-link pl-0 efecto" href="../../index.html">Home <span class="sr-only">Home</span></a>
+                        </li>
+
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle efecto" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Equipos</a>
+                            <div class="dropdown-menu text-center" aria-labelledby="dropdownId">
+                                <a class="dropdown-item" onclick="equiposDesdeNoticias('5')">Senior Masculino</a>
+                                <a class="dropdown-item" onclick="equiposDesdeNoticias('6')">Senior Femenino</a>
+                                <hr>
+                                <a class="dropdown-item" onclick="equiposDesdeNoticias('3')">Juvenil Masculino</a>
+                                <a class="dropdown-item" onclick="equiposDesdeNoticias('4')">Juvenil Femenino</a>
+                                <hr>
+                                <a class="dropdown-item" onclick="equiposDesdeNoticias('1')">Infantil Masculino</a>
+                                <a class="dropdown-item" onclick="equiposDesdeNoticias('2')">Infantil Femenino</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item active">
+                            <a class="nav-link active efecto" href="noticias.html">Noticias</a>
+                        </li>
+
+                        <li class="nav-item active">
+                            <a class="nav-link efecto" href="hazteSocio.html">Socios</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="navbar-collapse collapse dual-nav w-50 order-2 mt-3">
+                    <ul class="nav navbar-nav ml-auto text-center align-items-center mt-5">
+
+                        <div class="login">
+
+                            <button type="button" class="btn botonLogin" data-toggle="modal" data-target="#modelId">Iniciar Sesión</button>
+                            <button type="button" class="btn botonLogout">Cerrar Sesión</button>
+                            <!--Modal-->
+                            <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Iniciar Sesión</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn botonCerrar"
-                                            data-dismiss="modal">Cerrar</button>
-                                        <button type="button" class="btn botonLoginStart">Iniciar Sesión</button>
+                                        <div class="modal-body">
+                                             
+                                             <div class="form-group">
+                                               <label for="usuario"></label>
+                                               <span>Usuario:</span>
+                                               <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario" aria-describedby="helpId">
+     
+                                               <span>Contraseña:</span>
+                                               <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" aria-describedby="helpId">
+     
+                                             </div>
+                                     
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn botonCerrar" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn botonLoginStart">Iniciar Sesión</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <!--Zona login-->
-                    <div class="sesionUsuario">
 
-                        <div class="nav-item active" id="sitioUsuario">
-                            <!--Carga la imagen del usuario que ha iniciado sesion desde el JS-->
                         </div>
+                        
+
+                        <!-- Zona login -->
+                    <div class="sesionUsuario">
+                   
+                    <div class="nav-item active" id="sitioUsuario">
+                        <!--Carga la imagen del usuario que ha iniciado sesion desde el JS-->
                     </div>
-                </ul>
-            </div>
+
+                </div>
+
+                    </ul>
+                </div>
         </nav>
-        <div class="col mt-5 text-center">
-            <h1>Betis Voleibol Club</h1>
-        </div>
-        <div class="col mt-5 text-center">
-            <h2>"Más que un equipo, una familia"</h2>
-        </div>
+
+            
     </div>
+
     <div class="album py-5 bg-light">
         <div class="container">
             <h1 class="m-3 text-center">NOTICIAS</h1>

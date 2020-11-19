@@ -51,7 +51,7 @@ nav ul li .dropdown-item:hover {
 /*Boton login*/
 
 nav .botonLogin {
-   
+    background-color: #009655;
     color: white;
     transition: 0.5s;
 }
@@ -64,7 +64,7 @@ nav .botonLogin:hover {
 
 /*Boton logout*/
 nav .botonLogout{
-    
+    background-color: #009655;
     color: white;
     transition: 0.5s;
     display: none;
@@ -133,4 +133,24 @@ footer{
 /*Color de los botones*/
 .btn{
     background-color: #009655;
+}
+
+/*Navbar de las otras paginas*/
+.imagenFondo2{
+    background-image: url(../img/navbar.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 200px;
+    height: 500%;
+  }
+
+.imagenFondo2 nav ul li a {
+    font-size: 18px;
+    border-bottom: 3px solid transparent;
+    transition: 0.5s;
+}
+
+.imagenFondo2 nav ul li .efecto:hover {
+    font-size: 18px;
+    border-bottom: 3px solid #ffffff;
 }
