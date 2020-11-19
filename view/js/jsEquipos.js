@@ -98,6 +98,8 @@ function loadUsersByTeamId(idEquipo){
 				$("#liberos").html("");
 				$("#cuerpoTecnico").html("");
 				$("#fichaUsuario").html("");
+				$("#tituloPagina").show();
+				
 
 				/*Añadir categoria del equipo al index*/
 				categoriaEquipo="";
@@ -274,9 +276,9 @@ function mostrarDatosUsuarios(id){
 			$("#zaguerosTitulo").html("");
 			$("#liberosTitulo").html("");
 			$("#cuerpoTecnicoTitulo").html("");
-			$(".equipos").hide();
 			$("#selectEquipos").hide();
 			$("#insertCategoriaEquipo").html("");
+			$("#tituloPagina").hide();
 			
 
 			/*Si el usuario es jugador*/

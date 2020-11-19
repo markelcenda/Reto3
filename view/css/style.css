@@ -156,3 +156,9 @@ footer{
     font-size: 18px;
     border-bottom: 3px solid #ffffff;
 }
+
+.titulo{
+    font-weight: normal;
+    font-size: 2rem;
+    text-align: center;
+}
