@@ -2,6 +2,8 @@ body {
     margin: 0px !important;
     padding: 0px !important;
     overflow-x: hidden;
+   /* background-image: url("../img/fondo.jpg");
+    background-size: cover;*/
 }
 
 /*Fondo del navbar*/

@@ -97,7 +97,7 @@ function login() {
                     $("#modelId").modal("hide");
 
                     //Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-                   img="<a href='#' class='ml-3' ><img id='imgSesion' src='../../view/img/" + result.usuarioSesion.imagen + "'></a>";
+                    img = "<a href='#' class='ml-3' ><img id='imgSesion' src='../../view/img/" + result.usuarioSesion.imagen + "'></a>";
 
                     $("#sitioUsuario").html(img);
 
@@ -144,33 +144,51 @@ function logout() {
 
 
 //Comprobar si el usuario está cnectado
-function sessionVarsView(){
-	
-    var url="../../controller/cSessionVarsView.php";
+function sessionVarsView() {
 
-    		fetch(url, {
-    			  method: 'GET', 
-    			  headers:{'Content-Type': 'application/json'}  // input data
-    			  })
-    		.then(res => res.json()).then(result => {
-    			
-    			var usuario=result.usuario;
-    			//console.log(usuario);
-    			
-    			if (usuario !=null){
-    				
-    				for(let i=0; i<usuario.length; i++){
-    					//Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-						img="<a href='../pages/usuario.html'><img id='imgSesion' src='../img/" + usuario[i].imagen + "'></a>";
-    		             $(".botonLogin").hide();
-    		             $(".botonLogout").show();
-    		             $(".sesionUsuario").css('display','flex');
-    		             $("#sitioUsuario").html(img);
-    				}
+    var url = "../../controller/cSessionVarsView.php";
 
-             
-          }
+    fetch(url, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }  // input data
+    })
+        .then(res => res.json()).then(result => {
 
-    		})
-    		.catch(error => console.error('Error status:', error));	
-    }
+            var usuario = result.usuario;
+            //console.log(usuario);
+
+            if (usuario != null) {
+
+                for (let i = 0; i < usuario.length; i++) {
+                    //Muestra la imagen que le corresponde al usuario que ha iniciado sesion
+                    img = "<a href='../pages/usuario.html'><img id='imgSesion' src='../img/" + usuario[i].imagen + "'></a>";
+                    $(".botonLogin").hide();
+                    $(".botonLogout").show();
+                    $(".sesionUsuario").css('display', 'flex');
+                    $("#sitioUsuario").html(img);
+                }
+
+
+            }
+
+        })
+        .catch(error => console.error('Error status:', error));
+}
+
+function noticiaCompleta(id) {
+    console.log(id)
+
+    $("#tituloNoticias").html("");
+
+    noticia = "<h1>" + noticias[id].titulo + "</h1>" +
+        "<p class='mb-4'>" + noticias[id].fecha + "</p>" +
+        "<img src='" + noticias[id].imagen + "' class='rounded mt-5 mx-auto d-block'>" +
+        "<p class='mt-5'>" + noticias[id].texto + "</p>" +
+        "<button type='button' class='btn btn-success mx-auto d-block mt-3'>Volver</button>";
+
+    $("#noticias").html(noticia);
+
+    $('#noticias button').click(() => {
+        window.location.reload();
+    })
+}
