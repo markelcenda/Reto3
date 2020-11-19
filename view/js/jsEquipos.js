@@ -278,10 +278,12 @@ function mostrarDatosUsuarios(id){
 
 					infoUsuario="<div class='row justify-content-center align-items-center fichaUsuario'>" +
 										"<div class='col-lg-4 col-md-6 col-sm-6 col-10'>" +
-											"<img src='../img/" + jugador[i].imagen + "' class='imagenUsuario' alt=''>" +
+											"<div class='text-center'>" +
+												"<img src='../img/" + jugador[i].imagen + "' class='imagenUsuario' alt=''>" +
+											"</div>" +
 										"</div>" +
 										"<div class='col-lg-4 col-md-6 col-sm-6 m-2'>" +
-											"<h2 class='text-center'>" + jugador[i].nombre + " " + jugador[i].apellidos + "</h2>" +
+											"<h2>" + jugador[i].nombre + " " + jugador[i].apellidos + "</h2>" +
 											"<hr>" +
 											"<h5><i class='fas fa-volleyball-ball'></i> " + jugador[i].objJugador.posicion + "</h5>" +
 											"<h5><i class='fas fa-calendar-alt'></i> " + jugador[i].fechaDeNacimiento + "</h5>" +
@@ -307,7 +309,9 @@ function mostrarDatosUsuarios(id){
 
 					infoUsuario="<div class='row justify-content-center align-items-center fichaUsuario'>" +
 										"<div class='col-lg-4 col-md-6 col-sm-6 col-10'>" +
-											"<img src='../img/" + entrenador[i].imagen + "' class='imagenUsuario' alt=''>" +
+											"<div class='text-center'>" +
+												"<img src='../img/" + entrenador[i].imagen + "' class='imagenUsuario' alt=''>" +
+											"</div>" +
 										"</div>" +
 										"<div class='col-lg-4 col-md-6 col-sm-10 m-2'>" +
 											"<h2 class='text-center'>" + entrenador[i].nombre + " " + entrenador[i].apellidos + "</h2>" +
@@ -334,19 +338,21 @@ function mostrarDatosUsuarios(id){
 				for(let i=0; i<delegado.length; i++){
 
 					infoUsuario="<div class='row justify-content-center align-items-center fichaUsuario'>" +
-					"<div class='col-lg-4 col-md-6 col-sm-6 col-10'>" +
-						"<img src='../img/" + delegado[i].imagen + "' class='imagenUsuario' alt=''>" +
-					"</div>" +
-					"<div class='col-lg-4 col-md-6 col-sm-10 m-2'>" +
-						"<h2 class='text-center'>" + delegado[i].nombre + " " + delegado[i].apellidos + "</h2>" +
-						"<hr>" +
-						"<h5><i class='fas fa-volleyball-ball'></i> " + delegado[i].objDelegado.experiencia + " años</h5>" +
-						"<h5><i class='fas fa-calendar-alt'></i> " + delegado[i].fechaDeNacimiento + "</h5>" +
-						"<hr>" +
-						"<h5><i class='fas fa-map-marker-alt'></i> " + delegado[i].direccion + "</h5>" +
-						"<h5><i class='fas fa-envelope'></i> " + delegado[i].email + "</h5>" +
-					"</div>" +	
-			"</div>";		
+									"<div class='col-lg-4 col-md-6 col-sm-6 col-10'>" +
+										"<div class='text-center'>" +
+											"<img src='../img/" + delegado[i].imagen + "' class='imagenUsuario' alt=''>" +
+										"</div>" +
+									"</div>" +
+								"<div class='col-lg-4 col-md-6 col-sm-10 m-2'>" +
+									"<h2 class='text-center'>" + delegado[i].nombre + " " + delegado[i].apellidos + "</h2>" +
+									"<hr>" +
+									"<h5><i class='fas fa-volleyball-ball'></i> " + delegado[i].objDelegado.experiencia + " años</h5>" +
+									"<h5><i class='fas fa-calendar-alt'></i> " + delegado[i].fechaDeNacimiento + "</h5>" +
+									"<hr>" +
+									"<h5><i class='fas fa-map-marker-alt'></i> " + delegado[i].direccion + "</h5>" +
+									"<h5><i class='fas fa-envelope'></i> " + delegado[i].email + "</h5>" +
+								"</div>" +	
+							"</div>";		
 
 								idEquipo=delegado[i].objEquipo.id;
 

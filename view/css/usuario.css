@@ -1,17 +1,19 @@
 .imagenUsuario{
-    width: 150px;
-    height: 150px;
+    width: 280px;
+    height: 280px;
 
 }
 
-#btnMisDatos,#btnUpdateUsuario,#btnDeleteUsuario, #btnUpdateJugador, #btnExecuteUpdate, #btnExecuteUpdateUser, #btnDatosAdmin, #btnDatosUsuario{
+#btnMisDatos,#btnUpdateUsuario,#btnDeleteUsuario, #btnUpdateUsuarioDesdeAdmin, #btnExecuteUpdate, #btnExecuteUpdateUser, #btnDatosAdmin, #btnDatosUsuario{
     background-color: #009655;
 }
 
 .datosDeUsuario{
     /*background-color: #009655;*/
-    background-image: url('https://thumb.besoccerapps.com/rbetis/img_web/bg/h2c-bg.jpg');
+    background-image: url(../img/fondoLineas.jpg);
     background-size: cover;
+    font-size: 24px;
+    min-width: 80%;
 }
 
 

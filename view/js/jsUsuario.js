@@ -161,7 +161,7 @@ function sessionVarsView(){
                                 "<button type='button' class='btn text-white m-2' id='btnDatosAdmin'>Ver mis datos</button>" +
                                 "<button type='button' class='btn text-white m-2' id='btnDatosUsuario'>Ver datos de usuario</button>" +
                                 "<button type='button' class='btn text-white m-2' id='btnUpdateUsuario'>Actualizar información</button>" +
-                                "<button type='button' class='btn text-white m-2' id='btnUpdateJugador'>Actualizar usuario</button>" +
+                                "<button type='button' class='btn text-white m-2' id='btnUpdateUsuarioDesdeAdmin'>Actualizar usuario</button>" +
                                 "<button type='button' class='btn text-white m-2' id='btnDeleteUsuario'>Borrar usuario</button>" +
                             "</div>" +
                             "<div class='row justify-content-center' id='acciones'></div>" + //DIV para añadir los datos
@@ -190,7 +190,7 @@ function sessionVarsView(){
         });
 
         /*Al hacer click, se nos muestra un select con todos los usuarios para actualizar*/
-        $("#btnUpdateJugador").click(function(){
+        $("#btnUpdateUsuarioDesdeAdmin").click(function(){
             loadUsersToUpdate();
         });
 
@@ -213,7 +213,7 @@ function sessionVarsView(){
         $("#formularioInformacion").html("");
 
         newrow = "<div class='row justify-content-center datosDeUsuario m-5 text-white'>"+
-        "<div class='row-lg-3 order-1'>"+
+        "<div class='row-lg-3 order-lg-1 order-md-1 order-sm-1 order-1'>"+
             "<div class='col-lg-12'>"+
                 "<p class='font-weight-bold'>Nombre:</p>"+
                 "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
@@ -227,12 +227,12 @@ function sessionVarsView(){
                 "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
             "</div>"+
         "</div>"+
-        "<div class='row order-3'>"+
+        "<div class='row order-lg-2 order-md-3 order-sm-3 order-3'>"+
             "<div class='m-5'>"+
                 "<img class='imagenUsuario' src='../img/"+ usuario[0].imagen + "'>"+
             "</div>"+
         "</div>"+
-        "<div class='row-lg-3 order-2'>"+
+        "<div class='row-lg-3 order-lg-3 order-md-2 order-sm-2 order-2'>"+
             "<div class='col-lg-12'>"+
                 "<p class='font-weight-bold'>Correo electronico:</p>"+
                 "<p>"+ usuario[0].email + "</p>"+
@@ -295,7 +295,7 @@ function sessionVarsView(){
                                 "<input type='text' class='form-control' id='direccion' value='" + usuario[i].direccion + "'>" +
                             "</div>" + 
                         "</div>" +
-                        "<button type='button' id='btnExecuteUpdate' class='btn text-white'>Actualizar</button>" +
+                        "<button type='button' id='btnExecuteUpdate' class='btn text-white m-2'>Actualizar</button>" +
                         "</form>";
         }
 
@@ -478,8 +478,8 @@ function sessionVarsView(){
     //Coseguir informacion del usuario con la id para rellenar formulario
     function updateUser2(idUsuario){
 
-        var url = "../../controller/cUserbyId.php";
-        var data={"id": idUsuario};
+        var url = "../../controller/cUserById.php";
+        var data={'id': idUsuario};
 
         fetch(url, {
             method: 'POST',
@@ -913,7 +913,7 @@ function sessionVarsView(){
     /*Cargar informacion del usuario*/
     function showUser(idUsuario){
 
-        var url = "../../controller/cUserbyId.php";
+        var url = "../../controller/cUserById.php";
         var data={"id": idUsuario};
 
         fetch(url, {

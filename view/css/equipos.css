@@ -114,19 +114,30 @@ h3{
 }
 
 .fichaUsuario{
-  background-image: url('https://thumb.besoccerapps.com/rbetis/img_web/bg/h2c-bg.jpg');
+  background-image: url(../img/fondoLineas.jpg);
   background-size: cover;
   color: white;
 }
 
-.fichaUsuario .imagenUsuario{
-  height: auto;
-  width: 100%;
+.fichaUsuario h5{
+  font-size: 24px;
+}
 
+.fichaUsuario h2{
+  text-align: center;
+  font-size: 28px;
+}
+
+.fichaUsuario .fas{
+  color: #ffffff;
+}
+
+.fichaUsuario .imagenUsuario{
+  height: 280px;
+  width: 280px;
 }
 
 hr{
   background-color: white;
-  height: 1px; 
-  border: 0;
+  height: 2px; 
 }
