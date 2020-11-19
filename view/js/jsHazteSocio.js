@@ -1,12 +1,25 @@
 $(document).ready(function () {
     
+    $("#btnDespliegue").click(despliegueFormulario);
     $("#btnEnviar").click(datosFormulario);
     $("#imagen").change(changeImg);
     $(".botonLoginStart").click(login);
     $(".botonLogout").click(logout);
     sessionVarsView();
 
+    
+
 });
+
+function despliegueFormulario(){
+
+    //$("#formulario").show();
+   // $(".motivosSocio").hide();
+    $("#formulario").css("display","block");
+    $("#formulario").css("transitio","5s");
+    $("#btnDespliegue").hide();
+    
+}
 
 function equiposDesdeSocios(id){
     pagina="equipos.html?" + id;

@@ -2,12 +2,12 @@
 #btnEnviar{
     background-color: #009655;
 }
-/*Da tamaño a la foto de perfil*/
+/*Da tamaño a la foto de perfil y le pone bordes*/
 #fotoPerfil{
 
-    width: 125px;
-    height: 150px;
-    border: 4px solid #009655;
+    width: 140px;
+    height: 160px;
+    border: 6.4px solid #009655;
 
 }
 /*Oculta el input de subida de imagen*/
@@ -26,4 +26,19 @@
 
     cursor: pointer;
 
+}
+/*Color del fondo de los motivos por los cuales el usuario deberia hacerse socio*/
+.motivosSocio{
+
+    background-color: #009655;
+    font-family: "Poppins", sans-serif;
+
+}
+
+#formulario{
+    display: none;
+}
+
+#btnDespliegue{
+    background-color: #009655;
 }

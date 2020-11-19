@@ -112,6 +112,8 @@
 .album .card {
     transition: transform .15s ease;
     height: 100%;
+    background-color: #009655;
+    color: white;
 }
 
 .album .card img{

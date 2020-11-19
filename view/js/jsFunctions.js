@@ -130,7 +130,7 @@ function cargarUltimasNoticias() {
         "<b><p class='card-text'>" + noticias[i].titulo + "</p></b><br>" +
         "<p class='card-text'>" + noticias[i].texto + "</p>" +
         "<div class='d-flex justify-content-between align-items-center'>" +
-        "<small class='text-muted'>" + noticias[i].fecha + "</small>" +
+        "<small class='text-light'>" + noticias[i].fecha + "</small>" +
         "</div>" +
         "</div>" +
         "</div>" +
