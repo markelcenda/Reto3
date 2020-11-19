@@ -6,9 +6,17 @@ $(document).ready(function () {
 	opcionesEquipo();
 	loadEquipos();
 	$(".botonLoginStart").click(login);
-    $(".botonLogout").click(logout);
+	$(".botonLogout").click(logout);
+	aos_init();
 	
 });
+
+function aos_init() {
+	AOS.init({
+	  duration: 800,
+	  once: true
+	});
+  }
 
 //Cargar la pagina del equipo seleccionado
 function equiposDesdeEquipos(id){
@@ -125,7 +133,7 @@ function loadUsersByTeamId(idEquipo){
 										"</div>";	
 						$("#delanterosTitulo").html(cardPosiciones);
 
-						  cardJugadores="<div class='card'>" +
+						  cardJugadores="<div class='card' data-aos='zoom-in'>" +
 										"<img src='../img/" + jugadores[i].imagen + "' alt=''>" +
 										"<div class='info'>" +
 											"<h1>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h1>" +	
@@ -149,7 +157,7 @@ function loadUsersByTeamId(idEquipo){
 										"</div>";
 						$("#zaguerosTitulo").html(cardPosiciones);
 						
-						cardJugadores="<div class='card'>" +
+						cardJugadores="<div class='card' data-aos='zoom-in'>" +
 										"<img src='../img/" + jugadores[i].imagen + "' alt=''>" +
 										"<div class='info'>" +
 											"<h1>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h1>" +	
@@ -169,7 +177,7 @@ function loadUsersByTeamId(idEquipo){
 									"</div>";	
 						$("#liberosTitulo").html(cardPosiciones);
 						
-						cardJugadores="<div class='card'>" +
+						cardJugadores="<div class='card' data-aos='zoom-in'>" +
 										"<img src='../img/" + jugadores[i].imagen + "' alt=''>" +
 										"<div class='info'>" +
 											"<h1>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h1>" +	
@@ -198,7 +206,7 @@ function loadUsersByTeamId(idEquipo){
 
 				for(let i=0; i<entrenadores.length; i++){
 
-					cardEntrenadores="<div class='card'>" +
+					cardEntrenadores="<div class='card' data-aos='zoom-in'>" +
 									"<img src='../img/" + entrenadores[i].imagen + "' alt=''>" +
 									"<div class='info'>" +
 										"<h1>" + entrenadores[i].nombre + " " + entrenadores[i].apellidos + "</h1>" +
@@ -209,7 +217,7 @@ function loadUsersByTeamId(idEquipo){
 												
 					$("#cuerpoTecnico").append(cardEntrenadores);
 
-						cardDelegados="<div class='card'>" +
+						cardDelegados="<div class='card' data-aos='zoom-in'>" +
 										"<img src='../img/" + delegados[i].imagen + "' alt=''>" +
 										"<div class='info'>" +
 											"<h1>" + delegados[i].nombre + " " + delegados[i].apellidos + "</h1>" +	
@@ -276,9 +284,9 @@ function mostrarDatosUsuarios(id){
 
 				for(let i=0; i<jugador.length; i++){
 
-					infoUsuario="<div class='row justify-content-center align-items-center fichaUsuario'>" +
+					infoUsuario="<div class='row justify-content-center align-items-center fichaUsuario' data-aos='fade-right'>" +
 										"<div class='col-lg-4 col-md-6 col-sm-6 col-10'>" +
-											"<div class='text-center'>" +
+											"<div class='text-center mt-5'>" +
 												"<img src='../img/" + jugador[i].imagen + "' class='imagenUsuario' alt=''>" +
 											"</div>" +
 										"</div>" +
@@ -307,7 +315,7 @@ function mostrarDatosUsuarios(id){
 
 				for(let i=0; i<entrenador.length; i++){
 
-					infoUsuario="<div class='row justify-content-center align-items-center fichaUsuario'>" +
+					infoUsuario="<div class='row justify-content-center align-items-center fichaUsuario' data-aos='fade-left'>" +
 										"<div class='col-lg-4 col-md-6 col-sm-6 col-10'>" +
 											"<div class='text-center'>" +
 												"<img src='../img/" + entrenador[i].imagen + "' class='imagenUsuario' alt=''>" +
@@ -337,7 +345,7 @@ function mostrarDatosUsuarios(id){
 
 				for(let i=0; i<delegado.length; i++){
 
-					infoUsuario="<div class='row justify-content-center align-items-center fichaUsuario'>" +
+					infoUsuario="<div class='row justify-content-center align-items-center fichaUsuario' data-aos='fade-left'>" +
 									"<div class='col-lg-4 col-md-6 col-sm-6 col-10'>" +
 										"<div class='text-center'>" +
 											"<img src='../img/" + delegado[i].imagen + "' class='imagenUsuario' alt=''>" +
