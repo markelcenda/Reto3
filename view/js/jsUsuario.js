@@ -478,7 +478,7 @@ function sessionVarsView(){
     //Coseguir informacion del usuario con la id para rellenar formulario
     function updateUser2(idUsuario){
 
-        var url = "../../controller/cUserbyId.php";
+        var url = "../../controller/cUserById.php";
         var data={'id': idUsuario};
 
         fetch(url, {
@@ -913,7 +913,7 @@ function sessionVarsView(){
     /*Cargar informacion del usuario*/
     function showUser(idUsuario){
 
-        var url = "../../controller/cUserbyId.php";
+        var url = "../../controller/cUserById.php";
         var data={"id": idUsuario};
 
         fetch(url, {
