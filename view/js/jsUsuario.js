@@ -212,7 +212,7 @@ function sessionVarsView(){
         $("#acciones").html("");
         $("#formularioInformacion").html("");
 
-        newrow = "<div class='row justify-content-center datosDeUsuario m-5 text-white'>"+
+        newrow = "<div class='row justify-content-center align-items-center datosDeUsuario m-5 text-white'>"+
         "<div class='row-lg-3 order-lg-1 order-md-1 order-sm-1 order-1'>"+
             "<div class='col-lg-12'>"+
                 "<p class='font-weight-bold'>Nombre:</p>"+
@@ -929,7 +929,7 @@ function sessionVarsView(){
 
         if(usuario[0].tipo==1){//JUGADOR
 
-            newrow = "<div class='row justify-content-center datosDeUsuario m-5 text-white'>"+
+            newrow = "<div class='row justify-content-center align-items-center datosDeUsuario m-5 text-white'>"+
             "<div class='row-lg-3 order-1'>"+
                 "<div class='col-lg-12'>"+
                     "<p class='font-weight-bold'>Nombre:</p>"+
@@ -981,7 +981,7 @@ function sessionVarsView(){
 
         }else if(usuario[0].tipo==2){//ENTRENADOR
 
-            newrow = "<div class='row justify-content-center datosDeUsuario m-5 text-white'>"+
+            newrow = "<div class='row justify-content-center align-items-center datosDeUsuario m-5 text-white'>"+
             "<div class='row-lg-3 order-1'>"+
                 "<div class='col-lg-12'>"+
                     "<p class='font-weight-bold'>Nombre:</p>"+
@@ -1025,7 +1025,7 @@ function sessionVarsView(){
 
         }else if(usuario[0].tipo==3){//DELEGADO
 
-            newrow = "<div class='row justify-content-center datosDeUsuario m-5 text-white'>"+
+            newrow = "<div class='row justify-content-center align-items-center datosDeUsuario m-5 text-white'>"+
             "<div class='row-lg-3 order-1'>"+
                 "<div class='col-lg-12'>"+
                     "<p class='font-weight-bold'>Nombre:</p>"+
@@ -1069,7 +1069,7 @@ function sessionVarsView(){
             
         }else{//SOCIO
 
-            newrow = "<div class='row justify-content-center datosDeUsuario m-5 text-white'>"+
+            newrow = "<div class='row justify-content-center align-items-center datosDeUsuario m-5 text-white'>"+
             "<div class='row-lg-3 order-1'>"+
                 "<div class='col-lg-12'>"+
                     "<p class='font-weight-bold'>Nombre:</p>"+

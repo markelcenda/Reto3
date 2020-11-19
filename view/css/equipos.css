@@ -17,6 +17,7 @@
   font-weight: normal;
   font-size: 2rem;
   text-align: center;
+  font-weight: 100;
 }
 .separator::before, .separator::after {
   content: '';
@@ -112,12 +113,14 @@
 }
 
 .fichaUsuario h5{
-  font-size: 24px;
+  font-size: 24px !important;
+  font-weight: 300;
 }
 
 .fichaUsuario h2{
   text-align: center;
-  font-size: 28px;
+  font-size: 28px !important;
+  font-weight: 300;
 }
 
 .fichaUsuario .fas{
@@ -132,4 +135,8 @@
 hr{
   background-color: white;
   height: 2px; 
+}
+
+#tituloPagina h1{
+  font-size: 38px !important;
 }

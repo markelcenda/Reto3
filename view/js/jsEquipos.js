@@ -106,7 +106,7 @@ function loadUsersByTeamId(idEquipo){
 				for(let i=0; i<equipos.length; i++){
 					
 					if(equipos[i].id==idEquipo){
-						categoriaEquipo="<h3>" + equipos[i].categoria + "</h3>";
+						categoriaEquipo="<h3 class='titulo'>" + equipos[i].categoria + "</h3>";
 						$("#insertCategoriaEquipo").html(categoriaEquipo);
 					}
 					

@@ -14,21 +14,8 @@
     background-size: cover;
     font-size: 24px;
     min-width: 80%;
+    font-weight: 350;
 }
-
-select option:hover,
-    select option:focus,
-    select option:active {
-        background: linear-gradient(#000000, #000000);
-        background-color: #000000 !important; /* for IE */
-        color: #f1e100 !important;
-    }
-
-    select option:checked {
-        background: linear-gradient(#d6d6d6, #d6d6d6);
-        background-color: #09ff00 !important; /* for IE */
-        color: #000000 !important;
-    }
 
 
 
