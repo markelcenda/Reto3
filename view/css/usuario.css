@@ -4,7 +4,7 @@
 
 }
 
-#btnMisDatos,#btnUpdateUsuario,#btnDeleteUsuario, #btnUpdateJugador, #btnExecuteUpdate, #btnExecuteUpdateUser, #btnDatosAdmin, #btnDatosUsuario{
+#btnMisDatos,#btnUpdateUsuario,#btnDeleteUsuario, #btnUpdateUsuarioDesdeAdmin, #btnExecuteUpdate, #btnExecuteUpdateUser, #btnDatosAdmin, #btnDatosUsuario{
     background-color: #009655;
 }
 
