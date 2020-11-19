@@ -3,6 +3,8 @@ var noticias;
 document.addEventListener("DOMContentLoaded", function () {
     cargarNoticias();
     sessionVarsView();
+    $(".botonLoginStart").click(login);
+	$(".botonLogout").click(logout);
 
 });
 
