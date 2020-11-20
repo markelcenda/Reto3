@@ -322,12 +322,9 @@ function cargarComentarios(){
 
         for(let i=0; i<comentarios.length; i++){
 
-            comentariosInfo="<div class='row justify-content-around w-100 ml-auto mr-auto border p-2 m-2'>" +
-                                "<div class='col-lg-4'>" +
-                                    "<p><b>Realizado por: </b>" + comentarios[i].objUsuario.nombre + " " + comentarios[i].objUsuario.apellidos + "</p>" +
-                                    "<img src='../img/" + comentarios[i].objUsuario.imagen + "' class='imagenComentario justify-self-center'>" + 
-                                "</div>" +
-                                "<div class='col-lg-4'>" +
+            comentariosInfo="<div class='wrap'>" +
+                                "<img src='../img/" + comentarios[i].objUsuario.imagen + "'>" +
+                                "<div class='comment ' data-owner='" + comentarios[i].objUsuario.usuario + "'>" +
                                     "<p>" + comentarios[i].texto + "</p>" +
                                 "</div>" +
                             "</div>";

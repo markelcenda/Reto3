@@ -96,7 +96,7 @@ function loadUsersByTeamId(idEquipo){
 				$("#delanteros").html("");
 				$("#zagueros").html("");
 				$("#liberos").html("");
-				$("#cuerpoTecnico").html("");
+				$("#cuerpoTecnicoTitulo").html("");
 				$("#fichaUsuario").html("");
 				$("#tituloPagina").show();
 				
