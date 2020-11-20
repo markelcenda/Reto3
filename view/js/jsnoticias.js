@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-//Cargar cards de las noticias
+//Cargar cards de las noticias sin estar logeado
 function cargarNoticias() {
     var url = "../json/noticias.json";
 
@@ -153,7 +153,7 @@ function logout() {
 }
 
 
-//Comprobar si el usuario está cnectado
+//Comprobar si el usuario está conectado
 function sessionVarsView() {
 
     var url = "../../controller/cSessionVarsView.php";
@@ -177,7 +177,9 @@ function sessionVarsView() {
                     $(".sesionUsuario").css('display', 'flex');
                     $("#sitioUsuario").html(img);
                     
+                    /*Cargar noticias si estas conectado*/
                     cargarNoticiasConComentarios(usuario);
+                    /*Cargar comentarios realizados*/
                     cargarComentarios();
 
                 }
@@ -189,6 +191,7 @@ function sessionVarsView() {
         .catch(error => console.error('Error status:', error));
 }
 
+/*Noticia completa*/
 function noticiaCompleta(id) {
     $("#tituloNoticias").html("");
     $("#tituloComentarios").html("");
@@ -208,7 +211,7 @@ function noticiaCompleta(id) {
     })
 }
 
-//Cargar cards de las noticias
+//Cargar cards de las noticias con el input para añadir comentarios
 function cargarNoticiasConComentarios(usuario) {
     var url = "../json/noticias.json";
 
@@ -222,45 +225,48 @@ function cargarNoticiasConComentarios(usuario) {
 
             noticia = "";
 
+            //Limpiar div
             $("#noticias").html("");
+            //Mostrar titulo
             $("#tituloComentarios").show();
+
+            for (i = noticias.length; i > 0; i--) {
+                noticia = "<div class='container py-3'>" +
+                                "<div class='card' id='c" + (i - 1) + "'>" +
+                                    "<div class='row'>" +
+                                        "<div class='col-md-7 px-3'>" +
+                                            "<div class='card-block px-6'>" +
+                                                "<h4 class='card-title'>" + noticias[i - 1].titulo + "</h4>" +
+                                                "<p class='card-text'>" + noticias[i - 1].texto + "</p>" +
+                                                "<br>" +
+                                            "</div>" +
+                                        "</div >" +
+                                    "<img class='m-4' src='" + noticias[i - 1].imagen + "'>" +
+                                "</div >" +
+                            "</div >";
+                            
+
+
+                $("#noticias").append(noticia);
+
+
+                id = "#c" + (i - 1)
+
+                $(id).click(function () {
+                    noticiaCompleta(this.id.slice(1));
+                })
+            }
 
             if(usuario[0].admin==0 || usuario[0].admin==1){
 
-                for (i = noticias.length; i > 0; i--) {
-                    noticia = "<div class='container py-3'>" +
-                                    "<div class='card' id='c" + (i - 1) + "'>" +
-                                        "<div class='row'>" +
-                                            "<div class='col-md-7 px-3'>" +
-                                                "<div class='card-block px-6'>" +
-                                                    "<h4 class='card-title'>" + noticias[i - 1].titulo + "</h4>" +
-                                                    "<p class='card-text'>" + noticias[i - 1].texto + "</p>" +
-                                                    "<br>" +
-                                                "</div>" +
-                                            "</div >" +
-                                        "<img class='m-4' src='" + noticias[i - 1].imagen + "'>" +
-                                    "</div >" +
-                                "</div >";
-                                
-
-    
-                    $("#noticias").append(noticia);
-
-    
-                    id = "#c" + (i - 1)
-    
-                    $(id).click(function () {
-                        noticiaCompleta(this.id.slice(1));
-                    })
-                }
-    
                 idNoticia = location.search.substring(1, location.search.length);
                 if (idNoticia != "") {
                     noticiaCompleta(idNoticia);
                     
                 }
 
-                comentarios="<input type='textarea' class='form-control' id='comentario'>" +
+                /*Input para añadir comentario*/
+                comentarios="<input type='textarea' maxLength='100' class='form-control' id='comentario'>" +
                             "<button type='button' id='insertarComentario' class='btn btn-success mx-auto d-block mt-3'>Insertar Comentario</button>";
 
                 $("#comentarios").append(comentarios);
@@ -275,7 +281,7 @@ function cargarNoticiasConComentarios(usuario) {
         .catch(error => console.error('Error status:', error));
 };
 
-
+/*Funcion para insertar comentario*/
 function insertarComentario(idUsuario){
     texto=$("#comentario").val();
 
@@ -293,12 +299,12 @@ function insertarComentario(idUsuario){
             alert("Comentario insertado correctamente")
             window.location.reload();
           
-          
 		})
       .catch(error => console.error('Error status:', error));
     
 }
 
+//Cargar todos los comentario
 function cargarComentarios(){
 
     var url = "../../controller/cAllComentarios.php";
