@@ -28,7 +28,7 @@ nav figure {
     transition: 0.5s;
 }
 
-nav figure:hover {
+nav:not(:first-child) figure:hover {
     border-bottom: 3px solid #009655;
 }
 

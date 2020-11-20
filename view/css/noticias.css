@@ -48,11 +48,24 @@
     .card-block{
         width: 700px;
     }
+
+    .card img{
+        width: 93%;
+    }
 }
 
 @media screen and (max-width: 768px) {
     .card-block{
         width: 500px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card img{
+        display: none;
+    }
+    .card-block{
+        width: 100%;
     }
 }
 

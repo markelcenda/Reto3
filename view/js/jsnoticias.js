@@ -29,8 +29,8 @@ function cargarNoticias() {
                     "<div class='row'>" +
                     "<div class='col-md-7 px-3'>" +
                     "<div class='card-block px-6'>" +
-                    "<h4 class='card-title'>" + noticias[i - 1].titulo + "</h4>" +
-                    "<p class='card-text'>" + noticias[i - 1].texto + "</p>" +
+                    "<h4 class='card-title'>" + noticias[i - 1].titulo + "</h4><br>" +
+                    "<p class='card-text'>" + noticias[i - 1].textoCorto + "</p>" +
                     "<br>" +
                     "</div>" +
                     "</div >" +
@@ -201,7 +201,7 @@ function noticiaCompleta(id) {
     noticia = "<h1>" + noticias[id].titulo + "</h1>" +
         "<p class='mb-4'>" + noticias[id].fecha + "</p>" +
         "<img src='" + noticias[id].imagen + "' class='rounded mt-5 mx-auto d-block'>" +
-        "<p class='mt-5'>" + noticias[id].texto + "</p>" +
+        "<p class='mt-5'>" + noticias[id].textoLargo + "</p>" +
         "<button type='button' class='btn btn-success mx-auto d-block mt-3'>Volver</button>";
 
     $("#noticias").html(noticia);

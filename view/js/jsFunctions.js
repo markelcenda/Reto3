@@ -128,7 +128,7 @@ function cargarUltimasNoticias() {
         "<img class='card-img-top' src='" + noticias[i].imagen + "'>" +
         "<div class='card-body'>" +
         "<b><p class='card-text'>" + noticias[i].titulo + "</p></b><br>" +
-        "<p class='card-text'>" + noticias[i].texto + "</p>" +
+        "<p class='card-text'>" + noticias[i].textoCorto + "</p>" +
         "<div class='d-flex justify-content-between align-items-center'>" +
         "<small class='text-light'>" + noticias[i].fecha + "</small>" +
         "</div>" +
