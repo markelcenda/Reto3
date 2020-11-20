@@ -29,7 +29,7 @@ function cargarNoticias() {
                     "<div class='row'>" +
                     "<div class='col-md-7 px-3'>" +
                     "<div class='card-block px-6'>" +
-                    "<h4 class='card-title'>" + noticias[i - 1].titulo + "</h4>" +
+                    "<h4 class='card-title'>" + noticias[i - 1].titulo + "</h4><br>" +
                     "<p class='card-text'>" + noticias[i - 1].textoCorto + "</p>" +
                     "<br>" +
                     "</div>" +
