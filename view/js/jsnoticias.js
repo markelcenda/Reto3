@@ -21,6 +21,8 @@ function cargarNoticias() {
 
             noticia = "";
 
+            $("#tituloComentarios").hide();
+
             for (i = noticias.length; i > 0; i--) {
                 noticia = "<div class='container py-3'>" +
                     "<div class='card' id='c" + (i - 1) + "'>" +
@@ -106,6 +108,8 @@ function login() {
 
                     $("#sitioUsuario").html(img);
 
+                    window.location.reload();
+
                 }
 
             })
@@ -141,6 +145,7 @@ function logout() {
 
             console.log(result.confirm);
             alert(result.confirm);
+            window.location.href="../../index.html";
 
         })
         .catch(error => console.error('Error status:', error));
@@ -171,6 +176,10 @@ function sessionVarsView() {
                     $(".botonLogout").show();
                     $(".sesionUsuario").css('display', 'flex');
                     $("#sitioUsuario").html(img);
+                    
+                    cargarNoticiasConComentarios(usuario);
+                    cargarComentarios();
+
                 }
 
 
@@ -182,6 +191,9 @@ function sessionVarsView() {
 
 function noticiaCompleta(id) {
     $("#tituloNoticias").html("");
+    $("#tituloComentarios").html("");
+    $("#comentarios").html("");
+    $("#comentariosRealizados").html("");
 
     noticia = "<h1>" + noticias[id].titulo + "</h1>" +
         "<p class='mb-4'>" + noticias[id].fecha + "</p>" +
@@ -194,4 +206,132 @@ function noticiaCompleta(id) {
     $('#noticias button').click(() => {
         window.location.href = "noticias.html";
     })
+}
+
+//Cargar cards de las noticias
+function cargarNoticiasConComentarios(usuario) {
+    var url = "../json/noticias.json";
+
+    fetch(url, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }  // input data
+    })
+        .then(res => res.json()).then(result => {
+            
+            noticias = result;
+
+            noticia = "";
+
+            $("#noticias").html("");
+            $("#tituloComentarios").show();
+
+            if(usuario[0].admin==0 || usuario[0].admin==1){
+
+                for (i = noticias.length; i > 0; i--) {
+                    noticia = "<div class='container py-3'>" +
+                                    "<div class='card' id='c" + (i - 1) + "'>" +
+                                        "<div class='row'>" +
+                                            "<div class='col-md-7 px-3'>" +
+                                                "<div class='card-block px-6'>" +
+                                                    "<h4 class='card-title'>" + noticias[i - 1].titulo + "</h4>" +
+                                                    "<p class='card-text'>" + noticias[i - 1].texto + "</p>" +
+                                                    "<br>" +
+                                                "</div>" +
+                                            "</div >" +
+                                        "<img class='m-4' src='" + noticias[i - 1].imagen + "'>" +
+                                    "</div >" +
+                                "</div >";
+                                
+
+    
+                    $("#noticias").append(noticia);
+
+    
+                    id = "#c" + (i - 1)
+    
+                    $(id).click(function () {
+                        noticiaCompleta(this.id.slice(1));
+                    })
+                }
+    
+                idNoticia = location.search.substring(1, location.search.length);
+                if (idNoticia != "") {
+                    noticiaCompleta(idNoticia);
+                    
+                }
+
+                comentarios="<input type='textarea' class='form-control' id='comentario'>" +
+                            "<button type='button' id='insertarComentario' class='btn btn-success mx-auto d-block mt-3'>Insertar Comentario</button>";
+
+                $("#comentarios").append(comentarios);
+
+                /*Click en el boton insertar*/
+                $("#insertarComentario").click(function(){
+                    insertarComentario(usuario[0].id);
+                });
+
+            }
+        })
+        .catch(error => console.error('Error status:', error));
+};
+
+
+function insertarComentario(idUsuario){
+    texto=$("#comentario").val();
+
+    var url = "../../controller/cInsertarComentario.php";
+    var data = {'texto':texto, "idUsuario":idUsuario};
+        
+    fetch(url, {
+			method: 'POST', 
+			body: JSON.stringify(data), 
+			headers:{'Content-Type': 'application/json'}
+        })
+            
+		.then(res => res.json()).then(result => {
+
+            alert("Comentario insertado correctamente")
+            window.location.reload();
+          
+          
+		})
+      .catch(error => console.error('Error status:', error));
+    
+}
+
+function cargarComentarios(){
+
+    var url = "../../controller/cAllComentarios.php";
+
+    fetch(url, {
+        method: 'GET', 
+        headers:{'Content-Type': 'application/json'}
+    })
+        
+    .then(res => res.json()).then(result => {
+
+        var comentarios=result.list;
+
+        comentariosInfo="";
+
+        for(let i=0; i<comentarios.length; i++){
+
+            comentariosInfo="<div class='row justify-content-around w-100 ml-auto mr-auto border p-2 m-2'>" +
+                                "<div class='col-lg-4'>" +
+                                    "<p><b>Realizado por: </b>" + comentarios[i].objUsuario.nombre + " " + comentarios[i].objUsuario.apellidos + "</p>" +
+                                    "<img src='../img/" + comentarios[i].objUsuario.imagen + "' class='imagenComentario justify-self-center'>" + 
+                                "</div>" +
+                                "<div class='col-lg-4'>" +
+                                    "<p>" + comentarios[i].texto + "</p>" +
+                                "</div>" +
+                            "</div>";
+
+            $("#comentariosRealizados").append(comentariosInfo);
+
+        }
+      
+      
+    })
+  .catch(error => console.error('Error status:', error));
+
 }

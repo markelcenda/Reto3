@@ -26,8 +26,6 @@ function login(){
     var url = "../../controller/cLogin.php";
     var data = {'usuario':usuario, 'password':password};
 
-    console.log(data);
-
     		//Llamada fetch
     		fetch(url, {
     			  method: 'POST', 
@@ -89,8 +87,7 @@ function logout(){
 		  headers:{'Content-Type': 'application/json'}
 		  })
 	.then(res => res.json()).then(result => {
-	
-        console.log(result.confirm);
+
         alert(result.confirm);
         window.location.href="../../index.html";
 	
@@ -111,7 +108,6 @@ function sessionVarsView(){
     		.then(res => res.json()).then(result => {
     			
     			var usuario=result.usuario;
-    			console.log(usuario);
     			
     			if (usuario !=null){
     				
@@ -319,7 +315,6 @@ function sessionVarsView(){
 
         var url = "../../controller/cUpdateUser.php";
         var data = {'id':idUsuario, 'password':password, 'email':email, 'direccion':direccion};
-        console.log(data);
         
         fetch(url, {
 			  method: 'POST', 
@@ -396,7 +391,6 @@ function sessionVarsView(){
 
             var url = "../../controller/cDeleteUser.php";
             var data = {'id':idUsuario};
-            console.log(data);
           
             fetch(url, {
                     method: 'POST', 
