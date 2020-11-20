@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
   cargarUltimasNoticias();
   aos_init();
 
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () { scrollFunction() };
+
 });
 
 function aos_init() {
@@ -119,27 +122,27 @@ function cargarUltimasNoticias() {
       console.log(noticias);
 
       var noticia = "";
-    
+
 
       for (i = noticias.length - 1; i > noticias.length - 4; i--) {
 
         noticia = "<div class='col-md-4 mb-4'>" +
-        "<div class='card mb-4 box-shadow' id='" + noticias[i].id + "'>" +
-        "<img class='card-img-top' src='" + noticias[i].imagen + "'>" +
-        "<div class='card-body'>" +
-        "<b><p class='card-text'>" + noticias[i].titulo + "</p></b><br>" +
-        "<p class='card-text'>" + noticias[i].textoCorto + "</p>" +
-        "<div class='d-flex justify-content-between align-items-center'>" +
-        "<small class='text-light'>" + noticias[i].fecha + "</small>" +
-        "</div>" +
-        "</div>" +
-        "</div>" +
-        "</div>"
+          "<div class='card mb-4 box-shadow' id='" + noticias[i].id + "'>" +
+          "<img class='card-img-top' src='" + noticias[i].imagen + "'>" +
+          "<div class='card-body'>" +
+          "<b><p class='card-text'>" + noticias[i].titulo + "</p></b><br>" +
+          "<p class='card-text'>" + noticias[i].textoCorto + "</p>" +
+          "<div class='d-flex justify-content-between align-items-center'>" +
+          "<small class='text-light'>" + noticias[i].fecha + "</small>" +
+          "</div>" +
+          "</div>" +
+          "</div>" +
+          "</div>"
 
         $("#noticias").append(noticia);
       }
 
-      $("#noticias .card").click(function(){
+      $("#noticias .card").click(function () {
         id = this.id;
         window.location.href = "view/pages/noticias.html?" + id;
       })
@@ -147,3 +150,18 @@ function cargarUltimasNoticias() {
     .catch(error => console.error('Error status:', error));
 }
 
+var mybutton = document.getElementById("myBtn");
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
