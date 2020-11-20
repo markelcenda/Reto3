@@ -266,7 +266,7 @@ function cargarNoticiasConComentarios(usuario) {
                 }
 
                 /*Input para añadir comentario*/
-                comentarios="<input type='textarea' maxLength='100' class='form-control' id='comentario'>" +
+                comentarios="<textarea maxLength='100' rows='3' class='form-control' id='comentario'></textarea>" +
                             "<button type='button' id='insertarComentario' class='btn btn-success mx-auto d-block mt-3'>Insertar Comentario</button>";
 
                 $("#comentarios").append(comentarios);
