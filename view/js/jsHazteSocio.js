@@ -1,44 +1,46 @@
 $(document).ready(function () {
-    
+
     $("#btnDespliegue").click(despliegueFormulario);
     $("#btnEnviar").click(datosFormulario);
     $("#imagen").change(changeImg);
     $(".botonLoginStart").click(login);
     $(".botonLogout").click(logout);
-    
+
     sessionVarsView();
     aos_init();
-    
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
 
 });
 
 function aos_init() {
     AOS.init({
-      duration: 1000,
-      once: true
+        duration: 1000,
+        once: true
     });
-  }
+}
 
-function despliegueFormulario(){
-    
+function despliegueFormulario() {
+
     $("#formulario").show("slow");
-    
+
     $("#btnDespliegue").hide();
-  
+
 }
 
-function equiposDesdeSocios(id){
-    pagina="equipos.html?" + id;
-    window.location.href=pagina;
+function equiposDesdeSocios(id) {
+    pagina = "equipos.html?" + id;
+    window.location.href = pagina;
 }
 
-    /*Por defecto la varible filename contendra el nombre de una imagen y savedFile64 no tendra nada
-        a menos que se active la funcion "changeImg"*/
-      filename = "imagenDefault.png";
-      savedFileBase64 = "";
-	
+/*Por defecto la varible filename contendra el nombre de una imagen y savedFile64 no tendra nada
+    a menos que se active la funcion "changeImg"*/
+filename = "imagenDefault.png";
+savedFileBase64 = "";
+
 //Funcion que envia los datos introducidos en el formulario a la base de datos, y que los verifica
-function datosFormulario(){
+function datosFormulario() {
 
     //Numero de inputs del formularios
     $misInput = $("form input").length;
@@ -50,93 +52,93 @@ function datosFormulario(){
     $correcto = true;
 
     //Bucle for que va recorriendo todos los input del formulario
-    for(let i = 0; i < ($misInput - 2); i++){
+    for (let i = 0; i < ($misInput - 2); i++) {
 
         /*Filtro que va mirando de uno en uno los input y va dandoles un borde rojo o verde 
         en fucion de si han sido rellenados o no*/
-        if($("form input:eq(" + i + ")").val() == ""){
+        if ($("form input:eq(" + i + ")").val() == "") {
 
             //En caso de no haberse rellenado adquirira un borde rojo
-            $("form input:eq(" + i + ")").css("border","2px solid red");
+            $("form input:eq(" + i + ")").css("border", "2px solid red");
 
             /*La variable adquiere el valor false al encontar un input no rellenado*/
             $correcto = false;
 
-        }else{
+        } else {
 
             //En caso de haberse rellenado adquirira un borde verde
-            $("form input:eq(" + i + ")").css("border","2px solid #009655");
+            $("form input:eq(" + i + ")").css("border", "2px solid #009655");
 
         }
 
     }
 
     //Filtro que mira si el campo correo tiene formato de correo electronico
-    if(/\w+\@\w+\.\w+/.test($campoCorreo)){
+    if (/\w+\@\w+\.\w+/.test($campoCorreo)) {
 
         //el input del correo adquiere bordes verdes
-        $("#email").css("border","2px solid #009655");
+        $("#email").css("border", "2px solid #009655");
 
-    }else{
+    } else {
 
         //el input del correo adquiere bordes rojos
-        $("#email").css("border","2px solid red");
+        $("#email").css("border", "2px solid red");
         /*La variable adquiere el valor false al verificar que el formato de correo introducio es invalido*/
         $correcto = false;
-        
+
     }
 
     //Filtro que determina si los datos pueden ser enviados a la base de datos en funcion de la variable correcto
-    if($correcto == false){
+    if ($correcto == false) {
 
-        
+
         alert("Faltan campos por rellenar o el correo no es valido");
         return false;
 
-    }else{
+    } else {
 
-        nombreInsert=$("#nombre").val();
-    	apellidosInsert=$("#apellidos").val();
-    	usuarioInsert=$("#nuevoUsuario").val(); 
-    	passwordInsert=$("#contraseña").val();
-        imagenInsert=filename;
-    	idEquipoInsert="1";
-    	tipoInsert="4";
-    	emailInsert=$("#email").val();
-    	direccionInsert=$("#direccion").val();
-    	fechaDeNacimientoInsert=$("#fechaNacimiento").val();
-        adminInsert="0";
+        nombreInsert = $("#nombre").val();
+        apellidosInsert = $("#apellidos").val();
+        usuarioInsert = $("#nuevoUsuario").val();
+        passwordInsert = $("#contraseña").val();
+        imagenInsert = filename;
+        idEquipoInsert = "1";
+        tipoInsert = "4";
+        emailInsert = $("#email").val();
+        direccionInsert = $("#direccion").val();
+        fechaDeNacimientoInsert = $("#fechaNacimiento").val();
+        adminInsert = "0";
 
         var url = "../../controller/cUsers.php";
 
-    		//Llamada fetch
-    		fetch(url, {
-    			  method: 'GET', 
-                  })
-                  
-    		.then(res => res.json()).then(result => {
+        //Llamada fetch
+        fetch(url, {
+            method: 'GET',
+        })
+
+            .then(res => res.json()).then(result => {
 
                 var list = result.list;
 
                 permitirInsert = true;
                 //recorre toda la lista de usuarios
-                for (let i=0; i <list.length; i++){
+                for (let i = 0; i < list.length; i++) {
                     //mira si el nombre de usuario y correo eletronico introducidos coincide con alguno de la base de datos
-                    if(usuarioInsert == list[i].usuario || emailInsert == list[i].email){
+                    if (usuarioInsert == list[i].usuario || emailInsert == list[i].email) {
 
                         permitirInsert = false;
 
-                        for (let i=0; i <list.length; i++){
+                        for (let i = 0; i < list.length; i++) {
 
-                            if(usuarioInsert == list[i].usuario){
+                            if (usuarioInsert == list[i].usuario) {
 
-                                $("#nuevoUsuario").css("border","2px solid red");
+                                $("#nuevoUsuario").css("border", "2px solid red");
 
                             }
 
-                            if(emailInsert == list[i].email){
+                            if (emailInsert == list[i].email) {
 
-                                $("#email").css("border","2px solid red");
+                                $("#email").css("border", "2px solid red");
 
                             }
                         }
@@ -147,138 +149,140 @@ function datosFormulario(){
 
                 }
                 //ejecuta la insercion del nuevo socio
-                if(permitirInsert == true){
-        
+                if (permitirInsert == true) {
+
                     var url = "../../controller/cUsuarioExecuteInsert.php";
-                    var data = {'nombreInsert':nombreInsert,
-                               'apellidosInsert':apellidosInsert,
-                               'usuarioInsert':usuarioInsert,
-                               'passwordInsert':passwordInsert,
-                               'idEquipoInsert':idEquipoInsert,
-                               'tipoInsert':tipoInsert,
-                               'emailInsert':emailInsert,
-                               'direccionInsert':direccionInsert,
-                               'fechaDeNacimientoInsert':fechaDeNacimientoInsert,
-                                'adminInsert':adminInsert,
-                                'filename':filename,
-                                'savedFileBase64':savedFileBase64,
-                                'imagenInsert': imagenInsert};
-        
+                    var data = {
+                        'nombreInsert': nombreInsert,
+                        'apellidosInsert': apellidosInsert,
+                        'usuarioInsert': usuarioInsert,
+                        'passwordInsert': passwordInsert,
+                        'idEquipoInsert': idEquipoInsert,
+                        'tipoInsert': tipoInsert,
+                        'emailInsert': emailInsert,
+                        'direccionInsert': direccionInsert,
+                        'fechaDeNacimientoInsert': fechaDeNacimientoInsert,
+                        'adminInsert': adminInsert,
+                        'filename': filename,
+                        'savedFileBase64': savedFileBase64,
+                        'imagenInsert': imagenInsert
+                    };
+
                     //Llamada fetch
                     fetch(url, {
-                          method: 'POST', // or 'POST'
-                          body: JSON.stringify(data), // data can be `string` or {object}!
-                          headers:{'Content-Type': 'application/json'}  // input data
-                          })
-                          
-                    .then(res => res.json()).then(result => {
-                        
-                           console.log(result.error);//Avisa de si la insercion a salido bien o mal
-                           alert(result.error); //Avisa de si la insercion a salido bien o mal
-                           window.location.reload(true);  //recarga la pagina	
-                                
+                        method: 'POST', // or 'POST'
+                        body: JSON.stringify(data), // data can be `string` or {object}!
+                        headers: { 'Content-Type': 'application/json' }  // input data
                     })
-                    .catch(error => console.error('Error status:', error));	
-        
-                }else{
-        
+
+                        .then(res => res.json()).then(result => {
+
+                            console.log(result.error);//Avisa de si la insercion a salido bien o mal
+                            alert(result.error); //Avisa de si la insercion a salido bien o mal
+                            window.location.reload(true);  //recarga la pagina	
+
+                        })
+                        .catch(error => console.error('Error status:', error));
+
+                } else {
+
                     alert("Ya existe un usuario con ese nombre de usuario o correo electronico");
                 }
-                       
-    					
-    		})
-            .catch(error => console.error('Error status:', error));	
+
+
+            })
+            .catch(error => console.error('Error status:', error));
     }
 
 }
 
 //Cambia la foto de perfil
-function changeImg(){	
+function changeImg() {
 
-	  var file = $("#imagen")[0].files[0];
-	  
-	  filename = file.name.toLowerCase();
-	  filesize= file.size;
-	  console.log(filename);
-	  
-		  var reader  = new FileReader();
-		  
-		  reader.onloadend = function () {
-			  savedFileBase64 = reader.result;     // Almacenar en variable global para uso posterior	  
-			  $("#fotoPerfil").attr('src', savedFileBase64); 
-		  }
-	
-		  if (file) {
+    var file = $("#imagen")[0].files[0];
 
-		    reader.readAsDataURL(file);
-		    
-		  } else {
+    filename = file.name.toLowerCase();
+    filesize = file.size;
+    console.log(filename);
 
-            $("#fotoPerfil").attr('src', '');
-            
-        }
-        
+    var reader = new FileReader();
+
+    reader.onloadend = function () {
+        savedFileBase64 = reader.result;     // Almacenar en variable global para uso posterior	  
+        $("#fotoPerfil").attr('src', savedFileBase64);
+    }
+
+    if (file) {
+
+        reader.readAsDataURL(file);
+
+    } else {
+
+        $("#fotoPerfil").attr('src', '');
+
+    }
+
 }
 
-function login(){
+function login() {
 
     //Variables que adquieren el valor de los datos introducidos en el modal
-	 usuario=$("#usuario").val();
-     password=$("#password").val();
+    usuario = $("#usuario").val();
+    password = $("#password").val();
 
-     //Filtro que mira si los campos usuario y contraseña estan vacio
-    if(usuario != "" && password != ""){
-    
-    //en caso de no estar vacio se mandaran los datos al controlador cLogin
-    var url = "../../controller/cLogin.php";
-    var data = {'usuario':usuario, 'password':password};
+    //Filtro que mira si los campos usuario y contraseña estan vacio
+    if (usuario != "" && password != "") {
 
-    console.log(data);
+        //en caso de no estar vacio se mandaran los datos al controlador cLogin
+        var url = "../../controller/cLogin.php";
+        var data = { 'usuario': usuario, 'password': password };
 
-    		//Llamada fetch
-    		fetch(url, {
-    			  method: 'POST', 
-    			  body: JSON.stringify(data), // data can be `string` or {object}!
-    			  headers:{'Content-Type': 'application/json'}  // input data
-                  })
-                  
-    		.then(res => res.json()).then(result => {
+        console.log(data);
 
-                alert(result.error); 
+        //Llamada fetch
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers: { 'Content-Type': 'application/json' }  // input data
+        })
+
+            .then(res => res.json()).then(result => {
+
+                alert(result.error);
 
                 console.log(result.error);
 
                 //Filtro que mira si se ha podido inicar sesion
-                if(result.confirm == true){
+                if (result.confirm == true) {
 
                     //Al detectar que si, econde el boton de iniciar sesion y muestra el de cerrarla y la imagen de usuario
                     $(".botonLogin").hide();
                     $(".botonLogout").show();
-                    $(".sesionUsuario").css('display','flex');
+                    $(".sesionUsuario").css('display', 'flex');
                     $("#usuario").val("");
                     $("#password").val("");
                     $("#modelId").modal("hide");
 
                     //Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-                   img="<a href='usuario.html' class='ml-3' ><img id='imgSesion' src='../../view/img/" + result.usuarioSesion.imagen + "'></a>";
+                    img = "<a href='usuario.html' class='ml-3' ><img id='imgSesion' src='../../view/img/" + result.usuarioSesion.imagen + "'></a>";
 
-                   $("#sitioUsuario").html(img);
+                    $("#sitioUsuario").html(img);
 
                 }
-                
-    		})
-            .catch(error => console.error('Error status:', error));	
 
-        }else{
+            })
+            .catch(error => console.error('Error status:', error));
 
-            //en caso de estar vacios, aparecera un alert advirtiendo al usuario
-            alert("Los campos usuario y contraseña no pueden estar vacios");
+    } else {
 
-        }
+        //en caso de estar vacios, aparecera un alert advirtiendo al usuario
+        alert("Los campos usuario y contraseña no pueden estar vacios");
+
+    }
 }
 
 //Fucnion de logout
-function logout(){
+function logout() {
 
     //Vacia los valores de los campos usuario y contraseña
     $("#usuario").val("");
@@ -291,48 +295,63 @@ function logout(){
 
     //Llamada fetch al controlador cLogout
     var url = "../../controller/cLogout.php";
-	fetch(url, {
-		  method: 'GET', 
-		  headers:{'Content-Type': 'application/json'}
-		  })
-	.then(res => res.json()).then(result => {
-	
-        console.log(result.confirm);
-        alert(result.confirm);
-	
-	})
-	.catch(error => console.error('Error status:', error));	
+    fetch(url, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    })
+        .then(res => res.json()).then(result => {
+
+            console.log(result.confirm);
+            alert(result.confirm);
+
+        })
+        .catch(error => console.error('Error status:', error));
 
 }
 
-function sessionVarsView(){
-	
-    var url="../../controller/cSessionVarsView.php";
+function sessionVarsView() {
 
-    		fetch(url, {
-    			  method: 'GET', 
-    			  headers:{'Content-Type': 'application/json'}  // input data
-    			  })
-    		.then(res => res.json()).then(result => {
-    			
-    			var usuario=result.usuario;
-    			//console.log(usuario);
-    			
-    			if (usuario !=null){
-    				
-    				for(let i=0; i<usuario.length; i++){
-    					//Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-                        img="<a href='../pages/usuario.html'><img id='imgSesion' src='../img/" + usuario[i].imagen + "'></a>";
-    		             $(".botonLogin").hide();
-    		             $(".botonLogout").show();
-    		             $(".sesionUsuario").css('display','flex');
-    		             $("#sitioUsuario").html(img);
-    				}
+    var url = "../../controller/cSessionVarsView.php";
 
-             
-          }
+    fetch(url, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }  // input data
+    })
+        .then(res => res.json()).then(result => {
 
-    		})
-    		.catch(error => console.error('Error status:', error));	
+            var usuario = result.usuario;
+            //console.log(usuario);
+
+            if (usuario != null) {
+
+                for (let i = 0; i < usuario.length; i++) {
+                    //Muestra la imagen que le corresponde al usuario que ha iniciado sesion
+                    img = "<a href='../pages/usuario.html'><img id='imgSesion' src='../img/" + usuario[i].imagen + "'></a>";
+                    $(".botonLogin").hide();
+                    $(".botonLogout").show();
+                    $(".sesionUsuario").css('display', 'flex');
+                    $("#sitioUsuario").html(img);
+                }
+
+
+            }
+
+        })
+        .catch(error => console.error('Error status:', error));
+}
+
+var mybutton = document.getElementById("myBtn");
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
     }
+}
 
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
