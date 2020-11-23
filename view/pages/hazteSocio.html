@@ -83,10 +83,10 @@
                                              <div class="form-group">
                                                <label for="usuario"></label>
                                                <span>Usuario:</span>
-                                               <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario" aria-describedby="helpId">
+                                               <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario" onkeyup="enterSinClick(event)" aria-describedby="helpId">
      
                                                <span>Contraseña:</span>
-                                               <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" aria-describedby="helpId">
+                                               <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" onkeyup="enterSinClick(event)" aria-describedby="helpId">
      
                                              </div>
                                      
@@ -315,6 +315,7 @@
     <script src="../js/bootstrap.min.js"></script>
     <!-- Optional JavaScript -->
     <script src="../js/jsHazteSocio.js"></script>
+    <script src="../js/jsPrincipal.js"></script>
 
     <script src="../js/fontAwesome.js"></script>
     <script src="../js/aos.js"></script>

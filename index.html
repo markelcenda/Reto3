@@ -79,10 +79,10 @@
                                             <label for="usuario"></label>
                                             <span>Usuario:</span>
                                             <input type="text" name="usuario" id="usuario" class="form-control"
-                                                placeholder="Usuario" aria-describedby="helpId">
+                                                placeholder="Usuario" aria-describedby="helpId" onkeyup="enterSinClick(event)">
                                             <span>Contraseña:</span>
                                             <input type="password" name="password" id="password" class="form-control"
-                                                placeholder="Contraseña" aria-describedby="helpId">
+                                                placeholder="Contraseña" aria-describedby="helpId" onkeyup="enterSinClick(event)">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -170,7 +170,7 @@
     </div>
     
 
-    <div class="album bg-light">
+    <div class="album">
         <div class="container">
             <div class="row" id="noticias">
                 <!-- Insertar las ultimas 3 noticias desded JS -->
@@ -261,6 +261,7 @@
     <!-- Optional JavaScript -->
     <script src="view/js/jsFunctions.js"></script>
     <script src="view/js/jsLoginLogout.js"></script>
+    <script src="view/js/jsPrincipal.js"></script>
     <script src="view/js/aos.js"></script>
     <script src="view/js/fontAwesome.js"></script>
 </body>
