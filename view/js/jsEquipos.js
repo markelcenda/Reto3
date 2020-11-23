@@ -99,7 +99,7 @@ function loadUsersByTeamId(idEquipo){
 				$("#delanteros").html("");
 				$("#zagueros").html("");
 				$("#liberos").html("");
-				$("#cuerpoTecnicoTitulo").html("");
+				$("#cuerpoTecnico").html("");
 				$("#fichaUsuario").html("");
 				$("#tituloPagina").show();
 				
@@ -109,7 +109,7 @@ function loadUsersByTeamId(idEquipo){
 				for(let i=0; i<equipos.length; i++){
 					
 					if(equipos[i].id==idEquipo){
-						categoriaEquipo="<h3 class='titulo'>" + equipos[i].categoria + "</h3>";
+						categoriaEquipo="<h3>" + equipos[i].categoria + "</h3>";
 						$("#insertCategoriaEquipo").html(categoriaEquipo);
 					}
 					
@@ -271,18 +271,24 @@ function mostrarDatosUsuarios(id){
 
 			/*Limpiar el div de los cards*/
 			infoUsuario="";
+
+			$(".flecha").hide("");
+			$(".selectEquipo").hide("");
+
 			$("#delanteros").html("");
 			$("#zagueros").html("");
 			$("#liberos").html("");
 			$("#cuerpoTecnico").html("");
+
 			$("#delanterosTitulo").html("");
 			$("#zaguerosTitulo").html("");
 			$("#liberosTitulo").html("");
 			$("#cuerpoTecnicoTitulo").html("");
-			$("#selectEquipos").hide();
+
 			$("#insertCategoriaEquipo").html("");
+
+			$("#fichaUsuario").html("");
 			$("#tituloPagina").hide();
-			
 
 			/*Si el usuario es jugador*/
 			if(jugador!=null){
@@ -383,6 +389,8 @@ function mostrarDatosUsuarios(id){
 
 			$(".botonVolver").click(function(){
 				$("#selectEquipos").show();
+				$(".flecha").show("");
+				$(".selectEquipo").show("");
 				$(".equipos").show();
 				loadUsersByTeamId(idEquipo);
 			});
