@@ -22,6 +22,8 @@ function cargarNoticias() {
         .then(res => res.json()).then(result => {
             noticias = result;
 
+            $(".ocultarDiv").hide();
+
             noticia = "";
 
             $("#tituloComentarios").hide();
@@ -232,6 +234,7 @@ function cargarNoticiasConComentarios(usuario) {
             $("#noticias").html("");
             //Mostrar titulo
             $("#tituloComentarios").show();
+            $(".ocultarDiv").show();
 
             for (i = noticias.length; i > 0; i--) {
                 noticia = "<div class='container py-3'>" +
@@ -240,7 +243,7 @@ function cargarNoticiasConComentarios(usuario) {
                                         "<div class='col-md-7 px-3'>" +
                                             "<div class='card-block px-6'>" +
                                                 "<h4 class='card-title'>" + noticias[i - 1].titulo + "</h4>" +
-                                                "<p class='card-text'>" + noticias[i - 1].texto + "</p>" +
+                                                "<p class='card-text'>" + noticias[i - 1].textoCorto + "</p>" +
                                                 "<br>" +
                                             "</div>" +
                                         "</div >" +
