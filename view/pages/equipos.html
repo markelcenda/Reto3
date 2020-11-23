@@ -129,10 +129,13 @@
         
                 </div>
         
-                <div class="row justify-content-center selectEquipo">
-        
-                    <div class="col-4" id="insertEquipos">
-                        <label for="equipos"></label>
+                <div class="row justify-content-center align-items-center selectEquipo">
+
+                    <div class="col-lg-2 col-md-4 col-sm-5 col-5 m-3">
+                        <input type="text" id="filtro" onkeyup="buscarUsuarios()" placeholder="Buscar usuarios">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-sm-5 m-3" id="insertEquipos">
                         <select class="custom-select" name="equipos" id="selectEquipos">
                             <option selected>Selecciona un equipo</option>
                         </select>

@@ -63,7 +63,7 @@ function loadEquipos(){
 			var idEquipo = $(this).children(":selected").attr("id");
 			
 			document.getElementById("selectEquipos").addEventListener("click", loadUsersByTeamId(idEquipo));
-			
+			$("#filtro").val("");
 			
 		});
 		
@@ -129,7 +129,7 @@ function loadUsersByTeamId(idEquipo){
 					//JUGADORES
 
 					if(jugadores[i].objJugador.posicion=="Delantero"){
-						console.log(jugadores[i]);
+						//console.log(jugadores[i]);
 						
 						cardPosiciones="<div class='row justify-content-center mt-4'>" +
 		                					"<div class='col-lg-12'>" +
@@ -138,9 +138,9 @@ function loadUsersByTeamId(idEquipo){
 										"</div>";	
 						$("#delanterosTitulo").html(cardPosiciones);
 
-						  cardJugadores="<div class='card' data-aos='zoom-in'>" +
+						  cardJugadores="<div class='card' name='cardUsuario' data-aos='zoom-in'>" +
 										"<img src='../img/" + jugadores[i].imagen + "' alt=''>" +
-										"<div class='info'>" +
+										"<div class='info' id='info'>" +
 											"<h1>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h1>" +	
 											"<span class='fas fa-eye fa-2x' id='" + jugadores[i].id + "'>" +
 										"</div>" +
@@ -162,9 +162,9 @@ function loadUsersByTeamId(idEquipo){
 										"</div>";
 						$("#zaguerosTitulo").html(cardPosiciones);
 						
-						cardJugadores="<div class='card' data-aos='zoom-in'>" +
+						cardJugadores="<div class='card' name='cardUsuario' data-aos='zoom-in'>" +
 										"<img src='../img/" + jugadores[i].imagen + "' alt=''>" +
-										"<div class='info'>" +
+										"<div class='info' id='info'>" +
 											"<h1>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h1>" +	
 											"<span class='fas fa-eye fa-2x' id='" + jugadores[i].id + "'>" +
 										"</div>" +
@@ -182,9 +182,9 @@ function loadUsersByTeamId(idEquipo){
 									"</div>";	
 						$("#liberosTitulo").html(cardPosiciones);
 						
-						cardJugadores="<div class='card' data-aos='zoom-in'>" +
+						cardJugadores="<div class='card' name='cardUsuario' data-aos='zoom-in'>" +
 										"<img src='../img/" + jugadores[i].imagen + "' alt=''>" +
-										"<div class='info'>" +
+										"<div class='info' id='info'>" +
 											"<h1>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h1>" +	
 											"<span class='fas fa-eye fa-2x' id='" + jugadores[i].id + "'>" +
 										"</div>" +
@@ -211,9 +211,9 @@ function loadUsersByTeamId(idEquipo){
 
 				for(let i=0; i<entrenadores.length; i++){
 
-					cardEntrenadores="<div class='card' data-aos='zoom-in'>" +
+					cardEntrenadores="<div class='card' name='cardUsuario' data-aos='zoom-in'>" +
 									"<img src='../img/" + entrenadores[i].imagen + "' alt=''>" +
-									"<div class='info'>" +
+									"<div class='info' id='info'>" +
 										"<h1>" + entrenadores[i].nombre + " " + entrenadores[i].apellidos + "</h1>" +
 										"<p>Entrenador</p>" +		
 										"<span class='fas fa-eye fa-2x' id='" + entrenadores[i].id + "'>" +
@@ -222,9 +222,9 @@ function loadUsersByTeamId(idEquipo){
 												
 					$("#cuerpoTecnico").append(cardEntrenadores);
 
-						cardDelegados="<div class='card' data-aos='zoom-in'>" +
+						cardDelegados="<div class='card' name='cardUsuario' data-aos='zoom-in'>" +
 										"<img src='../img/" + delegados[i].imagen + "' alt=''>" +
-										"<div class='info'>" +
+										"<div class='info' id='info'>" +
 											"<h1>" + delegados[i].nombre + " " + delegados[i].apellidos + "</h1>" +	
 											"<p>Delegado</p>" +
 											"<span class='fas fa-eye fa-2x' id='" + delegados[i].id + "'>" +
@@ -535,4 +535,26 @@ function scrollFunction() {
 function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
+}
+
+/*Funcion para buscar usuarios*/
+function buscarUsuarios(){
+
+	var input, filter, nombre, cards;
+	input = document.getElementById('filtro');
+	filter = input.value.toUpperCase();
+
+	var elementos=$("#info h1");
+	cards=document.getElementsByName("cardUsuario");
+
+	for(let i=0; i<elementos.length; i++){
+
+		nombre= elementos[i].outerText;
+
+		if (nombre.toUpperCase().indexOf(filter) > -1) {
+			cards[i].style.display = "";
+		  } else {
+			cards[i].style.display = "none";
+		  }
+	}
 }
