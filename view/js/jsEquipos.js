@@ -44,7 +44,7 @@ function loadEquipos(){
 		
 		var equipos=result.list;
 
-		
+		$("#equiposSection").hide();		
 		
 		/*Cargar los equipos en el select*/
 		selectEquipo="<option selected>Selecciona un equipo</option>";
@@ -102,6 +102,8 @@ function loadUsersByTeamId(idEquipo){
 				$("#cuerpoTecnico").html("");
 				$("#fichaUsuario").html("");
 				$("#tituloPagina").show();
+
+				$("#equiposSection").show();
 				
 
 				/*Añadir categoria del equipo al index*/
