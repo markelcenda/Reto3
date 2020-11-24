@@ -199,17 +199,18 @@ function loadUsersByTeamId(idEquipo){
 
 				/*CUERPO TECNICO*/
 
-				cuerpoTecnicoTitulo="<div class='row justify-content-center mt-4'>" +
-					                "<div class='col-lg-12'>" +
-					                "<div class='separator'>Cuerpo Técnico</div>" +
-					                "</div>" +
-									"</div>";	
-				$("#cuerpoTecnicoTitulo").html(cuerpoTecnicoTitulo);
-
 				cardEntrenadores="";
 				cardDelegados="";
 
 				for(let i=0; i<entrenadores.length; i++){
+
+					cuerpoTecnicoTitulo="<div class='row justify-content-center mt-4'>" +
+					                "<div class='col-lg-12'>" +
+					                "<div class='separator'>Cuerpo Técnico</div>" +
+					                "</div>" +
+									"</div>";	
+
+				$("#cuerpoTecnicoTitulo").html(cuerpoTecnicoTitulo);
 
 					cardEntrenadores="<div class='card' name='cardUsuario' data-aos='zoom-in'>" +
 									"<img src='../img/" + entrenadores[i].imagen + "' alt=''>" +
