@@ -44,7 +44,7 @@ function loadEquipos(){
 		
 		var equipos=result.list;
 
-		
+		$("#equiposSection").hide();		
 		
 		/*Cargar los equipos en el select*/
 		selectEquipo="<option selected>Selecciona un equipo</option>";
@@ -102,6 +102,8 @@ function loadUsersByTeamId(idEquipo){
 				$("#cuerpoTecnico").html("");
 				$("#fichaUsuario").html("");
 				$("#tituloPagina").show();
+
+				$("#equiposSection").show();
 				
 
 				/*Añadir categoria del equipo al index*/
@@ -199,17 +201,18 @@ function loadUsersByTeamId(idEquipo){
 
 				/*CUERPO TECNICO*/
 
-				cuerpoTecnicoTitulo="<div class='row justify-content-center mt-4'>" +
-					                "<div class='col-lg-12'>" +
-					                "<div class='separator'>Cuerpo Técnico</div>" +
-					                "</div>" +
-									"</div>";	
-				$("#cuerpoTecnicoTitulo").html(cuerpoTecnicoTitulo);
-
 				cardEntrenadores="";
 				cardDelegados="";
 
 				for(let i=0; i<entrenadores.length; i++){
+
+					cuerpoTecnicoTitulo="<div class='row justify-content-center mt-4'>" +
+					                "<div class='col-lg-12'>" +
+					                "<div class='separator'>Cuerpo Técnico</div>" +
+					                "</div>" +
+									"</div>";	
+
+				$("#cuerpoTecnicoTitulo").html(cuerpoTecnicoTitulo);
 
 					cardEntrenadores="<div class='card' name='cardUsuario' data-aos='zoom-in'>" +
 									"<img src='../img/" + entrenadores[i].imagen + "' alt=''>" +
