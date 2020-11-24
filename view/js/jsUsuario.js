@@ -291,16 +291,7 @@ function sessionVarsView(){
                                 "<label for='direccion'>Dirección:</label>" +
                                 "<input type='text' class='form-control' id='direccion' value='" + usuario[i].direccion + "'>" +
                             "</div>" + 
-                        "</div>" +
-                        "<div class='col-lg-6 p-3 text-center' id='containerImagen'>"+
-                                "<label>Imagen de perfil</label><br>"+
-                                "<input type='file' name='imagen' id='imagen' accept='.png,.jpeg,.jpg,.gif'>"+
-                                "<label type='file' for='imagen' class='btn text-white col-lg-5 col-md-4 col-sm-4 col-4'id='btnSubirArchivo'>Subir imagen <i class='fas fa-upload text-white'></i></label>"+
-                            "</div>"+
-                           /* "<div class='col-lg-6 p-3 text-center'>"+
-                                "<img src='../img/"+usuario[i].imagen+"' id='fotoPerfil'>"+
-                            "</div>"+*/
-                            "</div>"+
+                            "</div>" +
                         "<button type='button' id='btnExecuteUpdate' class='btn text-white m-2'>Actualizar</button>" +
                         "</form>";
 
@@ -316,39 +307,6 @@ function sessionVarsView(){
             execUpdate(idUsuario);
         });
 
-    }
-
-    function changeImg(){
-
-        alert("dddd");
-       /* img="<div class='col-lg-6 p-3 text-center'>"+
-        "<img src='../img/"+usuario[i].imagen+"' id='fotoPerfil'>"+
-        "</div>";
-
-
-        $("#acciones").append(img);*/
-        /*var file = $("#imagen")[0].files[0];
-	  
-	  filename = file.name.toLowerCase();
-	  filesize= file.size;
-	  console.log(filename);
-	  
-		  var reader  = new FileReader();
-		  
-		  reader.onloadend = function () {
-			  savedFileBase64 = reader.result;     // Almacenar en variable global para uso posterior	  
-			  $("#fotoPerfil").attr('src', savedFileBase64); 
-		  }
-	
-		  if (file) {
-
-		    reader.readAsDataURL(file);
-		    
-		  } else {
-
-            $("#fotoPerfil").attr('src', '');
-            
-        }*/
     }
 
     //Ejecutar update de la informacion del usuario
