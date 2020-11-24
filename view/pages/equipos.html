@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <title>Equipos</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -16,148 +17,158 @@
     <link rel="stylesheet" href="../css/hazteSocio.css">
 
     <!-- Bootstrap CSS -->
-    
-  </head>
-  <body class="bg-light">
 
-    
+</head>
 
-        <div class="imagenFondo2">
+<body class="bg-light">
 
-            <nav class="navbar navbar-dark navbar-expand-md justify-content-between w-100">
-    
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-nav">
-                        <div class="navbar-toggler-icon"></div>
-                    </button>
-    
-                    <div class="navbar-collapse collapse dual-nav w-50 order-1 order-md-0 mt-3">
-    
-                        <ul class="navbar-nav text-center align-items-center mt-5">
-    
-                            <li class="nav-item active">
-                                <a class="nav-link pl-0 efecto" href="../../index.html">Home <span class="sr-only">Home</span></a>
-                            </li>
-    
-                            <li class="nav-item dropdown active">
-                                <a class="nav-link dropdown-toggle efecto" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Equipos</a>
-                                <div class="dropdown-menu text-center" aria-labelledby="dropdownId">
-                                    <a class="dropdown-item" onclick="equiposDesdeEquipos('5')">Senior Masculino</a>
-                                    <a class="dropdown-item" onclick="equiposDesdeEquipos('6')">Senior Femenino</a>
-                                    <hr>
-                                    <a class="dropdown-item" onclick="equiposDesdeEquipos('3')">Juvenil Masculino</a>
-                                    <a class="dropdown-item" onclick="equiposDesdeEquipos('4')">Juvenil Femenino</a>
-                                    <hr>
-                                    <a class="dropdown-item" onclick="equiposDesdeEquipos('1')">Infantil Masculino</a>
-                                    <a class="dropdown-item" onclick="equiposDesdeEquipos('2')">Infantil Femenino</a>
-                                </div>
-                            </li>
-    
-                            <li class="nav-item active">
-                                <a class="nav-link active efecto" href="noticias.html">Noticias</a>
-                            </li>
-    
-                            <li class="nav-item active">
-                                <a class="nav-link efecto" href="hazteSocio.html">Socios</a>
-                            </li>
-    
-                        </ul>
-                    </div>
-    
-                    <div class="navbar-collapse collapse dual-nav w-50 order-2 mt-3">
-                        <ul class="nav navbar-nav ml-auto text-center align-items-center mt-5">
-    
-                            <div class="login">
-    
-                                <button type="button" class="btn botonLogin" data-toggle="modal" data-target="#modelId">Iniciar Sesión</button>
-                                <button type="button" class="btn botonLogout">Cerrar Sesión</button>
-                                <!--Modal-->
-                                <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Iniciar Sesión</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                 
-                                                 <div class="form-group">
-                                                   <label for="usuario"></label>
-                                                   <span>Usuario:</span>
-                                                   <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario" onkeyup="enterSinClick(event)" aria-describedby="helpId">
-         
-                                                   <span>Contraseña:</span>
-                                                   <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" onkeyup="enterSinClick(event)" aria-describedby="helpId">
-         
-                                                 </div>
-                                         
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn botonCerrar" data-dismiss="modal">Cerrar</button>
-                                                <button type="button" class="btn botonLoginStart">Iniciar Sesión</button>
-                                            </div>
+
+
+    <div class="imagenFondo2">
+
+        <nav class="navbar navbar-dark navbar-expand-md justify-content-between w-100">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-nav">
+                <div class="navbar-toggler-icon"></div>
+            </button>
+
+            <div class="navbar-collapse collapse dual-nav w-50 order-1 order-md-0 mt-3">
+
+                <ul class="navbar-nav text-center align-items-center mt-5">
+
+                    <li class="nav-item active">
+                        <a class="nav-link pl-0 efecto" href="../../index.html">Home <span
+                                class="sr-only">Home</span></a>
+                    </li>
+
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle efecto" href="#" id="dropdownId" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Equipos</a>
+                        <div class="dropdown-menu text-center" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" onclick="equiposDesdeEquipos('5')">Senior Masculino</a>
+                            <a class="dropdown-item" onclick="equiposDesdeEquipos('6')">Senior Femenino</a>
+                            <hr>
+                            <a class="dropdown-item" onclick="equiposDesdeEquipos('3')">Juvenil Masculino</a>
+                            <a class="dropdown-item" onclick="equiposDesdeEquipos('4')">Juvenil Femenino</a>
+                            <hr>
+                            <a class="dropdown-item" onclick="equiposDesdeEquipos('1')">Infantil Masculino</a>
+                            <a class="dropdown-item" onclick="equiposDesdeEquipos('2')">Infantil Femenino</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link active efecto" href="noticias.html">Noticias</a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link efecto" href="hazteSocio.html">Socios</a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="navbar-collapse collapse dual-nav w-50 order-2 mt-3">
+                <ul class="nav navbar-nav ml-auto text-center align-items-center mt-5">
+
+                    <div class="login">
+
+                        <button type="button" class="btn botonLogin" data-toggle="modal" data-target="#modelId">Iniciar
+                            Sesión</button>
+                        <button type="button" class="btn botonLogout">Cerrar Sesión</button>
+                        <!--Modal-->
+                        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Iniciar Sesión</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="form-group">
+                                            <label for="usuario"></label>
+                                            <span>Usuario:</span>
+                                            <input type="text" name="usuario" id="usuario" class="form-control"
+                                                placeholder="Usuario" onkeyup="enterSinClick(event)"
+                                                aria-describedby="helpId">
+
+                                            <span>Contraseña:</span>
+                                            <input type="password" name="password" id="password" class="form-control"
+                                                placeholder="Contraseña" onkeyup="enterSinClick(event)"
+                                                aria-describedby="helpId">
+
                                         </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn botonCerrar"
+                                            data-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn botonLoginStart">Iniciar Sesión</button>
                                     </div>
                                 </div>
-    
                             </div>
-                            
-    
-                            <!-- Zona login -->
-                        <div class="sesionUsuario">
-                       
+                        </div>
+
+                    </div>
+
+
+                    <!-- Zona login -->
+                    <div class="sesionUsuario">
+
                         <div class="nav-item active" id="sitioUsuario">
                             <!--Carga la imagen del usuario que ha iniciado sesion desde el JS-->
                         </div>
 
                     </div>
-    
-                        </ul>
-                    </div>
-            </nav>
-    
-                
+                    <button type="button" class="btn ml-2" id="nightMode"><i></i></button>
+                </ul>
+            </div>
+        </nav>
+
+
+    </div>
+
+
+    <div class="row mt-4 flecha">
+
+        <div class="col-lg-12 text-center" id="tituloPagina">
+            <h2 class="titulo">Nuestros equipos</h2>
         </div>
-    
-    
-                <div class="row mt-4 flecha">
-    
-                    <div class="col-lg-12 text-center" id="tituloPagina">
-                        <h2 class="titulo">Nuestros equipos</h2>
-                    </div>
-        
-                </div>
-        
-                <div class="row justify-content-center align-items-center selectEquipo">
 
-                    <div class="col-lg-2 col-md-4 col-sm-5 col-5 m-3">
-                        <input type="text" id="filtro" onkeyup="buscarUsuarios()" placeholder="Buscar usuarios">
-                    </div>
+    </div>
 
-                    <div class="col-lg-2 col-md-4 col-sm-5 m-3" id="insertEquipos">
-                        <select class="custom-select" name="equipos" id="selectEquipos">
-                            <option selected>Selecciona un equipo</option>
-                        </select>
-                    </div>
-                    
-                </div>
-    
-                <div class="row justify-content-center mt-4">
-    
-                    <div class="col-lg-12 text-center" id="insertCategoriaEquipo">
-    
-                    </div>
-    
-                </div>
-    
+    <div class="row justify-content-center align-items-center selectEquipo">
+
+        <div class="col-lg-2 col-md-4 col-sm-5 col-5 m-3">
+            <input type="text" id="filtro" onkeyup="buscarUsuarios()" placeholder="Buscar usuarios">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-5 m-3" id="insertEquipos">
+            <select class="custom-select" name="equipos" id="selectEquipos">
+                <option selected>Selecciona un equipo</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="row justify-content-center mt-4">
+
+        <div class="col-lg-12 text-center" id="insertCategoriaEquipo">
+
+        </div>
+
+    </div>
+
     <section id="equiposSection">
 
         <!-- Posiciones jugador-->
         <div id="delanterosTitulo"></div>
-                
+
         <div class="row justify-content-center text-center mt-3" id="delanteros">
-        <!-- Insertar cards de los jugadores-->
+            <!-- Insertar cards de los jugadores-->
         </div>
 
 
@@ -192,20 +203,23 @@
         </div>
 
     </section>
-                
 
-            
 
-              <!--Footer comienzo-->
+
+
+    <!--Footer comienzo-->
     <footer class="page-footer font-small blue-grey lighten-5 text-white">
         <div class="container">
             <!--Redes sociales-->
             <div class="row py-4 d-flex align-items-center justify-content-center">
                 <div class="col-lg-4 col-md-6 col-sm-8 col-8 text-center border-bottom border-white p-3">
-                    <!--Facebook--> <a href="https://facebook.com"><i class="fab fa-facebook-f text-white fa-2x m-2"></i></a>
-                    <!--Instagram--><a href="https://instagram.com"><i class="fab fa-instagram text-white fa-2x m-2"></i></a>
+                    <!--Facebook--> <a href="https://facebook.com"><i
+                            class="fab fa-facebook-f text-white fa-2x m-2"></i></a>
+                    <!--Instagram--><a href="https://instagram.com"><i
+                            class="fab fa-instagram text-white fa-2x m-2"></i></a>
                     <!--Twitter--> <a href="https://twitter.com"><i class="fab fa-twitter text-white fa-2x m-2"></i></a>
-                    <!--Google+--> <a href="https://google.com"><i class="fab fa-google-plus text-white fa-2x m-2"></i></a>
+                    <!--Google+--> <a href="https://google.com"><i
+                            class="fab fa-google-plus text-white fa-2x m-2"></i></a>
                     <!--Youtube--> <a href="https://youtube.com"><i class="fab fa-youtube text-white fa-2x m-2"></i></a>
                 </div>
             </div>
@@ -219,7 +233,8 @@
                         </p>
                         <p><a href="hazteSocio.html" class="text-white">Hazte socio</a></p>
                         <p><a href="noticias.html" class="text-white">Ultimas noticias</a></p>
-                        <p><a class="text-white" href="#" data-toggle="modal" data-target="#modelId">Inicia sesion</a></p>
+                        <p><a class="text-white" href="#" data-toggle="modal" data-target="#modelId">Inicia sesion</a>
+                        </p>
                         <p><a class="text-white" data-toggle="modal" data-target="#exampleModal" href="#">Legal</a></p>
                     </div>
                     <!--Logo del club-->
@@ -245,7 +260,7 @@
         </div>
     </footer>
     <!--Footer final-->
-        
+
 
     <!--Modal-->
     <div class="modal fade modalCopyright justify-align-center text-center" id="exampleModal" tabindex="-1"
@@ -280,5 +295,6 @@
     <script src="../js/jsPrincipal.js"></script>
     <script src="../js/aos.js"></script>
     <script src="../js/fontAwesome.js"></script>
-  </body>
+</body>
+
 </html>
