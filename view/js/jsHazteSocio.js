@@ -177,7 +177,7 @@ function datosFormulario() {
 
                         .then(res => res.json()).then(result => {
 
-                            console.log(result.error);//Avisa de si la insercion a salido bien o mal
+                            //console.log(result.error);//Avisa de si la insercion a salido bien o mal
                             alert(result.error); //Avisa de si la insercion a salido bien o mal
                             window.location.reload(true);  //recarga la pagina	
 
@@ -250,7 +250,7 @@ function login() {
 
                 alert(result.error);
 
-                console.log(result.error);
+                //console.log(result.error);
 
                 //Filtro que mira si se ha podido inicar sesion
                 if (result.confirm == true) {
@@ -301,7 +301,7 @@ function logout() {
     })
         .then(res => res.json()).then(result => {
 
-            console.log(result.confirm);
+            //console.log(result.confirm);
             alert(result.confirm);
 
         })

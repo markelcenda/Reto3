@@ -64,7 +64,7 @@ function cargarImagenesEquipos() {
     .then(res => res.json()).then(result => {
 
       var equipos = result.list;
-      console.log(equipos);
+      //console.log(equipos);
 
       var img = "<div class='row m-2'>";
 
@@ -119,7 +119,7 @@ function cargarUltimasNoticias() {
   })
     .then(res => res.json()).then(result => {
       var noticias = result;
-      console.log(noticias);
+      //console.log(noticias);
 
       var noticia = "";
 

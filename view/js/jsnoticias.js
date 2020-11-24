@@ -82,7 +82,7 @@ function login() {
         var url = "../../controller/cLogin.php";
         var data = { 'usuario': usuario, 'password': password };
 
-        console.log(data);
+        //console.log(data);
 
         //Llamada fetch
         fetch(url, {
@@ -148,7 +148,7 @@ function logout() {
     })
         .then(res => res.json()).then(result => {
 
-            console.log(result.confirm);
+            //console.log(result.confirm);
             alert(result.confirm);
             window.location.href="../../index.html";
 
@@ -202,6 +202,7 @@ function noticiaCompleta(id) {
     $("#tituloComentarios").html("");
     $("#comentarios").html("");
     $("#comentariosRealizados").html("");
+    $(".ocultarDiv").hide();
 
     noticia = "<h1>" + noticias[id].titulo + "</h1>" +
         "<p class='mb-4'>" + noticias[id].fecha + "</p>" +
