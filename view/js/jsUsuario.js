@@ -38,7 +38,7 @@ function login(){
 
                 alert(result.error); 
 
-                console.log(result.error);
+                //console.log(result.error);
 
                 //Filtro que mira si se ha podido inicar sesion
                 if(result.confirm == true){

@@ -4,7 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
     cargarNoticias();
     sessionVarsView();
     $(".botonLoginStart").click(login);
-	$(".botonLogout").click(logout);
+    $(".botonLogout").click(logout);
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
 
 });
 
@@ -19,6 +22,8 @@ function cargarNoticias() {
         .then(res => res.json()).then(result => {
             noticias = result;
 
+            $(".ocultarDiv").hide();
+
             noticia = "";
 
             $("#tituloComentarios").hide();
@@ -29,8 +34,8 @@ function cargarNoticias() {
                     "<div class='row'>" +
                     "<div class='col-md-7 px-3'>" +
                     "<div class='card-block px-6'>" +
-                    "<h4 class='card-title'>" + noticias[i - 1].titulo + "</h4>" +
-                    "<p class='card-text'>" + noticias[i - 1].texto + "</p>" +
+                    "<h4 class='card-title'>" + noticias[i - 1].titulo + "</h4><br>" +
+                    "<p class='card-text'>" + noticias[i - 1].textoCorto + "</p>" +
                     "<br>" +
                     "</div>" +
                     "</div >" +
@@ -77,7 +82,7 @@ function login() {
         var url = "../../controller/cLogin.php";
         var data = { 'usuario': usuario, 'password': password };
 
-        console.log(data);
+        //console.log(data);
 
         //Llamada fetch
         fetch(url, {
@@ -143,7 +148,7 @@ function logout() {
     })
         .then(res => res.json()).then(result => {
 
-            console.log(result.confirm);
+            //console.log(result.confirm);
             alert(result.confirm);
             window.location.href="../../index.html";
 
@@ -197,11 +202,15 @@ function noticiaCompleta(id) {
     $("#tituloComentarios").html("");
     $("#comentarios").html("");
     $("#comentariosRealizados").html("");
+    $(".ocultarDiv").hide();
+    $("#comentarios").hide();
+    $("#comentariosRealizados").hide();
+    $(".flecha").hide();
 
     noticia = "<h1>" + noticias[id].titulo + "</h1>" +
         "<p class='mb-4'>" + noticias[id].fecha + "</p>" +
         "<img src='" + noticias[id].imagen + "' class='rounded mt-5 mx-auto d-block'>" +
-        "<p class='mt-5'>" + noticias[id].texto + "</p>" +
+        "<p class='mt-5'>" + noticias[id].textoLargo + "</p>" +
         "<button type='button' class='btn btn-success mx-auto d-block mt-3'>Volver</button>";
 
     $("#noticias").html(noticia);
@@ -229,6 +238,7 @@ function cargarNoticiasConComentarios(usuario) {
             $("#noticias").html("");
             //Mostrar titulo
             $("#tituloComentarios").show();
+            $(".ocultarDiv").show();
 
             for (i = noticias.length; i > 0; i--) {
                 noticia = "<div class='container py-3'>" +
@@ -237,7 +247,7 @@ function cargarNoticiasConComentarios(usuario) {
                                         "<div class='col-md-7 px-3'>" +
                                             "<div class='card-block px-6'>" +
                                                 "<h4 class='card-title'>" + noticias[i - 1].titulo + "</h4>" +
-                                                "<p class='card-text'>" + noticias[i - 1].texto + "</p>" +
+                                                "<p class='card-text'>" + noticias[i - 1].textoCorto + "</p>" +
                                                 "<br>" +
                                             "</div>" +
                                         "</div >" +
@@ -322,12 +332,9 @@ function cargarComentarios(){
 
         for(let i=0; i<comentarios.length; i++){
 
-            comentariosInfo="<div class='row justify-content-around w-100 ml-auto mr-auto border p-2 m-2'>" +
-                                "<div class='col-lg-4'>" +
-                                    "<p><b>Realizado por: </b>" + comentarios[i].objUsuario.nombre + " " + comentarios[i].objUsuario.apellidos + "</p>" +
-                                    "<img src='../img/" + comentarios[i].objUsuario.imagen + "' class='imagenComentario justify-self-center'>" + 
-                                "</div>" +
-                                "<div class='col-lg-4'>" +
+            comentariosInfo="<div class='wrap'>" +
+                                "<img src='../img/" + comentarios[i].objUsuario.imagen + "'>" +
+                                "<div class='comment ' data-owner='" + comentarios[i].objUsuario.usuario + "'>" +
                                     "<p>" + comentarios[i].texto + "</p>" +
                                 "</div>" +
                             "</div>";
@@ -340,4 +347,20 @@ function cargarComentarios(){
     })
   .catch(error => console.error('Error status:', error));
 
+}
+
+var mybutton = document.getElementById("myBtn");
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }

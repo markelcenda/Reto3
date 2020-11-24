@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../css/usuario.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body class="bg-light">
 
     <!---Navbar-->
@@ -23,106 +24,113 @@
 
         <nav class="navbar navbar-dark navbar-expand-md justify-content-between w-100">
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-nav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="navbar-collapse collapse dual-nav w-50 order-1 order-md-0 mt-3">
+            <div class="navbar-collapse collapse dual-nav w-50 order-1 order-md-0 mt-3">
 
-                    <ul class="navbar-nav text-center align-items-center mt-5">
+                <ul class="navbar-nav text-center align-items-center mt-5">
 
-                        <li class="nav-item active">
-                            <a class="nav-link pl-0 efecto" href="../../index.html">Home <span class="sr-only">Home</span></a>
-                        </li>
+                    <li class="nav-item active">
+                        <a class="nav-link pl-0 efecto" href="../../index.html">Home <span
+                                class="sr-only">Home</span></a>
+                    </li>
 
-                        <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle efecto" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Equipos</a>
-                            <div class="dropdown-menu text-center" aria-labelledby="dropdownId">
-                                <a class="dropdown-item" onclick="equiposDesdeSocios('5')">Senior Masculino</a>
-                                <a class="dropdown-item" onclick="equiposDesdeSocios('6')">Senior Femenino</a>
-                                <hr>
-                                <a class="dropdown-item" onclick="equiposDesdeSocios('3')">Juvenil Masculino</a>
-                                <a class="dropdown-item" onclick="equiposDesdeSocios('4')">Juvenil Femenino</a>
-                                <hr>
-                                <a class="dropdown-item" onclick="equiposDesdeSocios('1')">Infantil Masculino</a>
-                                <a class="dropdown-item" onclick="equiposDesdeSocios('2')">Infantil Femenino</a>
-                            </div>
-                        </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle efecto" href="#" id="dropdownId" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Equipos</a>
+                        <div class="dropdown-menu text-center" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" onclick="equiposDesdeSocios('5')">Senior Masculino</a>
+                            <a class="dropdown-item" onclick="equiposDesdeSocios('6')">Senior Femenino</a>
+                            <hr>
+                            <a class="dropdown-item" onclick="equiposDesdeSocios('3')">Juvenil Masculino</a>
+                            <a class="dropdown-item" onclick="equiposDesdeSocios('4')">Juvenil Femenino</a>
+                            <hr>
+                            <a class="dropdown-item" onclick="equiposDesdeSocios('1')">Infantil Masculino</a>
+                            <a class="dropdown-item" onclick="equiposDesdeSocios('2')">Infantil Femenino</a>
+                        </div>
+                    </li>
 
-                        <li class="nav-item active">
-                            <a class="nav-link active efecto" href="noticias.html">Noticias</a>
-                        </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active efecto" href="noticias.html">Noticias</a>
+                    </li>
 
-                        <li class="nav-item active">
-                            <a class="nav-link efecto" href="hazteSocio.html">Socios</a>
-                        </li>
+                    <li class="nav-item active">
+                        <a class="nav-link efecto" href="hazteSocio.html">Socios</a>
+                    </li>
 
-                    </ul>
-                </div>
+                </ul>
+            </div>
 
-                <div class="navbar-collapse collapse dual-nav w-50 order-2 mt-3">
-                    <ul class="nav navbar-nav ml-auto text-center align-items-center mt-5">
+            <div class="navbar-collapse collapse dual-nav w-50 order-2 mt-3">
+                <ul class="nav navbar-nav ml-auto text-center align-items-center mt-5">
 
-                        <div class="login">
+                    <div class="login">
 
-                            <button type="button" class="btn botonLogin" data-toggle="modal" data-target="#modelId">Iniciar Sesión</button>
-                            <button type="button" class="btn botonLogout">Cerrar Sesión</button>
-                            <!--Modal-->
-                            <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Iniciar Sesión</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
+                        <button type="button" class="btn botonLogin" data-toggle="modal" data-target="#modelId">Iniciar
+                            Sesión</button>
+                        <button type="button" class="btn botonLogout">Cerrar Sesión</button>
+                        <!--Modal-->
+                        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Iniciar Sesión</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="form-group">
+                                            <label for="usuario"></label>
+                                            <span>Usuario:</span>
+                                            <input type="text" name="usuario" id="usuario" class="form-control"
+                                                placeholder="Usuario" aria-describedby="helpId">
+
+                                            <span>Contraseña:</span>
+                                            <input type="password" name="password" id="password" class="form-control"
+                                                placeholder="Contraseña" aria-describedby="helpId">
+
                                         </div>
-                                        <div class="modal-body">
-                                             
-                                             <div class="form-group">
-                                               <label for="usuario"></label>
-                                               <span>Usuario:</span>
-                                               <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario" aria-describedby="helpId">
-     
-                                               <span>Contraseña:</span>
-                                               <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" aria-describedby="helpId">
-     
-                                             </div>
-                                     
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn botonCerrar" data-dismiss="modal">Cerrar</button>
-                                            <button type="button" class="btn botonLoginStart">Iniciar Sesión</button>
-                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn botonCerrar"
+                                            data-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn botonLoginStart">Iniciar Sesión</button>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                        
 
-                        <!-- Zona login -->
-                    <div class="sesionUsuario">
-                   
-                    <div class="nav-item active" id="sitioUsuario">
-                        <!--Carga la imagen del usuario que ha iniciado sesion desde el JS-->
                     </div>
 
-                </div>
 
-                    </ul>
-                </div>
+                    <!-- Zona login -->
+                    <div class="sesionUsuario">
+
+                        <div class="nav-item active ml-2" id="sitioUsuario">
+                            <!--Carga la imagen del usuario que ha iniciado sesion desde el JS-->
+                        </div>
+
+                    </div>
+                    <button type="button" class="btn ml-2" id="nightMode"><i></i></button>
+                </ul>
+            </div>
         </nav>
 
-            
-    </div>
-    
 
-     <!-- Administracion -->
-    <div class="row justify-content-center text-center mt-3 " id="zonaUsuario">
-        
     </div>
-    
+
+
+    <!-- Administracion -->
+    <div class="row justify-content-center text-center mt-3 " id="zonaUsuario">
+
+    </div>
+
 
     <!--Footer comienzo-->
     <footer class="page-footer font-small blue-grey lighten-5 text-white">
@@ -130,10 +138,13 @@
             <!--Redes sociales-->
             <div class="row py-4 d-flex align-items-center justify-content-center">
                 <div class="col-lg-4 col-md-6 col-sm-8 col-8 text-center border-bottom border-white p-3">
-                    <!--Facebook--> <a href="https://facebook.com"><i class="fab fa-facebook-f text-white fa-2x m-2"></i></a>
-                    <!--Instagram--><a href="https://instagram.com"><i class="fab fa-instagram text-white fa-2x m-2"></i></a>
+                    <!--Facebook--> <a href="https://facebook.com"><i
+                            class="fab fa-facebook-f text-white fa-2x m-2"></i></a>
+                    <!--Instagram--><a href="https://instagram.com"><i
+                            class="fab fa-instagram text-white fa-2x m-2"></i></a>
                     <!--Twitter--> <a href="https://twitter.com"><i class="fab fa-twitter text-white fa-2x m-2"></i></a>
-                    <!--Google+--> <a href="https://google.com"><i class="fab fa-google-plus text-white fa-2x m-2"></i></a>
+                    <!--Google+--> <a href="https://google.com"><i
+                            class="fab fa-google-plus text-white fa-2x m-2"></i></a>
                     <!--Youtube--> <a href="https://youtube.com"><i class="fab fa-youtube text-white fa-2x m-2"></i></a>
                 </div>
             </div>
@@ -196,7 +207,7 @@
         </div>
     </div>
 
-    
+
 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -204,9 +215,10 @@
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <!-- Optional JavaScript -->
-    <script src="../js/jsUsuario.js"></script> 
-  
-    <script src="../js/fontAwesome.js"></script> 
+    <script src="../js/jsUsuario.js"></script>
+    <script src="../js/jsPrincipal.js"></script>
+
+    <script src="../js/fontAwesome.js"></script>
 </body>
 
 </html>

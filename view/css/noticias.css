@@ -48,11 +48,24 @@
     .card-block{
         width: 700px;
     }
+
+    .card img{
+        width: 93%;
+    }
 }
 
 @media screen and (max-width: 768px) {
     .card-block{
         width: 500px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card img{
+        display: none;
+    }
+    .card-block{
+        width: 100%;
     }
 }
 
@@ -62,6 +75,64 @@
  margin-left: 20%;
 }
 
-.row p{
-    text-align: justify;
+div.wrap {
+    width: 90%;
+    margin: 0 auto 1em auto;
+    position: relative;
+    transition: transform .15s ease;
+}
+
+div.wrap:hover{
+    transform: scale(1.02);
+}
+
+div.wrap:first-child {
+    margin-top: 1em;
+}
+
+div.comment {
+    font-size: 1em;
+    position: relative;
+    margin-left: 85px;
+    margin-top: 40px;
+    border-radius: 0.75em 0.75em 0.75em 0.75em;
+    background-color: #009655;
+    line-height: 1.4em;
+    color: white;
+}
+
+div.comment::before {
+    content: attr(data-owner);
+    border-radius: 0.75em 0.75em 0 0;
+    background-color: #009655;
+    display: block;
+    text-indent: 10%;
+    border-bottom: 3px solid rgb(255, 255, 255);
+    color: white;
+}
+
+div.comment::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border: 10px solid transparent;
+    border-right: 10px solid #009655;
+    margin: -10px 0 0 -20px;
+}
+
+div.comment p {
+    width: 80%;
+    margin: 0 auto 1em auto;
+}
+
+.wrap img {
+    position: absolute;
+    top: 50%;
+    width: 75px;
+    float: left;
+    border-radius: 10px;
+    margin-top: -25px;
+    background-image: url(../img/fondoCards.jpg);
+    background-size: cover;
 }

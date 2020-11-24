@@ -67,7 +67,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  border-radius: 15px;
+  border-radius: 2px;
   background: rgba(0, 0, 0, 0.6);
   z-index: 2;
   -webkit-transition: 0.5s;
@@ -106,37 +106,61 @@
   font-size: 18px;
 }
 
+/*Div con los datos de los usuarios*/
 .fichaUsuario{
   background-image: url(../img/fondoLineas.jpg);
   background-size: cover;
   color: white;
 }
 
+/*Nombre del usuario al hacer click*/
 .fichaUsuario h5{
   font-size: 24px !important;
   font-weight: 300;
 }
 
+/*Texto de la informacion del usuario*/
 .fichaUsuario h2{
   text-align: center;
   font-size: 28px !important;
   font-weight: 300;
 }
 
+/*Color de los iconos*/
 .fichaUsuario .fas{
   color: #ffffff;
 }
 
+/*Imagen de usuario al hacer click*/
 .fichaUsuario .imagenUsuario{
   height: 280px;
   width: 280px;
 }
 
+/*Linea verde de las posiciones*/
 hr{
   background-color: white;
   height: 2px; 
 }
 
+/*Titulo de la pagina*/
 #tituloPagina h1{
   font-size: 38px !important;
+}
+
+/*Nombre del equipo*/
+#insertCategoriaEquipo h3{
+  font-size: 32px !important;
+  font-weight: 400;
+}
+
+/*Posiciones jugadores*/
+#delanterosTitulo, #zaguerosTitulo, #lberosTitulo{
+  font-size: 32px !important;
+  font-weight: 400;
+}
+/*Color de fondo del boton nightMode*/
+#nightMode{
+  background-color: #009655 !important;
+
 }

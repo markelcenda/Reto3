@@ -1,3 +1,7 @@
+html{
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0px !important;
     padding: 0px !important;
@@ -28,7 +32,7 @@ nav figure {
     transition: 0.5s;
 }
 
-nav figure:hover {
+nav:not(:first-child) figure:hover {
     border-bottom: 3px solid #009655;
 }
 
@@ -161,7 +165,49 @@ footer{
 /*Titulos de los div*/
 .titulo{
     font-weight: normal;
-    font-size: 2rem;
+    font-size: 3rem;
     text-align: center;
     font-weight: 100;
+    color: white;
 }
+
+.flecha{
+    background-color: #009655;
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+.flecha::after{
+    content: '';
+    position: absolute;
+    bottom: -45%;
+    left: 50%;
+    border: 10px solid transparent;
+    margin: -10px 0 0 -20px;
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #009655;
+}
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: 555;
+    color: #009655;;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 35px;
+    height: 50px;
+    width: 55px;
+  }
+  
+  #myBtn:hover {
+    background-color: white;
+  }

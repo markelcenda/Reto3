@@ -9,6 +9,9 @@ $(document).ready(function () {
 	$(".botonLogout").click(logout);
 	aos_init();
 	
+  	// When the user scrolls down 20px from the top of the document, show the button
+  	window.onscroll = function () { scrollFunction() };
+	
 });
 
 function aos_init() {
@@ -60,7 +63,7 @@ function loadEquipos(){
 			var idEquipo = $(this).children(":selected").attr("id");
 			
 			document.getElementById("selectEquipos").addEventListener("click", loadUsersByTeamId(idEquipo));
-			
+			$("#filtro").val("");
 			
 		});
 		
@@ -106,7 +109,7 @@ function loadUsersByTeamId(idEquipo){
 				for(let i=0; i<equipos.length; i++){
 					
 					if(equipos[i].id==idEquipo){
-						categoriaEquipo="<h3 class='titulo'>" + equipos[i].categoria + "</h3>";
+						categoriaEquipo="<h3>" + equipos[i].categoria + "</h3>";
 						$("#insertCategoriaEquipo").html(categoriaEquipo);
 					}
 					
@@ -126,7 +129,7 @@ function loadUsersByTeamId(idEquipo){
 					//JUGADORES
 
 					if(jugadores[i].objJugador.posicion=="Delantero"){
-						console.log(jugadores[i]);
+						//console.log(jugadores[i]);
 						
 						cardPosiciones="<div class='row justify-content-center mt-4'>" +
 		                					"<div class='col-lg-12'>" +
@@ -135,9 +138,9 @@ function loadUsersByTeamId(idEquipo){
 										"</div>";	
 						$("#delanterosTitulo").html(cardPosiciones);
 
-						  cardJugadores="<div class='card' data-aos='zoom-in'>" +
+						  cardJugadores="<div class='card' name='cardUsuario' data-aos='zoom-in'>" +
 										"<img src='../img/" + jugadores[i].imagen + "' alt=''>" +
-										"<div class='info'>" +
+										"<div class='info' id='info'>" +
 											"<h1>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h1>" +	
 											"<span class='fas fa-eye fa-2x' id='" + jugadores[i].id + "'>" +
 										"</div>" +
@@ -159,9 +162,9 @@ function loadUsersByTeamId(idEquipo){
 										"</div>";
 						$("#zaguerosTitulo").html(cardPosiciones);
 						
-						cardJugadores="<div class='card' data-aos='zoom-in'>" +
+						cardJugadores="<div class='card' name='cardUsuario' data-aos='zoom-in'>" +
 										"<img src='../img/" + jugadores[i].imagen + "' alt=''>" +
-										"<div class='info'>" +
+										"<div class='info' id='info'>" +
 											"<h1>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h1>" +	
 											"<span class='fas fa-eye fa-2x' id='" + jugadores[i].id + "'>" +
 										"</div>" +
@@ -179,9 +182,9 @@ function loadUsersByTeamId(idEquipo){
 									"</div>";	
 						$("#liberosTitulo").html(cardPosiciones);
 						
-						cardJugadores="<div class='card' data-aos='zoom-in'>" +
+						cardJugadores="<div class='card' name='cardUsuario' data-aos='zoom-in'>" +
 										"<img src='../img/" + jugadores[i].imagen + "' alt=''>" +
-										"<div class='info'>" +
+										"<div class='info' id='info'>" +
 											"<h1>" + jugadores[i].nombre + " " + jugadores[i].apellidos + "</h1>" +	
 											"<span class='fas fa-eye fa-2x' id='" + jugadores[i].id + "'>" +
 										"</div>" +
@@ -208,9 +211,9 @@ function loadUsersByTeamId(idEquipo){
 
 				for(let i=0; i<entrenadores.length; i++){
 
-					cardEntrenadores="<div class='card' data-aos='zoom-in'>" +
+					cardEntrenadores="<div class='card' name='cardUsuario' data-aos='zoom-in'>" +
 									"<img src='../img/" + entrenadores[i].imagen + "' alt=''>" +
-									"<div class='info'>" +
+									"<div class='info' id='info'>" +
 										"<h1>" + entrenadores[i].nombre + " " + entrenadores[i].apellidos + "</h1>" +
 										"<p>Entrenador</p>" +		
 										"<span class='fas fa-eye fa-2x' id='" + entrenadores[i].id + "'>" +
@@ -219,9 +222,9 @@ function loadUsersByTeamId(idEquipo){
 												
 					$("#cuerpoTecnico").append(cardEntrenadores);
 
-						cardDelegados="<div class='card' data-aos='zoom-in'>" +
+						cardDelegados="<div class='card' name='cardUsuario' data-aos='zoom-in'>" +
 										"<img src='../img/" + delegados[i].imagen + "' alt=''>" +
-										"<div class='info'>" +
+										"<div class='info' id='info'>" +
 											"<h1>" + delegados[i].nombre + " " + delegados[i].apellidos + "</h1>" +	
 											"<p>Delegado</p>" +
 											"<span class='fas fa-eye fa-2x' id='" + delegados[i].id + "'>" +
@@ -268,18 +271,24 @@ function mostrarDatosUsuarios(id){
 
 			/*Limpiar el div de los cards*/
 			infoUsuario="";
+
+			$(".flecha").hide("");
+			$(".selectEquipo").hide("");
+
 			$("#delanteros").html("");
 			$("#zagueros").html("");
 			$("#liberos").html("");
 			$("#cuerpoTecnico").html("");
+
 			$("#delanterosTitulo").html("");
 			$("#zaguerosTitulo").html("");
 			$("#liberosTitulo").html("");
 			$("#cuerpoTecnicoTitulo").html("");
-			$("#selectEquipos").hide();
+
 			$("#insertCategoriaEquipo").html("");
+
+			$("#fichaUsuario").html("");
 			$("#tituloPagina").hide();
-			
 
 			/*Si el usuario es jugador*/
 			if(jugador!=null){
@@ -380,6 +389,8 @@ function mostrarDatosUsuarios(id){
 
 			$(".botonVolver").click(function(){
 				$("#selectEquipos").show();
+				$(".flecha").show("");
+				$(".selectEquipo").show("");
 				$(".equipos").show();
 				loadUsersByTeamId(idEquipo);
 			});
@@ -418,7 +429,7 @@ function login(){
 
                 alert(result.error); 
 
-                console.log(result.error);
+                //console.log(result.error);
 
                 //Filtro que mira si se ha podido inicar sesion
                 if(result.confirm == true){
@@ -469,7 +480,7 @@ function logout(){
 		  })
 	.then(res => res.json()).then(result => {
 	
-        console.log(result.confirm);
+        //console.log(result.confirm);
         alert(result.confirm);
 	
 	})
@@ -508,4 +519,42 @@ function sessionVarsView(){
 
     		})
     		.catch(error => console.error('Error status:', error));	
-    }
+	}
+	
+	var mybutton = document.getElementById("myBtn");
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+/*Funcion para buscar usuarios*/
+function buscarUsuarios(){
+
+	var input, filter, nombre, cards;
+	input = document.getElementById('filtro');
+	filter = input.value.toUpperCase();
+
+	var elementos=$("#info h1");
+	cards=document.getElementsByName("cardUsuario");
+
+	for(let i=0; i<elementos.length; i++){
+
+		nombre= elementos[i].outerText;
+
+		if (nombre.toUpperCase().indexOf(filter) > -1) {
+			cards[i].style.display = "";
+		  } else {
+			cards[i].style.display = "none";
+		  }
+	}
+}
