@@ -295,7 +295,6 @@ function sessionVarsView(){
                         "<button type='button' id='btnExecuteUpdate' class='btn text-white m-2'>Actualizar</button>" +
                         "</form>";
 
-                        $('#btnSubirArchivo').click(changeImg);
         }
 
         /*ID del admin*/
