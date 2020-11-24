@@ -205,6 +205,7 @@ function noticiaCompleta(id) {
     $(".ocultarDiv").hide();
     $("#comentarios").hide();
     $("#comentariosRealizados").hide();
+    $(".flecha").hide();
 
     noticia = "<h1>" + noticias[id].titulo + "</h1>" +
         "<p class='mb-4'>" + noticias[id].fecha + "</p>" +
