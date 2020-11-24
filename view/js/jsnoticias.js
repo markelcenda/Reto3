@@ -203,6 +203,8 @@ function noticiaCompleta(id) {
     $("#comentarios").html("");
     $("#comentariosRealizados").html("");
     $(".ocultarDiv").hide();
+    $("#comentarios").hide();
+    $("#comentariosRealizados").hide();
 
     noticia = "<h1>" + noticias[id].titulo + "</h1>" +
         "<p class='mb-4'>" + noticias[id].fecha + "</p>" +
