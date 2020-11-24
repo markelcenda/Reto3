@@ -179,7 +179,7 @@ function datosFormulario() {
 
                             //console.log(result.error);//Avisa de si la insercion a salido bien o mal
                             alert(result.error); //Avisa de si la insercion a salido bien o mal
-                            window.location.reload(true);  //recarga la pagina	
+                            window.location.href="../../index.html";  //lleva al usuario a la pagina principal	
 
                         })
                         .catch(error => console.error('Error status:', error));

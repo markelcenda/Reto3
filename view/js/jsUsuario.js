@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     $(".botonLoginStart").click(login);
     $(".botonLogout").click(logout);
+    
     sessionVarsView();
 
 });
@@ -139,9 +140,9 @@ function sessionVarsView(){
                                 "<h1>" + usuario[i].usuario + "</h1>" +
                                 "<h2>Selecciona la opción que desea: </h2>" +
                              "</div>" +
-                             "<div class='col-lg-12 m-1'>" +
-                                "<button type='button' class='btn text-white m-2 col-lg-2' id='btnMisDatos'>Mis datos</button>" +
-                                "<button type='button' class='btn text-white m-2 col-lg-2' id='btnUpdateUsuario'>Actualizar Información</button>" +
+                             "<div class='col-lg-12'>" +
+                                "<button type='button' class='btn text-white m-2 col-lg-2 col-md-5 col-sm-4 col-5' id='btnMisDatos'>Mis datos</button>" +
+                                "<button type='button' class='btn text-white m-2 col-lg-2 col-md-5 col-sm-4 col-5' id='btnUpdateUsuario'>Actualizar Información</button>" +
                             "</div>" +
                             "<div class='row justify-content-center' id='acciones'></div>"; //DIV para añadir los datos
             }else if(usuario[i].admin==1){
@@ -290,9 +291,10 @@ function sessionVarsView(){
                                 "<label for='direccion'>Dirección:</label>" +
                                 "<input type='text' class='form-control' id='direccion' value='" + usuario[i].direccion + "'>" +
                             "</div>" + 
-                        "</div>" +
+                            "</div>" +
                         "<button type='button' id='btnExecuteUpdate' class='btn text-white m-2'>Actualizar</button>" +
                         "</form>";
+
         }
 
         /*ID del admin*/
