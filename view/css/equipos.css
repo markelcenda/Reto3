@@ -159,3 +159,8 @@ hr{
   font-size: 32px !important;
   font-weight: 400;
 }
+/*Color de fondo del boton nightMode*/
+#nightMode{
+  background-color: #009655 !important;
+
+}
