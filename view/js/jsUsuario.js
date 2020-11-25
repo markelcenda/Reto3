@@ -49,7 +49,7 @@ function login(){
                 //Filtro que mira si se ha podido inicar sesion
                 if(result.confirm == true){
 
-                    //Al detectar que si, econde el boton de iniciar sesion y muestra el de cerrarla y la imagen de usuario
+                    //Al detectar que si, esconde el boton de iniciar sesion y muestra el de cerrarla y la imagen de usuario
                     $(".botonLogin").hide();
                     $(".botonLogout").show();
                     $(".sesionUsuario").css('display','flex');
