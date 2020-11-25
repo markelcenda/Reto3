@@ -21,6 +21,7 @@ function aos_init() {
     });
 }
 
+//Al clicar en el boton "HAZTE SOCIO AHORA" muestra el formulario y oculta el boton
 function despliegueFormulario() {
 
     $("#formulario").show("slow");
@@ -28,13 +29,13 @@ function despliegueFormulario() {
     $("#btnDespliegue").hide();
 
 }
-
+//Acceso a la pagina de equipos desde la pagina de hazte socio
 function equiposDesdeSocios(id) {
     pagina = "equipos.html?" + id;
     window.location.href = pagina;
 }
 
-/*Por defecto la varible filename contendra el nombre de una imagen y savedFile64 no tendra nada
+/*Por defecto la varible filename contendra el nombre de la imagen por defecto y savedFileBase64 no tendra nada
     a menos que se active la funcion "changeImg"*/
 filename = "imagenDefault.png";
 savedFileBase64 = "";
@@ -42,31 +43,29 @@ savedFileBase64 = "";
 //Funcion que envia los datos introducidos en el formulario a la base de datos, y que los verifica
 function datosFormulario() {
 
-    //Numero de inputs del formularios
+  
     $misInput = $("form input").length;
-    //Guarda lo que se a escrito en el campo de correo electronico
+  
     $campoCorreo = $("#email").val();
 
     /*Contiene la respuesta de si todos los input estan rellenados o no (en este momento esta 
     puesto como si si lo estuviesen)*/
     $correcto = true;
 
-    //Bucle for que va recorriendo todos los input del formulario
+    //Bucle for que va recorriendo todos los input del formulario, menos el de imagen y el boton de enviar
     for (let i = 0; i < ($misInput - 2); i++) {
 
         /*Filtro que va mirando de uno en uno los input y va dandoles un borde rojo o verde 
         en fucion de si han sido rellenados o no*/
         if ($("form input:eq(" + i + ")").val() == "") {
 
-            //En caso de no haberse rellenado adquirira un borde rojo
             $("form input:eq(" + i + ")").css("border", "2px solid red");
 
-            /*La variable adquiere el valor false al encontar un input no rellenado*/
+            //La variable adquiere el valor false al encontar un input no rellenado
             $correcto = false;
 
         } else {
 
-            //En caso de haberse rellenado adquirira un borde verde
             $("form input:eq(" + i + ")").css("border", "2px solid #009655");
 
         }
@@ -91,12 +90,11 @@ function datosFormulario() {
     //Filtro que determina si los datos pueden ser enviados a la base de datos en funcion de la variable correcto
     if ($correcto == false) {
 
-
         alert("Faltan campos por rellenar o el correo no es valido");
         return false;
 
     } else {
-
+        //Se introducen los datos establecidos en el formulario, ademas de algunos por defecto, en variables
         nombreInsert = $("#nombre").val();
         apellidosInsert = $("#apellidos").val();
         usuarioInsert = $("#nuevoUsuario").val();
@@ -148,7 +146,7 @@ function datosFormulario() {
                     }
 
                 }
-                //ejecuta la insercion del nuevo socio
+                //Ejecuta la insercion del nuevo socio, si permitirInsert es igual a true. En caso contrario saca un alert
                 if (permitirInsert == true) {
 
                     var url = "../../controller/cUsuarioExecuteInsert.php";
@@ -196,7 +194,7 @@ function datosFormulario() {
 
 }
 
-//Cambia la foto de perfil
+//Cambia la foto de perfil que esta por defecto en el formulario por la introducida por el usuario
 function changeImg() {
 
     var file = $("#imagen")[0].files[0];
@@ -223,7 +221,7 @@ function changeImg() {
     }
 
 }
-
+//Determina si el usuario puede logearse o no
 function login() {
 
     //Variables que adquieren el valor de los datos introducidos en el modal
@@ -250,12 +248,10 @@ function login() {
 
                 alert(result.error);
 
-                //console.log(result.error);
-
-                //Filtro que mira si se ha podido inicar sesion
+                //Filtro que mira si se ha iniciado sesion sin errores
                 if (result.confirm == true) {
 
-                    //Al detectar que si, econde el boton de iniciar sesion y muestra el de cerrarla y la imagen de usuario
+                    //Al detectar que no hay ningun error, esconde el boton de iniciar sesion y muestra el de cerrarla mas la imagen de usuario
                     $(".botonLogin").hide();
                     $(".botonLogout").show();
                     $(".sesionUsuario").css('display', 'flex');
@@ -308,7 +304,7 @@ function logout() {
         .catch(error => console.error('Error status:', error));
 
 }
-
+//Mantiene la sesion abierta hasta que se ejecute el logout
 function sessionVarsView() {
 
     var url = "../../controller/cSessionVarsView.php";
@@ -320,7 +316,6 @@ function sessionVarsView() {
         .then(res => res.json()).then(result => {
 
             var usuario = result.usuario;
-            //console.log(usuario);
 
             if (usuario != null) {
 
@@ -341,7 +336,7 @@ function sessionVarsView() {
 }
 
 var mybutton = document.getElementById("myBtn");
-
+//Esconde o muestra el boton
 function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         mybutton.style.display = "block";
@@ -350,7 +345,7 @@ function scrollFunction() {
     }
 }
 
-// When the user clicks on the button, scroll to the top of the document
+// Cuando el usuario pulsa  el boton, se le lleva a la parte de arriba  de la pagina
 function topFunction() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;

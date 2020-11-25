@@ -1,3 +1,7 @@
+*::selection {
+    background: #009655;
+}
+
 html{
     scroll-behavior: smooth;
 }
@@ -52,6 +56,18 @@ nav ul li .efecto:hover {
 nav ul li .dropdown-item:hover {
     color: white;
     background-color: #009655;
+}
+
+nav #nightMode{
+    background-color: #009655;
+    color: white;
+    transition: 0.5s;
+}
+
+nav #nightMode:hover{
+    background-color: white;
+    color: #009655;
+    transition: 0.5s;
 }
 
 /*Boton login*/
