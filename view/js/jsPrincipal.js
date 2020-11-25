@@ -3,7 +3,7 @@ $(document).ready(function () {
 
   $("#nightMode").click(nightMode);
 });
-
+//Activa o desactiva el modo noche
 function nightMode() {
   if (localStorage.getItem('nightMode') != "true") {
     localStorage.setItem('nightMode', true);
@@ -13,7 +13,7 @@ function nightMode() {
     unsetNightMode();
   }
 }
-
+//Mira si la opcion de modo noche era false o true 
 function nightModeOnLoad() {
   if (localStorage.getItem('nightMode') != "true") {
     unsetNightMode();
@@ -21,7 +21,7 @@ function nightModeOnLoad() {
     setNightMode();
   }
 }
-
+//Pone la pagina en modo noche
 function setNightMode() {
   $('#nightMode i').removeClass();
   $('#nightMode i').addClass("fas fa-sun");
@@ -34,7 +34,7 @@ function setNightMode() {
   $('.textoModoNoche').removeClass('text-dark');
   $('.textoModoNoche').addClass('text-white');
 }
-
+//Devuelve la pagina a su estilo original
 function unsetNightMode() {
   $('#nightMode i').removeClass();
   $('#nightMode i').addClass("fas fa-moon");
