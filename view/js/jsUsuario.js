@@ -499,16 +499,10 @@ function sessionVarsView(){
 
         for(let i=0; i<usuario.length; i++){
 
-            if(usuario[i].tipo==1){//Jugador
+            /*Limpiar el div*/
+            $("#formularioInformacion").html("");
 
-                /*Limpiar el div*/
-                $("#formularioInformacion").html("");
-
-                /*Formulario con datos del jugador para modificar*/
-
-                if(usuario[i].objJugador.posicion=="Delantero"){ //Si el jugador es delantero, marcar el radio con opcion delantero
-
-                    formulario="<form>" +
+            formulario="<form>" + //datos comunes de los usuarios
 
                     "<div class='form-row justify-content-center'>" +
                         "<div class='form-group col-lg-6'>" +
@@ -526,242 +520,106 @@ function sessionVarsView(){
                             "<label for='usuario'>Usuario:</label>" +
                             "<input type='text' class='form-control' id='username' value='" + usuario[i].usuario + "' disabled>" +
                         "</div>" +
+                        "<div class='form-group col-lg-6'>";
+                            
+
+                    if(usuario[i].tipo==1){//Si el usuario es jugador
+
+                        if(usuario[i].objJugador.posicion=="Delantero"){ //Si el jugador es delantero, marcar el radio con opcion delantero
+
+                            formulario+="<div class='row justify-content-center'>" +
+                                            "<div class='col-lg-4'>" +
+                                                "<label for='posicion'>Delantero</label>" +
+                                                "<input type='radio' id='delantero' value='Delantero' name='posiciones' checked>" +
+                                            "</div>" +
+                
+                                            "<div class='col-lg-4'>" +
+                                                "<label for='posicion'>Zaguero</label>" +
+                                                "<input type='radio' id='zaguero' value='Zaguero' name='posiciones'>" +
+                                            "</div>" +    
+                
+                                            "<div class='col-lg-4'>" +
+                                                "<label for='posicion'>Liberos</label>" +
+                                                "<input type='radio' id='libero' value='Libero' name='posiciones'>" +
+                                            "</div>" +
+                                        "</div>";
+                        }else if(usuario[i].objJugador.posicion=="Zaguero"){ //Si el jugador es zaguero, marcar el radio con opcion zaguero
+
+                            formulario+="<div class='row justify-content-center'>" +
+                                            "<div class='col-lg-4'>" +
+                                                "<label for='posicion'>Delantero</label>" +
+                                                "<input type='radio' id='delantero' value='Delantero' name='posiciones'>" +
+                                            "</div>" +
+        
+                                            "<div class='col-lg-4'>" +
+                                                "<label for='posicion'>Zaguero</label>" +
+                                                "<input type='radio' id='zaguero' value='Zaguero' name='posiciones' checked>" +
+                                            "</div>" +    
+                
+                                            "<div class='col-lg-4'>" +
+                                                "<label for='posicion'>Liberos</label>" +
+                                                "<input type='radio' id='libero' value='Libero' name='posiciones'>" +
+                                            "</div>" +
+                                        "</div>";
+
+                        }else{//Si el jugador es libero, marcar el radio con opcion libero
+
+                            formulario+="<div class='row justify-content-center'>" +
+                                            "<div class='col-lg-4'>" +
+                                                "<label for='posicion'>Delantero</label>" +
+                                                "<input type='radio' id='delantero' value='Delantero' name='posiciones'>" +
+                                            "</div>" +
+
+                                            "<div class='col-lg-4'>" +
+                                                "<label for='posicion'>Zaguero</label>" +
+                                                "<input type='radio' id='zaguero' value='Zaguero' name='posiciones'>" +
+                                            "</div>" +    
+
+                                            "<div class='col-lg-4'>" +
+                                                "<label for='posicion'>Liberos</label>" +
+                                                "<input type='radio' id='libero' value='Libero' name='posiciones' checked>" +
+                                            "</div>" +
+                                        "</div>";
+                        }        
     
-                        "<div class='form-group col-lg-6'>" + 
-    
-                            "<div class='row justify-content-center'>" +
-    
-                                "<div class='col-lg-4'>" +
-                                    "<label for='posicion'>Delantero</label>" +
-                                    "<input type='radio' id='delantero' value='Delantero' name='posiciones' checked>" +
+                        formulario+="</div>" +
                                 "</div>" +
-    
-                                "<div class='col-lg-4'>" +
-                                    "<label for='posicion'>Zaguero</label>" +
-                                    "<input type='radio' id='zaguero' value='Zaguero' name='posiciones'>" +
-                                "</div>" +    
-    
-                                "<div class='col-lg-4'>" +
-                                    "<label for='posicion'>Liberos</label>" +
-                                    "<input type='radio' id='libero' value='Libero' name='posiciones'>" +
-                                "</div>" +
-    
-                            "</div>" +
-    
-                        "</div>" +
-                    "</div>" +
-                    
-                    "<div class='form-row justify-content-center'>" +
-                        "<div class='form-group col-lg-6'>" +
-                            "<label for='altura'>Altura:</label>" +
-                            "<input type='number' class='form-control' id='altura' value='" + usuario[i].objJugador.altura + "'>" +
-                        "</div>" + 
-                        "<div class='form-group col-lg-6'>" + 
-                            "<label for='peso'>Peso:</label>" +
-                            "<input type='number' class='form-control' id='peso' value='" + usuario[i].objJugador.peso + "'>" +
-                        "</div>" + 
-                    "</div>" +
-                    "<button type='button' id='btnExecuteUpdateUser' class='btn text-white'>Actualizar</button>" +
-                    "</form>";
 
-                }else if(usuario[i].objJugador.posicion=="Zaguero"){ //Si el jugador es zaguero, marcar el radio con opcion zaguero
+                                "<div class='form-row justify-content-center'>" +
+                                    "<div class='form-group col-lg-6'>" +
+                                        "<label for='altura'>Altura:</label>" +
+                                        "<input type='number' class='form-control' id='altura' value='" + usuario[i].objJugador.altura + "'>" +
+                                    "</div>" + 
+                                    "<div class='form-group col-lg-6'>" + 
+                                        "<label for='peso'>Peso:</label>" +
+                                        "<input type='number' class='form-control' id='peso' value='" + usuario[i].objJugador.peso + "'>" +
+                                    "</div>" + 
+                                "</div>";
+                                
 
-                    formulario="<form>" +
+                    }else if(usuario[i].tipo==2){//Si el usuario es entrenador
 
-                    "<div class='form-row justify-content-center'>" +
-                        "<div class='form-group col-lg-6'>" +
-                            "<label for='nombre'>Nombre:</label>" +
-                            "<input type='text' class='form-control' id='nombre' value='" + usuario[i].nombre + "' disabled>" +
-                        "</div>" + 
-                        "<div class='form-group col-lg-6'>" + 
-                            "<label for='apellido'>Apellidos:</label>" +
-                            "<input type='text' class='form-control' id='apellidos' value='" + usuario[i].apellidos + "' disabled>" +
-                        "</div>" + 
-                    "</div>" +
-    
-                    "<div class='form-row justify-content-center'>" +
-                        "<div class='form-group col-lg-6'>" +
-                            "<label for='usuario'>Usuario:</label>" +
-                            "<input type='text' class='form-control' id='username' value='" + usuario[i].usuario + "' disabled>" +
-                        "</div>" +
-    
-                        "<div class='form-group col-lg-6'>" + 
-    
-                            "<div class='row justify-content-center'>" +
-    
-                                "<div class='col-lg-4'>" +
-                                    "<label for='posicion'>Delantero</label>" +
-                                    "<input type='radio' id='delantero' value='Delantero' name='posiciones'>" +
-                                "</div>" +
-    
-                                "<div class='col-lg-4'>" +
-                                    "<label for='posicion'>Zaguero</label>" +
-                                    "<input type='radio' id='zaguero' value='Zaguero' name='posiciones' checked>" +
-                                "</div>" +    
-    
-                                "<div class='col-lg-4'>" +
-                                    "<label for='posicion'>Liberos</label>" +
-                                    "<input type='radio' id='libero' value='Libero' name='posiciones'>" +
-                                "</div>" +
-    
-                            "</div>" +
-    
-                        "</div>" +
-                    "</div>" +
-                    
-                    "<div class='form-row justify-content-center'>" +
-                        "<div class='form-group col-lg-6'>" +
-                            "<label for='altura'>Altura:</label>" +
-                            "<input type='number' class='form-control' id='altura' value='" + usuario[i].objJugador.altura + "'>" +
-                        "</div>" + 
-                        "<div class='form-group col-lg-6'>" + 
-                            "<label for='peso'>Peso:</label>" +
-                            "<input type='number' class='form-control' id='peso' value='" + usuario[i].objJugador.peso + "'>" +
-                        "</div>" + 
-                    "</div>" +
-                    "<button type='button' id='btnExecuteUpdateUser' class='btn text-white'>Actualizar</button>" +
-                    "</form>";
-
-                }else{ //Si el jugador es libero, marcar el radio con opcion libero
-
-                    formulario="<form>" +
-
-                    "<div class='form-row justify-content-center'>" +
-                        "<div class='form-group col-lg-6'>" +
-                            "<label for='nombre'>Nombre:</label>" +
-                            "<input type='text' class='form-control' id='nombre' value='" + usuario[i].nombre + "' disabled>" +
-                        "</div>" + 
-                        "<div class='form-group col-lg-6'>" + 
-                            "<label for='apellido'>Apellidos:</label>" +
-                            "<input type='text' class='form-control' id='apellidos' value='" + usuario[i].apellidos + "' disabled>" +
-                        "</div>" + 
-                    "</div>" +
-    
-                    "<div class='form-row justify-content-center'>" +
-                        "<div class='form-group col-lg-6'>" +
-                            "<label for='usuario'>Usuario:</label>" +
-                            "<input type='text' class='form-control' id='username' value='" + usuario[i].usuario + "' disabled>" +
-                        "</div>" +
-    
-                        "<div class='form-group col-lg-6'>" + 
-    
-                            "<div class='row justify-content-center'>" +
-    
-                                "<div class='col-lg-4'>" +
-                                    "<label for='posicion'>Delantero</label>" +
-                                    "<input type='radio' id='delantero' value='Delantero' name='posiciones'>" +
-                                "</div>" +
-    
-                                "<div class='col-lg-4'>" +
-                                    "<label for='posicion'>Zaguero</label>" +
-                                    "<input type='radio' id='zaguero' value='Zaguero' name='posiciones'>" +
-                                "</div>" +    
-    
-                                "<div class='col-lg-4'>" +
-                                    "<label for='posicion'>Liberos</label>" +
-                                    "<input type='radio' id='libero' value='Libero' name='posiciones' checked>" +
-                                "</div>" +
-    
-                            "</div>" +
-    
-                        "</div>" +
-                    "</div>" +
-                    
-                    "<div class='form-row justify-content-center'>" +
-                        "<div class='form-group col-lg-6'>" +
-                            "<label for='altura'>Altura:</label>" +
-                            "<input type='number' class='form-control' id='altura' value='" + usuario[i].objJugador.altura + "'>" +
-                        "</div>" + 
-                        "<div class='form-group col-lg-6'>" + 
-                            "<label for='peso'>Peso:</label>" +
-                            "<input type='number' class='form-control' id='peso' value='" + usuario[i].objJugador.peso + "'>" +
-                        "</div>" + 
-                    "</div>" +
-                    "<button type='button' id='btnExecuteUpdateUser' class='btn text-white'>Actualizar</button>" +
-                    "</form>";
-                    
-                }
-
-
-
-            }else if(usuario[i].tipo==2){//Entrenador
-
-                /*Limpiar el div*/
-                $("#formularioInformacion").html("");
-
-                /*Formulario con datos del entrenador para modificar*/
-                formulario="<form>" +
-
-                "<div class='form-row justify-content-center'>" +
-                    "<div class='form-group col-lg-6'>" +
-                        "<label for='nombre'>Nombre:</label>" +
-                        "<input type='text' class='form-control' id='nombre' value='" + usuario[i].nombre + "' disabled>" +
-                    "</div>" + 
-                    "<div class='form-group col-lg-6'>" + 
-                        "<label for='apellido'>Apellidos:</label>" +
-                        "<input type='text' class='form-control' id='apellidos' value='" + usuario[i].apellidos + "' disabled>" +
-                    "</div>" + 
-                "</div>" +
-                "<div class='form-row justify-content-center'>" +
-                    "<div class='form-group col-lg-6'>" +
-                        "<label for='usuario'>Usuario:</label>" +
-                        "<input type='text' class='form-control' id='usuario' value='" + usuario[i].usuario + "' disabled>" +
-                    "</div>" + 
-                    "<div class='form-group col-lg-6'>" + 
-                        "<label for='experiencia'>Experiencia:</label>" +
-                        "<input type='number' class='form-control' id='experiencia' value='" + usuario[i].objEntrenador.experiencia + "'>" +
-                    "</div>" + 
-                "</div>" +
+                formulario+="<label for='experiencia'>Experiencia:</label>" +
+                           "<input type='number' class='form-control' id='experiencia' value='" + usuario[i].objEntrenador.experiencia + "'>" +
+                    "</div>";
 
                 
 
-                
-                "<button type='button' id='btnExecuteUpdateUser' class='btn text-white'>Actualizar</button>" +
-                "</form>";
+            }else if(usuario[i].tipo==3){//Si el usuario es delegado
 
-            }else if(usuario[i].tipo==3){//Delegado
-
-                /*Limpiar el div*/
-                $("#formularioInformacion").html("");
-
-                 /*Formulario con datos del delegado para modificar*/
-                 formulario="<form>" +
-
-                 "<div class='form-row justify-content-center'>" +
-                     "<div class='form-group col-lg-6'>" +
-                         "<label for='nombre'>Nombre:</label>" +
-                         "<input type='text' class='form-control' id='nombre' value='" + usuario[i].nombre + "' disabled>" +
-                     "</div>" + 
-                     "<div class='form-group col-lg-6'>" + 
-                         "<label for='apellido'>Apellidos:</label>" +
-                         "<input type='text' class='form-control' id='apellidos' value='" + usuario[i].apellidos + "' disabled>" +
-                     "</div>" + 
-                 "</div>" +
-                 "<div class='form-row justify-content-center'>" +
-                     "<div class='form-group col-lg-6'>" +
-                         "<label for='usuario'>Usuario:</label>" +
-                         "<input type='text' class='form-control' id='usuario' value='" + usuario[i].usuario + "' disabled>" +
-                     "</div>" + 
-                     "<div class='form-group col-lg-6'>" + 
-                         "<label for='experiencia'>Experiencia:</label>" +
-                         "<input type='number' class='form-control' id='experiencia' value='" + usuario[i].objDelegado.experiencia + "'>" +
-                     "</div>" + 
-                 "</div>" +
-
-                 "<button type='button' id='btnExecuteUpdateUser' class='btn text-white'>Actualizar</button>" +
-                 "</form>";
-            }else{
-
-                /*Limpiar el div*/
-                $("#formularioInformacion").html("");
-
-                formulario="<h4>Los administradores no pueden modificar los datos personales de los socios</h4>";
-
+                formulario+="<label for='experiencia'>Experiencia:</label>" +
+                            "<input type='number' class='form-control' id='experiencia' value='" + usuario[i].objDelegado.experiencia + "'>" +
+                    "</div>";
             }
+
+            //Boton actulizar y cerrar formulario
+            formulario+="</div>" +
+                        "<button type='button' id='btnExecuteUpdateUser' class='btn text-white'>Actualizar</button>" +
+                    "</form>";
 
         }
 
-        $("#formularioInformacion").append(formulario);
+        $("#formularioInformacion").html(formulario);
 
         //Al hacer click ejecutamos el update
         $("#btnExecuteUpdateUser").click(function(){
