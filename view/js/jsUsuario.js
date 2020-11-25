@@ -142,11 +142,14 @@ function sessionVarsView(){
         for(let i=0; i<usuario.length; i++){
 
             if(usuario[i].admin==0){
-                usuarioInfo="<div class='col-lg-12 m-1'>" +
-                                "<h1>" + usuario[i].usuario + "</h1>" +
-                                "<h2>Selecciona la opción que desea: </h2>" +
-                             "</div>" +
-                             "<div class='col-lg-12'>" +
+                usuarioInfo="<div class='col m-1'>" +
+                                "<div class='row justify-content-center align-items-center'>" +
+                                    "<div class='col'>" +
+                                        "<h1>" + usuario[i].usuario + "</h1>" +
+                                        "<h2>Selecciona la opción que desea: </h2>" +
+                                    "</div>" +     
+                            "</div>" +
+                            "<div class='col m-1'>" +
                                 "<button type='button' class='btn text-white m-2 col-lg-2 col-md-5 col-sm-4 col-5' id='btnMisDatos'>Mis datos</button>" +
                                 "<button type='button' class='btn text-white m-2 col-lg-2 col-md-5 col-sm-4 col-5' id='btnUpdateUsuario'>Actualizar Información</button>" +
                             "</div>" +
@@ -158,7 +161,6 @@ function sessionVarsView(){
                                         "<h1>" + usuario[i].usuario + "</h1>" +
                                         "<h2>Selecciona la opción que desea: </h2>" +
                                     "</div>" +    
-                                    
                              "</div>" +
                              "<div class='col m-1'>" +
                                 "<button type='button' class='btn text-white m-2' id='btnDatosAdmin'>Ver mis datos</button>" +
@@ -600,7 +602,7 @@ function sessionVarsView(){
                     }else if(usuario[i].tipo==2){//Si el usuario es entrenador
 
                 formulario+="<label for='experiencia'>Experiencia:</label>" +
-                           "<input type='number' class='form-control' id='experiencia' value='" + usuario[i].objEntrenador.experiencia + "'>" +
+                           "<input type='number' class='form-control' id='experiencia' value='" + usuario[i].objEntrenador.experiencia + "' min='" + usuario[i].objEntrenador.experiencia + "'>" +
                     "</div>";
 
                 
@@ -608,7 +610,7 @@ function sessionVarsView(){
             }else if(usuario[i].tipo==3){//Si el usuario es delegado
 
                 formulario+="<label for='experiencia'>Experiencia:</label>" +
-                            "<input type='number' class='form-control' id='experiencia' value='" + usuario[i].objDelegado.experiencia + "'>" +
+                            "<input type='number' class='form-control' id='experiencia' value='" + usuario[i].objDelegado.experiencia + "' min='" + usuario[i].Delegado.experiencia + "'>" +
                     "</div>";
             }
 
@@ -827,7 +829,7 @@ function sessionVarsView(){
                         "</div>"+
                     "</div>";
 
-        if(usuario[0].tipo==1){//Si es jugador, a la tercera columno añadimos los datos del jugador
+        if(usuario[0].tipo==1){//Si es jugador, a la tercera columna añadimos los datos del jugador
 
             newrow+="<div class='row-lg-3 order-3'>"+
                         "<div class='col-lg-12'>"+
@@ -853,7 +855,7 @@ function sessionVarsView(){
                         "</div>"+
                     "</div>";
 
-        }else if(usuario[0].tipo==3){//Si es delegado, a la tercera columno añadimos los datos del delegado
+        }else if(usuario[0].tipo==3){//Si es delegado, a la tercera columna añadimos los datos del delegado
 
             newrow+="<div class='row-lg-3 order-3'>"+
                         "<div class='col-lg-12'>"+
