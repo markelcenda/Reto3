@@ -31,12 +31,13 @@
 .card{
     border: 1px solid transparent !important; 
     width: 98%;
+    background-color: #009655;
 }
 
 #imagenes img {
     height: 300px;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 3px;
 }
 
 #imagenes .card-back h3 {

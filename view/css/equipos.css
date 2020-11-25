@@ -54,11 +54,17 @@
 .card:hover:before {
   opacity: 1;
 }
+
 .card:hover .info {
   opacity: 1;
   -webkit-transform: translateY(0px);
           transform: translateY(0px);
 }
+
+.card:hover .info span{
+cursor: pointer;
+}
+
 .card:before {
   content: "";
   position: absolute;

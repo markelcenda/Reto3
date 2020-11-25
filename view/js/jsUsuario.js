@@ -38,7 +38,7 @@ function login(){
 
                 alert(result.error); 
 
-                //console.log(result.error);
+                console.log(result.error);
 
                 //Filtro que mira si se ha podido inicar sesion
                 if(result.confirm == true){
@@ -386,10 +386,14 @@ function sessionVarsView(){
 
     //Ejecutar delete
     function execDelete(idUsuario, nombreApellido){
-        
-        var confirmar=confirm("¿Estás seguro de borrar a " + nombreApellido + "?");
 
-        if(confirmar==true){
+        $("#modalDelete").css("display", "block");
+
+        texto="¿Estás seguro de borrar a <b>" + nombreApellido + "</b>?";
+        $("#modalText").html(texto);
+        
+        
+        $("#deletebtn").click(function(){
 
             var url = "../../controller/cDeleteUser.php";
             var data = {'id':idUsuario};
@@ -410,9 +414,9 @@ function sessionVarsView(){
                 window.location.reload();
 
             })
-            .catch(error => console.error('Error status:', error));	
+            .catch(error => console.error('Error status:', error));
 
-        }
+        })
 
     }
 

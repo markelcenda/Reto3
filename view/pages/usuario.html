@@ -129,7 +129,23 @@
     <!-- Administracion -->
     <div class="row justify-content-center text-center mt-3 textoModoNoche" id="zonaUsuario">
 
+    
     </div>
+
+    <div id="modalDelete" class="modal">
+        <span onclick="document.getElementById('modalDelete').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <form class="modal-content" action="/action_page.php">
+          <div class="container">
+            <h1>Eliminar usuario</h1>
+            <p id="modalText"></p>
+      
+            <div class="clearfix">
+              <button type="button" class="cancelbtn" onclick="document.getElementById('modalDelete').style.display='none'">Cancel</button>
+              <button type="button" class="deletebtn" id="deletebtn">Eliminar</button>
+            </div>
+          </div>
+        </form>
+      </div>
 
 
     <!--Footer comienzo-->
