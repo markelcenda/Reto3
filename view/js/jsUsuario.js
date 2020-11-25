@@ -387,9 +387,9 @@ function sessionVarsView(){
     //Ejecutar delete
     function execDelete(idUsuario, nombreApellido){
 
-        $("#id01").css("display", "block");
+        $("#modalDelete").css("display", "block");
 
-        texto="¿Estás seguro de borrar a " + nombreApellido + "?";
+        texto="¿Estás seguro de borrar a <b>" + nombreApellido + "</b>?";
         $("#modalText").html(texto);
         
         
