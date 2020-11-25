@@ -131,7 +131,6 @@ function loadUsersByTeamId(idEquipo){
 					//JUGADORES
 
 					if(jugadores[i].objJugador.posicion=="Delantero"){
-						//console.log(jugadores[i]);
 						
 						cardPosiciones="<div class='row justify-content-center mt-4'>" +
 		                					"<div class='col-lg-12'>" +
@@ -354,7 +353,7 @@ function mostrarDatosUsuarios(id){
 
 			}
 
-			/*Si el usuario es entrenador*/
+			/*Si el usuario es delegado*/
 			if(delegado!=null){
 
 				for(let i=0; i<delegado.length; i++){
@@ -437,7 +436,7 @@ function login(){
                 //Filtro que mira si se ha podido inicar sesion
                 if(result.confirm == true){
 
-                    //Al detectar que si, econde el boton de iniciar sesion y muestra el de cerrarla y la imagen de usuario
+                    //Al detectar que si, esconde el boton de iniciar sesion y muestra el de cerrarla y la imagen de usuario
                     $(".botonLogin").hide();
                     $(".botonLogout").show();
                     $(".sesionUsuario").css('display','flex');
