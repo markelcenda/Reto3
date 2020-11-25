@@ -30,7 +30,7 @@
 
             <div class="navbar-collapse collapse dual-nav w-50 order-1 order-md-0 mt-3">
 
-                <ul class="navbar-nav text-center align-items-center mt-5">
+                 <ul class="navbar-nav text-center align-items-center mt-5">
 
                     <li class="nav-item active">
                         <a class="nav-link pl-0 efecto" href="../../index.html">Home <span
@@ -38,18 +38,38 @@
                     </li>
 
                     <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle efecto" href="#" id="dropdownId" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Equipos</a>
-                        <div class="dropdown-menu text-center" aria-labelledby="dropdownId">
-                            <a class="dropdown-item" onclick="equiposDesdeSocios('5')">Senior Masculino</a>
-                            <a class="dropdown-item" onclick="equiposDesdeSocios('6')">Senior Femenino</a>
-                            <hr>
-                            <a class="dropdown-item" onclick="equiposDesdeSocios('3')">Juvenil Masculino</a>
-                            <a class="dropdown-item" onclick="equiposDesdeSocios('4')">Juvenil Femenino</a>
-                            <hr>
-                            <a class="dropdown-item" onclick="equiposDesdeSocios('1')">Infantil Masculino</a>
-                            <a class="dropdown-item" onclick="equiposDesdeSocios('2')">Infantil Femenino</a>
-                        </div>
+                        
+                            <a class="nav-link active efecto" data-toggle="dropdown">Equipos <i class="fas fa-caret-down"></i></a>
+                
+                            <ul class="dropdown-menu text-center">
+
+                                <li class="dropdown-submenu">
+                                    <a class="test" tabindex="-1" href="#">Senior <i class="fas fa-caret-right"></i></a>
+                                    <ul class="dropdown-menu text-center menu2">
+                                        <li><a tabindex="-1" href="#" onclick="equiposDesdeSocios('5')">Masculino</a></li>
+                                        <li><a tabindex="-1" href="#" onclick="equiposDesdeSocios('6')">Femenino</a></li>
+                                    </ul>
+                                </li>
+                            
+                                <li class="dropdown-submenu">
+                                    <a class="test" tabindex="-1" href="#">Juvenil <i class="fas fa-caret-right"></i></a>
+                                    <ul class="dropdown-menu text-center menu2">
+                                        <li><a tabindex="-1" href="#" onclick="equiposDesdeSocios('3')">Masculino</a></li>
+                                        <li><a tabindex="-1" href="#" onclick="equiposDesdeSocios('4')">Femenino</a></li>
+                                    </ul>
+                                </li>
+                            
+                                <li class="dropdown-submenu">
+                                    <a class="test" tabindex="-1" href="#">Infantil <i class="fas fa-caret-right"></i></a>
+                                    <ul class="dropdown-menu text-center menu2">
+                                        <li><a tabindex="-1" href="#" onclick="equiposDesdeSocios('1')">Masculino</a></li>
+                                        <li><a tabindex="-1" href="#" onclick="equiposDesdeSocios('2')">Femenino</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+
+                        
                     </li>
 
                     <li class="nav-item active">
@@ -61,6 +81,9 @@
                     </li>
 
                 </ul>
+
+                
+
             </div>
 
             <div class="navbar-collapse collapse dual-nav w-50 order-2 mt-3">

@@ -211,3 +211,32 @@ footer{
   #myBtn:hover {
     background-color: white;
   }
+
+  /*Submenu de equipos*/
+  .dropdown-submenu {
+    position: relative;
+  }
+  
+  .dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+  }
+  
+  nav ul li ul li {
+  transition: 0.5s;
+  }
+  
+  nav ul li ul li:hover {
+    color: white;
+    background-color: #009655;
+  }
+  
+  nav ul li ul li a {
+  text-decoration: none !important;
+  color: #212529;
+  }
+  
+  nav ul li ul li a:hover {
+    color: white !important;
+  }
