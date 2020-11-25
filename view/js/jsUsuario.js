@@ -539,7 +539,7 @@ function sessionVarsView(){
                                             "</div>" +    
                 
                                             "<div class='col-lg-4'>" +
-                                                "<label for='posicion'>Liberos</label>" +
+                                                "<label for='posicion'>Libero</label>" +
                                                 "<input type='radio' id='libero' value='Libero' name='posiciones'>" +
                                             "</div>" +
                                         "</div>";
@@ -557,7 +557,7 @@ function sessionVarsView(){
                                             "</div>" +    
                 
                                             "<div class='col-lg-4'>" +
-                                                "<label for='posicion'>Liberos</label>" +
+                                                "<label for='posicion'>Libero</label>" +
                                                 "<input type='radio' id='libero' value='Libero' name='posiciones'>" +
                                             "</div>" +
                                         "</div>";
@@ -576,7 +576,7 @@ function sessionVarsView(){
                                             "</div>" +    
 
                                             "<div class='col-lg-4'>" +
-                                                "<label for='posicion'>Liberos</label>" +
+                                                "<label for='posicion'>Libero</label>" +
                                                 "<input type='radio' id='libero' value='Libero' name='posiciones' checked>" +
                                             "</div>" +
                                         "</div>";
@@ -789,189 +789,83 @@ function sessionVarsView(){
           
         var usuario=result.usuario;
 
+        /*Limpiar el div*/
         $("#formularioInformacion").html("");
 
-        if(usuario[0].tipo==1){//JUGADOR
+        newrow = "<div class='row justify-content-center align-items-center datosDeUsuario m-5 text-white'>"+
+                    "<div class='row-lg-3 order-1'>"+
+                        "<div class='col-lg-12'>"+
+                            "<p class='font-weight-bold'>Nombre:</p>"+
+                            "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
+                        "</div>"+
+                        "<div class='col-lg-12 '>"+
+                            "<p class='font-weight-bold'>Direccion:</p>"+
+                            "<p>"+ usuario[0].direccion + "</p>"+
+                        "</div>"+
+                        "<div class='col-lg-12 '>"+
+                            "<p class='font-weight-bold'>Fecha de Nacimiento:</p>"+
+                            "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
+                        "</div>"+
+                    "</div>"+
+                    "<div class='row order-4'>"+
+                        "<div class='m-5'>"+
+                            "<img class='imagenUsuario' src='../img/"+ usuario[0].imagen + "'>"+
+                        "</div>"+
+                    "</div>"+
+                    "<div class='row-lg-3 order-2'>"+
+                        "<div class='col-lg-12'>"+
+                            "<p class='font-weight-bold'>Correo electronico:</p>"+
+                            "<p>"+ usuario[0].email + "</p>"+
+                        "</div>"+
+                        "<div class='col-lg-12 '>"+
+                            "<p class='font-weight-bold'>Usuario:</p>"+
+                            "<p>"+ usuario[0].usuario+ "</p>"+
+                        "</div>"+
+                        "<div class='col-lg-12'>"+
+                            "<p class='font-weight-bold'>Contraseña:</p>"+
+                            "<p>"+ usuario[0].password + "</p>"+
+                        "</div>"+
+                    "</div>";
 
-            newrow = "<div class='row justify-content-center align-items-center datosDeUsuario m-5 text-white'>"+
-            "<div class='row-lg-3 order-1'>"+
-                "<div class='col-lg-12'>"+
-                    "<p class='font-weight-bold'>Nombre:</p>"+
-                    "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
-                "</div>"+
-                "<div class='col-lg-12 '>"+
-                    "<p class='font-weight-bold'>Direccion:</p>"+
-                    "<p>"+ usuario[0].direccion + "</p>"+
-                "</div>"+
-                "<div class='col-lg-12 '>"+
-                    "<p class='font-weight-bold'>Fecha de Nacimiento:</p>"+
-                    "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
-                "</div>"+
-            "</div>"+
-            "<div class='row order-4'>"+
-                "<div class='m-5'>"+
-                    "<img class='imagenUsuario' src='../img/"+ usuario[0].imagen + "'>"+
-                "</div>"+
-            "</div>"+
-            "<div class='row-lg-3 order-2'>"+
-                "<div class='col-lg-12'>"+
-                    "<p class='font-weight-bold'>Correo electronico:</p>"+
-                    "<p>"+ usuario[0].email + "</p>"+
-                "</div>"+
-                "<div class='col-lg-12 '>"+
-                    "<p class='font-weight-bold'>Usuario:</p>"+
-                    "<p>"+ usuario[0].usuario+ "</p>"+
-                "</div>"+
-                "<div class='col-lg-12'>"+
-                    "<p class='font-weight-bold'>Contraseña:</p>"+
-                    "<p>"+ usuario[0].password + "</p>"+
-                "</div>"+
-            "</div>"+
-            "<div class='row-lg-3 order-3'>"+
-                "<div class='col-lg-12'>"+
-                    "<p class='font-weight-bold'>Posición:</p>"+
-                    "<p>"+ usuario[0].objJugador.posicion + "</p>"+
-                "</div>"+
-                "<div class='col-lg-12 '>"+
-                    "<p class='font-weight-bold'>Altura:</p>"+
-                    "<p>"+ usuario[0].objJugador.altura+ "m</p>"+
-                "</div>"+
-                "<div class='col-lg-12'>"+
-                    "<p class='font-weight-bold'>Peso:</p>"+
-                    "<p>"+ usuario[0].objJugador.peso + "kg</p>"+
-                "</div>"+
-            "</div>"+
-        "</div>";
+        if(usuario[0].tipo==1){//Si es jugador, a la tercera columno añadimos los datos del jugador
 
-        }else if(usuario[0].tipo==2){//ENTRENADOR
+            newrow+="<div class='row-lg-3 order-3'>"+
+                        "<div class='col-lg-12'>"+
+                            "<p class='font-weight-bold'>Posición:</p>"+
+                            "<p>"+ usuario[0].objJugador.posicion + "</p>"+
+                        "</div>"+
+                        "<div class='col-lg-12 '>"+
+                            "<p class='font-weight-bold'>Altura:</p>"+
+                            "<p>"+ usuario[0].objJugador.altura+ "m</p>"+
+                        "</div>"+
+                        "<div class='col-lg-12'>"+
+                            "<p class='font-weight-bold'>Peso:</p>"+
+                            "<p>"+ usuario[0].objJugador.peso + "kg</p>"+
+                        "</div>"+
+                    "</div>";
+    
+        }else if(usuario[0].tipo==2){//Si es entrenador, a la tercera columna añadimos los datos del entrenador
 
-            newrow = "<div class='row justify-content-center align-items-center datosDeUsuario m-5 text-white'>"+
-            "<div class='row-lg-3 order-1'>"+
-                "<div class='col-lg-12'>"+
-                    "<p class='font-weight-bold'>Nombre:</p>"+
-                    "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
-                "</div>"+
-                "<div class='col-lg-12 '>"+
-                    "<p class='font-weight-bold'>Direccion:</p>"+
-                    "<p>"+ usuario[0].direccion + "</p>"+
-                "</div>"+
-                "<div class='col-lg-12 '>"+
-                    "<p class='font-weight-bold'>Fecha de Nacimiento:</p>"+
-                    "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
-                "</div>"+
-            "</div>"+
-            "<div class='row order-4'>"+
-                "<div class='m-5'>"+
-                    "<img class='imagenUsuario' src='../img/"+ usuario[0].imagen + "'>"+
-                "</div>"+
-            "</div>"+
-            "<div class='row-lg-3 order-2'>"+
-                "<div class='col-lg-12'>"+
-                    "<p class='font-weight-bold'>Correo electronico:</p>"+
-                    "<p>"+ usuario[0].email + "</p>"+
-                "</div>"+
-                "<div class='col-lg-12 '>"+
-                    "<p class='font-weight-bold'>Usuario:</p>"+
-                    "<p>"+ usuario[0].usuario+ "</p>"+
-                "</div>"+
-                "<div class='col-lg-12'>"+
-                    "<p class='font-weight-bold'>Contraseña:</p>"+
-                    "<p>"+ usuario[0].password + "</p>"+
-                "</div>"+
-            "</div>"+
-            "<div class='row-lg-3 order-3'>"+
-                "<div class='col-lg-12'>"+
-                    "<p class='font-weight-bold'>Experiencia:</p>"+
-                    "<p>"+ usuario[0].objEntrenador.experiencia + " años</p>"+
-                "</div>"+
-            "</div>"+
-        "</div>";
+            newrow+="<div class='row-lg-3 order-3'>"+
+                        "<div class='col-lg-12'>"+
+                            "<p class='font-weight-bold'>Experiencia:</p>"+
+                            "<p>"+ usuario[0].objEntrenador.experiencia + " años</p>"+
+                        "</div>"+
+                    "</div>";
 
-        }else if(usuario[0].tipo==3){//DELEGADO
+        }else if(usuario[0].tipo==3){//Si es delegado, a la tercera columno añadimos los datos del delegado
 
-            newrow = "<div class='row justify-content-center align-items-center datosDeUsuario m-5 text-white'>"+
-            "<div class='row-lg-3 order-1'>"+
-                "<div class='col-lg-12'>"+
-                    "<p class='font-weight-bold'>Nombre:</p>"+
-                    "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
-                "</div>"+
-                "<div class='col-lg-12 '>"+
-                    "<p class='font-weight-bold'>Direccion:</p>"+
-                    "<p>"+ usuario[0].direccion + "</p>"+
-                "</div>"+
-                "<div class='col-lg-12 '>"+
-                    "<p class='font-weight-bold'>Fecha de Nacimiento:</p>"+
-                    "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
-                "</div>"+
-            "</div>"+
-            "<div class='row order-4'>"+
-                "<div class='m-5'>"+
-                    "<img class='imagenUsuario' src='../img/"+ usuario[0].imagen + "'>"+
-                "</div>"+
-            "</div>"+
-            "<div class='row-lg-3 order-2'>"+
-                "<div class='col-lg-12'>"+
-                    "<p class='font-weight-bold'>Correo electronico:</p>"+
-                    "<p>"+ usuario[0].email + "</p>"+
-                "</div>"+
-                "<div class='col-lg-12 '>"+
-                    "<p class='font-weight-bold'>Usuario:</p>"+
-                    "<p>"+ usuario[0].usuario+ "</p>"+
-                "</div>"+
-                "<div class='col-lg-12'>"+
-                    "<p class='font-weight-bold'>Contraseña:</p>"+
-                    "<p>"+ usuario[0].password + "</p>"+
-                "</div>"+
-            "</div>"+
-            "<div class='row-lg-3 order-3'>"+
-                "<div class='col-lg-12'>"+
-                    "<p class='font-weight-bold'>Experiencia:</p>"+
-                    "<p>"+ usuario[0].objDelegado.experiencia + " años</p>"+
-                "</div>"+
-            "</div>"+
-        "</div>";
-            
-        }else{//SOCIO
-
-            newrow = "<div class='row justify-content-center align-items-center datosDeUsuario m-5 text-white'>"+
-            "<div class='row-lg-3 order-1'>"+
-                "<div class='col-lg-12'>"+
-                    "<p class='font-weight-bold'>Nombre:</p>"+
-                    "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
-                "</div>"+
-                "<div class='col-lg-12 '>"+
-                    "<p class='font-weight-bold'>Direccion:</p>"+
-                    "<p>"+ usuario[0].direccion + "</p>"+
-                "</div>"+
-                "<div class='col-lg-12 '>"+
-                    "<p class='font-weight-bold'>Fecha de Nacimiento:</p>"+
-                    "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
-                "</div>"+
-            "</div>"+
-            "<div class='row order-3'>"+
-                "<div class='m-5'>"+
-                    "<img class='imagenUsuario' src='../img/"+ usuario[0].imagen + "'>"+
-                "</div>"+
-            "</div>"+
-            "<div class='row-lg-3 order-2'>"+
-                "<div class='col-lg-12'>"+
-                    "<p class='font-weight-bold'>Correo electronico:</p>"+
-                    "<p>"+ usuario[0].email + "</p>"+
-                "</div>"+
-                "<div class='col-lg-12 '>"+
-                    "<p class='font-weight-bold'>Usuario:</p>"+
-                    "<p>"+ usuario[0].usuario+ "</p>"+
-                "</div>"+
-                "<div class='col-lg-12'>"+
-                    "<p class='font-weight-bold'>Contraseña:</p>"+
-                    "<p>"+ usuario[0].password + "</p>"+
-                "</div>"+
-            "</div>"+
-        "</div>";
-
+            newrow+="<div class='row-lg-3 order-3'>"+
+                        "<div class='col-lg-12'>"+
+                            "<p class='font-weight-bold'>Experiencia:</p>"+
+                            "<p>"+ usuario[0].objDelegado.experiencia + " años</p>"+
+                        "</div>"+
+                    "</div>";
         }
 
-        
+        //cerrar row
+        newrow+="</div>"; 
+
         $("#formularioInformacion").html(newrow);
   
       })
