@@ -239,20 +239,38 @@ footer{
     margin-top: -1px;
   }
   
+  /*Transicion para hacer hover*/
   nav ul li ul li {
   transition: 0.5s;
   }
   
-  nav ul li ul li:hover {
+  /*a de primer submenu*/
+  nav ul li ul li a {
+    text-decoration: none !important;
+    color: #212529;
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+  }
+
+/*hover del a del primer submenu*/
+  nav ul li ul li a:hover {
     color: white;
     background-color: #009655;
-  }
+}
+
+/*a de segundo submenu*/
+nav ul li ul li ul li a {
+    text-decoration: none !important;
+    color: #212529;
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+}
+
+/*hover del a del segundo submenu*/
+ nav ul li ul li ul li a:hover {
+    color: white;
+    background-color: #009655;
+}
   
-  nav ul li ul li a {
-  text-decoration: none !important;
-  color: #212529;
-  }
-  
-  nav ul li ul li a:hover {
-    color: white !important;
-  }
