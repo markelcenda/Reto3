@@ -1,3 +1,7 @@
+*::selection {
+    background: #009655;
+}
+
 html{
     scroll-behavior: smooth;
 }
@@ -52,6 +56,18 @@ nav ul li .efecto:hover {
 nav ul li .dropdown-item:hover {
     color: white;
     background-color: #009655;
+}
+
+nav #nightMode{
+    background-color: #009655;
+    color: white;
+    transition: 0.5s;
+}
+
+nav #nightMode:hover{
+    background-color: white;
+    color: #009655;
+    transition: 0.5s;
 }
 
 /*Boton login*/
@@ -210,4 +226,33 @@ footer{
   
   #myBtn:hover {
     background-color: white;
+  }
+
+  /*Submenu de equipos*/
+  .dropdown-submenu {
+    position: relative;
+  }
+  
+  .dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+  }
+  
+  nav ul li ul li {
+  transition: 0.5s;
+  }
+  
+  nav ul li ul li:hover {
+    color: white;
+    background-color: #009655;
+  }
+  
+  nav ul li ul li a {
+  text-decoration: none !important;
+  color: #212529;
+  }
+  
+  nav ul li ul li a:hover {
+    color: white !important;
   }
