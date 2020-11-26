@@ -5,12 +5,6 @@ $(document).ready(function () {
     
     sessionVarsView();
 
-        $('.dropdown-submenu a.test').on("click", function(e){
-          $(this).next('ul').toggle();
-          e.stopPropagation();
-          e.preventDefault();
-        });
-
 });
 
 //cargar la pagina del equipo seleccionado
@@ -128,8 +122,6 @@ function sessionVarsView(){
                          zonaAdministrador(usuario);
     				}
                 }
-
-               
 
     		})
     		.catch(error => console.error('Error status:', error));	
