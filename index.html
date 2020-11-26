@@ -17,7 +17,7 @@
 
 </head>
 
-<body  class="bg-light">
+<body class="bg-light">
     <div class="imagenFondo">
         <nav class="navbar navbar-dark navbar-expand-md justify-content-between w-100">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-nav">
@@ -29,9 +29,10 @@
                         <a class="nav-link pl-0 efecto" href="index.html">Home <span class="sr-only">Home</span></a>
                     </li>
                     <li class="nav-item dropdown active">
-                        
-                        <a class="nav-link active efecto" data-toggle="dropdown">Equipos <i class="fas fa-caret-down"></i></a>
-            
+
+                        <a class="nav-link active efecto" data-toggle="dropdown">Equipos <i
+                                class="fas fa-caret-down"></i></a>
+
                         <ul class="dropdown-menu text-center">
 
                             <li class="dropdown-submenu">
@@ -41,7 +42,7 @@
                                     <li><a tabindex="-1" href="#" onclick="equiposDesdeIndex('6')">Femenino</a></li>
                                 </ul>
                             </li>
-                        
+
                             <li class="dropdown-submenu">
                                 <a class="test" tabindex="-1" href="#">Juvenil <i class="fas fa-caret-right"></i></a>
                                 <ul class="dropdown-menu text-center">
@@ -49,7 +50,7 @@
                                     <li><a tabindex="-1" href="#" onclick="equiposDesdeIndex('4')">Femenino</a></li>
                                 </ul>
                             </li>
-                        
+
                             <li class="dropdown-submenu">
                                 <a class="test" tabindex="-1" href="#">Infantil <i class="fas fa-caret-right"></i></a>
                                 <ul class="dropdown-menu text-center">
@@ -60,8 +61,8 @@
 
                         </ul>
 
-                    
-                </li>
+
+                    </li>
                     <li class="nav-item active">
                         <a class="nav-link active efecto" href="view/pages/noticias.html">Noticias</a>
                     </li>
@@ -73,7 +74,7 @@
             <a href="index.html" class="navbar-brand  d-block text-center order-0 order-md-1 w-25">
                 <figure class="figure">
                     <img src="view/img/logo.png" class="figure-img img-fluid rounded">
-                    
+
                 </figure>
             </a>
             <div class="navbar-collapse collapse dual-nav w-50 order-2">
@@ -88,7 +89,31 @@
                             aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
-                                    <!--Carga del modal desde el js -->
+                                    <div class="login-form">
+                                        <form>
+                                            <div class="form">
+                                                <h2 class="text-center">Iniciar Sesión</h2>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">&times;</button>
+                                                <div class="form-group">
+                                                    <i class="fas fa-user" id="userIcon"></i>
+                                                    <input id="usuario" type="text" class="form-control"
+                                                        placeholder="Usuario" onkeyup="enterSinClick(event)">
+                                                </div>
+                                                <div class="form-group">
+                                                    <i class="fas fa-lock" id="userPadlock"></i>
+                                                    <input id="password" type="password" autocomplete="off"
+                                                        class="form-control" placeholder="Contraseña"
+                                                        onkeyup="enterSinClick(event)">
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit"
+                                                        class="btn btn-primary btn-block botonLoginStart"
+                                                        id="loginSubmit">Iniciar Sesión</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -169,7 +194,7 @@
     <div class="row justify-content-center flecha">
         <h2 class="titulo">Últimas noticias</h2>
     </div>
-    
+
     <div class="album">
         <div class="container">
             <div class="row" id="noticias">

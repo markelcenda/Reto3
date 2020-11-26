@@ -5,8 +5,6 @@ $(document).ready(function () {
 
   menuDesplegable();
 
-  loadModal();
-
   $('#loginSubmit').click(function(event){
     event.preventDefault();
   })
@@ -77,28 +75,4 @@ function menuDesplegable(){
     e.stopPropagation();
     e.preventDefault();
 });
-}
-
-/*carga el modal en el div .modal-content*/
-function loadModal(){
-let modal = `<div class="login-form">
-              <form>
-                <div class="form">
-                  <h2 class="text-center">Iniciar Sesión</h2>
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>       
-                  <div class="form-group">
-                    <i class="fas fa-user" id="userIcon"></i>
-                    <input id="usuario" type="text" class="form-control" placeholder="Usuario" onkeyup="enterSinClick(event)">
-                  </div>
-                  <div class="form-group">
-                    <i class="fas fa-lock" id="userPadlock"></i>
-                    <input id="password" type="password" autocomplete="off" class="form-control" placeholder="Contraseña" onkeyup="enterSinClick(event)">
-                  </div>
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block botonLoginStart" id="loginSubmit">Iniciar Sesión</button>
-                  </div> 
-                </div> 
-              </form>    
-            </div>`
-  $('.modal-content').html(modal)
 }

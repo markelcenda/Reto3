@@ -30,7 +30,7 @@
 
             <div class="navbar-collapse collapse dual-nav w-50 order-1 order-md-0 mt-3">
 
-                 <ul class="navbar-nav text-center align-items-center mt-5">
+                <ul class="navbar-nav text-center align-items-center mt-5">
 
                     <li class="nav-item active">
                         <a class="nav-link pl-0 efecto" href="../../index.html">Home <span
@@ -38,38 +38,39 @@
                     </li>
 
                     <li class="nav-item dropdown active">
-                        
-                            <a class="nav-link active efecto" data-toggle="dropdown">Equipos <i class="fas fa-caret-down"></i></a>
-                
-                            <ul class="dropdown-menu text-center">
 
-                                <li class="dropdown-submenu">
-                                    <a class="test" tabindex="-1" href="#">Senior <i class="fas fa-caret-right"></i></a>
-                                    <ul class="dropdown-menu text-center">
-                                        <li><a tabindex="-1" href="#" onclick="equiposDesdeSocios('5')">Masculino</a></li>
-                                        <li><a tabindex="-1" href="#" onclick="equiposDesdeSocios('6')">Femenino</a></li>
-                                    </ul>
-                                </li>
-                                
-                                <li class="dropdown-submenu">
-                                    <a class="test" tabindex="-1" href="#">Juvenil <i class="fas fa-caret-right"></i></a>
-                                    <ul class="dropdown-menu text-center">
-                                        <li><a tabindex="-1" href="#" onclick="equiposDesdeSocios('3')">Masculino</a></li>
-                                        <li><a tabindex="-1" href="#" onclick="equiposDesdeSocios('4')">Femenino</a></li>
-                                    </ul>
-                                </li>
-                            
-                                <li class="dropdown-submenu">
-                                    <a class="test" tabindex="-1" href="#">Infantil <i class="fas fa-caret-right"></i></a>
-                                    <ul class="dropdown-menu text-center">
-                                        <li><a tabindex="-1" href="#" onclick="equiposDesdeSocios('1')">Masculino</a></li>
-                                        <li><a tabindex="-1" href="#" onclick="equiposDesdeSocios('2')">Femenino</a></li>
-                                    </ul>
-                                </li>
+                        <a class="nav-link active efecto" data-toggle="dropdown">Equipos <i
+                                class="fas fa-caret-down"></i></a>
 
-                            </ul>
+                        <ul class="dropdown-menu text-center">
 
-                        
+                            <li class="dropdown-submenu">
+                                <a class="test" tabindex="-1" href="#">Senior <i class="fas fa-caret-right"></i></a>
+                                <ul class="dropdown-menu text-center">
+                                    <li><a tabindex="-1" href="#" onclick="equiposDesdeSocios('5')">Masculino</a></li>
+                                    <li><a tabindex="-1" href="#" onclick="equiposDesdeSocios('6')">Femenino</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown-submenu">
+                                <a class="test" tabindex="-1" href="#">Juvenil <i class="fas fa-caret-right"></i></a>
+                                <ul class="dropdown-menu text-center">
+                                    <li><a tabindex="-1" href="#" onclick="equiposDesdeSocios('3')">Masculino</a></li>
+                                    <li><a tabindex="-1" href="#" onclick="equiposDesdeSocios('4')">Femenino</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown-submenu">
+                                <a class="test" tabindex="-1" href="#">Infantil <i class="fas fa-caret-right"></i></a>
+                                <ul class="dropdown-menu text-center">
+                                    <li><a tabindex="-1" href="#" onclick="equiposDesdeSocios('1')">Masculino</a></li>
+                                    <li><a tabindex="-1" href="#" onclick="equiposDesdeSocios('2')">Femenino</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+
+
                     </li>
 
                     <li class="nav-item active">
@@ -82,7 +83,7 @@
 
                 </ul>
 
-                
+
 
             </div>
 
@@ -99,12 +100,36 @@
                             aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
-                                    <!--Carga del modal desde el js -->
+                                    <div class="login-form">
+                                        <form>
+                                            <div class="form">
+                                                <h2 class="text-center">Iniciar Sesión</h2>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">&times;</button>
+                                                <div class="form-group">
+                                                    <i class="fas fa-user" id="userIcon"></i>
+                                                    <input id="usuario" type="text" class="form-control"
+                                                        placeholder="Usuario" onkeyup="enterSinClick(event)">
+                                                </div>
+                                                <div class="form-group">
+                                                    <i class="fas fa-lock" id="userPadlock"></i>
+                                                    <input id="password" type="password" autocomplete="off"
+                                                        class="form-control" placeholder="Contraseña"
+                                                        onkeyup="enterSinClick(event)">
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit"
+                                                        class="btn btn-primary btn-block botonLoginStart"
+                                                        id="loginSubmit">Iniciar Sesión</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Zona login -->
                     <div class="sesionUsuario">
 
@@ -125,23 +150,25 @@
     <!-- Administracion -->
     <div class="row justify-content-center text-center mt-3 textoModoNoche" id="zonaUsuario">
 
-    
+
     </div>
 
     <div id="modalDelete" class="modal">
-        <span onclick="document.getElementById('modalDelete').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <span onclick="document.getElementById('modalDelete').style.display='none'" class="close"
+            title="Close Modal">&times;</span>
         <form class="modal-content" action="/action_page.php">
-          <div class="container">
-            <h1>Eliminar usuario</h1>
-            <p id="modalText"></p>
-      
-            <div class="clearfix">
-              <button type="button" class="cancelbtn" onclick="document.getElementById('modalDelete').style.display='none'">Cancel</button>
-              <button type="button" class="deletebtn" id="deletebtn">Eliminar</button>
+            <div class="container">
+                <h1>Eliminar usuario</h1>
+                <p id="modalText"></p>
+
+                <div class="clearfix">
+                    <button type="button" class="cancelbtn"
+                        onclick="document.getElementById('modalDelete').style.display='none'">Cancel</button>
+                    <button type="button" class="deletebtn" id="deletebtn">Eliminar</button>
+                </div>
             </div>
-          </div>
         </form>
-      </div>
+    </div>
 
 
     <!--Footer comienzo-->
