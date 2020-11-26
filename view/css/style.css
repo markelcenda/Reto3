@@ -261,7 +261,7 @@ nav ul li ul li ul li a {
     color: white;
     background-color: #009655;
 }
-  
+
 .login-form {
     width: 500px;
     height: 400px;
@@ -286,7 +286,7 @@ nav ul li ul li ul li a {
 
 .modal-content{
     background-color: transparent !important;
-    border: 0px !important;
+    border: 0px !important; 
 }
 
 .login-form .close {
@@ -312,4 +312,15 @@ nav ul li ul li ul li a {
 
 .form-control {
 	padding-left: 35px;
+}
+/*Fondo modal del footer*/
+.modal-contentFooter{
+    background-color: white;
+}
+
+/*Posicion icono del ojo de la contraseña*/
+#cambiarIcono i{
+    position: absolute;
+    top: 40%;
+    left: 88%;
 }

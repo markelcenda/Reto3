@@ -86,7 +86,7 @@
 }
 
 /* la caja del modal */
-.modal-content {
+.modal-contentDelete {
   background-color: #009655;
   margin: 5% auto 15% auto; 
   border: 2px solid rgb(58, 58, 58);
@@ -116,9 +116,7 @@
 }
 
 #zonaIMG{
-
   display: none;
-
 }
 
 /* Botones cancelar y delete en pantallas pequeñas*/
