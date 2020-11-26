@@ -45,8 +45,6 @@ function datosFormulario() {
 
   
     $misInput = $("#formularioSocio input").length;
-
-    alert($misInput);
   
     $campoCorreo = $("#email").val();
 
