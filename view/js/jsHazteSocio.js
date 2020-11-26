@@ -260,7 +260,7 @@ function login() {
                     $("#modelId").modal("hide");
 
                     //Muestra la imagen que le corresponde al usuario que ha iniciado sesion
-                    img = "<a href='usuario.html' class='ml-3' ><img id='imgSesion' src='../../view/img/" + result.usuarioSesion.imagen + "'></a>";
+                    img = "<a href='usuario.html' ><img id='imgSesion' src='../../view/img/" + result.usuarioSesion.imagen + "'></a>";
 
                     $("#sitioUsuario").html(img);
 
