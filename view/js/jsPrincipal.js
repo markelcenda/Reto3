@@ -2,6 +2,9 @@ $(document).ready(function () {
   nightModeOnLoad();
 
   $("#nightMode").click(nightMode);
+
+  menuDesplegable();
+
 });
 //Activa o desactiva el modo noche
 function nightMode() {
@@ -54,4 +57,15 @@ function enterSinClick(e) {
     e.preventDefault();
     $(".botonLoginStart").click();
   }
+}
+
+/*Menu desplegable de equipos del navbar*/
+function menuDesplegable(){
+
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+});
+
 }
