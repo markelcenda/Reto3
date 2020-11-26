@@ -2,23 +2,27 @@
 <html lang="en">
 
 <head>
-    <title>Betis Voleibol Club</title>
-    <!-- Required meta tags -->
+    <!--Etiquetas meta necesarias -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!--Logo del club-->
+    <!--Logo y titulo del club en la pestaña-->
     <link rel="icon" href="view/img/logo.png" type="image/png">
+    <title>Betis Voleibol Club</title>
 
+    <!--Bootstrap css-->
     <link rel="stylesheet" href="view/css/bootstrap.min.css">
+
+    <!--Nuestro css-->
     <link rel="stylesheet" href="view/css/index.css">
     <link rel="stylesheet" href="view/css/style.css">
     <link rel="stylesheet" href="view/css/aos.css">
-
 </head>
 
-<body class="bg-light">
+<body>
+    <!--Comienzo de la imagen de fondo-->
     <div class="imagenFondo">
+        <!--Cominezo del navbar-->
         <nav class="navbar navbar-dark navbar-expand-md justify-content-between w-100">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-nav">
                 <span class="navbar-toggler-icon"></span>
@@ -29,12 +33,8 @@
                         <a class="nav-link pl-0 efecto" href="index.html">Home <span class="sr-only">Home</span></a>
                     </li>
                     <li class="nav-item dropdown active">
-
-                        <a class="nav-link active efecto" data-toggle="dropdown">Equipos <i
-                                class="fas fa-caret-down"></i></a>
-
+                        <a class="nav-link active efecto" data-toggle="dropdown">Equipos <i class="fas fa-caret-down"></i></a>
                         <ul class="dropdown-menu text-center">
-
                             <li class="dropdown-submenu">
                                 <a class="test" tabindex="-1" href="#">Senior <i class="fas fa-caret-right"></i></a>
                                 <ul class="dropdown-menu text-center">
@@ -42,7 +42,6 @@
                                     <li><a tabindex="-1" href="#" onclick="equiposDesdeIndex('6')">Femenino</a></li>
                                 </ul>
                             </li>
-
                             <li class="dropdown-submenu">
                                 <a class="test" tabindex="-1" href="#">Juvenil <i class="fas fa-caret-right"></i></a>
                                 <ul class="dropdown-menu text-center">
@@ -50,7 +49,6 @@
                                     <li><a tabindex="-1" href="#" onclick="equiposDesdeIndex('4')">Femenino</a></li>
                                 </ul>
                             </li>
-
                             <li class="dropdown-submenu">
                                 <a class="test" tabindex="-1" href="#">Infantil <i class="fas fa-caret-right"></i></a>
                                 <ul class="dropdown-menu text-center">
@@ -58,10 +56,7 @@
                                     <li><a tabindex="-1" href="#" onclick="equiposDesdeIndex('2')">Femenino</a></li>
                                 </ul>
                             </li>
-
                         </ul>
-
-
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link active efecto" href="view/pages/noticias.html">Noticias</a>
@@ -74,17 +69,16 @@
             <a href="index.html" class="navbar-brand  d-block text-center order-0 order-md-1 w-25">
                 <figure class="figure">
                     <img src="view/img/logo.png" class="figure-img img-fluid rounded">
-
                 </figure>
             </a>
             <div class="navbar-collapse collapse dual-nav w-50 order-2">
                 <ul class="nav navbar-nav ml-auto text-center align-items-center">
-
                     <div class="login">
                         <button type="button" class="btn botonLogin" data-toggle="modal" data-target="#modelId">Iniciar
                             Sesión</button>
                         <button type="button" class="btn botonLogout">Cerrar Sesión</button>
-                        <!--Modal-->
+
+                        <!--Cominezo modal login-->
                         <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
                             aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -97,19 +91,17 @@
                                                     aria-hidden="true">&times;</button>
                                                 <div class="form-group">
                                                     <i class="fas fa-user" id="userIcon"></i>
-                                                    <input id="usuario" type="text" class="form-control"
-                                                        placeholder="Usuario" onkeyup="enterSinClick(event)">
+                                                    <input id="usuario" type="text" class="form-control" placeholder="Usuario" onkeyup="enterSinClick(event)">
                                                 </div>
                                                 <div class="form-group">
                                                     <i class="fas fa-lock" id="userPadlock"></i>
-                                                    <input id="password" type="password" autocomplete="off"
-                                                        class="form-control" placeholder="Contraseña"
-                                                        onkeyup="enterSinClick(event)">
+                                                    <input id="password" type="password" autocomplete="off" class="form-control" placeholder="Contraseña" onkeyup="enterSinClick(event)">
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit"
                                                         class="btn btn-primary btn-block botonLoginStart"
-                                                        id="loginSubmit">Iniciar Sesión</button>
+                                                        id="loginSubmit">Iniciar Sesión
+                                                    </button>
                                                 </div>
                                             </div>
                                         </form>
@@ -117,25 +109,38 @@
                                 </div>
                             </div>
                         </div>
+                        <!--Final modal login-->
+                        
                     </div>
-                    <!--Zona login-->
+
+                    <!--Comienzo zona login-->
                     <div class="sesionUsuario">
                         <div class="nav-item active ml-2" id="sitioUsuario">
                             <!--Carga la imagen del usuario que ha iniciado sesion desde el JS-->
                         </div>
-
                     </div>
+                    <!--Final zona login-->
+
+                    <!--Boton modo noche-->
                     <button type="button" class="btn m-2" id="nightMode"><i></i></button>
                 </ul>
             </div>
         </nav>
+        <!--Final del navbar-->
+
+        <!--Comienzo del texto en la imagen de fondo-->
         <div class="col mt-5 text-center">
             <h1>Betis Voleibol Club</h1>
         </div>
         <div class="col mt-5 text-center">
             <h2>"Más que un equipo, una familia"</h2>
         </div>
+        <!--Final del texto en la imagen de fondo-->
+
     </div>
+    <!--Final de la imagen de fondo-->
+
+    <!--Cominezo del apartado sobre nosotros-->
     <section id="about" class="about mt-5 mb-5" data-aos="zoom-out">
         <div class="container" id="historiaClub">
             <div class="row">
@@ -165,13 +170,18 @@
             </div>
         </div>
     </section>
+    <!--Final del apartado sobre nosotros-->
+
+    <!--Comienzo de las cards de equipos-->
     <div class="row justify-content-center flecha">
         <h2 class="titulo">Nuestros equipos</h2>
     </div>
     <div id="imagenes">
         <!-- Insertar imagenes de los equipos desded JS -->
-
     </div>
+    <!--Final de las cards de equipos-->
+
+    <!--Cominezo del video con info-->
     <div id="videoDiv" class="my-3">
         <video id="video" preload="" autoplay="" muted="" playsinline="" loop="">
             <source src="view/videos/video.mp4" type="video/mp4">
@@ -190,11 +200,12 @@
             </a>
         </div>
     </div>
+    <!--Final del video con info-->
 
+    <!--Cominezo de ultimas noticias-->
     <div class="row justify-content-center flecha">
         <h2 class="titulo">Últimas noticias</h2>
     </div>
-
     <div class="album">
         <div class="container">
             <div class="row" id="noticias">
@@ -202,22 +213,27 @@
             </div>
         </div>
     </div>
-    <!--Footer comienzo-->
+    <!--Final de ultimas noticias-->
+    
+    <!--Comienzo del footer -->
     <footer class="page-footer font-small blue-grey lighten-5 text-white">
         <div class="container">
             <!--Redes sociales-->
             <div class="row py-4 d-flex align-items-center justify-content-center">
                 <div class="col-lg-4 col-md-6 col-sm-8 col-8 text-center border-bottom border-white p-3">
-                    <!--Facebook--> <a href="https://facebook.com"><i
-                            class="fab fa-facebook-f text-white fa-2x m-2"></i></a>
-                    <!--Instagram--><a href="https://instagram.com"><i
-                            class="fab fa-instagram text-white fa-2x m-2"></i></a>
-                    <!--Twitter--> <a href="https://twitter.com"><i class="fab fa-twitter text-white fa-2x m-2"></i></a>
-                    <!--Google+--> <a href="https://google.com"><i
-                            class="fab fa-google-plus text-white fa-2x m-2"></i></a>
-                    <!--Youtube--> <a href="https://youtube.com"><i class="fab fa-youtube text-white fa-2x m-2"></i></a>
+                    <!--Facebook--> 
+                    <a href="https://facebook.com"><i class="fab fa-facebook-f text-white fa-2x m-2"></i></a>
+                    <!--Instagram-->
+                    <a href="https://instagram.com"><i class="fab fa-instagram text-white fa-2x m-2"></i></a>
+                    <!--Twitter--> 
+                    <a href="https://twitter.com"><i class="fab fa-twitter text-white fa-2x m-2"></i></a>
+                    <!--Google+--> 
+                    <a href="https://google.com"><i class="fab fa-google-plus text-white fa-2x m-2"></i></a>
+                    <!--Youtube--> 
+                    <a href="https://youtube.com"><i class="fab fa-youtube text-white fa-2x m-2"></i></a>
                 </div>
             </div>
+
             <!--Parte central del footer-->
             <div class="container text-center text-md-left">
                 <div class="row">
@@ -232,10 +248,12 @@
                         </p>
                         <p><a class="text-white" data-toggle="modal" data-target="#exampleModal" href="#">Legal</a></p>
                     </div>
+
                     <!--Logo del club-->
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 text-center d-block m-auto">
                         <img id="logoFooter" src="view/img/logo.png" alt="">
                     </div>
+
                     <!--Contacto-->
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 text-center">
                         <p>
@@ -249,14 +267,15 @@
                 </div>
             </div>
         </div>
+
         <!--Copyright-->
         <div class="footer-copyright text-center text-white py-3" style="background-color: #1a7041;">© 2020 Copyright:
             <a class="text-white" href="index.html"> realbetisvoleibol.com</a>
         </div>
     </footer>
-    <!--Footer final-->
+    <!--Final del footer -->
 
-    <!--Modal del footer-->
+    <!--Comienzo del modal del Footer-->
     <div class="modal fade modalCopyright justify-align-center text-center" id="exampleModal" tabindex="-1"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -268,8 +287,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>© REAL BETIS VOLEIBOL. Esta pagina es la unica oficial del Real Betis Voleibol. Todos los
-                        derechos reservados.</p>
+                    <p>© REAL BETIS VOLEIBOL. Esta pagina es la unica oficial del Real Betis Voleibol. Todos los derechos reservados.</p>
                 </div>
                 <div class="modal-footer ">
                     <button type="button" class="btn btn-danger botonCerrar" data-dismiss="modal">Close</button>
@@ -278,12 +296,14 @@
         </div>
     </div>
     <button onclick="topFunction()" id="myBtn"><i class="fas fa-arrow-up fa-2x"></i></button>
+    <!--Final del modal del Footer-->
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="view/js/jquery.min.js"></script>
     <script src="view/js/popper.min.js"></script>
     <script src="view/js/bootstrap.min.js"></script>
 
-    <!-- Optional JavaScript -->
+    <!-- Nuestro JavaScript -->
     <script src="view/js/jsFunctions.js"></script>
     <script src="view/js/jsLoginLogout.js"></script>
     <script src="view/js/jsPrincipal.js"></script>
