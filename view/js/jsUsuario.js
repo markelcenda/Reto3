@@ -2,10 +2,13 @@ $(document).ready(function () {
 
     $(".botonLoginStart").click(login);
     $(".botonLogout").click(logout);
-    
+    $("#imagen").change(changeImg);
+
     sessionVarsView();
 
 });
+
+
 
 //cargar la pagina del equipo seleccionado
 function equiposDesdeSocios(id){
@@ -280,8 +283,23 @@ function sessionVarsView(){
                                 "<input type='text' class='form-control' id='direccion' value='" + usuario[i].direccion + "'>" +
                             "</div>" + 
                             "</div>" +
+                            "<div class='row'>"+                         
+                                "<div class='col-lg-6 p-3 text-center' id='containerImagen'>"+
+                                    "<label>Imagen de perfil</label><br>"+
+                                    "<input type='file' name='imagen' id='imagen' accept='.png,.jpeg,.jpg,.gif'>"+
+                                    "<label type='file' for='imagen' class='btn text-white col-lg-12 col-md-4 col-sm-4 col-4' id='btnSubirArchivo'>Nueva imagen <i class='fas fa-upload text-white'></i></label>"+
+                                "</div>"+
+                                "<div class='col-lg-6 p-3 text-center'>"+
+                                    "<img src='../img/"+usuario[i].imagen+"' id='fotoPerfil'>"+
+                                "</div>"+
+                            "</div>"+
                         "<button type='button' id='btnExecuteUpdate' class='btn text-white m-2'>Actualizar</button>" +
                         "</form>";
+
+    /*Por defecto la varible filename contendra el nombre de la imagen por defecto y savedFileBase64 no tendra nada
+    a menos que se active la funcion "changeImg"*/
+    filename = usuario[i].imagen;
+    savedFileBase64 = "";
 
         }
 
@@ -296,15 +314,47 @@ function sessionVarsView(){
 
     }
 
+
+    //Cambia la foto de perfil que esta por defecto en el formulario por la introducida por el usuario
+function changeImg() {
+
+    var file = $("#imagen")[0].files[0];
+
+    filename = file.name.toLowerCase();
+    filesize = file.size;
+    console.log(filename);
+
+    var reader = new FileReader();
+
+    reader.onloadend = function () {
+        savedFileBase64 = reader.result;     // Almacenar en variable global para uso posterior	  
+        $("#fotoPerfil").attr('src', savedFileBase64);
+    }
+
+    if (file) {
+
+        reader.readAsDataURL(file);
+
+    } else {
+
+        $("#fotoPerfil").attr('src', '');
+
+    }
+
+}
+
+
+
     //Ejecutar update de la informacion del usuario
     function execUpdate(idUsuario){
        /*Datos nuevos del admin*/
         password=$("#contraseña").val();
         email=$("#email").val();
         direccion=$("#direccion").val();
+        imagen = filename;
 
         var url = "../../controller/cUpdateUser.php";
-        var data = {'id':idUsuario, 'password':password, 'email':email, 'direccion':direccion};
+        var data = {'id':idUsuario, 'password':password, 'email':email, 'direccion':direccion, 'imagen':imagen, 'filename':filename, 'savedFileBase64': savedFileBase64};
         
         fetch(url, {
 			  method: 'POST', 

@@ -115,6 +115,12 @@
   display: table;
 }
 
+#zonaIMG{
+
+  display: none;
+
+}
+
 /* Botones cancelar y delete en pantallas pequeñas*/
 @media screen and (max-width: 300px) {
   .cancelbtn, .deletebtn {
