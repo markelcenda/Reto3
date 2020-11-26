@@ -1,5 +1,7 @@
 idEquipo=location.search.substring(1, location.search.length);
 
+admin = 0;
+
 $(document).ready(function () {
 	
 	sessionVarsView();
@@ -297,6 +299,17 @@ function mostrarDatosUsuarios(id){
 
 				for(let i=0; i<jugador.length; i++){
 
+					//Mira si el usuario que ha iniciado sesion es admin. En caso de serlo rellenara datos personales del mienbro del equipo seleccionado
+					if(admin != 0){
+
+						personal = "<hr>"+
+						"<h5><i class='fas fa-map-marker-alt personal'></i> " + jugador[i].direccion + "</h5>" +
+						"<h5><i class='fas fa-envelope personal'></i> " + jugador[i].email + "</h5>";
+	
+						}else{
+							personal = "";
+						}
+
 					infoUsuario="<div class='row justify-content-center align-items-center fichaUsuario' data-aos='fade-right'>" +
 										"<div class='col-lg-4 col-md-6 col-sm-6 col-10'>" +
 											"<div class='text-center mt-5'>" +
@@ -310,9 +323,7 @@ function mostrarDatosUsuarios(id){
 											"<h5><i class='fas fa-calendar-alt'></i> " + jugador[i].fechaDeNacimiento + "</h5>" +
 											"<h5><i class='fas fa-male'></i><i class='fas fa-arrows-alt-v'></i> " + jugador[i].objJugador.altura + "m</h5>" +
 											"<h5><i class='fas fa-weight'></i> " + jugador[i].objJugador.peso + "kg</h5>" +
-											"<hr>" +
-											"<h5><i class='fas fa-map-marker-alt'></i> " + jugador[i].direccion + "</h5>" +
-											"<h5><i class='fas fa-envelope'></i> " + jugador[i].email + "</h5>" +
+											personal+
 										"</div>" +	
 								"</div>";	
 
@@ -328,6 +339,17 @@ function mostrarDatosUsuarios(id){
 
 				for(let i=0; i<entrenador.length; i++){
 
+					//Mira si el usuario que ha iniciado sesion es admin. En caso de serlo rellenara datos personales del mienbro del equipo seleccionado
+					if(admin != 0){
+
+					personal = "<hr>"+
+					"<h5><i class='fas fa-map-marker-alt personal'></i> " + entrenador[i].direccion + "</h5>" +
+					"<h5><i class='fas fa-envelope personal'></i> " + entrenador[i].email + "</h5>";
+
+					}else{
+						personal = "";
+					}
+
 					infoUsuario="<div class='row justify-content-center align-items-center fichaUsuario' data-aos='fade-left'>" +
 										"<div class='col-lg-4 col-md-6 col-sm-6 col-10'>" +
 											"<div class='text-center'>" +
@@ -339,9 +361,7 @@ function mostrarDatosUsuarios(id){
 											"<hr>" +
 											"<h5><i class='fas fa-volleyball-ball'></i> " + entrenador[i].objEntrenador.experiencia + " años</h5>" +
 											"<h5><i class='fas fa-calendar-alt'></i> " + entrenador[i].fechaDeNacimiento + "</h5>" +
-											"<hr>" +
-											"<h5><i class='fas fa-map-marker-alt'></i> " + entrenador[i].direccion + "</h5>" +
-											"<h5><i class='fas fa-envelope'></i> " + entrenador[i].email + "</h5>" +
+											personal+
 										"</div>" +	
 								"</div>";	
 								
@@ -358,6 +378,17 @@ function mostrarDatosUsuarios(id){
 
 				for(let i=0; i<delegado.length; i++){
 
+					//Mira si el usuario que ha iniciado sesion es admin. En caso de serlo rellenara datos personales del mienbro del equipo seleccionado
+					if(admin != 0){
+
+						personal = "<hr>"+
+						"<h5><i class='fas fa-map-marker-alt personal'></i> " + delegado[i].direccion + "</h5>" +
+						"<h5><i class='fas fa-envelope personal'></i> " + delegado[i].email + "</h5>";
+	
+						}else{
+							personal = "";
+						}
+
 					infoUsuario="<div class='row justify-content-center align-items-center fichaUsuario' data-aos='fade-left'>" +
 									"<div class='col-lg-4 col-md-6 col-sm-6 col-10'>" +
 										"<div class='text-center'>" +
@@ -369,9 +400,7 @@ function mostrarDatosUsuarios(id){
 									"<hr>" +
 									"<h5><i class='fas fa-volleyball-ball'></i> " + delegado[i].objDelegado.experiencia + " años</h5>" +
 									"<h5><i class='fas fa-calendar-alt'></i> " + delegado[i].fechaDeNacimiento + "</h5>" +
-									"<hr>" +
-									"<h5><i class='fas fa-map-marker-alt'></i> " + delegado[i].direccion + "</h5>" +
-									"<h5><i class='fas fa-envelope'></i> " + delegado[i].email + "</h5>" +
+									personal+
 								"</div>" +	
 							"</div>";		
 
@@ -447,7 +476,11 @@ function login(){
                     //Muestra la imagen que le corresponde al usuario que ha iniciado sesion
                    img="<a href='../pages/usuario.html' class='ml-3' ><img id='imgSesion' src='../../view/img/" + result.usuarioSesion.imagen + "'></a>";
 
-                   $("#sitioUsuario").html(img);
+				   $("#sitioUsuario").html(img);
+
+				   //Guarda el tipo del usuario que ha iniciado sesion
+				   admin = result.usuarioSesion.admin;
+
 
                 }
                 
@@ -483,7 +516,8 @@ function logout(){
 	.then(res => res.json()).then(result => {
 	
         //console.log(result.confirm);
-        alert(result.confirm);
+		alert(result.confirm);
+		admin = 0;
 	
 	})
 	.catch(error => console.error('Error status:', error));	
@@ -513,7 +547,8 @@ function sessionVarsView(){
     		             $(".botonLogin").hide();
     		             $(".botonLogout").show();
     		             $(".sesionUsuario").css('display','flex');
-    		             $("#sitioUsuario").html(img);
+						 $("#sitioUsuario").html(img);
+						 admin = usuario[i].admin;
     				}
 
              
