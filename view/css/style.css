@@ -108,19 +108,9 @@ nav .botonLogout:hover{
 }
 .botonLoginStart:hover{
     background-color: white !important;
-    
+    color: #009655 !important;
     transition: 0.5s !important;
-}
-
- .botonCerrar {
-    background-color: red !important;
-    color: white !important;
-}
-
-.botonCerrar:hover {
-    background-color: white !important;
-    color: red !important;
-    transition: 0.5s;
+    border-color: #009655;
 }
 
 .imagenFondo h1 {
@@ -272,3 +262,54 @@ nav ul li ul li ul li a {
     background-color: #009655;
 }
   
+.login-form {
+    width: 500px;
+    height: 400px;
+    margin: 50px auto;
+    font-size: 15px;
+}
+.login-form .form {
+    margin-bottom: 15px;
+    background: white;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    border-radius: 2px;
+}
+.login-form h2 {
+    margin: 0 0 15px;
+    color: rgb(102, 102, 102);
+}
+.form-control, .form .btn {
+    min-height: 38px;
+    border-radius: 2px;
+}
+
+.modal-content{
+    background-color: transparent !important;
+    border: 0px !important;
+}
+
+.login-form .close {
+	position: absolute;
+	top: 60px;
+    right: 15px;
+    outline: none;
+}
+
+.modal-content #userIcon {
+	position: absolute;
+	left: 40px;
+	top: 154px;
+	font-size: 18px;
+}
+
+.modal-content #userPadlock {
+	position: absolute;
+	left: 40px;
+	top: 208px;
+	font-size: 18px;
+}
+
+.form-control {
+	padding-left: 35px;
+}
