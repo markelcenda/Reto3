@@ -5,7 +5,12 @@ $(document).ready(function () {
 
   menuDesplegable();
 
+  $('#loginSubmit').click(function(event){
+    event.preventDefault();
+  })
+
 });
+
 //Activa o desactiva el modo noche
 function nightMode() {
   if (localStorage.getItem('nightMode') != "true") {
@@ -16,6 +21,7 @@ function nightMode() {
     unsetNightMode();
   }
 }
+
 //Mira si la opcion de modo noche era false o true 
 function nightModeOnLoad() {
   if (localStorage.getItem('nightMode') != "true") {
@@ -24,6 +30,7 @@ function nightModeOnLoad() {
     setNightMode();
   }
 }
+
 //Pone la pagina en modo noche
 function setNightMode() {
   $('#nightMode i').removeClass();
@@ -37,6 +44,7 @@ function setNightMode() {
   $('.textoModoNoche').removeClass('text-dark');
   $('.textoModoNoche').addClass('text-white');
 }
+
 //Devuelve la pagina a su estilo original
 function unsetNightMode() {
   $('#nightMode i').removeClass();
@@ -67,5 +75,4 @@ function menuDesplegable(){
     e.stopPropagation();
     e.preventDefault();
 });
-
 }

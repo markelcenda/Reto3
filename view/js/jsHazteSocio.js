@@ -44,7 +44,9 @@ savedFileBase64 = "";
 function datosFormulario() {
 
   
-    $misInput = $("form input").length;
+    $misInput = $("#formularioSocio input").length;
+
+    alert($misInput);
   
     $campoCorreo = $("#email").val();
 
@@ -57,16 +59,16 @@ function datosFormulario() {
 
         /*Filtro que va mirando de uno en uno los input y va dandoles un borde rojo o verde 
         en fucion de si han sido rellenados o no*/
-        if ($("form input:eq(" + i + ")").val() == "") {
+        if ($("#formularioSocio input:eq(" + i + ")").val() == "") {
 
-            $("form input:eq(" + i + ")").css("border", "2px solid red");
+            $("#formularioSocio input:eq(" + i + ")").css("border", "2px solid red");
 
             //La variable adquiere el valor false al encontar un input no rellenado
             $correcto = false;
 
         } else {
 
-            $("form input:eq(" + i + ")").css("border", "2px solid #009655");
+            $("#formularioSocio input:eq(" + i + ")").css("border", "2px solid #009655");
 
         }
 
