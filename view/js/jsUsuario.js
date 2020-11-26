@@ -5,12 +5,6 @@ $(document).ready(function () {
     
     sessionVarsView();
 
-    $('.dropdown-submenu a.test').on("click", function(e){
-        $(this).next('ul').toggle();
-        e.stopPropagation();
-        e.preventDefault();
-    });
-
 });
 
 //cargar la pagina del equipo seleccionado
@@ -164,10 +158,8 @@ function sessionVarsView(){
                              "</div>" +
                              "<div class='col m-1'>" +
                                 "<button type='button' class='btn text-white m-2' id='btnDatosAdmin'>Ver mis datos</button>" +
+                                "<button type='button' class='btn text-white m-2' id='btnUpdateUsuario'>Actualizar mis datos</button>" +
                                 "<button type='button' class='btn text-white m-2' id='btnDatosUsuario'>Ver datos de usuario</button>" +
-                                "<button type='button' class='btn text-white m-2' id='btnUpdateUsuario'>Actualizar información</button>" +
-                                "<button type='button' class='btn text-white m-2' id='btnUpdateUsuarioDesdeAdmin'>Actualizar usuario</button>" +
-                                "<button type='button' class='btn text-white m-2' id='btnDeleteUsuario'>Borrar usuario</button>" +
                             "</div>" +
                             "<div class='row justify-content-center' id='acciones'></div>" + //DIV para añadir los datos
                             "<div class='row justify-content-center' id='formularioInformacion'></div>"; //div para añadir formulario dcon datos para actualizar
@@ -189,16 +181,6 @@ function sessionVarsView(){
             datosUsuario(usuario);
         });
 
-        /*Al hacer click, se nos muestra un select con todos los usuarios para eliminar*/
-        $("#btnDeleteUsuario").click(function(){
-            loadUsers();
-        });
-
-        /*Al hacer click, se nos muestra un select con todos los usuarios para actualizar*/
-        $("#btnUpdateUsuarioDesdeAdmin").click(function(){
-            loadUsersToUpdate();
-        });
-
         /*Al hacer click, se nos muestran los datos del administrador*/
         $("#btnDatosAdmin").click(function(){
             datosUsuario(usuario);
@@ -206,7 +188,7 @@ function sessionVarsView(){
 
         /*Al hacer click, se nos muestran los datos del usuario seleccionado*/
         $("#btnDatosUsuario").click(function(){
-            loadUsersToShowInfo();
+            loadTipos();
         });
 
 
@@ -392,43 +374,6 @@ function sessionVarsView(){
 
     }
 
-    //Ejecutar delete
-    function execDelete(idUsuario, nombreApellido){
-
-        $("#modalDelete").css("display", "block");
-
-        texto="¿Estás seguro de borrar a <b>" + nombreApellido + "</b>?";
-        $("#modalText").html(texto);
-        
-        
-        $("#deletebtn").click(function(){
-
-            var url = "../../controller/cDeleteUser.php";
-            var data = {'id':idUsuario};
-          
-            fetch(url, {
-                    method: 'POST', 
-                    body: JSON.stringify(data), // data can be `string` or {object}!
-                    headers:{'Content-Type': 'application/json'}  // input data
-                })
-                
-            .then(res => res.json()).then(result => {
-
-                $("#acciones").html("");
-                $("#formularioInformacion").html("");
-    
-                /*Alert + recargar pagina*/
-                alert("Usuario eliminado correctamente");
-                window.location.reload();
-
-            })
-            .catch(error => console.error('Error status:', error));
-
-        })
-
-    }
-
-
     //Cargar usuarios para hacer el update
     function loadUsersToUpdate(){
 
@@ -483,6 +428,217 @@ function sessionVarsView(){
 
     }
 
+
+    /*Añadir al select los tipos*/
+    function loadTipos(){
+
+        var url = "../../controller/cTipos.php";
+
+        fetch(url, {
+            method: 'GET', 
+            headers:{'Content-Type': 'application/json'}  // input data
+            })
+      .then(res => res.json()).then(result => {
+          
+          var tipos=result.list;
+
+          $("#acciones").html("");
+          $("#formularioInformacion").html("");
+
+          selectTipo="<div class='col-lg-6'><h2>Selecciona un tipo para cargar los usuarios</h2>";
+          selectTipo+="<select id='selectTipos'>";
+          selectTipo+="<option selected>Selecciona un tipo</option>";
+
+          for(let i=0; i<tipos.length; i++){
+            selectTipo+="<option id='" + tipos[i].id + "' value='" + tipos[i].tipo + "'>" + tipos[i].id + "--" + tipos[i].tipo + "</option>";
+          }
+
+          selectTipo+="</select></div>";
+          selectTipo+="<div class='col-lg-6' id='añadirUsuarios'></div>";
+          $("#acciones").html(selectTipo);
+
+          /*Conseguir la id del usuario y sacar un formulario con los datos para actualizar al hacer change*/
+          $("#selectTipos").change(function(){
+              
+            var idTipo = $(this).children(":selected").attr("id");
+            loadSelectUsers(idTipo);
+
+          });
+
+      })
+      .catch(error => console.error('Error status:', error));
+
+    }
+
+    function loadSelectUsers(idTipo){
+
+        var url = "../../controller/cUsersByType.php";
+        var data={"idTipo": idTipo};
+
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers:{'Content-Type': 'application/json'} 
+            })
+      .then(res => res.json()).then(result => {
+          
+        var usuarios=result.usuarios;
+
+        selectUsuario="";
+
+        if(usuarios[0].tipo==1){
+            selectUsuario="<h2>Selecciona un jugador para cargar sus datos</h2>";
+        }else if(usuarios[0].tipo==2){
+            selectUsuario="<h2>Selecciona un entrenador para cargar sus datos</h2>";
+        }else if(usuarios[0].tipo==3){
+            selectUsuario="<h2>Selecciona un delegado para cargar sus datos</h2>";
+        }else{
+            selectUsuario="<h2>Selecciona un socio para cargar sus datos</h2>";
+        }
+
+        
+        selectUsuario+="<select id='selectUsuarios'>";
+        selectUsuario+="<option selected>Selecciona un usuario</option>";
+
+        for(let i=0; i<usuarios.length; i++){
+            selectUsuario+="<option id='" + usuarios[i].id + "' value='" + usuarios[i].id + "'>" + usuarios[i].apellidos + ", " + usuarios[i].nombre + "</option>";
+        }
+
+        selectUsuario+="</select>";
+        $("#añadirUsuarios").html(selectUsuario);
+
+        /*Conseguir la id del usuario y sacar un DIV con los datos al hacer change*/
+        $("#selectUsuarios").change(function(){
+              
+        var idUsuario = $(this).children(":selected").attr("id");
+        showUser(idUsuario);
+
+        });
+        
+        
+  
+      })
+      .catch(error => console.error('Error status:', error));
+
+        
+
+    }
+
+    /*Cargar informacion del usuario*/
+    function showUser(idUsuario){
+
+        var url = "../../controller/cUserById.php";
+        var data={"id": idUsuario};
+
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers:{'Content-Type': 'application/json'} 
+            })
+      .then(res => res.json()).then(result => {
+          
+        var usuario=result.usuario;
+
+        /*Limpiar el div*/
+        $("#formularioInformacion").html("");
+
+        newrow = "<div class='row justify-content-center align-items-center datosDeUsuario m-5 text-white'>"+
+                    "<div class='row-lg-3 order-1'>"+
+                        "<div class='col-lg-12'>"+
+                            "<p class='font-weight-bold'>Nombre:</p>"+
+                            "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
+                        "</div>"+
+                        "<div class='col-lg-12 '>"+
+                            "<p class='font-weight-bold'>Direccion:</p>"+
+                            "<p>"+ usuario[0].direccion + "</p>"+
+                        "</div>"+
+                        "<div class='col-lg-12 '>"+
+                            "<p class='font-weight-bold'>Fecha de Nacimiento:</p>"+
+                            "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
+                        "</div>"+
+                    "</div>"+
+                    "<div class='row order-4'>"+
+                        "<div class='m-5'>"+
+                            "<img class='imagenUsuario' src='../img/"+ usuario[0].imagen + "'>"+
+                        "</div>"+
+                    "</div>"+
+                    "<div class='row-lg-3 order-2'>"+
+                        "<div class='col-lg-12'>"+
+                            "<p class='font-weight-bold'>Correo electronico:</p>"+
+                            "<p>"+ usuario[0].email + "</p>"+
+                        "</div>"+
+                        "<div class='col-lg-12 '>"+
+                            "<p class='font-weight-bold'>Usuario:</p>"+
+                            "<p>"+ usuario[0].usuario+ "</p>"+
+                        "</div>"+
+                        "<div class='col-lg-12'>"+
+                            "<p class='font-weight-bold'>Contraseña:</p>"+
+                            "<p>"+ usuario[0].password + "</p>"+
+                        "</div>"+
+                    "</div>";
+
+        if(usuario[0].tipo==1){//Si es jugador, a la tercera columna añadimos los datos del jugador
+
+            newrow+="<div class='row-lg-3 order-3'>"+
+                        "<div class='col-lg-12'>"+
+                            "<p class='font-weight-bold'>Posición:</p>"+
+                            "<p>"+ usuario[0].objJugador.posicion + "</p>"+
+                        "</div>"+
+                        "<div class='col-lg-12 '>"+
+                            "<p class='font-weight-bold'>Altura:</p>"+
+                            "<p>"+ usuario[0].objJugador.altura+ "m</p>"+
+                        "</div>"+
+                        "<div class='col-lg-12'>"+
+                            "<p class='font-weight-bold'>Peso:</p>"+
+                            "<p>"+ usuario[0].objJugador.peso + "kg</p>"+
+                        "</div>"+
+                    "</div>";
+    
+        }else if(usuario[0].tipo==2){//Si es entrenador, a la tercera columna añadimos los datos del entrenador
+
+            newrow+="<div class='row-lg-3 order-3'>"+
+                        "<div class='col-lg-12'>"+
+                            "<p class='font-weight-bold'>Experiencia:</p>"+
+                            "<p>"+ usuario[0].objEntrenador.experiencia + " años</p>"+
+                        "</div>"+
+                    "</div>";
+
+        }else if(usuario[0].tipo==3){//Si es delegado, a la tercera columna añadimos los datos del delegado
+
+            newrow+="<div class='row-lg-3 order-3'>"+
+                        "<div class='col-lg-12'>"+
+                            "<p class='font-weight-bold'>Experiencia:</p>"+
+                            "<p>"+ usuario[0].objDelegado.experiencia + " años</p>"+
+                        "</div>"+
+                    "</div>";
+        }
+
+        //cerrar row
+        newrow+="</div>"; 
+
+        newrow+"<div class='row justify-content-center'>";
+        newrow+="<div class='col-lg-12'><button type='button' class='btn text-white m-2' id='btnUpdateUsuarioDesdeAdmin'>Actualizar datos</button>";
+        newrow+="<button type='button' class='btn text-white m-2' id='btnDeleteUsuario'>Borrar usuario</button></div>";
+        newrow+="</div>";
+
+        $("#formularioInformacion").html(newrow);
+
+        /*Conseguir la id del usuario y sacar un formulario con los datos para actualizar al hacer click*/
+        $("#btnUpdateUsuarioDesdeAdmin").click(function(){ 
+            updateUser2(usuario[0].id);
+        });
+
+        /*Conseguir la id del usuario y eliminar sacar un modal para eliminar el usuario*/
+        $("#btnDeleteUsuario").click(function(){ 
+            nombreApellido=usuario[0].nombre + " " + usuario[0].apellidos;
+            execDelete(usuario[0].id, nombreApellido);
+        });
+  
+      })
+      .catch(error => console.error('Error status:', error));
+
+    }
+
     //Coseguir informacion del usuario con la id para rellenar formulario
     function updateUser2(idUsuario){
 
@@ -497,12 +653,8 @@ function sessionVarsView(){
       .then(res => res.json()).then(result => {
           
         var usuario=result.usuario;
-        
 
         for(let i=0; i<usuario.length; i++){
-
-            /*Limpiar el div*/
-            $("#formularioInformacion").html("");
 
             formulario="<form>" + //datos comunes de los usuarios
 
@@ -541,7 +693,7 @@ function sessionVarsView(){
                                             "</div>" +    
                 
                                             "<div class='col-lg-4'>" +
-                                                "<label for='posicion'>Libero</label>" +
+                                                "<label for='posicion'>Libero &nbsp</label>" +
                                                 "<input type='radio' id='libero' value='Libero' name='posiciones'>" +
                                             "</div>" +
                                         "</div>";
@@ -559,7 +711,7 @@ function sessionVarsView(){
                                             "</div>" +    
                 
                                             "<div class='col-lg-4'>" +
-                                                "<label for='posicion'>Libero</label>" +
+                                                "<label for='posicion'>Libero &nbsp</label>" +
                                                 "<input type='radio' id='libero' value='Libero' name='posiciones'>" +
                                             "</div>" +
                                         "</div>";
@@ -578,7 +730,7 @@ function sessionVarsView(){
                                             "</div>" +    
 
                                             "<div class='col-lg-4'>" +
-                                                "<label for='posicion'>Libero</label>" +
+                                                "<label for='posicion'>Libero &nbsp</label>" +
                                                 "<input type='radio' id='libero' value='Libero' name='posiciones' checked>" +
                                             "</div>" +
                                         "</div>";
@@ -610,7 +762,7 @@ function sessionVarsView(){
             }else if(usuario[i].tipo==3){//Si el usuario es delegado
 
                 formulario+="<label for='experiencia'>Experiencia:</label>" +
-                            "<input type='number' class='form-control' id='experiencia' value='" + usuario[i].objDelegado.experiencia + "' min='" + usuario[i].Delegado.experiencia + "'>" +
+                            "<input type='number' class='form-control' id='experiencia' value='" + usuario[i].objDelegado.experiencia + "' min='" + usuario[i].objDelegado.experiencia + "'>" +
                     "</div>";
             }
 
@@ -621,7 +773,12 @@ function sessionVarsView(){
 
         }
 
-        $("#formularioInformacion").html(formulario);
+        /*Si el usuario es socio*/
+        if(usuario[0].tipo==4){
+            formulario="<h4>No tienes acceso para editar datos de socios";
+        }
+
+        $("#formularioInformacion").append(formulario);
 
         //Al hacer click ejecutamos el update
         $("#btnExecuteUpdateUser").click(function(){
@@ -723,154 +880,38 @@ function sessionVarsView(){
 
     }
 
-    /*Mostrar datos del usuario seleccionado*/
+    //Ejecutar delete
+    function execDelete(idUsuario, nombreApellido){
 
-    function loadUsersToShowInfo(){
+        $("#modalDelete").css("display", "block");
 
-        var url = "../../controller/cUsers.php";
+        texto="¿Estás seguro de borrar a <b>" + nombreApellido + "</b>?";
+        $("#modalText").html(texto);
+        
+        
+        $("#deletebtn").click(function(){
 
-        fetch(url, {
-            method: 'GET', 
-            headers:{'Content-Type': 'application/json'}  // input data
-            })
-      .then(res => res.json()).then(result => {
+            var url = "../../controller/cDeleteUser.php";
+            var data = {'id':idUsuario};
           
-          var usuarios=result.usuarios;
+            fetch(url, {
+                    method: 'POST', 
+                    body: JSON.stringify(data), // data can be `string` or {object}!
+                    headers:{'Content-Type': 'application/json'}  // input data
+                })
+                
+            .then(res => res.json()).then(result => {
 
-          $("#acciones").html("");
-          $("#formularioInformacion").html("");
-
-          selectUsuario="<div class='col-lg-12'><h2>Selecciona un usuario para ver sus datos</h2>";
-          selectUsuario+="<select id='selectUsuarios'>";
-          selectUsuario+="<option selected>Selecciona un usuario</option>";
-          
-          for(let i=0; i<usuarios.length; i++){
-
-            /*Teniendo en cuenta el tipo, añadir su tipo al select*/
-            if(usuarios[i].tipo==1){
-                selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- Jugador</option>";
-            }else if(usuarios[i].tipo==2){
-                selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- Entrenador</option>";
-            }else if(usuarios[i].tipo==3){
-                selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- Delegado</option>";
-            }else{
-                selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- Socio</option>";
-            }
-
-          }
-
-          selectUsuario+="</select></div>";
-          $("#acciones").append(selectUsuario);
-          
-          /*Conseguir la id del usuario y sacar un formulario con los datos para actualizar al hacer change*/
-          $("#selectUsuarios").change(function(){
-              
-            var idUsuario = $(this).children(":selected").attr("id");
-            showUser(idUsuario);
-
-          });
-          
-
-      })
-      .catch(error => console.error('Error status:', error));
-
-    }
-
-    /*Cargar informacion del usuario*/
-    function showUser(idUsuario){
-
-        var url = "../../controller/cUserById.php";
-        var data={"id": idUsuario};
-
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers:{'Content-Type': 'application/json'} 
-            })
-      .then(res => res.json()).then(result => {
-          
-        var usuario=result.usuario;
-
-        /*Limpiar el div*/
-        $("#formularioInformacion").html("");
-
-        newrow = "<div class='row justify-content-center align-items-center datosDeUsuario m-5 text-white'>"+
-                    "<div class='row-lg-3 order-1'>"+
-                        "<div class='col-lg-12'>"+
-                            "<p class='font-weight-bold'>Nombre:</p>"+
-                            "<p>"+ usuario[0].nombre + " " +usuario[0].apellidos+ "</p>"+
-                        "</div>"+
-                        "<div class='col-lg-12 '>"+
-                            "<p class='font-weight-bold'>Direccion:</p>"+
-                            "<p>"+ usuario[0].direccion + "</p>"+
-                        "</div>"+
-                        "<div class='col-lg-12 '>"+
-                            "<p class='font-weight-bold'>Fecha de Nacimiento:</p>"+
-                            "<p>"+ usuario[0].fechaDeNacimiento+ "</p>"+
-                        "</div>"+
-                    "</div>"+
-                    "<div class='row order-4'>"+
-                        "<div class='m-5'>"+
-                            "<img class='imagenUsuario' src='../img/"+ usuario[0].imagen + "'>"+
-                        "</div>"+
-                    "</div>"+
-                    "<div class='row-lg-3 order-2'>"+
-                        "<div class='col-lg-12'>"+
-                            "<p class='font-weight-bold'>Correo electronico:</p>"+
-                            "<p>"+ usuario[0].email + "</p>"+
-                        "</div>"+
-                        "<div class='col-lg-12 '>"+
-                            "<p class='font-weight-bold'>Usuario:</p>"+
-                            "<p>"+ usuario[0].usuario+ "</p>"+
-                        "</div>"+
-                        "<div class='col-lg-12'>"+
-                            "<p class='font-weight-bold'>Contraseña:</p>"+
-                            "<p>"+ usuario[0].password + "</p>"+
-                        "</div>"+
-                    "</div>";
-
-        if(usuario[0].tipo==1){//Si es jugador, a la tercera columna añadimos los datos del jugador
-
-            newrow+="<div class='row-lg-3 order-3'>"+
-                        "<div class='col-lg-12'>"+
-                            "<p class='font-weight-bold'>Posición:</p>"+
-                            "<p>"+ usuario[0].objJugador.posicion + "</p>"+
-                        "</div>"+
-                        "<div class='col-lg-12 '>"+
-                            "<p class='font-weight-bold'>Altura:</p>"+
-                            "<p>"+ usuario[0].objJugador.altura+ "m</p>"+
-                        "</div>"+
-                        "<div class='col-lg-12'>"+
-                            "<p class='font-weight-bold'>Peso:</p>"+
-                            "<p>"+ usuario[0].objJugador.peso + "kg</p>"+
-                        "</div>"+
-                    "</div>";
+                $("#acciones").html("");
+                $("#formularioInformacion").html("");
     
-        }else if(usuario[0].tipo==2){//Si es entrenador, a la tercera columna añadimos los datos del entrenador
+                /*Alert + recargar pagina*/
+                alert("Usuario eliminado correctamente");
+                window.location.reload();
 
-            newrow+="<div class='row-lg-3 order-3'>"+
-                        "<div class='col-lg-12'>"+
-                            "<p class='font-weight-bold'>Experiencia:</p>"+
-                            "<p>"+ usuario[0].objEntrenador.experiencia + " años</p>"+
-                        "</div>"+
-                    "</div>";
+            })
+            .catch(error => console.error('Error status:', error));
 
-        }else if(usuario[0].tipo==3){//Si es delegado, a la tercera columna añadimos los datos del delegado
-
-            newrow+="<div class='row-lg-3 order-3'>"+
-                        "<div class='col-lg-12'>"+
-                            "<p class='font-weight-bold'>Experiencia:</p>"+
-                            "<p>"+ usuario[0].objDelegado.experiencia + " años</p>"+
-                        "</div>"+
-                    "</div>";
-        }
-
-        //cerrar row
-        newrow+="</div>"; 
-
-        $("#formularioInformacion").html(newrow);
-  
-      })
-      .catch(error => console.error('Error status:', error));
+        })
 
     }

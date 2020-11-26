@@ -45,15 +45,41 @@ class tipoModel extends tipoClass {
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
         {
             
-            //FILL the cycle with info  $THIS
             $this->id=$row['id'];
             $this->tipo=$row['tipo'];
-            
-            
+                       
         }
         mysqli_free_result($result);
         $this->CloseConnect();
         
     }
+    
+    public function setTipos(){
+        
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        
+        $sql = "CALL spAllTipos()"; // SQL sententzia - sentencia SQL
+        
+        $result = $this->link->query($sql);
+        
+        //$this->link->num_rows; num rows  of result
+        
+        $list=array();
+        
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { //each row
+            
+            $tipo=new tipoModel();
+            
+            $tipo->id=$row['id'];
+            $tipo->tipo=$row['tipo'];
+            
+            array_push($list, $tipo);
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        return $list;
+        
+    }
+    
     
 }
