@@ -310,6 +310,6 @@ nav ul li ul li ul li a {
 	font-size: 18px;
 }
 
-.form-control {
+#loginForm .form-control {
 	padding-left: 35px;
 }
