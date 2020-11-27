@@ -128,7 +128,7 @@ cursor: pointer;
 /*Texto de la informacion del usuario*/
 .fichaUsuario h2{
   text-align: center;
-  font-size: 28px !important;
+  font-size: 34px !important;
   font-weight: 300;
 }
 
