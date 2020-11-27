@@ -34,6 +34,7 @@ class jugadorModel extends jugadorClass {
         mysqli_close ($this->link);
     }
     
+    /*cargar todos los equipos*/
     public function setList(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -64,6 +65,7 @@ class jugadorModel extends jugadorClass {
         
     }
     
+    /*buscar juagdor por id*/
     public function findPlayerById(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -92,6 +94,7 @@ class jugadorModel extends jugadorClass {
         
     }
     
+    /*actualizar datos de jugador*/
     public function updateJugador(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión

@@ -33,6 +33,7 @@ class entrenadorModel extends entrenadorClass {
         mysqli_close ($this->link);
     }
     
+    /*Cargar todos los entrenadores*/
     public function setList(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -61,6 +62,7 @@ class entrenadorModel extends entrenadorClass {
         
     }
     
+    /*buscar entrenador por id*/
     public function findEntrenadorById(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -87,6 +89,7 @@ class entrenadorModel extends entrenadorClass {
         
     }
     
+    /*actualizar datos de entrenador*/
     public function updateEntrenador(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión

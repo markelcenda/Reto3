@@ -42,6 +42,7 @@ class usuarioModel extends usuarioClass {
         mysqli_close ($this->link);
     }
     
+    /*cargar toos los usuarios*/
     public function setList(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -71,6 +72,7 @@ class usuarioModel extends usuarioClass {
             $usuario->admin=$row['admin'];
             $usuario->imagen=$row['imagen'];
             
+            /*objEquipo*/
             $equipo=new equipoModel();
             $equipo->id=$row['idEquipo'];
             $equipo->findTeamById();
@@ -85,6 +87,7 @@ class usuarioModel extends usuarioClass {
         
     }
     
+    /*buscar ususario por id*/
     public function findUserById(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -115,6 +118,7 @@ class usuarioModel extends usuarioClass {
             $this->admin=$row['admin'];
             $this->imagen=$row['imagen'];
             
+            /*objEquipo*/
             $equipo=new equipoModel();
             $equipo->id=$row['idEquipo'];
             $equipo->findTeamById();
@@ -130,6 +134,7 @@ class usuarioModel extends usuarioClass {
         
     }
     
+    /*buscar usuarios por el id del equipo*/
     public function findUsersByTeamId(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -161,6 +166,7 @@ class usuarioModel extends usuarioClass {
             $usuario->admin=$row['admin'];
             $usuario->imagen=$row['imagen'];
             
+            /*objEquipo*/
             $equipo=new equipoModel();
             $equipo->id=$row['idEquipo'];
             $equipo->findTeamById();
@@ -175,6 +181,7 @@ class usuarioModel extends usuarioClass {
         
     }
     
+    /*buscar los usuarios que son jugadores por id del equipos*/
     public function findUsuariosJugadoresPorEquipo(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -207,13 +214,14 @@ class usuarioModel extends usuarioClass {
             $usuario->admin=$row['admin'];
             $usuario->imagen=$row['imagen'];
             
-            
+            /*objJugador*/
             $jugador=new jugadorModel();
             $jugador->id=$row['id'];
             $jugador->findPlayerById();
             
             $usuario->objJugador=$jugador;
             
+            /*objEquipo*/
             $equipo=new equipoModel();
             $equipo->id=$row['idEquipo'];
             $equipo->findTeamById();
@@ -228,6 +236,7 @@ class usuarioModel extends usuarioClass {
         
     }
     
+    /*buscar los usuarios que son entrenadores por id del equipos*/
     public function findUsuariosEntrenadoresPorEquipo(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -260,12 +269,14 @@ class usuarioModel extends usuarioClass {
             $usuario->admin=$row['admin'];
             $usuario->imagen=$row['imagen'];
             
+            /*objEntrenador*/
             $entrenador=new entrenadorModel();
             $entrenador->id=$row['id'];
             $entrenador->findEntrenadorById();
             
             $usuario->objEntrenador=$entrenador;
             
+            /*objEquipo*/
             $equipo=new equipoModel();
             $equipo->id=$row['idEquipo'];
             $equipo->findTeamById();
@@ -280,6 +291,7 @@ class usuarioModel extends usuarioClass {
         
     }
     
+    /*buscar los usuarios que son delegados por id del equipos*/
     public function findUsuariosDelegadosPorEquipo(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -312,12 +324,14 @@ class usuarioModel extends usuarioClass {
             $usuario->admin=$row['admin'];
             $usuario->imagen=$row['imagen'];
             
+            /*objDelegado*/
             $delegado=new delegadoModel();
             $delegado->id=$row['id'];
             $delegado->findDelegadoById();
             
             $usuario->objDelegado=$delegado;
             
+            /*objEquipo*/
             $equipo=new equipoModel();
             $equipo->id=$row['idEquipo'];
             $equipo->findTeamById();
@@ -332,6 +346,7 @@ class usuarioModel extends usuarioClass {
         
     }
     
+    /*Buscar jugador por id*/
     public function findJugadorById(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -361,12 +376,14 @@ class usuarioModel extends usuarioClass {
             $this->admin=$row['admin'];
             $this->imagen=$row['imagen'];
             
+            /*objEquipo*/
             $equipo=new equipoModel();
             $equipo->id=$row['idEquipo'];
             $equipo->findTeamById();
             
             $this->objEquipo=$equipo;
             
+            /*objJuador*/
             $jugador=new jugadorModel();
             $jugador->id=$row['id'];
             $jugador->findPlayerById();
@@ -381,7 +398,8 @@ class usuarioModel extends usuarioClass {
         
     }
     
-    public function findEntrenadoreById(){
+    /*buscar entrenador por id*/
+    public function findEntrenadorById(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
         
@@ -412,12 +430,14 @@ class usuarioModel extends usuarioClass {
             $this->admin=$row['admin'];
             $this->imagen=$row['imagen'];
             
+            /*objEntrenador*/
             $entrenador=new entrenadorModel();
             $entrenador->id=$row['id'];
             $entrenador->findEntrenadorById();
             
             $this->objEntrenador=$entrenador;
             
+            /*objEquipo*/
             $equipo=new equipoModel();
             $equipo->id=$row['idEquipo'];
             $equipo->findTeamById();
@@ -432,6 +452,7 @@ class usuarioModel extends usuarioClass {
         
     }
     
+    /*buscar delegado por id*/
     public function findDelegadoById(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -463,12 +484,14 @@ class usuarioModel extends usuarioClass {
             $this->admin=$row['admin'];
             $this->imagen=$row['imagen'];
             
+            /*objDelegado*/
             $delegado=new delegadoModel();
             $delegado->id=$row['id'];
             $delegado->findDelegadoById();
             
             $this->objDelegado=$delegado;
             
+            /*objEquipo*/
             $equipo=new equipoModel();
             $equipo->id=$row['idEquipo'];
             $equipo->findTeamById();
@@ -483,6 +506,7 @@ class usuarioModel extends usuarioClass {
         
     }
 
+    /*bscar usuario para hacer login*/
     public function findUser(){
 
         $this->OpenConnect(); //abre conexion
@@ -533,6 +557,7 @@ class usuarioModel extends usuarioClass {
 
     }
 
+    /*insertar usuario*/
         public function insert(){
         
             $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -577,6 +602,7 @@ class usuarioModel extends usuarioClass {
                                         $this->CloseConnect();//termina la conexion
         }
         
+        /*buscar usuario por username*/
         public function findUserByUsername(){
             
             $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -608,6 +634,7 @@ class usuarioModel extends usuarioClass {
                 $this->admin=$row['admin'];
                 $this->imagen=$row['imagen'];
                 
+                /*objEquipo*/
                 $equipo=new equipoModel();
                 $equipo->id=$row['idEquipo'];
                 $equipo->findTeamById();
@@ -623,6 +650,7 @@ class usuarioModel extends usuarioClass {
             
         }
         
+        /*updateusurio*/
         public function update(){
             
             $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -649,6 +677,7 @@ class usuarioModel extends usuarioClass {
             $this->CloseConnect();//termina la conexion
         }
         
+        /*delete*/
         public function delete(){
             
             $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -665,6 +694,7 @@ class usuarioModel extends usuarioClass {
             }
             $this->CloseConnect();
         }
+        /*cargar todos los usuarios pero rellenando el obj correspondiente a su tipo*/
         
         public function allUsers(){
             
@@ -695,13 +725,14 @@ class usuarioModel extends usuarioClass {
                 $usuario->admin=$row['admin'];
                 $usuario->imagen=$row['imagen'];
                 
+                /*objEquipo*/
                 $equipo=new equipoModel();
                 $equipo->id=$row['idEquipo'];
                 $equipo->findTeamById();
                 
                 $usuario->objEquipo=$equipo;
                 
-                if($usuario->tipo==1){
+                if($usuario->tipo==1){/*si el usuario es jugador*/
                     
                     $jugador=new jugadorModel();
                     $jugador->id=$row['id'];
@@ -709,7 +740,7 @@ class usuarioModel extends usuarioClass {
                     
                     $usuario->objJugador=$jugador;
                     
-                }else if($usuario->tipo==2){
+                }else if($usuario->tipo==2){/*si el usuario es entrenador*/
                     
                     $entrenador=new entrenadorModel();
                     $entrenador->id=$row['id'];
@@ -717,7 +748,7 @@ class usuarioModel extends usuarioClass {
                     
                     $usuario->objEntrenador=$entrenador;
                     
-                }else{
+                }else{/*si el usuario es delegado*/
                     
                     $delegado=new delegadoModel();
                     $delegado->id=$row['id'];
@@ -735,6 +766,7 @@ class usuarioModel extends usuarioClass {
             
         }
         
+        /*buscar usuario por id y rellenar el obj correspondiente a su tipo*/
         public function findUserByIdV2(){
             
             $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -765,13 +797,14 @@ class usuarioModel extends usuarioClass {
                 $this->admin=$row['admin'];
                 $this->imagen=$row['imagen'];
                 
+                /*objEquipo*/
                 $equipo=new equipoModel();
                 $equipo->id=$row['idEquipo'];
                 $equipo->findTeamById();
                 
                 $this->objEquipo=$equipo;
                 
-                if($this->tipo==1){
+                if($this->tipo==1){/*si el usuario es jugador*/
                     
                     $jugador=new jugadorModel();
                     $jugador->id=$row['id'];
@@ -779,7 +812,7 @@ class usuarioModel extends usuarioClass {
                     
                     $this->objJugador=$jugador;
                     
-                }else if($this->tipo==2){
+                }else if($this->tipo==2){/*si el usuario es entrenador*/
                     
                     $entrenador=new entrenadorModel();
                     $entrenador->id=$row['id'];
@@ -787,7 +820,7 @@ class usuarioModel extends usuarioClass {
                     
                     $this->objEntrenador=$entrenador;
                     
-                }else{
+                }else{/*si el usuario es delegado*/
                     
                     $delegado=new delegadoModel();
                     $delegado->id=$row['id'];
@@ -806,6 +839,7 @@ class usuarioModel extends usuarioClass {
             
         }
         
+        /*buscar usuarios por su tipo y rellenar su obkj correspondiente a su tipo*/
         public function findUsersByType(){
             
             $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -838,7 +872,7 @@ class usuarioModel extends usuarioClass {
                 $usuario->imagen=$row['imagen'];
                 
                 
-                if($this->tipo==1){
+                if($this->tipo==1){/*si el usuario es jugador*/
                     
                     $jugador=new jugadorModel();
                     $jugador->id=$row['id'];
@@ -846,7 +880,7 @@ class usuarioModel extends usuarioClass {
                     
                     $usuario->objJugador=$jugador;
                     
-                }else if($this->tipo==2){
+                }else if($this->tipo==2){/*si el usuario es entrenador*/
                     
                     $entrenador=new entrenadorModel();
                     $entrenador->id=$row['id'];
@@ -854,7 +888,7 @@ class usuarioModel extends usuarioClass {
                     
                     $usuario->objEntrenador=$entrenador;
                     
-                }else{
+                }else{/*si el usuario es delegado*/
                     
                     $delegado=new delegadoModel();
                     $delegado->id=$row['id'];

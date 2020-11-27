@@ -33,6 +33,7 @@ class delegadoModel extends delegadoClass {
         mysqli_close ($this->link);
     }
     
+    /*Buscar delegado por id*/
     public function findDelegadoById(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -60,6 +61,7 @@ class delegadoModel extends delegadoClass {
         
     }
     
+    /*Actualizar datos del delegado*/
     public function updateDelegado(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión

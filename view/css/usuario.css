@@ -125,15 +125,3 @@
     width: 100%;
   }
 }
-
-.modal-content #userIcon {
-	top: 146px !important;
-}
-
-.modal-content #userPadlock {
-	top: 198px !important;
-}
-
-.form-control {
-	padding-left: 35px !important;
-} 

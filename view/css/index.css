@@ -28,6 +28,17 @@
     border-radius: 3px;
 }
 
+/*Fondo del navbar*/
+
+.imagenFondo {
+    background-image: url("../img/fotoPrincipal.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 750px;
+    height: 500%;
+    width: 100%;
+}
+
 /*Imagenes de equipos*/
 .card{
     border: 1px solid transparent !important; 
