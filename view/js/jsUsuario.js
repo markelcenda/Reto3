@@ -296,6 +296,9 @@ function sessionVarsView(){
                         "<button type='button' id='btnExecuteUpdate' class='btn text-white m-2'>Actualizar</button>" +
                         "</form>";
 
+    //Guarda el email del usuario
+    emailActual = usuario[i].email;
+
     /*Por defecto la varible filename contendra el nombre de la imagen por defecto y savedFileBase64 no tendra nada
     a menos que se active la funcion "changeImg"*/
     filename = usuario[i].imagen;
@@ -311,7 +314,54 @@ function sessionVarsView(){
         $("#acciones").append(formulario);
         /*Click en el boton actualizar para hacer el update*/
         $("#btnExecuteUpdate").click(function(){
-            execUpdate(idUsuario);
+            //Guarda el valor del input email del formulario
+            nuevoEmail = $("#email").val();
+
+            var url = "../../controller/cUsers.php";
+
+            //Llamada fetch
+            fetch(url, {
+                method: 'GET',
+            })
+    
+                .then(res => res.json()).then(result => {
+
+                    var list = result.list;
+                    permitirUpdate = true;
+
+                    //recorre toda la lista de usuarios
+                    for (let i = 0; i < list.length; i++) {
+                        //mira si el correo eletronico introducido coincide con alguno de la base de datos
+                        if (nuevoEmail == list[i].email) {
+
+                            permitirUpdate = false;
+                            
+                            //Mira si el el correo del input y el del usuario coinciden. De ser asi, permite el update
+                            if(nuevoEmail == emailActual){
+                                permitirUpdate = true;
+                            }
+
+                            break;
+
+                        }
+    
+                    }
+
+        //Mira si el usuario tiene permitido el update. En caso de no tenerlo, se pondra el borde del input email en rojo y saldra un alert
+                    if(permitirUpdate == true){
+
+                        execUpdate(idUsuario);
+    
+                    }else{
+    
+                        $("#email").css("border", "2px solid red");
+                        alert("Ya existe un usuario con ese correo electronico");
+    
+                    }
+
+                })
+                .catch(error => console.error('Error status:', error));
+
         });
 
     }
