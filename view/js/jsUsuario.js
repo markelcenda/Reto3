@@ -662,7 +662,7 @@ function changeImg() {
         /*Conseguir la id del usuario y eliminar sacar un modal para eliminar el usuario*/
         $("#btnDeleteUsuario").click(function(){ 
             nombreApellido=usuario[0].nombre + " " + usuario[0].apellidos;
-            execDelete(usuario[0].id, nombreApellido);
+            execDelete(usuario[0].id, nombreApellido, usuario[0].imagen);
         });
   
       })
@@ -915,7 +915,9 @@ function changeImg() {
     }
 
     //Ejecutar delete
-    function execDelete(idUsuario, nombreApellido){
+    function execDelete(idUsuario, nombreApellido, imagenDelete){
+
+        
 
         $("#modalDelete").css("display", "block");
 
@@ -926,7 +928,7 @@ function changeImg() {
         $("#deletebtn").click(function(){
 
             var url = "../../controller/cDeleteUser.php";
-            var data = {'id':idUsuario};
+            var data = {'id':idUsuario,'imagenDelete':imagenDelete};
           
             fetch(url, {
                     method: 'POST', 
