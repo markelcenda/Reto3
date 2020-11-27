@@ -430,7 +430,7 @@ function changeImg() {
     }
 
     //Cargar todos los usuarios
-    function loadUsers(){
+   /* function loadUsers(){
 
         var url = "../../controller/cUsers.php";
 
@@ -441,7 +441,7 @@ function changeImg() {
       .then(res => res.json()).then(result => {
           
           var usuarios=result.list;
-          /*Cargar los usuarios en el select*/
+          /*Cargar los usuarios en el select
 
           $("#acciones").html("");
           $("#formularioInformacion").html("");
@@ -452,27 +452,33 @@ function changeImg() {
           
           for(let i=0; i<usuarios.length; i++){
               
-            selectUsuario+="<option value='" + usuarios[i].nombre + " " + usuarios[i].apellidos + "' id='" + usuarios[i].id + "'>" + usuarios[i].id + " -- " + usuarios[i].nombre + " " + usuarios[i].apellidos + "</option>";
+            selectUsuario+="<option value='" + usuarios[i].nombre + " " + usuarios[i].apellidos + "' id='" + usuarios[i].id + "' class='"+usuarios[i].imagen+"'>" + usuarios[i].id + " -- " + usuarios[i].nombre + " " + usuarios[i].apellidos + "</option>";
               
           }
 
           selectUsuario+="</select></div>";
           $("#acciones").append(selectUsuario);
           
-          /*Conseguir la id del usuario y eliminarlo al hacer change*/
+          /*Conseguir la id del usuario y eliminarlo al hacer change
           $("#selectUsuarios").change(function(){
               
               var idUsuario = $(this).children(":selected").attr("id");
               var nombreApellido = $(this).children(":selected").val();
+          //   imagenDelete = $(this).children(":selected").attr("class");
 
-              document.getElementById("selectUsuarios").addEventListener("click", execDelete(idUsuario, nombreApellido));
+           /  console.log(idUsuario + " "+ );
+
+              alert(imagenDelete);
+              alert(idUsuario);
+
+              document.getElementById("selectUsuarios").addEventListener("click", execDelete(idUsuario, nombreApellido, imagenDelete));
  
           });
 
       })
       .catch(error => console.error('Error status:', error));	
 
-    }
+    }*/
 
     //Cargar usuarios para hacer el update
     function loadUsersToUpdate(){
@@ -731,7 +737,7 @@ function changeImg() {
         /*Conseguir la id del usuario y eliminar sacar un modal para eliminar el usuario*/
         $("#btnDeleteUsuario").click(function(){ 
             nombreApellido=usuario[0].nombre + " " + usuario[0].apellidos;
-            execDelete(usuario[0].id, nombreApellido);
+            execDelete(usuario[0].id, nombreApellido, usuario[0].imagen);
         });
   
       })
@@ -981,7 +987,9 @@ function changeImg() {
     }
 
     //Ejecutar delete
-    function execDelete(idUsuario, nombreApellido){
+    function execDelete(idUsuario, nombreApellido, imagenDelete){
+
+        
 
         $("#modalDelete").css("display", "block");
 
@@ -992,7 +1000,7 @@ function changeImg() {
         $("#deletebtn").click(function(){
 
             var url = "../../controller/cDeleteUser.php";
-            var data = {'id':idUsuario};
+            var data = {'id':idUsuario,'imagenDelete':imagenDelete};
           
             fetch(url, {
                     method: 'POST', 
