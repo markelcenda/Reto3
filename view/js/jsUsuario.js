@@ -300,6 +300,8 @@ function sessionVarsView(){
     a menos que se active la funcion "changeImg"*/
     filename = usuario[i].imagen;
     savedFileBase64 = "";
+    //Guarda el nombre de la imagen actual del usuario para despues eliminarla de la carpeta img
+    imgAnterior = usuario[i].imagen;
 
         }
 
@@ -354,7 +356,7 @@ function changeImg() {
         imagen = filename;
 
         var url = "../../controller/cUpdateUser.php";
-        var data = {'id':idUsuario, 'password':password, 'email':email, 'direccion':direccion, 'imagen':imagen, 'filename':filename, 'savedFileBase64': savedFileBase64};
+        var data = {'id':idUsuario, 'password':password, 'email':email, 'direccion':direccion, 'imagen':imagen, 'filename':filename, 'savedFileBase64': savedFileBase64, 'imgAnterior':imgAnterior};
         
         fetch(url, {
 			  method: 'POST', 
