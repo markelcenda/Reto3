@@ -241,7 +241,7 @@ function loadUsersByTeamId(idEquipo){
 
 
 				/*Funcion para ver los datos de jugadores y cuerpo tecnico*/
-				$(".fas fa-eye fa-2x").click(function(){ 
+				$("span").click(function(){ 
 					id=$(this).attr("id")
 					mostrarDatosUsuarios(id);
 				  }); 
