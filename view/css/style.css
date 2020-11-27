@@ -365,9 +365,11 @@ nav ul li ul li ul li a {
 		margin: 100px auto;
     }
     
+    /*Modal en pantallas pequeñas*/
     @media screen and (max-width: 425px) {
         .modal-login {
-          margin-left: auto !important;
-          margin-right: auto !important;
+          /*margin-left: auto !important;
+          margin-right: auto !important;*/
+          margin: 80px auto 0 !important;
         }
       }
