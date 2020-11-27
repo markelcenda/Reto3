@@ -76,3 +76,29 @@ function menuDesplegable(){
     e.preventDefault();
 });
 }
+
+/*Funcion para mostrar contraseña*/
+function mostrarContraseña() {
+  /*Conseguir el input password*/
+  var password = document.getElementById("password");
+
+  /*Si el tipo es password, lo ponemos a text para mostrar la contraseña*/
+  if (password.type === "password") {
+
+      password.type = "text";
+
+      /*Limpiar div y cambiar el icono*/
+      $("#cambiarIcono").html("");
+      icono="<i class='fas fa-eye-slash' onclick='mostrarContraseña()'></i>";
+      $("#cambiarIcono").html(icono);
+      
+  }else{/*Si el tipo es text, lo ponemos a password para mostrar la contraseña*/
+
+      password.type = "password";
+
+      /*Limpiar div y cambiar el icono*/
+      $("#cambiarIcono").html("");
+      icono="<i class='fas fa-eye' onclick='mostrarContraseña()'></i>";
+      $("#cambiarIcono").html(icono);
+  }
+}
