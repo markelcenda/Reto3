@@ -35,6 +35,7 @@ class comentarioModel extends comentarioClass {
         mysqli_close ($this->link);
     }
     
+    /*Cargar todos los comentarios*/
     public function setList(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -56,6 +57,7 @@ class comentarioModel extends comentarioClass {
             $comentario->texto=$row['texto'];
 
             
+            /*Objeto usuario*/
             $usuario=new usuarioModel();
             $usuario->id=$row['idUsuario'];
             $usuario->findUserById();
@@ -70,6 +72,7 @@ class comentarioModel extends comentarioClass {
         
     }
     
+    /*Insertar comentario*/
     public function insertComentario(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión

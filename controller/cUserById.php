@@ -15,7 +15,7 @@ $usuario->id=$id;
 $response=array();
 
 $response['jugador']=$usuario->findJugadorById();
-$response['entrenador']=$usuario->findEntrenadoreById();
+$response['entrenador']=$usuario->findEntrenadorById();
 $response['delegado']=$usuario->findDelegadoById();
 $response['equipos']=$equipo->setList();
 

@@ -46,7 +46,7 @@ function loadEquipos(){
 		
 		var equipos=result.list;
 
-		$("#equiposSection").hide();		
+		//$("#equiposSection").hide();		
 		
 		/*Cargar los equipos en el select*/
 		selectEquipo="<option selected>Selecciona un equipo</option>";
@@ -476,7 +476,7 @@ function login(){
                     //Muestra la imagen que le corresponde al usuario que ha iniciado sesion
                    img="<a href='../pages/usuario.html'><img id='imgSesion' src='../../view/img/" + result.usuarioSesion.imagen + "'></a>";
 
-				   $("#sitioUsuario").html(img);
+				   $("#sitioUsuario").html(img);z
 
 				   //Guarda el tipo del usuario que ha iniciado sesion
 				   admin = result.usuarioSesion.admin;

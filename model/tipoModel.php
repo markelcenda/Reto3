@@ -33,6 +33,7 @@ class tipoModel extends tipoClass {
         mysqli_close ($this->link);
     }
     
+    /*buscar tipos por id*/
     public function findTipoById(){
         
         $this->OpenConnect();
@@ -54,6 +55,7 @@ class tipoModel extends tipoClass {
         
     }
     
+    /*cargar todos los tipos*/
     public function setTipos(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión

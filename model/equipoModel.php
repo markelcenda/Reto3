@@ -4,7 +4,7 @@ if($_SERVER["SERVER_NAME"]=="grupo4.zerbitzaria.net"){
 }else{
     include_once("connect_data.php");
 }
-include_once("../model/equipoClass.php");
+include_once("equipoClass.php");
 
 class equipoModel extends equipoClass {
     
@@ -32,6 +32,7 @@ class equipoModel extends equipoClass {
         mysqli_close ($this->link);
     }
     
+    /*cargar todos los equipos*/
     public function setList(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -59,6 +60,7 @@ class equipoModel extends equipoClass {
         
     }
     
+    /*buscar equipos por id*/
     public function findTeamById(){
         
         $this->OpenConnect();
@@ -71,7 +73,6 @@ class equipoModel extends equipoClass {
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
         {
             
-            //FILL the cycle with info  $THIS
             $this->id=$row['id'];
             $this->categoria=$row['categoria'];
             
@@ -82,6 +83,7 @@ class equipoModel extends equipoClass {
         
     }
     
+    /*Buscar equipo por nombre de equipo*/
     public function findTeamByCategoria(){
         
         $this->OpenConnect();
