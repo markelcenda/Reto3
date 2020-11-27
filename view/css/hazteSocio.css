@@ -42,11 +42,3 @@
 #btnDespliegue{
     background-color: #009655;
 }
-
-.modal-content #userIcon {
-	top: 146px !important;
-}
-
-.modal-content #userPadlock {
-	top: 198px !important;
-}

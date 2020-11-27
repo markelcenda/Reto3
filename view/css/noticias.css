@@ -135,15 +135,3 @@ div.comment p {
     background-image: url(../img/fondoCards.jpg);
     background-size: cover;
 }
-
-.modal-content #userIcon {
-	top: 146px !important;
-}
-
-.modal-content #userPadlock {
-	top: 198px !important;
-}
-
-.form-control {
-	padding-left: 35px !important;
-}
