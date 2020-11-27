@@ -91,41 +91,49 @@
                             Sesión</button>
                         <button type="button" class="btn botonLogout">Cerrar Sesión</button>
                         <!--Modal-->
-                        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+                        <div id="modelId" class="modal fade">
+                            <div class="modal-dialog modal-login">
                                 <div class="modal-content">
-                                    <div class="login-form">
+                                    <div class="modal-header">
+                                        <div class="avatar">
+                                            <i class="fa fa-user fa-4x text-white"></i>
+                                        </div>				
+                                        <h4 class="modal-title">Iniciar sesión</h4>	
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
                                         <form>
-                                            <div class="form" id="loginForm">
-                                                <h2 class="text-center">Iniciar Sesión</h2>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-hidden="true">&times;</button>
-                                                <div class="form-group">
+                                            <div class="input-group mb-2">
+                                                <div class="input-group-prepend">
+                                                  <div class="input-group-text">
                                                     <i class="fas fa-user" id="userIcon"></i>
-                                                    <input id="usuario" type="text" class="form-control"
-                                                        placeholder="Usuario" onkeyup="enterSinClick(event)">
+                                                  </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <i class="fas fa-lock" id="userPadlock"></i>
-                                                    <input id="password" type="password" autocomplete="off"
-                                                        class="form-control" placeholder="Contraseña"
-                                                        onkeyup="enterSinClick(event)">
-                                                        <div id="cambiarIcono">
-                                                            <i class="fas fa-eye" onclick="mostrarContraseña()"></i>
-                                                        </div>  
-                                                </div>
-                                                <div class="form-group">
-                                                    <button type="submit"
-                                                        class="btn btn-primary btn-block botonLoginStart"
-                                                        id="loginSubmit">Iniciar Sesión</button>
-                                                </div>
+                                                <input id="usuario" type="text" class="form-control" placeholder="Usuario" onkeyup="enterSinClick(event)">
                                             </div>
+                                            <div class="input-group mb-2">
+                                                <div class="input-group-prepend">
+                                                  <div class="input-group-text">
+                                                    <i class="fas fa-lock" id="userPadlock"></i>
+                                                  </div>
+                                                </div>
+                                                <input id="password" type="password" autocomplete="off" class="form-control" placeholder="Contraseña" onkeyup="enterSinClick(event)">
+                                                
+                                                <div id="cambiarIcono" class="cambiarIconoIndex">
+                                                    <i class="fas fa-eye" onclick="mostrarContraseña()"></i>
+                                                </div>  
+                                            </div>
+                                            
+                                            <input type="button" value="Iniciar sesión" class="btn btn-lg btn-block login-btn botonLoginStart">
+                                            
                                         </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        ¿No tienes cuenta?<a href="hazteSocio.html">Crear cuenta</a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
 
                     </div>
 

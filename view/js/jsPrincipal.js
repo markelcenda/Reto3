@@ -5,10 +5,6 @@ $(document).ready(function () {
 
   menuDesplegable();
 
-  $('#loginSubmit').click(function(event){
-    event.preventDefault();
-  })
-
 });
 
 //Activa o desactiva el modo noche
