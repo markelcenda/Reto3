@@ -8,8 +8,6 @@ $(document).ready(function () {
 
 });
 
-
-
 //cargar la pagina del equipo seleccionado
 function equiposDesdeSocios(id){
     pagina="equipos.html?" + id;
@@ -163,12 +161,11 @@ function sessionVarsView(){
                                 "<button type='button' class='btn text-white m-2' id='btnDatosUsuario'>Ver datos de usuario</button>" +
                             "</div>" +
                             "<div class='row justify-content-center' id='acciones'></div>" + //DIV para añadir los datos
-                            "<div class='row justify-content-center' id='formularioInformacion'></div>"; //div para añadir formulario dcon datos para actualizar
-
+                            "<div class='row justify-content-center' id='formularioInformacion'></div>" + //div para añadir formulario dcon datos para actualizar
+                            "<div class='row justify-content-center' id='añadirForm'></div>"; //div para añadir formulario dcon datos para actualizar
             }
 
         }
-
 
         $("#zonaUsuario").append(usuarioInfo);
 
@@ -192,13 +189,13 @@ function sessionVarsView(){
             loadTipos();
         });
 
-
     }
 
    function datosUsuario(usuario){
 
         $("#acciones").html("");
         $("#formularioInformacion").html("");
+        $("#añadirForm").html("");
 
         newrow = "<div class='row justify-content-center align-items-center datosDeUsuario m-5 text-white'>"+
         "<div class='row-lg-3 order-lg-1 order-md-1 order-sm-1 order-1'>"+
@@ -237,17 +234,17 @@ function sessionVarsView(){
     "</div>";
 
         $('#acciones').append(newrow);
-
     }
 
     //Actualizar informacion del usuario conectado
     function updateUsuario(usuario){
 
-
         for(let i=0; i<usuario.length; i++){
 
+            /*limpiar div*/
             $("#acciones").html("");
             $("#formularioInformacion").html("");
+            $("#añadirForm").html("");
             /*Formulario con datos del administrador para modificar*/
             formulario="<form>" +
 
@@ -307,7 +304,6 @@ function sessionVarsView(){
     imgAnterior = usuario[i].imagen;
 
         }
-
         /*ID del admin*/
         idUsuario=usuario[0].id;
 
@@ -340,11 +336,8 @@ function sessionVarsView(){
                             if(nuevoEmail == emailActual){
                                 permitirUpdate = true;
                             }
-
                             break;
-
                         }
-    
                     }
 
         //Mira si el usuario tiene permitido el update. En caso de no tenerlo, se pondra el borde del input email en rojo y saldra un alert
@@ -356,16 +349,11 @@ function sessionVarsView(){
     
                         $("#email").css("border", "2px solid red");
                         alert("Ya existe un usuario con ese correo electronico");
-    
                     }
-
                 })
                 .catch(error => console.error('Error status:', error));
-
         });
-
     }
-
 
     //Cambia la foto de perfil que esta por defecto en el formulario por la introducida por el usuario
 function changeImg() {
@@ -374,7 +362,6 @@ function changeImg() {
 
     filename = file.name.toLowerCase();
     filesize = file.size;
-    console.log(filename);
 
     var reader = new FileReader();
 
@@ -384,18 +371,11 @@ function changeImg() {
     }
 
     if (file) {
-
         reader.readAsDataURL(file);
-
     } else {
-
         $("#fotoPerfil").attr('src', '');
-
     }
-
 }
-
-
 
     //Ejecutar update de la informacion del usuario
     function execUpdate(idUsuario){
@@ -416,13 +396,14 @@ function changeImg() {
             
 		.then(res => res.json()).then(result => {
 
+            /*limpiar div*/
             $("#acciones").html("");
             $("#formularioInformacion").html("");
+            $("#añadirForm").html("");
 
             /*Alert + recargar pagina*/
           alert("Información actualizada correctamente");
           window.location.reload();
-          
           
 		})
       .catch(error => console.error('Error status:', error));	
@@ -441,19 +422,23 @@ function changeImg() {
       .then(res => res.json()).then(result => {
           
           var usuarios=result.list;
+<<<<<<< HEAD
           /*Cargar los usuarios en el select
+=======
+>>>>>>> a32c24137779f6c825af1a1219fb9596e54a71ab
 
+          /*limpiar div*/
           $("#acciones").html("");
           $("#formularioInformacion").html("");
+          $("#añadirForm").html("");
 
           selectUsuario="<div class='col-lg-12'><h2>Selecciona un usuario para eliminar</h2>";
           selectUsuario+="<select id='selectUsuarios'>";
           selectUsuario+="<option selected>Selecciona un usuario</option>";
           
+            /*Cargar los usuarios en el select*/
           for(let i=0; i<usuarios.length; i++){
-              
-            selectUsuario+="<option value='" + usuarios[i].nombre + " " + usuarios[i].apellidos + "' id='" + usuarios[i].id + "' class='"+usuarios[i].imagen+"'>" + usuarios[i].id + " -- " + usuarios[i].nombre + " " + usuarios[i].apellidos + "</option>";
-              
+            selectUsuario+="<option value='" + usuarios[i].nombre + " " + usuarios[i].apellidos + "' id='" + usuarios[i].id + "'>" + usuarios[i].id + " -- " + usuarios[i].nombre + " " + usuarios[i].apellidos + "</option>";  
           }
 
           selectUsuario+="</select></div>";
@@ -466,18 +451,12 @@ function changeImg() {
               var nombreApellido = $(this).children(":selected").val();
           //   imagenDelete = $(this).children(":selected").attr("class");
 
-           /  console.log(idUsuario + " "+ );
+              document.getElementById("selectUsuarios").addEventListener("click", execDelete(idUsuario, nombreApellido));
 
-              alert(imagenDelete);
-              alert(idUsuario);
-
-              document.getElementById("selectUsuarios").addEventListener("click", execDelete(idUsuario, nombreApellido, imagenDelete));
- 
           });
 
       })
       .catch(error => console.error('Error status:', error));	
-
     }*/
 
     //Cargar usuarios para hacer el update
@@ -493,8 +472,10 @@ function changeImg() {
           
           var usuarios=result.usuarios;
 
+          /*limpiar div*/
           $("#acciones").html("");
           $("#formularioInformacion").html("");
+          $("#añadirForm").html("");
 
           selectUsuario="<div class='col-lg-12'><h2>Selecciona un usuario para actualizar</h2>";
           selectUsuario+="<select id='selectUsuarios'>";
@@ -513,8 +494,6 @@ function changeImg() {
                 selectUsuario+="<option id='" + usuarios[i].id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + " -- Socio</option>";
             }
               
-            
-              
           }
 
           selectUsuario+="</select></div>";
@@ -527,13 +506,10 @@ function changeImg() {
             updateUser2(idUsuario);
 
           });
-          
-
       })
       .catch(error => console.error('Error status:', error));	
 
     }
-
 
     /*Añadir al select los tipos*/
     function loadTipos(){
@@ -548,8 +524,10 @@ function changeImg() {
           
           var tipos=result.list;
 
+          /*limpiar div*/
           $("#acciones").html("");
           $("#formularioInformacion").html("");
+          $("#añadirForm").html("");
 
           selectTipo="<div class='col-lg-6'><h2>Selecciona un tipo para cargar los usuarios</h2>";
           selectTipo+="<select id='selectTipos'>";
@@ -621,13 +599,8 @@ function changeImg() {
 
         });
         
-        
-  
       })
       .catch(error => console.error('Error status:', error));
-
-        
-
     }
 
     /*Cargar informacion del usuario*/
@@ -647,6 +620,7 @@ function changeImg() {
 
         /*Limpiar el div*/
         $("#formularioInformacion").html("");
+        $("#añadirForm").html("");
 
         newrow = "<div class='row justify-content-center align-items-center datosDeUsuario m-5 text-white'>"+
                     "<div class='row-lg-3 order-1'>"+
@@ -761,6 +735,9 @@ function changeImg() {
         var usuario=result.usuario;
 
         for(let i=0; i<usuario.length; i++){
+
+            /*limpiar div*/
+            $("#añadirForm").html("");
 
             formulario="<form>" + //datos comunes de los usuarios
 
@@ -884,7 +861,7 @@ function changeImg() {
             formulario="<h4>No tienes acceso para editar datos de socios";
         }
 
-        $("#formularioInformacion").append(formulario);
+        $("#añadirForm").append(formulario);
 
         //Al hacer click ejecutamos el update
         $("#btnExecuteUpdateUser").click(function(){
