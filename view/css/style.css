@@ -97,12 +97,14 @@ nav .botonLogout:hover{
     background-color: #009655 !important;
     color: white !important;
     transition: 0.5s !important;
+    border: 1px solid transparent !important;
 }
 .botonLoginStart:hover{
     background-color: white !important;
     color: #009655 !important;
     transition: 0.5s !important;
     border-color: #009655;
+    border: 1px solid #009655 !important;
 }
 
 .imagenFondo h1 {
