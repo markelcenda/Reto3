@@ -292,26 +292,26 @@ function cargarNoticiasConComentarios(usuario) {
 };
 
 /*Funcion para insertar comentario*/
-function insertarComentario(idUsuario){
-    texto=$("#comentario").val();
+function insertarComentario(idUsuario) {
+    texto = $("#comentario").val();
+    if (texto.includes(">")) {
+        alert("Error al insertar el comentario");
+    } else {
+        var url = "../../controller/cInsertarComentario.php";
+        var data = { 'texto': texto, "idUsuario": idUsuario };
 
-    var url = "../../controller/cInsertarComentario.php";
-    var data = {'texto':texto, "idUsuario":idUsuario};
-        
-    fetch(url, {
-			method: 'POST', 
-			body: JSON.stringify(data), 
-			headers:{'Content-Type': 'application/json'}
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: { 'Content-Type': 'application/json' }
         })
-            
-		.then(res => res.json()).then(result => {
-
-            alert("Comentario insertado correctamente")
+        .then(res => res.json()).then(result => {
+            alert("Comentario insertado correctamente");
             window.location.reload();
-          
-		})
-      .catch(error => console.error('Error status:', error));
-    
+            })
+
+        .catch(error => console.error('Error status:', error));
+    }
 }
 
 //Cargar todos los comentario
