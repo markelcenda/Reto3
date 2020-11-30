@@ -55,7 +55,7 @@
 #imagenes .card-back h3 {
     position: absolute;
     top: 40%;
-    left: 1%;
+    left: 7%;
     font-size: 35pt;
     color: white;
     font-weight: 700;
@@ -64,7 +64,7 @@
 #imagenes .card-front h3 {
     position: absolute;
     top: 40%;
-    left: 1%;
+    left: 7%;
     font-size: 35pt;
     color: white;
     font-weight: 700;
