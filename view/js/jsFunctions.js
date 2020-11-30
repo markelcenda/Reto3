@@ -142,7 +142,7 @@ function cargarUltimasNoticias() {
         $("#noticias").append(noticia);
       }
 
-      $("#noticias .card").click(function () {
+      $("#noticias .col-md-4 .card").click(function () {
         id = this.id;
         window.location.href = "view/pages/noticias.html?" + id;
       })
