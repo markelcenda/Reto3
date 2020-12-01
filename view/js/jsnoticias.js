@@ -333,7 +333,7 @@ function cargarComentarios(){
         for(let i=0; i<comentarios.length; i++){
 
             comentariosInfo="<div class='wrap'>" +
-                                "<img src='../img/" + comentarios[i].objUsuario.imagen + "'>" +
+                                "<img src='../img/" + comentarios[i].objUsuario.imagen + "' id='avatarComent'>" +
                                 "<div class='comment ' data-owner='" + comentarios[i].objUsuario.usuario + "'>" +
                                     "<p>" + comentarios[i].texto + "</p>" +
                                 "</div>" +
