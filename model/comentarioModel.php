@@ -98,4 +98,29 @@ class comentarioModel extends comentarioClass {
         $this->CloseConnect();//termina la conexion
     }
     
+    /*Insertar comentario*/
+    public function delete(){
+        
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        
+        $id=$this->id;
+        
+        //envia los datos introducidos en el formulario a la base de datos
+        $sql="CALL spDeleteComentario($id)";
+        
+        $this->link->query($sql);
+        
+        //filtro que mira las filas afectadas
+        if ($this->link->affected_rows >= 1)
+        {
+            //Al detectatr una afila afectada manda el siguiente mensaje
+            return "Comentario eliminado";
+        } else {
+            //Al no detectar filas afectadas manda el siguiente mensaje
+            return "Se ha producido un error";
+        }
+        
+        $this->CloseConnect();//termina la conexion
+    }
+    
 }
