@@ -68,11 +68,11 @@
     }
 }
 
-.row .imagenComentario{
+/*.row .imagenComentario{
  width: 50px;
  height: 50px;
  margin-left: 20%;
-}
+}*/
 
 div.wrap {
     width: 90%;
@@ -129,14 +129,10 @@ div.comment p {
     position: absolute;
     top: 50%;
     width: 75px;
+    height: 75px;
     float: left;
     border-radius: 10px;
     margin-top: -25px;
     background-image: url(../img/fondoCards.jpg);
     background-size: cover;
-}
-
-#avatarComent{
-    width: 75px;
-    height: 75px;
 }

@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $(".botonLoginStart").click(login);
     $(".botonLogout").click(logout);
 
+
     // When the user scrolls down 20px from the top of the document, show the button
     window.onscroll = function () { scrollFunction() };
 
@@ -115,6 +116,8 @@ function login() {
 
                     window.location.reload();
 
+                    usuarioAdmin = result.usuarioSesion.admin;
+
                 }
 
             })
@@ -150,7 +153,7 @@ function logout() {
 
             //console.log(result.confirm);
             alert(result.confirm);
-            window.location.href="../../index.html";
+            window.location.href = "../../index.html";
 
         })
         .catch(error => console.error('Error status:', error));
@@ -181,7 +184,9 @@ function sessionVarsView() {
                     $(".botonLogout").show();
                     $(".sesionUsuario").css('display', 'flex');
                     $("#sitioUsuario").html(img);
-                    
+
+                    usuarioAdmin = usuario[i].admin;
+
                     /*Cargar noticias si estas conectado*/
                     cargarNoticiasConComentarios(usuario);
                     /*Cargar comentarios realizados*/
@@ -229,7 +234,7 @@ function cargarNoticiasConComentarios(usuario) {
         headers: { 'Content-Type': 'application/json' }  // input data
     })
         .then(res => res.json()).then(result => {
-            
+
             noticias = result;
 
             noticia = "";
@@ -242,19 +247,19 @@ function cargarNoticiasConComentarios(usuario) {
 
             for (i = noticias.length; i > 0; i--) {
                 noticia = "<div class='container py-3'>" +
-                                "<div class='card' id='c" + (i - 1) + "'>" +
-                                    "<div class='row'>" +
-                                        "<div class='col-md-7 px-3'>" +
-                                            "<div class='card-block px-6'>" +
-                                                "<h4 class='card-title'>" + noticias[i - 1].titulo + "</h4>" +
-                                                "<p class='card-text'>" + noticias[i - 1].textoCorto + "</p>" +
-                                                "<br>" +
-                                            "</div>" +
-                                        "</div >" +
-                                    "<img class='m-4' src='" + noticias[i - 1].imagen + "'>" +
-                                "</div >" +
-                            "</div >";
-                            
+                    "<div class='card' id='c" + (i - 1) + "'>" +
+                    "<div class='row'>" +
+                    "<div class='col-md-7 px-3'>" +
+                    "<div class='card-block px-6'>" +
+                    "<h4 class='card-title'>" + noticias[i - 1].titulo + "</h4>" +
+                    "<p class='card-text'>" + noticias[i - 1].textoCorto + "</p>" +
+                    "<br>" +
+                    "</div>" +
+                    "</div >" +
+                    "<img class='m-4' src='" + noticias[i - 1].imagen + "'>" +
+                    "</div >" +
+                    "</div >";
+
 
 
                 $("#noticias").append(noticia);
@@ -267,22 +272,22 @@ function cargarNoticiasConComentarios(usuario) {
                 })
             }
 
-            if(usuario[0].admin==0 || usuario[0].admin==1){
+            if (usuario[0].admin == 0 || usuario[0].admin == 1) {
 
                 idNoticia = location.search.substring(1, location.search.length);
                 if (idNoticia != "") {
                     noticiaCompleta(idNoticia);
-                    
+
                 }
 
                 /*Input para añadir comentario*/
-                comentarios="<textarea maxLength='100' rows='3' class='form-control' id='comentario' placeholder='Insertar comentario...'></textarea>" +
-                            "<button type='button' id='insertarComentario' class='btn btn-success mx-auto d-block mt-3'>Insertar Comentario</button>";
+                comentarios = "<textarea maxLength='100' rows='3' class='form-control' id='comentario' placeholder='Insertar comentario...'></textarea>" +
+                    "<button type='button' id='insertarComentario' class='btn btn-success mx-auto d-block mt-3'>Insertar Comentario</button>";
 
                 $("#comentarios").append(comentarios);
 
                 /*Click en el boton insertar*/
-                $("#insertarComentario").click(function(){
+                $("#insertarComentario").click(function () {
                     insertarComentario(usuario[0].id);
                 });
 
@@ -305,62 +310,101 @@ function insertarComentario(idUsuario) {
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }
         })
-        .then(res => res.json()).then(result => {
-            alert("Comentario insertado correctamente");
-            window.location.reload();
+            .then(res => res.json()).then(result => {
+                alert("Comentario insertado correctamente");
+                window.location.reload();
             })
 
-        .catch(error => console.error('Error status:', error));
+            .catch(error => console.error('Error status:', error));
     }
 }
 
 //Cargar todos los comentario
-function cargarComentarios(){
+function cargarComentarios() {
 
     var url = "../../controller/cAllComentarios.php";
 
     fetch(url, {
-        method: 'GET', 
-        headers:{'Content-Type': 'application/json'}
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
     })
-        
-    .then(res => res.json()).then(result => {
 
-        var comentarios=result.list;
+        .then(res => res.json()).then(result => {
 
-        comentariosInfo="";
+            var comentarios = result.list;
 
-        for(let i=0; i<comentarios.length; i++){
+            comentariosInfo = "";
 
-            comentariosInfo="<div class='wrap'>" +
-                                "<img src='../img/" + comentarios[i].objUsuario.imagen + "' id='avatarComent'>" +
-                                "<div class='comment ' data-owner='" + comentarios[i].objUsuario.usuario + "'>" +
-                                    "<p>" + comentarios[i].texto + "</p>" +
-                                "</div>" +
-                            "</div>";
+            
 
-            $("#comentariosRealizados").append(comentariosInfo);
+            for (let i = 0; i < comentarios.length; i++) {
 
-        }
-      
-      
+                if(usuarioAdmin == 1){
+                    btnComentDelete = "<i class='fas fa-trash p-2 btn text-white btnComentDelete' id='" + comentarios[i].id + "'></i>";
+                }else{
+                    btnComentDelete = "";
+                }
+
+                comentariosInfo = "<div class='wrap '>" +
+                    "<img  src='../img/" + comentarios[i].objUsuario.imagen + "'>" +
+                    "<div class='comment ' data-owner='" + comentarios[i].objUsuario.usuario + "'>" +
+                    "<p>" + comentarios[i].texto + "</p>" +
+                    "<div class='row justify-content-center'>" +
+                    btnComentDelete +
+                    "</div>" +
+                    "</div>" +
+                    "</div>";
+
+                $("#comentariosRealizados").append(comentariosInfo);
+
+            }
+
+            $(".btnComentDelete").click(function () {
+
+                id = $(this).attr("id");
+
+                alert(id);
+
+                deleteComentario(id);
+
+            });
+
+        })
+        .catch(error => console.error('Error status:', error));
+
+}
+
+function deleteComentario(id) {
+
+    var url = "../../controller/cDeleteComentario.php";
+    var data = { 'id': id};
+
+    fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' }
     })
-  .catch(error => console.error('Error status:', error));
+        .then(res => res.json()).then(result => {
+            alert("Comentario insertado correctamente");
+            window.location.reload();
+        })
+
+        .catch(error => console.error('Error status:', error));
 
 }
 
 var mybutton = document.getElementById("myBtn");
 
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
 }
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
 }
