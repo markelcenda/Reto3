@@ -69,7 +69,7 @@ function cargarImagenesEquipos() {
       var img = "<div class='row m-2'>";
 
       for (i = 0; i < equipos.length; i++) {
-        img += "<div class='col-lg-4 col-md-6 col-12 mt-2'>" +
+        img += "<div class='col-lg-4 col-md-6 col-12 mt-2' id='equipos'>" +
           "<div class='card'>" +
           "<div class='card-inner'>" +
           "<div class='card-front' id='card" + i + "'>" +
@@ -99,7 +99,7 @@ function cargarImagenesEquipos() {
         document.getElementById(titleId).style.display = "none";
       });
 
-      $(".card").click(function (event) {
+      $("#equipos .card").click(function (event) {
         id = parseInt(event.target.id.slice(-1)) + 1;
         console.log(id);
         equiposDesdeIndex(id);
