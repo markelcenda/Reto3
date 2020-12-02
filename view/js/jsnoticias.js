@@ -363,8 +363,6 @@ function cargarComentarios() {
 
                 id = $(this).attr("id");
 
-                alert(id);
-
                 deleteComentario(id);
 
             });
@@ -385,7 +383,7 @@ function deleteComentario(id) {
         headers: { 'Content-Type': 'application/json' }
     })
         .then(res => res.json()).then(result => {
-            alert("Comentario insertado correctamente");
+            alert("Comentario eliminado correctamente");
             window.location.reload();
         })
 
