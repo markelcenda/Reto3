@@ -305,10 +305,26 @@ function mostrarDatosUsuarios(id){
 						personal = "<hr>"+
 						"<h5><i class='fas fa-map-marker-alt personal'></i> " + jugador[i].direccion + "</h5>" +
 						"<h5><i class='fas fa-envelope personal'></i> " + jugador[i].email + "</h5>";
+
+						adulto = "<h5><i class='fas fa-calendar-alt'></i> " + jugador[i].fechaDeNacimiento + "</h5>" +
+								"<h5><i class='fas fa-male'></i><i class='fas fa-arrows-alt-v'></i> " + jugador[i].objJugador.altura + "m</h5>" +
+								"<h5><i class='fas fa-weight'></i> " + jugador[i].objJugador.peso + "kg</h5>";
 	
 						}else{
 							personal = "";
+
+							if(jugador[i].idEquipo == 5 || jugador[i].idEquipo == 6){
+
+								adulto = "<h5><i class='fas fa-calendar-alt'></i> " + jugador[i].fechaDeNacimiento + "</h5>" +
+								"<h5><i class='fas fa-male'></i><i class='fas fa-arrows-alt-v'></i> " + jugador[i].objJugador.altura + "m</h5>" +
+								"<h5><i class='fas fa-weight'></i> " + jugador[i].objJugador.peso + "kg</h5>";
+		
+							}else{
+								adulto = "";
+							}
 						}
+
+					
 
 					infoUsuario="<div class='row justify-content-center align-items-center fichaUsuario' data-aos='fade-right'>" +
 										"<div class='col-lg-4 col-md-6 col-sm-6 col-10'>" +
@@ -320,9 +336,7 @@ function mostrarDatosUsuarios(id){
 											"<h2>" + jugador[i].nombre + " " + jugador[i].apellidos + "</h2>" +
 											"<hr>" +
 											"<h5><i class='fas fa-volleyball-ball'></i> " + jugador[i].objJugador.posicion + "</h5>" +
-											"<h5><i class='fas fa-calendar-alt'></i> " + jugador[i].fechaDeNacimiento + "</h5>" +
-											"<h5><i class='fas fa-male'></i><i class='fas fa-arrows-alt-v'></i> " + jugador[i].objJugador.altura + "m</h5>" +
-											"<h5><i class='fas fa-weight'></i> " + jugador[i].objJugador.peso + "kg</h5>" +
+											adulto +
 											personal+
 										"</div>" +	
 								"</div>";	
@@ -476,14 +490,16 @@ function login(){
                     //Muestra la imagen que le corresponde al usuario que ha iniciado sesion
                    img="<a href='../pages/usuario.html'><img id='imgSesion' src='../../view/img/" + result.usuarioSesion.imagen + "'></a>";
 
-				   $("#sitioUsuario").html(img);z
+				   $("#sitioUsuario").html(img);
 
 				   //Guarda el tipo del usuario que ha iniciado sesion
 				   admin = result.usuarioSesion.admin;
 
+				   
+				   window.location.reload();
 
                 }
-                
+              
     		})
             .catch(error => console.error('Error status:', error));	
 
@@ -518,6 +534,7 @@ function logout(){
         //console.log(result.confirm);
 		alert(result.confirm);
 		admin = 0;
+		window.location.reload();
 	
 	})
 	.catch(error => console.error('Error status:', error));	
