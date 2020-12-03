@@ -639,11 +639,11 @@ function changeImg() {
          <div class='form-row justify-content-center'>
                                     <div class='form-group col-lg-6'>
                                         <label for='altura'>Altura:</label>
-                                        <input type='number' class='form-control' id='altura'>
+                                        <input type='number' class='form-control' id='altura' min='0'>
                                     </div> 
                                     <div class='form-group col-lg-6'>
                                         <label for='peso'>Peso:</label>
-                                        <input type='number' class='form-control' id='peso'>
+                                        <input type='number' class='form-control' id='peso' min='0'>
                                     </div>
                                 </div>
             </form>
@@ -723,7 +723,7 @@ function changeImg() {
             <div class="row justify-content-center">
             <div class='col-lg-4'>
          <label for='experiencia'>Experiencia:</label>
-            <input type='number' class='form-control' id='experiencia'>
+            <input type='number' class='form-control' id='experiencia' min='0'>
             </div>
             </div>
         </div>
@@ -802,7 +802,7 @@ function changeImg() {
             <div class="row justify-content-center">
             <div class='col-lg-4'>
          <label for='experiencia'>Experiencia:</label>
-            <input type='number' class='form-control' id='experiencia'>
+            <input type='number' class='form-control' id='experiencia' min='0'>
             </div>
             </div>
         </div>
