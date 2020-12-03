@@ -112,7 +112,7 @@ class entrenadorModel extends entrenadorClass {
         $this->CloseConnect();//termina la conexion
     }
     
-    /*insertar usuario*/
+    /*insertar entrenador*/
     public function insertEntrenador(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión

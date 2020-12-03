@@ -560,7 +560,7 @@ function changeImg() {
             crearEntrenador(usuarios[0].tipo);
         });
         $("#btnCrearDelegado").click(function(){
-            creaDelegado(usuarios[0].tipo);
+            crearDelegado(usuarios[0].tipo);
         });
         
       })
@@ -569,98 +569,99 @@ function changeImg() {
 
     function crearJugador(tipo){
         
-        /*limpiar div*/
-        $("#añadirForm").html("");
+         /*limpiar div*/
+         $("#añadirForm").html("");
 
-        formulario=`<form id="formularioSocio">
-        <div class="form-group col-lg-12 ">
-            <div class="row">
-                <div class="col-lg-6 p-3">
-                    <label for="nombre">Nombre<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="nombre">
-                </div>
-                <div class="col-lg-6 p-3">
-                    <label for="apellidos">Apellidos<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="apellidos">
-                </div>
-                <div class="col-lg-4 p-3">
-                    <label for="email">Correo electronico<span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" id="email">
-                </div>
-                <div class="col-lg-4 p-3">
-                    <label for="direccion">Direccion<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="direccion">
-                </div>
-                <div class="col-lg-4 p-3">
-                    <label for="fechaNacimiento">Fecha de nacimiento<span
-                            class="text-danger">*</span></label>
-                    <input type="date" class="form-control" id="fechaNacimiento">
-                </div>
-                <div class="col-lg-6 p-3 ">
-                    <label for="nuevoUsuario">Nombre de usuario<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="nuevoUsuario">
-                </div>
-                <div class="col-lg-6 p-3">
-                    <label for="contraseña">Contraseña<span class="text-danger">*</span></label>
-                    <input type="password" class="form-control" id="contraseña">
-                </div>
-                <div class="col-lg-6 p-3 text-center" id="containerImagen">
-                    <label>Imagen de perfil</label><br>
-                    <input type="file" name="imagen" id="imagen" accept=".png,.jpeg,.jpg,.gif">
-                    <label type="file" for="imagen" class="btn text-white col-lg-5 col-md-4 col-sm-4 col-4"
-                        id="btnSubirArchivo">Subir imagen <i class="fas fa-upload text-white"></i></label>
-                </div>
-                <div class="col-lg-6 p-3 text-center">
-                    <img src="../img/imagenDefault.png" id="fotoPerfil">
-                </div>
-                
-            </div>
-        </div>`;
+         formulario=`<form id="formularioSocio">
+         <div class="form-group col-lg-12 ">
+             <div class="row">
+                 <div class="col-lg-6 p-3">
+                     <label for="nombre">Nombre<span class="text-danger">*</span></label>
+                     <input type="text" class="form-control" id="nombre">
+                 </div>
+                 <div class="col-lg-6 p-3">
+                     <label for="apellidos">Apellidos<span class="text-danger">*</span></label>
+                     <input type="text" class="form-control" id="apellidos">
+                 </div>
+                 <div class="col-lg-4 p-3">
+                     <label for="email">Correo electronico<span class="text-danger">*</span></label>
+                     <input type="email" class="form-control" id="email">
+                 </div>
+                 <div class="col-lg-4 p-3">
+                     <label for="direccion">Direccion<span class="text-danger">*</span></label>
+                     <input type="text" class="form-control" id="direccion">
+                 </div>
+                 <div class="col-lg-4 p-3">
+                     <label for="fechaNacimiento">Fecha de nacimiento<span
+                             class="text-danger">*</span></label>
+                     <input type="date" class="form-control" id="fechaNacimiento">
+                 </div>
+                 <div class="col-lg-6 p-3 ">
+                     <label for="nuevoUsuario">Nombre de usuario<span class="text-danger">*</span></label>
+                     <input type="text" class="form-control" id="nuevoUsuario">
+                 </div>
+                 <div class="col-lg-6 p-3">
+                     <label for="contraseña">Contraseña<span class="text-danger">*</span></label>
+                     <input type="password" class="form-control" id="contraseña">
+                 </div>
+                 <div class="col-lg-6 p-3 text-center" id="containerImagen">
+                     <label>Imagen de perfil</label><br>
+                     <input type="file" name="imagen" id="imagen" accept=".png,.jpeg,.jpg,.gif">
+                     <label type="file" for="imagen" class="btn text-white col-lg-5 col-md-4 col-sm-4 col-4"
+                         id="btnSubirArchivo">Subir imagen <i class="fas fa-upload text-white"></i></label>
+                 </div>
+                 <div class="col-lg-6 p-3 text-center">
+                     <img src="../img/imagenDefault.png" id="fotoPerfil">
+                 </div>
+                 
+             </div>
+ 
+             <form id='jugadorForm'>
+             <div class='row justify-content-center'>
+             <div class='col-lg-4'>
+                 <label for='posicion'>Delantero</label>
+                 <input type='radio' id='delantero' value='Delantero' name='posiciones'>
+             </div>
 
-    formulario+="<div class='row justify-content-center'>" +
-                                            "<div class='col-lg-4'>" +
-                                                "<label for='posicion'>Delantero</label>" +
-                                                "<input type='radio' id='delantero' value='Delantero' name='posiciones'>" +
-                                            "</div>" +
-                
-                                            "<div class='col-lg-4'>" +
-                                                "<label for='posicion'>Zaguero</label>" +
-                                                "<input type='radio' id='zaguero' value='Zaguero' name='posiciones'>" +
-                                            "</div>" +    
-                
-                                            "<div class='col-lg-4'>" +
-                                                "<label for='posicion'>Libero &nbsp</label>" +
-                                                "<input type='radio' id='libero' value='Libero' name='posiciones'>" +
-                                            "</div>" +
-                                        "</div>";
+             <div class='col-lg-4'>
+                 <label for='posicion'>Zaguero</label>
+                 <input type='radio' id='zaguero' value='Zaguero' name='posiciones'>
+             </div>   
 
-                                    formulario+="</div>" +
-                                                "</div>" +
-
-                                "<div class='form-row justify-content-center'>" +
-                                    "<div class='form-group col-lg-6'>" +
-                                        "<label for='altura'>Altura:</label>" +
-                                        "<input type='number' class='form-control' id='altura' min='0'>" +
-                                    "</div>" + 
-                                    "<div class='form-group col-lg-6'>" + 
-                                        "<label for='peso'>Peso:</label>" +
-                                        "<input type='number' class='form-control' id='peso'>" +
-                                    "</div>" + 
-                                "</div>";
-
-                                //Boton actulizar y cerrar formulario
-            formulario+=`</div>
-            <div class="col-lg-12 p-3 text-center">
-                    <input type="button" value="Enviar" id="btnEnviar"
-                        class="btn text-white col-lg-2 col-md-2 col-sm-2 col-2"></input>
-                </div>
-            </form>`;
-
-        $("#añadirForm").html(formulario);
-
-        $("#btnEnviar").click(function(){
-            datosFormulario(tipo);
-        });
+             <div class='col-lg-4'>
+                 <label for='posicion'>Libero &nbsp</label>
+                 <input type='radio' id='libero' value='Libero' name='posiciones'>
+             </div>
+         </div>
+         <div class='form-row justify-content-center'>
+                                    <div class='form-group col-lg-6'>
+                                        <label for='altura'>Altura:</label>
+                                        <input type='number' class='form-control' id='altura'>
+                                    </div> 
+                                    <div class='form-group col-lg-6'>
+                                        <label for='peso'>Peso:</label>
+                                        <input type='number' class='form-control' id='peso'>
+                                    </div>
+                                </div>
+            </form>
+         </div>
+         
+ 
+             </div>
+             <div class="col-lg-12 p-3 text-center">
+                     <input type="button" value="Enviar" id="btnEnviar"
+                         class="btn text-white col-lg-2 col-md-2 col-sm-2 col-2"></input>
+                 </div>
+         </div>
+         </form>`;
+ 
+     
+         $("#añadirForm").html(formulario);
+ 
+ 
+         $("#btnEnviar").click(function(){
+             datosFormulario(tipo);
+         });
 
     }
 
@@ -830,8 +831,10 @@ function datosFormulario(tipo) {
     puesto como si si lo estuviesen)*/
     $correcto = true;
 
-    //Bucle for que va recorriendo todos los input del formulario, menos el de imagen y el boton de enviar
-    for (let i = 0; i < ($misInput - 2); i++) {
+    if(tipo==2 || tipo==3){
+
+         //Bucle for que va recorriendo todos los input del formulario, menos el de imagen y el boton de enviar
+        for (let i = 0; i < ($misInput - 2); i++) {
 
         /*Filtro que va mirando de uno en uno los input y va dandoles un borde rojo o verde 
         en fucion de si han sido rellenados o no*/
@@ -847,7 +850,32 @@ function datosFormulario(tipo) {
             $("#formularioSocio input:eq(" + i + ")").css("border", "2px solid #009655");
         }
 
+        }
+
+    }else if(tipo==1){
+
+         //Bucle for que va recorriendo todos los input del formulario, menos el de imagen y el boton de enviar
+         for (let i = 0; i < ($misInput - 6); i++) {
+
+            /*Filtro que va mirando de uno en uno los input y va dandoles un borde rojo o verde 
+            en fucion de si han sido rellenados o no*/
+            if ($("#formularioSocio input:eq(" + i + ")").val() == "") {
+    
+                $("#formularioSocio input:eq(" + i + ")").css("border", "2px solid red");
+    
+                //La variable adquiere el valor false al encontar un input no rellenado
+                $correcto = false;
+    
+            } else {
+    
+                $("#formularioSocio input:eq(" + i + ")").css("border", "2px solid #009655");
+            }
+    
+            }
+
     }
+
+   
 
     //Filtro que mira si el campo correo tiene formato de correo electronico
     if (/\w+\@\w+\.\w+/.test($campoCorreo)) {
@@ -1019,6 +1047,35 @@ function insertarEntrenador(idLastUsuario){
                             
                             //console.log(result.error);//Avisa de si la insercion a salido bien o mal
                             //window.location.href="../../index.html";  //lleva al usuario a la pagina principal	
+
+                        })
+                        .catch(error => console.error('Error status:', error));
+
+}
+
+function insertarJugador(idLastUsuario){
+    var alturaForm=$("#altura").val();
+    var pesoForm=$("#peso").val();
+    var posicionForm=$('input[name="posiciones"]:checked').val();
+
+    var url = "../../controller/cInsertJugador.php";
+                    var data = {
+                        'id': idLastUsuario,
+                        'altura': alturaForm,
+                        'peso': pesoForm,
+                        'posicion': posicionForm
+                    };
+
+                    //Llamada fetch
+                    fetch(url, {
+                        method: 'POST', // or 'POST'
+                        body: JSON.stringify(data), // data can be `string` or {object}!
+                        headers: { 'Content-Type': 'application/json' }  // input data
+                    })
+
+                        .then(res => res.json()).then(result => {
+
+                        	
 
                         })
                         .catch(error => console.error('Error status:', error));

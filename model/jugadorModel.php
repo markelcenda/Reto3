@@ -120,4 +120,33 @@ class jugadorModel extends jugadorClass {
         $this->CloseConnect();//termina la conexion
     }
     
+    /*insertar jugador*/
+    public function insertJugador(){
+        
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        
+        $id=$this->id;
+        $altura=$this->altura;
+        $peso=$this->peso;
+        $posicion=$this->posicion;
+        
+        
+        //envia los datos introducidos en el formulario a la base de datos
+        $sql="CALL spInsertJugador('$id', $altura, $peso, '$posicion')";
+        
+        $this->link->query($sql);
+        
+        //filtro que mira las filas afectadas
+        if ($this->link->affected_rows >= 1)
+        {
+            //Al detectatr una afila afectada manda el siguiente mensaje
+            return "¡¡Bienvenido a la familia!!";
+        } else {
+            //Al no detectar filas afectadas manda el siguiente mensaje
+            return "Se ha producido un error";
+        }
+        
+        $this->CloseConnect();//termina la conexion
+    }
+    
 }
