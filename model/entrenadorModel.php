@@ -104,7 +104,7 @@ class entrenadorModel extends entrenadorClass {
         if ($this->link->query($sql))  // true if success
         //$this->link->affected_rows;  number of inserted rows
         {
-            return "Información actualizada correctamente";
+            return "Informaciï¿½n actualizada correctamente";
         } else {
             return "Error al modificar";
         }

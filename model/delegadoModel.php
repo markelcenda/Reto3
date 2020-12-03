@@ -76,9 +76,36 @@ class delegadoModel extends delegadoClass {
         if ($this->link->query($sql))  // true if success
         //$this->link->affected_rows;  number of inserted rows
         {
-            return "Informaci�n actualizada correctamente";
+            return "Informaci�n actualizada correctamente";
         } else {
             return "Error al modificar";
+        }
+        
+        $this->CloseConnect();//termina la conexion
+    }
+
+     /*insertar delegado*/
+     public function insertDelegado(){
+        
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        
+        $id=$this->id;
+        $experiencia=$this->experiencia;
+
+        
+        //envia los datos introducidos en el formulario a la base de datos
+        $sql="CALL spInsertDelegado('$id', '$experiencia')";
+        
+        $this->link->query($sql);
+        
+        //filtro que mira las filas afectadas
+        if ($this->link->affected_rows >= 1)
+        {
+            //Al detectatr una afila afectada manda el siguiente mensaje
+            return "¡¡Bienvenido a la familia!!";
+        } else {
+            //Al no detectar filas afectadas manda el siguiente mensaje
+            return "Se ha producido un error";
         }
         
         $this->CloseConnect();//termina la conexion
