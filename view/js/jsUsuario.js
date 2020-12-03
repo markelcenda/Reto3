@@ -732,8 +732,6 @@ function changeImg() {
         </form>`;
 
     
-            
-
         $("#añadirForm").html(formulario);
 
 
@@ -791,25 +789,31 @@ function changeImg() {
                 </div>
                 
             </div>
-        </div>
+
+            <form id='entrenadorForm'>
+            <div class="row justify-content-center">
+            <div class='col-lg-4'>
          <label for='experiencia'>Experiencia:</label>
             <input type='number' class='form-control' id='experiencia'>
-        </div>`;
+            </div>
+            </div>
+        </div>
+        </form>
 
-    
-                  //Boton actulizar y cerrar formulario
-            formulario+=`</div>
+            </div>
             <div class="col-lg-12 p-3 text-center">
                     <input type="button" value="Enviar" id="btnEnviar"
                         class="btn text-white col-lg-2 col-md-2 col-sm-2 col-2"></input>
                 </div>
-            </form>`;
+        </div>
+        </form>`;
 
+    
         $("#añadirForm").html(formulario);
+
 
         $("#btnEnviar").click(function(){
             datosFormulario(tipo);
-            alert($correcto);
         });
 
     }
@@ -825,7 +829,6 @@ function datosFormulario(tipo) {
     /*Contiene la respuesta de si todos los input estan rellenados o no (en este momento esta 
     puesto como si si lo estuviesen)*/
     $correcto = true;
-    alert($misInput);
 
     //Bucle for que va recorriendo todos los input del formulario, menos el de imagen y el boton de enviar
     for (let i = 0; i < ($misInput - 2); i++) {
@@ -842,7 +845,6 @@ function datosFormulario(tipo) {
         } else {
 
             $("#formularioSocio input:eq(" + i + ")").css("border", "2px solid #009655");
-            alert("1" + $correcto);
         }
 
     }
@@ -852,7 +854,6 @@ function datosFormulario(tipo) {
 
         //el input del correo adquiere bordes verdes
         $("#email").css("border", "2px solid #009655");
-        alert("2" + $correcto);
 
     } else {
 
@@ -865,12 +866,10 @@ function datosFormulario(tipo) {
 
     //Filtro que determina si los datos pueden ser enviados a la base de datos en funcion de la variable correcto
     if ($correcto == false) {
-        alert("3" + $correcto);
         alert("Faltan campos por rellenar o el correo no es valido");
         return false;
 
     } else {
-        alert("4" + $correcto);
         //Se introducen los datos establecidos en el formulario, ademas de algunos por defecto, en variables
         nombreInsert = $("#nombre").val();
         apellidosInsert = $("#apellidos").val();
@@ -957,7 +956,7 @@ function datosFormulario(tipo) {
                             //console.log(result.error);//Avisa de si la insercion a salido bien o mal
                             alert(result.error); //Avisa de si la insercion a salido bien o mal
                             //window.location.href="../../index.html";  //lleva al usuario a la pagina principal	
-                            conseguirIdUsuario();
+                            conseguirIdUsuario(tipo);
 
                         })
                         .catch(error => console.error('Error status:', error));
@@ -974,7 +973,7 @@ function datosFormulario(tipo) {
 
 }
 
-function conseguirIdUsuario(){
+function conseguirIdUsuario(tipo){
 
     var url="../../controller/cLastId.php";
 
@@ -985,8 +984,14 @@ function conseguirIdUsuario(){
   .then(res => res.json()).then(result => {
       
     var idLastUsuario=result.list[0].id;
-
-    insertarEntrenador(idLastUsuario);
+    if(tipo==1){
+        insertarJugador(idLastUsuario);
+    }else if(tipo==2){
+        insertarEntrenador(idLastUsuario);
+    }else{
+        insertarDelegado(idLastUsuario);
+    }
+    
 
   })
   .catch(error => console.error('Error status:', error));
