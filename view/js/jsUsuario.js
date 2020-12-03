@@ -776,7 +776,7 @@ function changeImg() {
                                 "<div class='form-row justify-content-center'>" +
                                     "<div class='form-group col-lg-6'>" +
                                         "<label for='altura'>Altura:</label>" +
-                                        "<input type='number' class='form-control' id='altura' value='" + usuario[i].objJugador.altura + "'>" +
+                                        "<input type='number' class='form-control' id='altura' value='" + usuario[i].objJugador.altura + "' min='" + usuario[i].objJugador.altura + "'>" +
                                     "</div>" + 
                                     "<div class='form-group col-lg-6'>" + 
                                         "<label for='peso'>Peso:</label>" +
