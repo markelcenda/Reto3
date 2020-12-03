@@ -1,6 +1,6 @@
 <?php
 
-include_once ("../model/EntrenadorModel.php");
+include_once ("../model/entrenadorModel.php");
 
 $data=json_decode(file_get_contents("php://input"),true);
 

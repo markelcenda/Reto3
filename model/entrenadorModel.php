@@ -104,7 +104,7 @@ class entrenadorModel extends entrenadorClass {
         if ($this->link->query($sql))  // true if success
         //$this->link->affected_rows;  number of inserted rows
         {
-            return "InformaciÛn actualizada correctamente";
+            return "InformaciÔøΩn actualizada correctamente";
         } else {
             return "Error al modificar";
         }
@@ -112,7 +112,7 @@ class entrenadorModel extends entrenadorClass {
         $this->CloseConnect();//termina la conexion
     }
     
-    /*insertar usuario*/
+    /*insertar entrenado*/
     public function insertEntrenador(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexi√≥n
