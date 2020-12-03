@@ -523,13 +523,13 @@ function changeImg() {
 
         if(usuarios[0].tipo==1){
             selectUsuario="<h2>Selecciona un jugador para cargar sus datos</h2>";
-            selectUsuario+="<div class='row justify-content-center'><div class='col'><button id='btnCrearJugador'>Crear jugador</div></div>";
+            selectUsuario+="<div class='row justify-content-center'><div class='col'><button type='button' class='btn text-white m-2' id='btnCrearJugador'><i class='fas fa-user-plus'></i></div></div>";
         }else if(usuarios[0].tipo==2){
             selectUsuario="<h2>Selecciona un entrenador para cargar sus datos</h2>";
-            selectUsuario+="<div class='row justify-content-center'><div class='col'><button id='btnCrearEntrenador'>Crear entrenador</div></div>";
+            selectUsuario+="<div class='row justify-content-center'><div class='col'><button  type='button' class='btn text-white m-2' id='btnCrearEntrenador'><i class='fas fa-user-plus'></i></div></div>";
         }else if(usuarios[0].tipo==3){
             selectUsuario="<h2>Selecciona un delegado para cargar sus datos</h2>";
-            selectUsuario+="<div class='row justify-content-center'><div class='col'><button id='btnCrearDelegado'>Crear delegado</div></div>";
+            selectUsuario+="<div class='row justify-content-center'><div class='col'><button  type='button' class='btn text-white m-2' id='btnCrearDelegado'><i class='fas fa-user-plus'></i></div></div>";
         }else{
             selectUsuario="<h2>Selecciona un socio para cargar sus datos</h2>";
         }
