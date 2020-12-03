@@ -571,6 +571,9 @@ function changeImg() {
         
          /*limpiar div*/
          $("#añadirForm").html("");
+         $(".datosDeUsuario").hide();
+         $(".esconderDiv").hide();
+         
 
          formulario=`<form id="formularioSocio">
          <div class="form-group col-lg-12 ">
@@ -669,6 +672,8 @@ function changeImg() {
         
         /*limpiar div*/
         $("#añadirForm").html("");
+        $(".datosDeUsuario").hide();
+        $(".esconderDiv").hide();
 
         formulario=`<form id="formularioSocio">
         <div class="form-group col-lg-12 ">
@@ -746,6 +751,8 @@ function changeImg() {
         
         /*limpiar div*/
         $("#añadirForm").html("");
+        $(".datosDeUsuario").hide();
+        $(".esconderDiv").hide();
 
         formulario=`<form id="formularioSocio">
         <div class="form-group col-lg-12 ">
@@ -1044,9 +1051,7 @@ function insertarEntrenador(idLastUsuario){
 
                         .then(res => res.json()).then(result => {
 
-                            
-                            //console.log(result.error);//Avisa de si la insercion a salido bien o mal
-                            //window.location.href="../../index.html";  //lleva al usuario a la pagina principal	
+                            window.location.reload();	
 
                         })
                         .catch(error => console.error('Error status:', error));
@@ -1071,6 +1076,7 @@ function insertarDelegado(idLastUsuario){
 
                         .then(res => res.json()).then(result => {
 	
+                            window.location.reload();
 
                         })
                         .catch(error => console.error('Error status:', error));
@@ -1099,7 +1105,7 @@ function insertarJugador(idLastUsuario){
 
                         .then(res => res.json()).then(result => {
 
-                        	
+                        	window.location.reload();
 
                         })
                         .catch(error => console.error('Error status:', error));
@@ -1228,7 +1234,7 @@ function changeImg() {
         newrow+="</div>"; 
 
         newrow+"<div class='row justify-content-center'>";
-        newrow+="<div class='col-lg-12'><button type='button' class='btn text-white m-2' id='btnUpdateUsuarioDesdeAdmin'>Actualizar datos</button>";
+        newrow+="<div class='col-lg-12 esconderDiv'><button type='button' class='btn text-white m-2' id='btnUpdateUsuarioDesdeAdmin'>Actualizar datos</button>";
         newrow+="<button type='button' class='btn text-white m-2' id='btnDeleteUsuario'>Borrar usuario</button></div>";
         newrow+="</div>";
 
