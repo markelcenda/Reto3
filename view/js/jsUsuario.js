@@ -637,15 +637,30 @@ function changeImg() {
              </div>
          </div>
          <div class='form-row justify-content-center'>
-                                    <div class='form-group col-lg-6'>
+                                    <div class='form-group col-lg-4'>
                                         <label for='altura'>Altura:</label>
                                         <input type='number' class='form-control' id='altura' min='0'>
                                     </div> 
-                                    <div class='form-group col-lg-6'>
+                                    <div class='form-group col-lg-4'>
                                         <label for='peso'>Peso:</label>
                                         <input type='number' class='form-control' id='peso' min='0'>
                                     </div>
+                                    <div class='form-group col-lg-4'>
+                                    <label for='equipo'>Equipo:</label>
+                                    <select class="form-control" name='equipos'>
+                                        <option selected>Seleccionar equipo</option>
+                                        <option value='1'>Infantil Masculino</option>
+                                        <option value='2'>Infantil Femenino</option>
+                                        <option value='3'>Juvenil Masculino</option>
+                                        <option value='4'>Juvenil Femenino</option>
+                                        <option value='5'>Senior Masculino</option>
+                                        <option value='6'>Senior Femenino</option>
+                                    </select>
+                                    </div>
+
+                                      
                                 </div>
+                                 
             </form>
          </div>
          
@@ -722,9 +737,21 @@ function changeImg() {
             <form id='entrenadorForm'>
             <div class="row justify-content-center">
             <div class='col-lg-4'>
-         <label for='experiencia'>Experiencia:</label>
+            <label for='experiencia'>Experiencia:</label>
             <input type='number' class='form-control' id='experiencia' min='0'>
             </div>
+            <div class='form-group col-lg-4'>
+                                    <label for='equipo'>Equipo:</label>
+                                    <select class="form-control" name='equipos'> 
+                                        <option selected>Seleccionar equipo</option>
+                                        <option value='1'>Infantil Masculino</option>
+                                        <option value='2'>Infantil Femenino</option>
+                                        <option value='3'>Juvenil Masculino</option>
+                                        <option value='4'>Juvenil Femenino</option>
+                                        <option value='5'>Senior Masculino</option>
+                                        <option value='6'>Senior Femenino</option>
+                                    </select>
+                                    </div>
             </div>
         </div>
         </form>
@@ -804,6 +831,18 @@ function changeImg() {
          <label for='experiencia'>Experiencia:</label>
             <input type='number' class='form-control' id='experiencia' min='0'>
             </div>
+            <div class='form-group col-lg-4'>
+                                    <label for='equipo'>Equipo:</label>
+                                    <select class="form-control" name='equipos'>
+                                        <option selected>Seleccionar equipo</option>
+                                        <option value='1'>Infantil Masculino</option>
+                                        <option value='2'>Infantil Femenino</option>
+                                        <option value='3'>Juvenil Masculino</option>
+                                        <option value='4'>Juvenil Femenino</option>
+                                        <option value='5'>Senior Masculino</option>
+                                        <option value='6'>Senior Femenino</option>
+                                    </select>
+                                    </div>
             </div>
         </div>
         </form>
@@ -911,7 +950,7 @@ function datosFormulario(tipo) {
         usuarioInsert = $("#nuevoUsuario").val();
         passwordInsert = $("#contraseña").val();
         imagenInsert = filename;
-        idEquipoInsert = "1";
+        idEquipoInsert = $('select[name=equipos]').val()
         tipoInsert = tipo;
         emailInsert = $("#email").val();
         direccionInsert = $("#direccion").val();
