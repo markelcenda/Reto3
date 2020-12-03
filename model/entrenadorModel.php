@@ -112,4 +112,31 @@ class entrenadorModel extends entrenadorClass {
         $this->CloseConnect();//termina la conexion
     }
     
+    /*insertar usuario*/
+    public function insertEntrenador(){
+        
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        
+        $id=$this->id;
+        $experiencia=$this->experiencia;
+
+        
+        //envia los datos introducidos en el formulario a la base de datos
+        $sql="CALL spInsertEntrenador('$id', '$experiencia')";
+        
+        $this->link->query($sql);
+        
+        //filtro que mira las filas afectadas
+        if ($this->link->affected_rows >= 1)
+        {
+            //Al detectatr una afila afectada manda el siguiente mensaje
+            return "¡¡Bienvenido a la familia!!";
+        } else {
+            //Al no detectar filas afectadas manda el siguiente mensaje
+            return "Se ha producido un error";
+        }
+        
+        $this->CloseConnect();//termina la conexion
+    }
+    
 }

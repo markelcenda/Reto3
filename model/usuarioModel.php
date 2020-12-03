@@ -906,5 +906,35 @@ class usuarioModel extends usuarioClass {
             return $list;
             
         }
+        
+        /*buscar usuarios por su tipo y rellenar su obkj correspondiente a su tipo*/
+        public function lastId(){
+            
+            $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+            
+            
+            $sql = "CALL spLastId()"; // SQL sententzia - sentencia SQL
+            
+            $result = $this->link->query($sql);
+            
+            
+            $list=array();
+            
+            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { //each row
+                
+                $usuario=new usuarioModel();
+                
+                
+                $usuario->id=$row['id'];
+                
+                
+                array_push($list, $usuario);
+                
+            }
+            mysqli_free_result($result);
+            $this->CloseConnect();
+            return $list;
+            
+        }
     
 }

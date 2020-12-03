@@ -523,10 +523,13 @@ function changeImg() {
 
         if(usuarios[0].tipo==1){
             selectUsuario="<h2>Selecciona un jugador para cargar sus datos</h2>";
+            selectUsuario+="<div class='row justify-content-center'><div class='col'><button id='btnCrearJugador'>Crear jugador</div></div>";
         }else if(usuarios[0].tipo==2){
             selectUsuario="<h2>Selecciona un entrenador para cargar sus datos</h2>";
+            selectUsuario+="<div class='row justify-content-center'><div class='col'><button id='btnCrearEntrenador'>Crear entrenador</div></div>";
         }else if(usuarios[0].tipo==3){
             selectUsuario="<h2>Selecciona un delegado para cargar sus datos</h2>";
+            selectUsuario+="<div class='row justify-content-center'><div class='col'><button id='btnCrearDelegado'>Crear delegado</div></div>";
         }else{
             selectUsuario="<h2>Selecciona un socio para cargar sus datos</h2>";
         }
@@ -549,10 +552,501 @@ function changeImg() {
         showUser(idUsuario);
 
         });
+
+        $("#btnCrearJugador").click(function(){
+            crearJugador(usuarios[0].tipo);
+        });
+        $("#btnCrearEntrenador").click(function(){
+            crearEntrenador(usuarios[0].tipo);
+        });
+        $("#btnCrearDelegado").click(function(){
+            creaDelegado(usuarios[0].tipo);
+        });
         
       })
       .catch(error => console.error('Error status:', error));
     }
+
+    function crearJugador(tipo){
+        
+        /*limpiar div*/
+        $("#añadirForm").html("");
+
+        formulario=`<form id="formularioSocio">
+        <div class="form-group col-lg-12 ">
+            <div class="row">
+                <div class="col-lg-6 p-3">
+                    <label for="nombre">Nombre<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="nombre">
+                </div>
+                <div class="col-lg-6 p-3">
+                    <label for="apellidos">Apellidos<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="apellidos">
+                </div>
+                <div class="col-lg-4 p-3">
+                    <label for="email">Correo electronico<span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <div class="col-lg-4 p-3">
+                    <label for="direccion">Direccion<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="direccion">
+                </div>
+                <div class="col-lg-4 p-3">
+                    <label for="fechaNacimiento">Fecha de nacimiento<span
+                            class="text-danger">*</span></label>
+                    <input type="date" class="form-control" id="fechaNacimiento">
+                </div>
+                <div class="col-lg-6 p-3 ">
+                    <label for="nuevoUsuario">Nombre de usuario<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="nuevoUsuario">
+                </div>
+                <div class="col-lg-6 p-3">
+                    <label for="contraseña">Contraseña<span class="text-danger">*</span></label>
+                    <input type="password" class="form-control" id="contraseña">
+                </div>
+                <div class="col-lg-6 p-3 text-center" id="containerImagen">
+                    <label>Imagen de perfil</label><br>
+                    <input type="file" name="imagen" id="imagen" accept=".png,.jpeg,.jpg,.gif">
+                    <label type="file" for="imagen" class="btn text-white col-lg-5 col-md-4 col-sm-4 col-4"
+                        id="btnSubirArchivo">Subir imagen <i class="fas fa-upload text-white"></i></label>
+                </div>
+                <div class="col-lg-6 p-3 text-center">
+                    <img src="../img/imagenDefault.png" id="fotoPerfil">
+                </div>
+                
+            </div>
+        </div>`;
+
+    formulario+="<div class='row justify-content-center'>" +
+                                            "<div class='col-lg-4'>" +
+                                                "<label for='posicion'>Delantero</label>" +
+                                                "<input type='radio' id='delantero' value='Delantero' name='posiciones'>" +
+                                            "</div>" +
+                
+                                            "<div class='col-lg-4'>" +
+                                                "<label for='posicion'>Zaguero</label>" +
+                                                "<input type='radio' id='zaguero' value='Zaguero' name='posiciones'>" +
+                                            "</div>" +    
+                
+                                            "<div class='col-lg-4'>" +
+                                                "<label for='posicion'>Libero &nbsp</label>" +
+                                                "<input type='radio' id='libero' value='Libero' name='posiciones'>" +
+                                            "</div>" +
+                                        "</div>";
+
+                                    formulario+="</div>" +
+                                                "</div>" +
+
+                                "<div class='form-row justify-content-center'>" +
+                                    "<div class='form-group col-lg-6'>" +
+                                        "<label for='altura'>Altura:</label>" +
+                                        "<input type='number' class='form-control' id='altura' min='0'>" +
+                                    "</div>" + 
+                                    "<div class='form-group col-lg-6'>" + 
+                                        "<label for='peso'>Peso:</label>" +
+                                        "<input type='number' class='form-control' id='peso'>" +
+                                    "</div>" + 
+                                "</div>";
+
+                                //Boton actulizar y cerrar formulario
+            formulario+=`</div>
+            <div class="col-lg-12 p-3 text-center">
+                    <input type="button" value="Enviar" id="btnEnviar"
+                        class="btn text-white col-lg-2 col-md-2 col-sm-2 col-2"></input>
+                </div>
+            </form>`;
+
+        $("#añadirForm").html(formulario);
+
+        $("#btnEnviar").click(function(){
+            datosFormulario(tipo);
+        });
+
+    }
+
+    function crearEntrenador(tipo){
+        
+        /*limpiar div*/
+        $("#añadirForm").html("");
+
+        formulario=`<form id="formularioSocio">
+        <div class="form-group col-lg-12 ">
+            <div class="row">
+                <div class="col-lg-6 p-3">
+                    <label for="nombre">Nombre<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="nombre">
+                </div>
+                <div class="col-lg-6 p-3">
+                    <label for="apellidos">Apellidos<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="apellidos">
+                </div>
+                <div class="col-lg-4 p-3">
+                    <label for="email">Correo electronico<span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <div class="col-lg-4 p-3">
+                    <label for="direccion">Direccion<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="direccion">
+                </div>
+                <div class="col-lg-4 p-3">
+                    <label for="fechaNacimiento">Fecha de nacimiento<span
+                            class="text-danger">*</span></label>
+                    <input type="date" class="form-control" id="fechaNacimiento">
+                </div>
+                <div class="col-lg-6 p-3 ">
+                    <label for="nuevoUsuario">Nombre de usuario<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="nuevoUsuario">
+                </div>
+                <div class="col-lg-6 p-3">
+                    <label for="contraseña">Contraseña<span class="text-danger">*</span></label>
+                    <input type="password" class="form-control" id="contraseña">
+                </div>
+                <div class="col-lg-6 p-3 text-center" id="containerImagen">
+                    <label>Imagen de perfil</label><br>
+                    <input type="file" name="imagen" id="imagen" accept=".png,.jpeg,.jpg,.gif">
+                    <label type="file" for="imagen" class="btn text-white col-lg-5 col-md-4 col-sm-4 col-4"
+                        id="btnSubirArchivo">Subir imagen <i class="fas fa-upload text-white"></i></label>
+                </div>
+                <div class="col-lg-6 p-3 text-center">
+                    <img src="../img/imagenDefault.png" id="fotoPerfil">
+                </div>
+                
+            </div>
+
+            <form id='entrenadorForm'>
+            <div class="row justify-content-center">
+            <div class='col-lg-4'>
+         <label for='experiencia'>Experiencia:</label>
+            <input type='number' class='form-control' id='experiencia'>
+            </div>
+            </div>
+        </div>
+        </form>
+
+            </div>
+            <div class="col-lg-12 p-3 text-center">
+                    <input type="button" value="Enviar" id="btnEnviar"
+                        class="btn text-white col-lg-2 col-md-2 col-sm-2 col-2"></input>
+                </div>
+        </div>
+        </form>`;
+
+    
+            
+
+        $("#añadirForm").html(formulario);
+
+
+        $("#btnEnviar").click(function(){
+            datosFormulario(tipo);
+        });
+
+    }
+
+    function crearDelegado(tipo){
+        
+        /*limpiar div*/
+        $("#añadirForm").html("");
+
+        formulario=`<form id="formularioSocio">
+        <div class="form-group col-lg-12 ">
+            <div class="row">
+                <div class="col-lg-6 p-3">
+                    <label for="nombre">Nombre<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="nombre">
+                </div>
+                <div class="col-lg-6 p-3">
+                    <label for="apellidos">Apellidos<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="apellidos">
+                </div>
+                <div class="col-lg-4 p-3">
+                    <label for="email">Correo electronico<span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <div class="col-lg-4 p-3">
+                    <label for="direccion">Direccion<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="direccion">
+                </div>
+                <div class="col-lg-4 p-3">
+                    <label for="fechaNacimiento">Fecha de nacimiento<span
+                            class="text-danger">*</span></label>
+                    <input type="date" class="form-control" id="fechaNacimiento">
+                </div>
+                <div class="col-lg-6 p-3 ">
+                    <label for="nuevoUsuario">Nombre de usuario<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="nuevoUsuario">
+                </div>
+                <div class="col-lg-6 p-3">
+                    <label for="contraseña">Contraseña<span class="text-danger">*</span></label>
+                    <input type="password" class="form-control" id="contraseña">
+                </div>
+                <div class="col-lg-6 p-3 text-center" id="containerImagen">
+                    <label>Imagen de perfil</label><br>
+                    <input type="file" name="imagen" id="imagen" accept=".png,.jpeg,.jpg,.gif">
+                    <label type="file" for="imagen" class="btn text-white col-lg-5 col-md-4 col-sm-4 col-4"
+                        id="btnSubirArchivo">Subir imagen <i class="fas fa-upload text-white"></i></label>
+                </div>
+                <div class="col-lg-6 p-3 text-center">
+                    <img src="../img/imagenDefault.png" id="fotoPerfil">
+                </div>
+                
+            </div>
+        </div>
+         <label for='experiencia'>Experiencia:</label>
+            <input type='number' class='form-control' id='experiencia'>
+        </div>`;
+
+    
+                  //Boton actulizar y cerrar formulario
+            formulario+=`</div>
+            <div class="col-lg-12 p-3 text-center">
+                    <input type="button" value="Enviar" id="btnEnviar"
+                        class="btn text-white col-lg-2 col-md-2 col-sm-2 col-2"></input>
+                </div>
+            </form>`;
+
+        $("#añadirForm").html(formulario);
+
+        $("#btnEnviar").click(function(){
+            datosFormulario(tipo);
+            alert($correcto);
+        });
+
+    }
+
+    //Funcion que envia los datos introducidos en el formulario a la base de datos, y que los verifica
+function datosFormulario(tipo) {
+
+  
+    $misInput = $("#formularioSocio input").length;
+  
+    $campoCorreo = $("#email").val();
+
+    /*Contiene la respuesta de si todos los input estan rellenados o no (en este momento esta 
+    puesto como si si lo estuviesen)*/
+    $correcto = true;
+    alert($misInput);
+
+    //Bucle for que va recorriendo todos los input del formulario, menos el de imagen y el boton de enviar
+    for (let i = 0; i < ($misInput - 2); i++) {
+
+        /*Filtro que va mirando de uno en uno los input y va dandoles un borde rojo o verde 
+        en fucion de si han sido rellenados o no*/
+        if ($("#formularioSocio input:eq(" + i + ")").val() == "") {
+
+            $("#formularioSocio input:eq(" + i + ")").css("border", "2px solid red");
+
+            //La variable adquiere el valor false al encontar un input no rellenado
+            $correcto = false;
+
+        } else {
+
+            $("#formularioSocio input:eq(" + i + ")").css("border", "2px solid #009655");
+            alert("1" + $correcto);
+        }
+
+    }
+
+    //Filtro que mira si el campo correo tiene formato de correo electronico
+    if (/\w+\@\w+\.\w+/.test($campoCorreo)) {
+
+        //el input del correo adquiere bordes verdes
+        $("#email").css("border", "2px solid #009655");
+        alert("2" + $correcto);
+
+    } else {
+
+        //el input del correo adquiere bordes rojos
+        $("#email").css("border", "2px solid red");
+        /*La variable adquiere el valor false al verificar que el formato de correo introducio es invalido*/
+        $correcto = false;
+
+    }
+
+    //Filtro que determina si los datos pueden ser enviados a la base de datos en funcion de la variable correcto
+    if ($correcto == false) {
+        alert("3" + $correcto);
+        alert("Faltan campos por rellenar o el correo no es valido");
+        return false;
+
+    } else {
+        alert("4" + $correcto);
+        //Se introducen los datos establecidos en el formulario, ademas de algunos por defecto, en variables
+        nombreInsert = $("#nombre").val();
+        apellidosInsert = $("#apellidos").val();
+        usuarioInsert = $("#nuevoUsuario").val();
+        passwordInsert = $("#contraseña").val();
+        imagenInsert = filename;
+        idEquipoInsert = "1";
+        tipoInsert = tipo;
+        emailInsert = $("#email").val();
+        direccionInsert = $("#direccion").val();
+        fechaDeNacimientoInsert = $("#fechaNacimiento").val();
+        adminInsert = "0";
+
+        var url = "../../controller/cUsers.php";
+
+        //Llamada fetch
+        fetch(url, {
+            method: 'GET',
+        })
+
+            .then(res => res.json()).then(result => {
+
+                var list = result.list;
+
+                permitirInsert = true;
+                //recorre toda la lista de usuarios
+                for (let i = 0; i < list.length; i++) {
+                    //mira si el nombre de usuario y correo eletronico introducidos coincide con alguno de la base de datos
+                    if (usuarioInsert == list[i].usuario || emailInsert == list[i].email) {
+
+                        permitirInsert = false;
+
+                        for (let i = 0; i < list.length; i++) {
+
+                            if (usuarioInsert == list[i].usuario) {
+
+                                $("#nuevoUsuario").css("border", "2px solid red");
+                                
+
+                            }
+
+                            if (emailInsert == list[i].email) {
+
+                                $("#email").css("border", "2px solid red");
+
+                            }
+                        }
+
+                        break;
+
+                    }
+
+                }
+                //Ejecuta la insercion del nuevo socio, si permitirInsert es igual a true. En caso contrario saca un alert
+                if (permitirInsert == true) {
+
+                    var url = "../../controller/cUsuarioExecuteInsert.php";
+                    var data = {
+                        'nombreInsert': nombreInsert,
+                        'apellidosInsert': apellidosInsert,
+                        'usuarioInsert': usuarioInsert,
+                        'passwordInsert': passwordInsert,
+                        'idEquipoInsert': idEquipoInsert,
+                        'tipoInsert': tipoInsert,
+                        'emailInsert': emailInsert,
+                        'direccionInsert': direccionInsert,
+                        'fechaDeNacimientoInsert': fechaDeNacimientoInsert,
+                        'adminInsert': adminInsert,
+                        'filename': filename,
+                        'savedFileBase64': savedFileBase64,
+                        'imagenInsert': imagenInsert
+                    };
+
+                    //Llamada fetch
+                    fetch(url, {
+                        method: 'POST', // or 'POST'
+                        body: JSON.stringify(data), // data can be `string` or {object}!
+                        headers: { 'Content-Type': 'application/json' }  // input data
+                    })
+
+                        .then(res => res.json()).then(result => {
+
+                            
+                            //console.log(result.error);//Avisa de si la insercion a salido bien o mal
+                            alert(result.error); //Avisa de si la insercion a salido bien o mal
+                            //window.location.href="../../index.html";  //lleva al usuario a la pagina principal	
+                            conseguirIdUsuario();
+
+                        })
+                        .catch(error => console.error('Error status:', error));
+
+                } else {
+
+                    alert("Ya existe un usuario con ese nombre de usuario o correo electronico");
+                }
+
+
+            })
+            .catch(error => console.error('Error status:', error));
+    }
+
+}
+
+function conseguirIdUsuario(){
+
+    var url="../../controller/cLastId.php";
+
+    fetch(url, {
+        method: 'GET',
+        headers:{'Content-Type': 'application/json'} 
+        })
+  .then(res => res.json()).then(result => {
+      
+    var idLastUsuario=result.list[0].id;
+
+    insertarEntrenador(idLastUsuario);
+
+  })
+  .catch(error => console.error('Error status:', error));
+
+}
+
+function insertarEntrenador(idLastUsuario){
+    var experienciaForm=$("#experiencia").val()
+
+    var url = "../../controller/cInsertEntrenador.php";
+                    var data = {
+                        'id': idLastUsuario,
+                        'experiencia': experienciaForm
+                    };
+
+                    //Llamada fetch
+                    fetch(url, {
+                        method: 'POST', // or 'POST'
+                        body: JSON.stringify(data), // data can be `string` or {object}!
+                        headers: { 'Content-Type': 'application/json' }  // input data
+                    })
+
+                        .then(res => res.json()).then(result => {
+
+                            
+                            //console.log(result.error);//Avisa de si la insercion a salido bien o mal
+                            //window.location.href="../../index.html";  //lleva al usuario a la pagina principal	
+
+                        })
+                        .catch(error => console.error('Error status:', error));
+
+}
+
+//Cambia la foto de perfil que esta por defecto en el formulario por la introducida por el usuario
+function changeImg() {
+
+    var file = $("#imagen")[0].files[0];
+
+    filename = file.name.toLowerCase();
+    filesize = file.size;
+    console.log(filename);
+
+    var reader = new FileReader();
+
+    reader.onloadend = function () {
+        savedFileBase64 = reader.result;     // Almacenar en variable global para uso posterior	  
+        $("#fotoPerfil").attr('src', savedFileBase64);
+    }
+
+    if (file) {
+
+        reader.readAsDataURL(file);
+
+    } else {
+
+        $("#fotoPerfil").attr('src', '');
+
+    }
+
+}
 
     /*Cargar informacion del usuario*/
     function showUser(idUsuario){
