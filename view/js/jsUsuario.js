@@ -479,7 +479,7 @@ function changeImg() {
           $("#acciones").html("");
           $("#formularioInformacion").html("");
           $("#añadirForm").html("");
-
+          
           selectTipo="<div class='col-lg-6'><h2>Selecciona un tipo para cargar los usuarios</h2>";
           selectTipo+="<select id='selectTipos'>";
           selectTipo+="<option selected>Selecciona un tipo</option>";
@@ -516,6 +516,10 @@ function changeImg() {
             headers:{'Content-Type': 'application/json'} 
             })
       .then(res => res.json()).then(result => {
+
+        $("#añadirForm").html("");
+        $(".datosDeUsuario").hide();
+         $(".esconderDiv").hide();
           
         var usuarios=result.usuarios;
 
@@ -523,13 +527,10 @@ function changeImg() {
 
         if(usuarios[0].tipo==1){
             selectUsuario="<h2>Selecciona un jugador para cargar sus datos</h2>";
-            selectUsuario+="<div class='row justify-content-center'><div class='col'><button type='button' class='btn text-white m-2' id='btnCrearJugador'><i class='fas fa-user-plus'></i></div></div>";
         }else if(usuarios[0].tipo==2){
             selectUsuario="<h2>Selecciona un entrenador para cargar sus datos</h2>";
-            selectUsuario+="<div class='row justify-content-center'><div class='col'><button  type='button' class='btn text-white m-2' id='btnCrearEntrenador'><i class='fas fa-user-plus'></i></div></div>";
         }else if(usuarios[0].tipo==3){
             selectUsuario="<h2>Selecciona un delegado para cargar sus datos</h2>";
-            selectUsuario+="<div class='row justify-content-center'><div class='col'><button  type='button' class='btn text-white m-2' id='btnCrearDelegado'><i class='fas fa-user-plus'></i></div></div>";
         }else{
             selectUsuario="<h2>Selecciona un socio para cargar sus datos</h2>";
         }
@@ -543,7 +544,19 @@ function changeImg() {
         }
 
         selectUsuario+="</select>";
+        selectUsuario+="<div class='row justify-content-center'><div class='col' id='botonCrear'></div></div>";
         $("#añadirUsuarios").html(selectUsuario);
+
+        if(usuarios[0].tipo==1){
+            botonCrear="<div class='row justify-content-center'><div class='col'><button type='button' class='btn text-white m-2' id='btnCrearJugador'><i class='fas fa-user-plus'></i></div></div>";
+        }else if(usuarios[0].tipo==2){
+            botonCrear="<div class='row justify-content-center'><div class='col'><button  type='button' class='btn text-white m-2' id='btnCrearEntrenador'><i class='fas fa-user-plus'></i></div></div>";
+        }else if(usuarios[0].tipo==3){
+            botonCrear="<div class='row justify-content-center'><div class='col'><button  type='button' class='btn text-white m-2' id='btnCrearDelegado'><i class='fas fa-user-plus'></i></div></div>";
+        }else{
+            botonCrear="<div class='row justify-content-center'><div class='col'></div></div>";
+        }
+        $("#botonCrear").html(botonCrear);
 
         /*Conseguir la id del usuario y sacar un DIV con los datos al hacer change*/
         $("#selectUsuarios").change(function(){
