@@ -1053,6 +1053,30 @@ function insertarEntrenador(idLastUsuario){
 
 }
 
+function insertarDelegado(idLastUsuario){
+    var experienciaForm=$("#experiencia").val()
+
+    var url = "../../controller/cInsertDelegado.php";
+                    var data = {
+                        'id': idLastUsuario,
+                        'experiencia': experienciaForm
+                    };
+
+                    //Llamada fetch
+                    fetch(url, {
+                        method: 'POST', // or 'POST'
+                        body: JSON.stringify(data), // data can be `string` or {object}!
+                        headers: { 'Content-Type': 'application/json' }  // input data
+                    })
+
+                        .then(res => res.json()).then(result => {
+	
+
+                        })
+                        .catch(error => console.error('Error status:', error));
+
+}
+
 function insertarJugador(idLastUsuario){
     var alturaForm=$("#altura").val();
     var pesoForm=$("#peso").val();

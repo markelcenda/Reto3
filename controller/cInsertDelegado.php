@@ -8,7 +8,7 @@ $id=$data['id'];
 $experiencia=$data['experiencia'];
 
 
-$delegado=new entrenadorModel();
+$delegado=new delegadoModel();
 
 $delegado->id=$id;
 $delegado->experiencia=$experiencia;
